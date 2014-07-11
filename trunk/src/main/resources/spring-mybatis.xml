@@ -72,12 +72,12 @@
 	<!-- 配置myBatis -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations" value="classpath:edu/imu/ts/dao/*.xml" />
+		<property name="mapperLocations" value="classpath:com/ztyj6/fs/dao/*.xml" />
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="edu.imu.ts.dao" />
+		<property name="basePackage" value="com.ztyj6.fs.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 
@@ -104,7 +104,7 @@
 	<aop:config>
 		<!-- 第一个*代表所有的返回值类型；第二个*代表所有的类；第三个*代表类所有方法；..代表子或者孙子包；最后一个..代表所有的参数 -->
 		<aop:pointcut id="transactionPointcut"
-			expression="(execution(* edu.imu.ts.service.impl..*Impl.*(..)))" />
+			expression="(execution(* com.ztyj6.fs.service.impl..*Impl.*(..)))" />
 		<aop:advisor pointcut-ref="transactionPointcut"
 			advice-ref="transactionAdvice" />
 	</aop:config>

@@ -9,7 +9,7 @@
 
 	<http security="none" pattern="/login.jsp*" />
 	<http security="none" pattern="/register.jsp*" />
-	<http security="none" pattern="/userController/register.do*" />
+	<!-- <http security="none" pattern="/userController/register.do*" /> -->
 	<http security="none" pattern="/common/**" />
 	<http security="none" pattern="/**/*.js" />
 	<http security="none" pattern="/**/*.css" />
@@ -25,15 +25,15 @@
 	</http>
 
 	<!-- 自定义UserDetailsService服务 -->
-	<beans:bean id="myUserDetailsService" class="edu.imu.ts.security.service.MyUserDetailsService" />
+	<beans:bean id="myUserDetailsService" class="com.ztyj6.fs.security.service.MyUserDetailsService" />
 
 	<!-- 自定义资源权限关系集合 -->
-	<beans:bean id="mySecurityMetadataSource" class="edu.imu.ts.security.service.MySecurityMetadataSource" />
+	<beans:bean id="mySecurityMetadataSource" class="com.ztyj6.fs.security.service.MySecurityMetadataSource" />
 
 	<beans:bean id="webExpressionVoter" class="org.springframework.security.web.access.expression.WebExpressionVoter" />
 	
 	<!-- 自定义投票器 -->
-	<beans:bean id="myVote" class="edu.imu.ts.security.service.MyVoter" >
+	<beans:bean id="myVote" class="com.ztyj6.fs.security.service.MyVoter" >
 		<beans:property name="mySecurityMetadataSource" ref="mySecurityMetadataSource" />
 	</beans:bean>
 
@@ -57,7 +57,7 @@
 	</beans:bean>
 
 	<!-- 登录认证过滤器 -->
-	<beans:bean id="myUsernamePasswordAuthenticationFilter" class="edu.imu.ts.security.service.MyUsernamePasswordAuthenticationFilter">
+	<beans:bean id="myUsernamePasswordAuthenticationFilter" class="com.ztyj6.fs.security.service.MyUsernamePasswordAuthenticationFilter">
 		<beans:property name="authenticationManager" ref="myAuthenticationManager" />
 		<beans:property name="usernameParameter" value="username" />
 		<beans:property name="passwordParameter" value="password" />
@@ -66,7 +66,7 @@
 		<beans:property name="filterProcessesUrl" value="/login.do" />
 		<beans:property name="authenticationSuccessHandler">
 			<beans:bean class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
-				<beans:property name="defaultTargetUrl" value="/system/index.jsp" />
+				<beans:property name="defaultTargetUrl" value="/admin/index.jsp" />
 				<beans:property name="redirectStrategy" ref="myRedirectStrategy" />
 			</beans:bean>
 		</beans:property>

@@ -25,7 +25,7 @@
 		scope="prototype">
 		<property name="patterns">
 			<list>
-				<value>edu.imu.ts.service.*</value>
+				<value>com.ztyj6.fs.service.*</value>
 			</list>
 		</property>
 	</bean>
