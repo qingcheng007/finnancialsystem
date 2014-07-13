@@ -1,4 +1,4 @@
-package com.styj6.fs.site;
+package test.site;
 
 import java.util.Date;
 
@@ -12,10 +12,9 @@ import com.ztyj6.fs.controller.SiteController;
 import com.ztyj6.fs.model.Site;
 import com.ztyj6.fs.service.ISiteService;
 
-@RunWith(SpringJUnit4ClassRunner.class)//等同于继承
-@ContextConfiguration(locations = {"classpath:spring.xml","classpath:spring-mybatis.xml"})//指明配置文件
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath:spring-security.xml", "classpath:spring.xml", "classpath:spring-ehcache.xml", "classpath:spring-mybatis.xml" })
 public class SiteTest {
-	private SiteController siteController;
 	private ISiteService siteService;
 
 	public ISiteService getSiteService() {

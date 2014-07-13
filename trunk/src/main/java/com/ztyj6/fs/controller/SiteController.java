@@ -69,7 +69,7 @@ public class SiteController extends BaseController {
      */
     @ResponseBody
     @RequestMapping("/admin/delete")
-    public Json delete(@RequestBody Site site,HttpSession session){
+    public Json delete(Site site,HttpSession session){
     	String msg = "";
     	Json json = new Json();
     	try{
