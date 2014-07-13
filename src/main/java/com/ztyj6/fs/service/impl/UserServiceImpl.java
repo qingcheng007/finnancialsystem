@@ -70,9 +70,9 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	public Serializable save(User o) {
-		String encodedPassword = passwordEncoder.encodePassword(o.getPassword(), o.getUsername());
 		if (userMapper.countByUsername(o.getUsername()) > 0)
 			return 0;
+		String encodedPassword = passwordEncoder.encodePassword(o.getPassword(), o.getUsername());
 		o.setPassword(encodedPassword);
 		o.setCreateDate(new Date());
 		o.setIsEnable(true);

@@ -1,4 +1,4 @@
-package com.styj6.fs.site;
+package test.post;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +10,7 @@ import com.ztyj6.fs.model.Post;
 import com.ztyj6.fs.service.IPostService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring.xml","classpath:spring-mybatis.xml"})
+@ContextConfiguration(locations = { "classpath:spring-security.xml", "classpath:spring.xml", "classpath:spring-ehcache.xml", "classpath:spring-mybatis.xml" })
 public class PostTest {
 	public IPostService postService;
 
