@@ -21,6 +21,7 @@
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 		<anonymous enabled="false" />
 		<logout logout-success-url="/login.jsp" logout-url="/logout.do" invalidate-session="true" delete-cookies="JSESSIONID" />
+		<!-- 自定义过滤链 -->
 		<custom-filter ref="myUsernamePasswordAuthenticationFilter" position="FORM_LOGIN_FILTER" />
 	</http>
 
@@ -71,14 +72,14 @@
 			</beans:bean>
 		</beans:property>
 		<beans:property name="authenticationFailureHandler">
-			<beans:bean class="edu.imu.ts.security.handler.LoginFailureHandler">
+			<beans:bean class="com.ztyj6.fs.security.handler.LoginFailureHandler">
 				<beans:property name="timeoutUrl" value="/common/timeout.html" />
 			</beans:bean>
 		</beans:property>
 	</beans:bean>
 
 	<!-- 自定义跳转策略类 -->
-	<beans:bean id="myRedirectStrategy" class="edu.imu.ts.security.service.MyRedirectStrategy" />
+	<beans:bean id="myRedirectStrategy" class="com.ztyj6.fs.security.service.MyRedirectStrategy" />
 
 	<authentication-manager alias="myAuthenticationManager">
 		<authentication-provider ref="authenticationProvider" />

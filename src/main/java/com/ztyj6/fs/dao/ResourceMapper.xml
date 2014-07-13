@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ztyj6.fs.dao.ResourceMapper" >
+  <cache type="org.mybatis.caches.ehcache.EhcacheCache" />
+  <resultMap id="BaseResultMap" type="com.ztyj6.fs.model.Resource" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="Name" property="name" jdbcType="VARCHAR" />
+    <result column="Icon" property="icon" jdbcType="VARCHAR" />
+    <result column="Sequence" property="sequence" jdbcType="SMALLINT" />
+    <result column="Url" property="url" jdbcType="VARCHAR" />
+    <result column="Type" property="type" jdbcType="SMALLINT" />
+    <result column="Description" property="description" jdbcType="VARCHAR" />
+    <result column="ParentId" property="parentId" jdbcType="INTEGER" />
+    <result column="IsLeaf" property="isLeaf" jdbcType="BIT" />
+    <result column="IsEnable" property="isEnable" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, Name, Icon, Sequence, Url, Type, Description, ParentId, IsLeaf, IsEnable
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+     select 
+    <include refid="Base_Column_List" />
+    from resource
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+      delete from resource
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ztyj6.fs.model.Resource" >
+    insert into resource (Id, Name, Icon, 
+      Sequence, Url, Type, 
+      Description, ParentId, IsLeaf, 
+      IsEnable)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{sequence,jdbcType=SMALLINT}, #{url,jdbcType=VARCHAR}, #{type,jdbcType=SMALLINT}, 
+      #{description,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, #{isLeaf,jdbcType=BIT}, 
+      #{isEnable,jdbcType=BIT})
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.ztyj6.fs.model.Resource" >
+     insert into resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="icon != null" >
+        Icon,
+      </if>
+      <if test="sequence != null" >
+        Sequence,
+      </if>
+      <if test="url != null" >
+        Url,
+      </if>
+      <if test="type != null" >
+        Type,
+      </if>
+      <if test="description != null" >
+        Description,
+      </if>
+      <if test="parentId != null" >
+        ParentId,
+      </if>
+      <if test="isLeaf != null" >
+        IsLeaf,
+      </if>
+      <if test="isEnable != null" >
+        IsEnable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        #{sequence,jdbcType=SMALLINT},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="isleaf != null" >
+        #{isLeaf,jdbcType=BIT},
+      </if>
+      <if test="isEnable != null" >
+        #{isEnable,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.Resource" >
+      update resource
+    <set >
+      <if test="name != null" >
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        Icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null" >
+        Sequence = #{sequence,jdbcType=SMALLINT},
+      </if>
+      <if test="url != null" >
+        Url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        Type = #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="description != null" >
+        Description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        ParentId = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="isLeaf != null" >
+        IsLeaf = #{isLeaf,jdbcType=BIT},
+      </if>
+      <if test="isEnable != null" >
+        IsEnable = #{isEnable,jdbcType=BIT},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.Resource" >
+      update resource
+    set Name = #{name,jdbcType=VARCHAR},
+      Icon = #{icon,jdbcType=VARCHAR},
+      Sequence = #{sequence,jdbcType=SMALLINT},
+      Url = #{url,jdbcType=VARCHAR},
+      Type = #{type,jdbcType=SMALLINT},
+      Description = #{description,jdbcType=VARCHAR},
+      ParentId = #{parentId,jdbcType=INTEGER},
+      IsLeaf = #{isLeaf,jdbcType=BIT},
+      IsEnable = #{isEnable,jdbcType=BIT}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectMenuByParentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from resource
+		where ParentId = #{parentId,jdbcType=INTEGER} AND IsEnable = 1 AND Type = 1 order by Sequence
+	</select>
+
+	<select id="selectByParentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from resource
+		where ParentId = #{parentId,jdbcType=INTEGER} AND IsEnable = 1 order by Sequence
+	</select>
+
+	<select id="selectByRoleId" parameterType="java.lang.Integer" resultMap="BaseResultMap" useCache="false">
+		SELECT
+		ResourceId Id
+		FROM
+		r_role_resource
+		WHERE r_role_resource.RoleId = #{roleId,jdbcType=INTEGER}
+	</select>
+
+	<resultMap id="ExtendResultMap" type="com.ztyj6.fs.model.Resource" extends="BaseResultMap">
+		<collection property="roles" javaType="list" ofType="com.ztyj6.fs.model.Role">
+			<id column="role_Id" property="id" />
+			<result column="role_Name" property="name" />
+			<result column="role_Code" property="code" />
+		</collection>
+	</resultMap>
+	<select id="selectAll" resultMap="ExtendResultMap">
+		SELECT
+resource.Id,
+resource.`Name`,
+resource.Url,
+r_role_resource.Id,
+r_role_resource.ResourceId,
+r_role_resource.RoleId,
+role.Id role_Id,
+role.`Name` role_Name,
+role.`Code` role_Code
+FROM
+resource
+INNER JOIN r_role_resource ON r_role_resource.ResourceId = resource.Id
+INNER JOIN role ON r_role_resource.RoleId = role.Id
+	</select>
+</mapper>

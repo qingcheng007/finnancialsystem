@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ztyj6.fs.dao.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.ztyj6.fs.model.Role" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="Name" property="name" jdbcType="VARCHAR" />
+    <result column="Code" property="code" jdbcType="VARCHAR" />
+    <result column="Description" property="description" jdbcType="VARCHAR" />
+    <result column="CreateUserId" property="createUserId" jdbcType="INTEGER" />
+    <result column="CreateDate" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="ModifyUserId" property="modifyUserId" jdbcType="INTEGER" />
+    <result column="ModifyDate" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="IsEnable" property="isEnable" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, Name, Code, Description, CreateUserId, createDate, ModifyUserId, ModifyDate, 
+    IsEnable
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from role
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  	<select id="selectAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from role
+		where IsEnable = 1
+	</select>
+	
+		<select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap" useCache="false">
+		SELECT
+		RoleId Id
+		FROM
+		r_user_role
+		WHERE r_user_role.UserId = #{userId,jdbcType=INTEGER}
+	</select>
+	
+		<delete id="deleteBatch" parameterType="java.util.List">
+		delete from role where Id in
+		<foreach collection="list" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+	
+		<insert id="insertRoleResource">
+		insert ignore into r_role_resource (RoleId,ResourceId) values
+		<foreach collection="ids" item="String" open="(" separator="),(" close=")">
+			#{roleId} , #{String}
+		</foreach>
+	</insert>
+	
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from role
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ztyj6.fs.model.Role" >
+    insert into role (Id, Name, Code, 
+      Description, CreateUserId, CreateDate, 
+      ModifyUserId, ModifyDate, IsEnable
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{createUserId,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{modifyUserId,jdbcType=INTEGER}, #{modifyDate,jdbcType=TIMESTAMP}, #{isEnable,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ztyj6.fs.model.Role" >
+    insert into role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="code != null" >
+        Code,
+      </if>
+      <if test="description != null" >
+        Description,
+      </if>
+      <if test="createUserId != null" >
+        CreateUserId,
+      </if>
+      <if test="createDate != null" >
+        CreateDate,
+      </if>
+      <if test="modifyUserId != null" >
+        ModifyUserId,
+      </if>
+      <if test="modifyDate != null" >
+        ModifyDate,
+      </if>
+      <if test="isEnable != null" >
+        IsEnable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+        #{modifyUserId,jdbcType=INTEGER},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isEnable != null" >
+        #{isEnable,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.Role" >
+    update role
+    <set >
+      <if test="name != null" >
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        Code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        Description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        CreateUserId = #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        CreateDate = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserId != null" >
+        ModifyUserId = #{modifyUserId,jdbcType=INTEGER},
+      </if>
+      <if test="modifyDate != null" >
+        ModifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isEnable != null" >
+        IsEnable = #{isEnable,jdbcType=BIT},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.Role" >
+    update role
+    set Name = #{name,jdbcType=VARCHAR},
+      Code = #{code,jdbcType=VARCHAR},
+      Description = #{description,jdbcType=VARCHAR},
+      CreateUserId = #{createUserId,jdbcType=INTEGER},
+      CreateDate = #{createDate,jdbcType=TIMESTAMP},
+      ModifyUserId = #{modifyUserId,jdbcType=INTEGER},
+      ModifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+      IsEnable = #{isEnable,jdbcType=BIT}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
