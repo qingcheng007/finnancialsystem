@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ztyj6.fs.dao.UserMapper">
+	<resultMap id="BaseResultMap" type="com.ztyj6.fs.model.User">
+		<id column="Id" property="id" jdbcType="INTEGER" />
+		<id column="ParentId" property="parentId" jdbcType="INTEGER" />
+		<id column="BalanceId" property="balanceId" jdbcType="INTEGER" />
+		<result column="UserName" property="username" jdbcType="VARCHAR" />
+		<result column="Password" property="password" jdbcType="VARCHAR" />
+		<result column="RealName" property="realname" jdbcType="VARCHAR" />
+		<result column="Phone" property="phone" jdbcType="VARCHAR" />
+		<result column="Email" property="email" jdbcType="VARCHAR" />
+		<result column="LastLoginDate" property="lastLoginDate"
+			jdbcType="TIMESTAMP" />
+		<result column="LastLoginIp" property="lastLoginIp" jdbcType="VARCHAR" />
+		<result column="CreateIp" property="createIp" jdbcType="VARCHAR" />
+		<result column="CreateDate" property="createDate" jdbcType="TIMESTAMP" />
+		<result column="IsEnable" property="isEnable" jdbcType="BIT" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		Id, ParentId, BalanceId, UserName, Password, RealName,
+		Phone, Email,
+		LastLoginDate,
+		LastLoginIp, CreateIp, CreateDate, IsEnable
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="com.ztyj6.fs.model.User">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where Id = #{id,jdbcType=INTEGER}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="com.ztyj6.fs.model.User">
+		delete from user
+		where Id = #{id,jdbcType=INTEGER}
+
+	</delete>
+	<delete id="deleteByRoleIdNotIn">
+		delete from r_user_role
+		where UserId = #{userId} and RoleId not in
+		<foreach collection="ids" item="String" open="(" separator=","
+			close=")">
+			#{String}
+		</foreach>
+	</delete>
+
+	<insert id="insertUserRole">
+		insert ignore into r_user_role (UserId,RoleId) values
+		<foreach collection="ids" item="String" open="(" separator="),("
+			close=")">
+			#{userId} , #{String}
+		</foreach>
+	</insert>
+
+	<insert id="insert" parameterType="com.ztyj6.fs.model.User">
+		insert into user (Id,
+		ParentId, BalanceId,
+		UserName, Password, RealName,
+		Phone, Email,
+		LastLoginDate,
+		LastLoginIp, CreateIp, CreateDate,
+		IsEnable)
+		values
+		(#{id,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER},
+		#{balanceId,jdbcType=INTEGER},
+		#{username,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR},
+		#{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+		#{lastLoginDate,jdbcType=TIMESTAMP},
+		#{lastLoginIp,jdbcType=VARCHAR},
+		#{createIp,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP},
+		#{isEnable,jdbcType=BIT})
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.ztyj6.fs.model.User">
+		insert into user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			UserName,
+			Password,
+			<if test="parentId != null">
+				ParentId,
+			</if>
+			<if test="realname != null">
+				RealName,
+			</if>
+			<if test="phone != null">
+				Phone,
+			</if>
+			<if test="email != null">
+				Email,
+			</if>
+			<if test="lastLoginDate != null">
+				LastLoginDate,
+			</if>
+			<if test="lastLoginIp != null">
+				LastLoginIp,
+			</if>
+			<if test="createIp != null">
+				CreateIp,
+			</if>
+			<if test="createDate != null">
+				CreateDate,
+			</if>
+			<if test="isEnable != null">
+				IsEnable,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			#{username,jdbcType=VARCHAR},
+			#{password,jdbcType=VARCHAR},
+			<if test="parentId != null">
+				#{parentId,jdbcType=INTEGER},
+			</if>
+			<if test="realname != null">
+				#{realname,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="lastLoginDate != null">
+				#{lastLoginDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastLoginIp != null">
+				#{lastLoginIp,jdbcType=VARCHAR},
+			</if>
+			<if test="createIp != null">
+				#{createIp,jdbcType=VARCHAR},
+			</if>
+			<if test="createDate != null">
+				#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isEnable != null">
+				#{isEnable,jdbcType=BIT},
+			</if>
+		</trim>
+		<!-- mysql 查询最后插入的id -->
+		<selectKey resultType="java.lang.Integer" order="AFTER"
+			keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.User">
+		update user
+		<set>
+			<if test="parentId != null">
+				ParentId = #{parentId,jdbcType=INTEGER},
+			</if>
+			<if test="username != null">
+				UserName = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				Password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="realname != null">
+				RealName = #{realname,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				Phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				Email = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="lastLoginDate != null">
+				LastLoginDate = #{lastLoginDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastLoginIp != null">
+				LastLoginIp = #{lastLoginIp,jdbcType=VARCHAR},
+			</if>
+			<if test="createIp != null">
+				CreateIp = #{createIp,jdbcType=VARCHAR},
+			</if>
+			<if test="createDate != null">
+				CreateDate = #{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="isEnable != null">
+				IsEnable = #{isEnable,jdbcType=BIT},
+			</if>
+		</set>
+		where Id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.User">
+		update user
+		set
+		UserName = #{username,jdbcType=VARCHAR},
+		Password =
+		#{password,jdbcType=VARCHAR},
+		RealName = #{realname,jdbcType=VARCHAR},
+		Phone = #{phone,jdbcType=VARCHAR},
+		Email = #{email,jdbcType=VARCHAR},
+		LastLoginDate = #{lastLoginDate,jdbcType=TIMESTAMP},
+		LastLoginIp =
+		#{lastLoginIp,jdbcType=VARCHAR},
+		CreateIp =
+		#{createIp,jdbcType=VARCHAR},
+		CreateDate =
+		#{createDate,jdbcType=TIMESTAMP},
+		IsEnable = #{isEnable,jdbcType=BIT}
+		ParentId = #{parentId,jdbcType=INTEGER}
+		BalanceId =
+		#{balanceId,jdbcType=INTEGER}
+		where Id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateStateByPrimaryKey">
+		update user
+		set
+		LastLoginDate =
+		#{param.lastLoginDate},
+		LastLoginIP =
+		#{param.lastLoginIp}
+		where
+		Id = #{id}
+	</update>
+
+	<insert id="insertRole">
+		insert into r_user_role
+		(UserId,RoleId)
+		value
+		(#{userId} , #{roleId})
+	</insert>
+
+	<select id="countByUsername" parameterType="java.lang.String"
+		resultType="int">
+		select
+		count(*) c
+		from user where UserName =
+		#{username,jdbcType=VARCHAR}
+	</select>
+
+	<resultMap id="ExtendResultMap2" type="com.ztyj6.fs.model.User"
+		extends="BaseResultMap">
+		<collection property="roles" javaType="list"
+			ofType="com.ztyj6.fs.model.Role">
+			<id column="role_Id" property="id" />
+			<result column="role_Name" property="name" />
+			<result column="role_Code" property="code" />
+			<result column="role_Description" property="description" />
+			<result column="role_CreateUserId" property="createUserId" />
+			<result column="role_CreateDate" property="createDate" />
+			<result column="role_ModifyUserId" property="modifyUserId" />
+			<result column="role_ModifyDate" property="modifyDate" />
+		</collection>
+	</resultMap>
+
+	<select id="selectByUsername" resultMap="ExtendResultMap2">
+		SELECT
+		`user`.Id,
+		`user`.UserName,
+		`user`.`Password`,
+		`user`.RealName,
+		`user`.Phone,
+		`user`.Email,
+		`user`.LastLoginDate,
+		`user`.LastLoginIp,
+		`user`.CreateIp,
+		`user`.CreateDate,
+		`user`.IsEnable,
+		`user`.ParentId,
+		`user`.BalanceId,
+		r_user_role.Id,
+		r_user_role.UserId,
+		r_user_role.RoleId,
+		role.Id role_Id,
+		role.`Name` role_Name,
+		role.`Code` role_Code,
+		role.Description
+		role_Description,
+		role.CreateUserId role_CreateUserId,
+		role.CreateDate
+		role_CreateDate,
+		role.ModifyUserId role_ModifyUserId,
+		role.ModifyDate
+		role_ModifyDate,
+		role.IsEnable
+		FROM
+		`user`
+		INNER JOIN r_user_role ON
+		r_user_role.UserId = `user`.Id
+		INNER JOIN role ON r_user_role.RoleId =
+		role.Id
+		whereuser.UserName =#{username}
+	</select>
+	<delete id="delete" parameterType="java.util.List">
+		delete from user where Id in
+		<foreach collection="list" item="id" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+	</delete>
+</mapper>
