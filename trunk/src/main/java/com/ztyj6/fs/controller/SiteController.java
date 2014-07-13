@@ -47,7 +47,7 @@ public class SiteController extends BaseController {
      */
     @ResponseBody
     @RequestMapping("/admin/add")
-    public Json add(@RequestBody Site site,HttpSession session){
+    public Json add(Site site,HttpSession session){
     	String message ="";
     	Json json = new Json();
     	try{
