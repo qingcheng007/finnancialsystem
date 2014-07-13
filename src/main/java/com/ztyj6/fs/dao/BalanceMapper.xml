@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ztyj6.fs.dao.BalanceMapper">
+  <resultMap id="BaseResultMap" type="com.ztyj6.fs.model.Balance">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="Available" jdbcType="DECIMAL" property="available" />
+    <result column="Frozen" jdbcType="DECIMAL" property="frozen" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, Available, Frozen
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from balance
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from balance
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ztyj6.fs.model.Balance">
+    insert into balance (Id, Available, Frozen
+      )
+    values (#{id,jdbcType=INTEGER}, #{available,jdbcType=DECIMAL}, #{frozen,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ztyj6.fs.model.Balance">
+    insert into balance
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="available != null">
+        Available,
+      </if>
+      <if test="frozen != null">
+        Frozen,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="available != null">
+        #{available,jdbcType=DECIMAL},
+      </if>
+      <if test="frozen != null">
+        #{frozen,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.Balance">
+    update balance
+    <set>
+      <if test="available != null">
+        Available = #{available,jdbcType=DECIMAL},
+      </if>
+      <if test="frozen != null">
+        Frozen = #{frozen,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.Balance">
+    update balance
+    set Available = #{available,jdbcType=DECIMAL},
+      Frozen = #{frozen,jdbcType=DECIMAL}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.ztyj6.fs.model.Balance">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="Available" jdbcType="DECIMAL" property="available" />
+    <result column="Frozen" jdbcType="DECIMAL" property="frozen" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, Available, Frozen
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from balance
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from balance
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ztyj6.fs.model.Balance">
+    insert into balance (Id, Available, Frozen
+      )
+    values (#{id,jdbcType=INTEGER}, #{available,jdbcType=DECIMAL}, #{frozen,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ztyj6.fs.model.Balance">
+    insert into balance
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="available != null">
+        Available,
+      </if>
+      <if test="frozen != null">
+        Frozen,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="available != null">
+        #{available,jdbcType=DECIMAL},
+      </if>
+      <if test="frozen != null">
+        #{frozen,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.Balance">
+    update balance
+    <set>
+      <if test="available != null">
+        Available = #{available,jdbcType=DECIMAL},
+      </if>
+      <if test="frozen != null">
+        Frozen = #{frozen,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.Balance">
+    update balance
+    set Available = #{available,jdbcType=DECIMAL},
+      Frozen = #{frozen,jdbcType=DECIMAL}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

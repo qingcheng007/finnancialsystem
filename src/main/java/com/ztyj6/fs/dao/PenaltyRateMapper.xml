@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ztyj6.fs.dao.PenaltyRateMapper" >
+  <resultMap id="BaseResultMap" type="com.ztyj6.fs.model.PenaltyRate" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="Rate" property="rate" jdbcType="DECIMAL" />
+    <result column="Date" property="date" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, Rate, Date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from penaltyrate
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from penaltyrate
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ztyj6.fs.model.PenaltyRate" >
+    insert into penaltyrate (Id, Rate, Date
+      )
+    values (#{id,jdbcType=INTEGER}, #{rate,jdbcType=DECIMAL}, #{date,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ztyj6.fs.model.PenaltyRate" >
+    insert into penaltyrate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="rate != null" >
+        Rate,
+      </if>
+      <if test="date != null" >
+        Date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="rate != null" >
+        #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.PenaltyRate" >
+    update penaltyrate
+    <set >
+      <if test="rate != null" >
+        Rate = #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="date != null" >
+        Date = #{date,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.PenaltyRate" >
+    update penaltyrate
+    set Rate = #{rate,jdbcType=DECIMAL},
+      Date = #{date,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ztyj6.fs.dao.InvoiceMapper">
+  <resultMap id="BaseResultMap" type="com.ztyj6.fs.model.Invoice">
+    <id column="AuditStateId" jdbcType="INTEGER" property="auditstateid" />
+    <id column="Auditor1Id" jdbcType="INTEGER" property="auditor1id" />
+    <id column="Auditor2Id" jdbcType="INTEGER" property="auditor2id" />
+    <id column="DearerId" jdbcType="INTEGER" property="dearerid" />
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <id column="InvoiceDetailsId" jdbcType="INTEGER" property="invoicedetailsid" />
+    <id column="InvoiceTypeId" jdbcType="INTEGER" property="invoicetypeid" />
+    <id column="OperatorId" jdbcType="INTEGER" property="operatorid" />
+    <id column="ProverId" jdbcType="INTEGER" property="proverid" />
+    <result column="CreateDate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="OccurDate" jdbcType="TIMESTAMP" property="occurdate" />
+    <result column="Content" jdbcType="VARCHAR" property="content" />
+    <result column="Money" jdbcType="DECIMAL" property="money" />
+    <result column="Penalty" jdbcType="DECIMAL" property="penalty" />
+    <result column="Description" jdbcType="VARCHAR" property="description" />
+    <result column="ProjectName" jdbcType="VARCHAR" property="projectname" />
+    <result column="PhotoUrl" jdbcType="VARCHAR" property="photourl" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    AuditStateId, Auditor1Id, Auditor2Id, DearerId, Id, InvoiceDetailsId, InvoiceTypeId, 
+    OperatorId, ProverId, CreateDate, OccurDate, Content, Money, Penalty, Description, 
+    ProjectName, PhotoUrl, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.ztyj6.fs.model.InvoiceKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from invoice
+    where AuditStateId = #{auditstateid,jdbcType=INTEGER}
+      and Auditor1Id = #{auditor1id,jdbcType=INTEGER}
+      and Auditor2Id = #{auditor2id,jdbcType=INTEGER}
+      and DearerId = #{dearerid,jdbcType=INTEGER}
+      and Id = #{id,jdbcType=INTEGER}
+      and InvoiceDetailsId = #{invoicedetailsid,jdbcType=INTEGER}
+      and InvoiceTypeId = #{invoicetypeid,jdbcType=INTEGER}
+      and OperatorId = #{operatorid,jdbcType=INTEGER}
+      and ProverId = #{proverid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.ztyj6.fs.model.InvoiceKey">
+    delete from invoice
+    where AuditStateId = #{auditstateid,jdbcType=INTEGER}
+      and Auditor1Id = #{auditor1id,jdbcType=INTEGER}
+      and Auditor2Id = #{auditor2id,jdbcType=INTEGER}
+      and DearerId = #{dearerid,jdbcType=INTEGER}
+      and Id = #{id,jdbcType=INTEGER}
+      and InvoiceDetailsId = #{invoicedetailsid,jdbcType=INTEGER}
+      and InvoiceTypeId = #{invoicetypeid,jdbcType=INTEGER}
+      and OperatorId = #{operatorid,jdbcType=INTEGER}
+      and ProverId = #{proverid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ztyj6.fs.model.Invoice">
+    insert into invoice (AuditStateId, Auditor1Id, Auditor2Id, 
+      DearerId, Id, InvoiceDetailsId, 
+      InvoiceTypeId, OperatorId, ProverId, 
+      CreateDate, OccurDate, Content, 
+      Money, Penalty, Description, 
+      ProjectName, PhotoUrl, Remark
+      )
+    values (#{auditstateid,jdbcType=INTEGER}, #{auditor1id,jdbcType=INTEGER}, #{auditor2id,jdbcType=INTEGER}, 
+      #{dearerid,jdbcType=INTEGER}, #{id,jdbcType=INTEGER}, #{invoicedetailsid,jdbcType=INTEGER}, 
+      #{invoicetypeid,jdbcType=INTEGER}, #{operatorid,jdbcType=INTEGER}, #{proverid,jdbcType=INTEGER}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{occurdate,jdbcType=TIMESTAMP}, #{content,jdbcType=VARCHAR}, 
+      #{money,jdbcType=DECIMAL}, #{penalty,jdbcType=DECIMAL}, #{description,jdbcType=VARCHAR}, 
+      #{projectname,jdbcType=VARCHAR}, #{photourl,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ztyj6.fs.model.Invoice">
+    insert into invoice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="auditstateid != null">
+        AuditStateId,
+      </if>
+      <if test="auditor1id != null">
+        Auditor1Id,
+      </if>
+      <if test="auditor2id != null">
+        Auditor2Id,
+      </if>
+      <if test="dearerid != null">
+        DearerId,
+      </if>
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="invoicedetailsid != null">
+        InvoiceDetailsId,
+      </if>
+      <if test="invoicetypeid != null">
+        InvoiceTypeId,
+      </if>
+      <if test="operatorid != null">
+        OperatorId,
+      </if>
+      <if test="proverid != null">
+        ProverId,
+      </if>
+      <if test="createdate != null">
+        CreateDate,
+      </if>
+      <if test="occurdate != null">
+        OccurDate,
+      </if>
+      <if test="content != null">
+        Content,
+      </if>
+      <if test="money != null">
+        Money,
+      </if>
+      <if test="penalty != null">
+        Penalty,
+      </if>
+      <if test="description != null">
+        Description,
+      </if>
+      <if test="projectname != null">
+        ProjectName,
+      </if>
+      <if test="photourl != null">
+        PhotoUrl,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="auditstateid != null">
+        #{auditstateid,jdbcType=INTEGER},
+      </if>
+      <if test="auditor1id != null">
+        #{auditor1id,jdbcType=INTEGER},
+      </if>
+      <if test="auditor2id != null">
+        #{auditor2id,jdbcType=INTEGER},
+      </if>
+      <if test="dearerid != null">
+        #{dearerid,jdbcType=INTEGER},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="invoicedetailsid != null">
+        #{invoicedetailsid,jdbcType=INTEGER},
+      </if>
+      <if test="invoicetypeid != null">
+        #{invoicetypeid,jdbcType=INTEGER},
+      </if>
+      <if test="operatorid != null">
+        #{operatorid,jdbcType=INTEGER},
+      </if>
+      <if test="proverid != null">
+        #{proverid,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="occurdate != null">
+        #{occurdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="penalty != null">
+        #{penalty,jdbcType=DECIMAL},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null">
+        #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="photourl != null">
+        #{photourl,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.Invoice">
+    update invoice
+    <set>
+      <if test="createdate != null">
+        CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="occurdate != null">
+        OccurDate = #{occurdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        Content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        Money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="penalty != null">
+        Penalty = #{penalty,jdbcType=DECIMAL},
+      </if>
+      <if test="description != null">
+        Description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null">
+        ProjectName = #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="photourl != null">
+        PhotoUrl = #{photourl,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where AuditStateId = #{auditstateid,jdbcType=INTEGER}
+      and Auditor1Id = #{auditor1id,jdbcType=INTEGER}
+      and Auditor2Id = #{auditor2id,jdbcType=INTEGER}
+      and DearerId = #{dearerid,jdbcType=INTEGER}
+      and Id = #{id,jdbcType=INTEGER}
+      and InvoiceDetailsId = #{invoicedetailsid,jdbcType=INTEGER}
+      and InvoiceTypeId = #{invoicetypeid,jdbcType=INTEGER}
+      and OperatorId = #{operatorid,jdbcType=INTEGER}
+      and ProverId = #{proverid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.Invoice">
+    update invoice
+    set CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      OccurDate = #{occurdate,jdbcType=TIMESTAMP},
+      Content = #{content,jdbcType=VARCHAR},
+      Money = #{money,jdbcType=DECIMAL},
+      Penalty = #{penalty,jdbcType=DECIMAL},
+      Description = #{description,jdbcType=VARCHAR},
+      ProjectName = #{projectname,jdbcType=VARCHAR},
+      PhotoUrl = #{photourl,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where AuditStateId = #{auditstateid,jdbcType=INTEGER}
+      and Auditor1Id = #{auditor1id,jdbcType=INTEGER}
+      and Auditor2Id = #{auditor2id,jdbcType=INTEGER}
+      and DearerId = #{dearerid,jdbcType=INTEGER}
+      and Id = #{id,jdbcType=INTEGER}
+      and InvoiceDetailsId = #{invoicedetailsid,jdbcType=INTEGER}
+      and InvoiceTypeId = #{invoicetypeid,jdbcType=INTEGER}
+      and OperatorId = #{operatorid,jdbcType=INTEGER}
+      and ProverId = #{proverid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.ztyj6.fs.model.Invoice">
+    <id column="AuditStateId" jdbcType="INTEGER" property="auditstateid" />
+    <id column="Auditor1Id" jdbcType="INTEGER" property="auditor1id" />
+    <id column="Auditor2Id" jdbcType="INTEGER" property="auditor2id" />
+    <id column="DearerId" jdbcType="INTEGER" property="dearerid" />
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <id column="InvoiceDetailsId" jdbcType="INTEGER" property="invoicedetailsid" />
+    <id column="InvoiceTypeId" jdbcType="INTEGER" property="invoicetypeid" />
+    <id column="OperatorId" jdbcType="INTEGER" property="operatorid" />
+    <id column="ProverId" jdbcType="INTEGER" property="proverid" />
+    <result column="CreateDate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="OccurDate" jdbcType="TIMESTAMP" property="occurdate" />
+    <result column="Content" jdbcType="VARCHAR" property="content" />
+    <result column="Money" jdbcType="DECIMAL" property="money" />
+    <result column="Penalty" jdbcType="DECIMAL" property="penalty" />
+    <result column="Description" jdbcType="VARCHAR" property="description" />
+    <result column="ProjectName" jdbcType="VARCHAR" property="projectname" />
+    <result column="PhotoUrl" jdbcType="VARCHAR" property="photourl" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    AuditStateId, Auditor1Id, Auditor2Id, DearerId, Id, InvoiceDetailsId, InvoiceTypeId, 
+    OperatorId, ProverId, CreateDate, OccurDate, Content, Money, Penalty, Description, 
+    ProjectName, PhotoUrl, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.ztyj6.fs.model.InvoiceKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from invoice
+    where AuditStateId = #{auditstateid,jdbcType=INTEGER}
+      and Auditor1Id = #{auditor1id,jdbcType=INTEGER}
+      and Auditor2Id = #{auditor2id,jdbcType=INTEGER}
+      and DearerId = #{dearerid,jdbcType=INTEGER}
+      and Id = #{id,jdbcType=INTEGER}
+      and InvoiceDetailsId = #{invoicedetailsid,jdbcType=INTEGER}
+      and InvoiceTypeId = #{invoicetypeid,jdbcType=INTEGER}
+      and OperatorId = #{operatorid,jdbcType=INTEGER}
+      and ProverId = #{proverid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.ztyj6.fs.model.InvoiceKey">
+    delete from invoice
+    where AuditStateId = #{auditstateid,jdbcType=INTEGER}
+      and Auditor1Id = #{auditor1id,jdbcType=INTEGER}
+      and Auditor2Id = #{auditor2id,jdbcType=INTEGER}
+      and DearerId = #{dearerid,jdbcType=INTEGER}
+      and Id = #{id,jdbcType=INTEGER}
+      and InvoiceDetailsId = #{invoicedetailsid,jdbcType=INTEGER}
+      and InvoiceTypeId = #{invoicetypeid,jdbcType=INTEGER}
+      and OperatorId = #{operatorid,jdbcType=INTEGER}
+      and ProverId = #{proverid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ztyj6.fs.model.Invoice">
+    insert into invoice (AuditStateId, Auditor1Id, Auditor2Id, 
+      DearerId, Id, InvoiceDetailsId, 
+      InvoiceTypeId, OperatorId, ProverId, 
+      CreateDate, OccurDate, Content, 
+      Money, Penalty, Description, 
+      ProjectName, PhotoUrl, Remark
+      )
+    values (#{auditstateid,jdbcType=INTEGER}, #{auditor1id,jdbcType=INTEGER}, #{auditor2id,jdbcType=INTEGER}, 
+      #{dearerid,jdbcType=INTEGER}, #{id,jdbcType=INTEGER}, #{invoicedetailsid,jdbcType=INTEGER}, 
+      #{invoicetypeid,jdbcType=INTEGER}, #{operatorid,jdbcType=INTEGER}, #{proverid,jdbcType=INTEGER}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{occurdate,jdbcType=TIMESTAMP}, #{content,jdbcType=VARCHAR}, 
+      #{money,jdbcType=DECIMAL}, #{penalty,jdbcType=DECIMAL}, #{description,jdbcType=VARCHAR}, 
+      #{projectname,jdbcType=VARCHAR}, #{photourl,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ztyj6.fs.model.Invoice">
+    insert into invoice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="auditstateid != null">
+        AuditStateId,
+      </if>
+      <if test="auditor1id != null">
+        Auditor1Id,
+      </if>
+      <if test="auditor2id != null">
+        Auditor2Id,
+      </if>
+      <if test="dearerid != null">
+        DearerId,
+      </if>
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="invoicedetailsid != null">
+        InvoiceDetailsId,
+      </if>
+      <if test="invoicetypeid != null">
+        InvoiceTypeId,
+      </if>
+      <if test="operatorid != null">
+        OperatorId,
+      </if>
+      <if test="proverid != null">
+        ProverId,
+      </if>
+      <if test="createdate != null">
+        CreateDate,
+      </if>
+      <if test="occurdate != null">
+        OccurDate,
+      </if>
+      <if test="content != null">
+        Content,
+      </if>
+      <if test="money != null">
+        Money,
+      </if>
+      <if test="penalty != null">
+        Penalty,
+      </if>
+      <if test="description != null">
+        Description,
+      </if>
+      <if test="projectname != null">
+        ProjectName,
+      </if>
+      <if test="photourl != null">
+        PhotoUrl,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="auditstateid != null">
+        #{auditstateid,jdbcType=INTEGER},
+      </if>
+      <if test="auditor1id != null">
+        #{auditor1id,jdbcType=INTEGER},
+      </if>
+      <if test="auditor2id != null">
+        #{auditor2id,jdbcType=INTEGER},
+      </if>
+      <if test="dearerid != null">
+        #{dearerid,jdbcType=INTEGER},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="invoicedetailsid != null">
+        #{invoicedetailsid,jdbcType=INTEGER},
+      </if>
+      <if test="invoicetypeid != null">
+        #{invoicetypeid,jdbcType=INTEGER},
+      </if>
+      <if test="operatorid != null">
+        #{operatorid,jdbcType=INTEGER},
+      </if>
+      <if test="proverid != null">
+        #{proverid,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="occurdate != null">
+        #{occurdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="penalty != null">
+        #{penalty,jdbcType=DECIMAL},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null">
+        #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="photourl != null">
+        #{photourl,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.Invoice">
+    update invoice
+    <set>
+      <if test="createdate != null">
+        CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="occurdate != null">
+        OccurDate = #{occurdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        Content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        Money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="penalty != null">
+        Penalty = #{penalty,jdbcType=DECIMAL},
+      </if>
+      <if test="description != null">
+        Description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null">
+        ProjectName = #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="photourl != null">
+        PhotoUrl = #{photourl,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where AuditStateId = #{auditstateid,jdbcType=INTEGER}
+      and Auditor1Id = #{auditor1id,jdbcType=INTEGER}
+      and Auditor2Id = #{auditor2id,jdbcType=INTEGER}
+      and DearerId = #{dearerid,jdbcType=INTEGER}
+      and Id = #{id,jdbcType=INTEGER}
+      and InvoiceDetailsId = #{invoicedetailsid,jdbcType=INTEGER}
+      and InvoiceTypeId = #{invoicetypeid,jdbcType=INTEGER}
+      and OperatorId = #{operatorid,jdbcType=INTEGER}
+      and ProverId = #{proverid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.Invoice">
+    update invoice
+    set CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      OccurDate = #{occurdate,jdbcType=TIMESTAMP},
+      Content = #{content,jdbcType=VARCHAR},
+      Money = #{money,jdbcType=DECIMAL},
+      Penalty = #{penalty,jdbcType=DECIMAL},
+      Description = #{description,jdbcType=VARCHAR},
+      ProjectName = #{projectname,jdbcType=VARCHAR},
+      PhotoUrl = #{photourl,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where AuditStateId = #{auditstateid,jdbcType=INTEGER}
+      and Auditor1Id = #{auditor1id,jdbcType=INTEGER}
+      and Auditor2Id = #{auditor2id,jdbcType=INTEGER}
+      and DearerId = #{dearerid,jdbcType=INTEGER}
+      and Id = #{id,jdbcType=INTEGER}
+      and InvoiceDetailsId = #{invoicedetailsid,jdbcType=INTEGER}
+      and InvoiceTypeId = #{invoicetypeid,jdbcType=INTEGER}
+      and OperatorId = #{operatorid,jdbcType=INTEGER}
+      and ProverId = #{proverid,jdbcType=INTEGER}
+  </update>
+</mapper>
