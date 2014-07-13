@@ -26,7 +26,7 @@ public class PostController extends BaseController {
 	}
     @ResponseBody
     @RequestMapping("/admin/add")
-    public Json add(@RequestBody Post post,HttpSession session){
+    public Json add(Post post,HttpSession session){
     	Json json = new Json();
     	String msg = "";
     	try{
