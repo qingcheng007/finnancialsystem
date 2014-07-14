@@ -82,6 +82,9 @@
 			<if test="parentId != null">
 				ParentId,
 			</if>
+			<if test="balanceId != null">
+				ParentId,
+			</if>
 			<if test="realname != null">
 				RealName,
 			</if>
@@ -112,6 +115,9 @@
 			#{password,jdbcType=VARCHAR},
 			<if test="parentId != null">
 				#{parentId,jdbcType=INTEGER},
+			</if>
+			<if test="balanceId != null">
+				#{balanceId,jdbcType=INTEGER},
 			</if>
 			<if test="realname != null">
 				#{realname,jdbcType=VARCHAR},
@@ -150,6 +156,9 @@
 		<set>
 			<if test="parentId != null">
 				ParentId = #{parentId,jdbcType=INTEGER},
+			</if>
+			<if test="balanceId != null">
+				BalanceId = #{balanceId,jdbcType=INTEGER},
 			</if>
 			<if test="username != null">
 				UserName = #{username,jdbcType=VARCHAR},
@@ -203,8 +212,7 @@
 		#{createDate,jdbcType=TIMESTAMP},
 		IsEnable = #{isEnable,jdbcType=BIT}
 		ParentId = #{parentId,jdbcType=INTEGER}
-		BalanceId =
-		#{balanceId,jdbcType=INTEGER}
+		BalanceId = #{balanceId,jdbcType=INTEGER}
 		where Id = #{id,jdbcType=INTEGER}
 	</update>
 	<update id="updateStateByPrimaryKey">
