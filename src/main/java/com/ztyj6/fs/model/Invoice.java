@@ -21,8 +21,41 @@ public class Invoice extends InvoiceKey {
     private String photourl;
 
     private String remark;
+    
+    private InvoiceDetails invoiceDetails;
+    
+    private InvoiceType invoiceType;
+    
+    private AuditState auditState;
+ 
 
-    public Date getCreatedate() {
+    public AuditState getAuditState() {
+		return auditState;
+	}
+
+	public void setAuditState(AuditState auditState) {
+		this.auditState = auditState;
+	}
+
+	public InvoiceDetails getInvoiceDetails() {
+		return invoiceDetails;
+	}
+
+	public void setInvoiceDetails(InvoiceDetails invoiceDetails) {
+		this.invoiceDetails = invoiceDetails;
+	}
+
+	public InvoiceType getInvoiceType() {
+		return invoiceType;
+	}
+
+	public void setInvoiceType(InvoiceType invoiceType) {
+		this.invoiceType = invoiceType;
+	}
+
+	
+
+	public Date getCreatedate() {
         return createdate;
     }
 
