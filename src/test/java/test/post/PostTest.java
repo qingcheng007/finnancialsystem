@@ -28,5 +28,6 @@ public class PostTest {
 		post.setId(1);
 		post.setName("普通员工");
 		postService.save(post);
+		
 	}
 }
