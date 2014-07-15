@@ -14,4 +14,6 @@ public interface InvoiceDetailsMapper {
     int updateByPrimaryKeySelective(InvoiceDetails record);
 
     int updateByPrimaryKey(InvoiceDetails record);
+    
+    int selectMaxID();
 }
