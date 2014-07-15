@@ -17,6 +17,12 @@
     from invoicedetails
     where Id = #{id,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectMaxID" parameterType="java.lang.Integer" resultType="INTEGER">
+  select max(id) from invoicedetails
+  </select>
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from invoicedetails
     where Id = #{id,jdbcType=INTEGER}

@@ -14,4 +14,5 @@ public interface InvoiceTypeMapper {
     int updateByPrimaryKeySelective(InvoiceType record);
 
     int updateByPrimaryKey(InvoiceType record);
+    
 }
