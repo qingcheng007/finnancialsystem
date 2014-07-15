@@ -86,6 +86,10 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		return invoiceTypeMapper.insertSelective(invoiceType);
 		
 	}
+	@Override
+	public int insertInvoiceTypeAll(InvoiceType invoiceType) {
+		return invoiceTypeMapper.insert(invoiceType);
+	}
 	
 
 }

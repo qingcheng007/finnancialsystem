@@ -28,7 +28,7 @@ public class testInvoice {
 	public void setiInvoiceService(IInvoiceService iInvoiceService) {
 		this.iInvoiceService = iInvoiceService;
 	}
-	@Test
+	/*@Test
 	public void test1()
 	{
 		List<Invoice> invoiceList = iInvoiceService.getInvoiceAll();
@@ -52,17 +52,17 @@ public class testInvoice {
 		System.out.print(iInvoiceService.insertInvoiceDetails(invoiceDetails));
 		
 	}
-	/**
+	*//**
 	 * 
 	 * 测试查询id最大值
 	 * 
-	 * **/
+	 * **//*
 	@Test
 	public void test3(){
 		System.out.println(iInvoiceService.selectMaxIDFromInvoiceDetails());
 		
 	}
-	/**
+	*//**
 	 * 
 	 * 发票类型插入
 	 * 
@@ -70,9 +70,9 @@ public class testInvoice {
 	@Test
 	public void test4(){
 		InvoiceType invoiceType = new InvoiceType();
-		invoiceType.setId(12);
+		invoiceType.setId(1);
 		invoiceType.setName("款待费用");
-		System.out.println(iInvoiceService.insertInvoiceType(invoiceType));
+		System.out.println(iInvoiceService.insertInvoiceTypeAll(invoiceType));
 	}
 
 

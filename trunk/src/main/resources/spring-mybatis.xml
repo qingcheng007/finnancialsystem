@@ -98,7 +98,7 @@
 			<tx:method name="saveOrUpdate*" propagation="REQUIRED" />
 			<tx:method name="delete*" propagation="REQUIRED" />
 			<tx:method name="grant*" propagation="REQUIRED" />
-			<tx:method name="*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="*" propagation="REQUIRED" read-only="false" />
 		</tx:attributes>
 	</tx:advice>
 	<aop:config>
