@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.ztyj6.fs.model.AuditState;
 import com.ztyj6.fs.model.Invoice;
 import com.ztyj6.fs.model.InvoiceDetails;
 import com.ztyj6.fs.model.InvoiceType;
@@ -73,14 +74,25 @@ public class testInvoice {
 
 		//invoiceType.setId(12);
 
-		invoiceType.setId(1);
+		//invoiceType.setId(1);
 
 		invoiceType.setName("款待费用");
 
-		System.out.println(iInvoiceService.saveInvoiceTypeSelective(invoiceType));
+		System.out.println(iInvoiceService.saveInvoiceTypeSelective(invoiceType)+"==============="+invoiceType.getId());
 
 		//System.out.println(iInvoiceService.insertInvoiceTypeAll(invoiceType));
 
+	}
+	/**
+	 * 测试审计状态初始化插入
+	 * 
+	 * 
+	 * */
+	@Test
+	public void TestAuditState(){
+		AuditState auditState = new AuditState();
+		System.out.println(iInvoiceService.saveAudtiStateInitialise(auditState)+"================="+auditState.getId());
+		
 	}
 
 
