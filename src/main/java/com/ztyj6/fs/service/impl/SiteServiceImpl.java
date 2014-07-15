@@ -16,57 +16,85 @@ import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.PageFilter;
 import com.ztyj6.fs.service.ISiteService;
 import com.ztyj6.fs.utils.PageFilterUtil;
+
 @Service("siteService")
 public class SiteServiceImpl implements ISiteService {
-    
+
 	private SiteMapper siteMapper;
- 	
+
 	public SiteMapper getSiteMapper() {
 		return siteMapper;
 	}
-    
+
 	@Autowired
 	public void setSiteMapper(SiteMapper siteMapper) {
 		this.siteMapper = siteMapper;
 	}
-    /*
-     * 保存站点信息 
-     *  @INput： Site 对象
-     *  @Return： null
-     */
+
+	/*
+	 * 保存站点信息
+	 * 
+	 * @INput： Site 对象
+	 * 
+	 * @Return： null
+	 */
 	public Serializable save(Site o) {
 		// TODO Auto-generated method stub
-		siteMapper.insert(o);
+		try {
+			siteMapper.insert(o);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
-    /*
-     * 根据对象的Id 删除一个对象
-     * @Input Site 对象
-     * @Return void
-     */
+
+	/*
+	 * 根据对象的Id 删除一个对象
+	 * 
+	 * @Input Site 对象
+	 * 
+	 * @Return void
+	 */
 	public void delete(Site o) {
 		// TODO Auto-generated method stub
-		siteMapper.deleteByPrimaryKey(o.getId());
-
+		try {
+			siteMapper.deleteByPrimaryKey(o.getId());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-    /*
-     * 此方法暂未实现
-     * 
-     */
+
+	/*
+	 * 批量删除 site 表中的记录
+	 * @Input: String 其中的 id 以 ， 隔开
+	 * @Return： void
+	 */
 	public void delete(String ids) {
 		// TODO Auto-generated method stub
-        List<String> arrays = Arrays.asList(ids.split(","));
-        siteMapper.deleteBatch(arrays);
+		try {
+			List<String> arrays = Arrays.asList(ids.split(","));
+			siteMapper.deleteBatch(arrays);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void update(Site o) {
 		// TODO Auto-generated method stub
-       siteMapper.updateByPrimaryKey(o);
+		try {
+			siteMapper.updateByPrimaryKeySelective(o);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-
+	
+    /*
+     * 
+     * 此方法 不实现 因为此方法无用
+     * 
+     */
 	public void saveOrUpdate(Site o) throws Throwable {
-		// TODO Auto-generated method stub
-        
+		// TODO Auto-generated method stub    
 	}
 
 	public Site getById(Integer id) {

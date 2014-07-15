@@ -11,7 +11,7 @@ public interface SiteMapper {
     /*
      * 批量删除站点基本信息表中的站点记录 （暂未实现）
      */
-    void deleteBatch(List ids);
+    void deleteBatch(List<String> ids);
 
    
     int insert(Site record);

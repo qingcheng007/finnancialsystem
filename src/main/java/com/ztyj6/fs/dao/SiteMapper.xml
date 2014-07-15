@@ -43,6 +43,14 @@
     delete from site
     where Id = #{id,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteBatch" parameterType="java.util.List">
+		delete from site where Id in
+		<foreach collection="list" item="id" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+	</delete>
+	
   <insert id="insert" parameterType="com.ztyj6.fs.model.Site" >
     <!--
       WARNING - @mbggenerated
