@@ -62,6 +62,11 @@ public class testInvoice {
 		System.out.println(iInvoiceService.selectMaxIDFromInvoiceDetails());
 		
 	}
+	/**
+	 * 
+	 * 发票类型插入
+	 * 
+	 * **/
 	@Test
 	public void test4(){
 		InvoiceType invoiceType = new InvoiceType();
