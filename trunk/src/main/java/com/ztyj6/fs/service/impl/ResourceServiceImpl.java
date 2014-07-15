@@ -2,6 +2,7 @@ package com.ztyj6.fs.service.impl;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,6 +72,8 @@ public class ResourceServiceImpl implements IResourceService {
 
 	public Serializable save(Resource o) {
 		// TODO Auto-generated method stub
+		
+		resourceMapper.insertSelective(o);
 		return null;
 	}
 

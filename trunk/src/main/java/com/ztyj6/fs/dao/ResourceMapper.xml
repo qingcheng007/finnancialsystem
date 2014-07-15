@@ -97,7 +97,7 @@
       <if test="parentId != null" >
         #{parentId,jdbcType=INTEGER},
       </if>
-      <if test="isleaf != null" >
+      <if test="isLeaf != null" >
         #{isLeaf,jdbcType=BIT},
       </if>
       <if test="isEnable != null" >
