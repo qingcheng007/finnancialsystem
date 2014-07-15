@@ -28,7 +28,7 @@ public void TestInsertUser(){
 	user.setUsername("2");
 	user.setRealname("3");
 	user.setPassword("2");
-	user.setParentId(1);
+	user.setParentId(2);
 	user.setBalanceId(1);
 	user.setIsEnable(true);
 	userService.save(user);

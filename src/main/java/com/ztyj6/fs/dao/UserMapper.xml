@@ -82,9 +82,9 @@
 			<if test="parentId != null">
 				ParentId,
 			</if>
-			<if test="balanceId != null">
-				ParentId,
-			</if>
+					<if test="balanceId != null">
+				BalanceId,
+			</if>	
 			<if test="realname != null">
 				RealName,
 			</if>
