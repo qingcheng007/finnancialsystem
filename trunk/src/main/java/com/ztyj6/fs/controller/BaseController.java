@@ -20,9 +20,9 @@ import com.ztyj6.fs.utils.StringEscapeEditor;
 
 
 /**
- * 基础控制�?
+ * 基础控制器
  * 
- * 其他控制器继承此控制器获得日期字段类型转换和防止XSS攻击的功�?
+ * 其他控制器继承此控制器获得日期字段类型转换和防止XSS攻击的功能
  * 
  */
 public class BaseController {
@@ -30,7 +30,7 @@ public class BaseController {
 	@InitBinder
 	public void initBinder(ServletRequestDataBinder binder) {
 		/**
-		 * 自动转换日期类型的字段格�?
+		 * 自动转换日期类型的字段格式
 		 */
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"), true));
 		/**
