@@ -18,7 +18,9 @@ public interface IInvoiceService {
 	
 	int selectMaxIDFromInvoiceDetails();
 	
-	int insertInvoiceType(InvoiceType invoiceType);
+	int insertInvoiceTypeSelective(InvoiceType invoiceType);
+	
+	int saveInvoiceTypeSelective(InvoiceType invoiceType);
 	
 	int insertInvoiceTypeAll(InvoiceType invoiceType);
 	

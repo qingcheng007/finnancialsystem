@@ -81,15 +81,22 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		return invoiceDetailsMapper.selectMaxID();
 	}
 	@Override
-	public int insertInvoiceType(InvoiceType invoiceType) {
+	public int insertInvoiceTypeSelective(InvoiceType invoiceType) {
 		
 		return invoiceTypeMapper.insertSelective(invoiceType);
 		
 	}
+
+	@Override
+	public int saveInvoiceTypeSelective(InvoiceType invoiceType) {
+		return invoiceTypeMapper.insertSelective(invoiceType);
+	}
+
 	@Override
 	public int insertInvoiceTypeAll(InvoiceType invoiceType) {
 		return invoiceTypeMapper.insert(invoiceType);
 	}
+
 	
 
 }

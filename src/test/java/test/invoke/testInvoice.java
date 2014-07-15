@@ -70,9 +70,17 @@ public class testInvoice {
 	@Test
 	public void test4(){
 		InvoiceType invoiceType = new InvoiceType();
+
+		//invoiceType.setId(12);
+
 		invoiceType.setId(1);
+
 		invoiceType.setName("款待费用");
-		System.out.println(iInvoiceService.insertInvoiceTypeAll(invoiceType));
+
+		System.out.println(iInvoiceService.saveInvoiceTypeSelective(invoiceType));
+
+		//System.out.println(iInvoiceService.insertInvoiceTypeAll(invoiceType));
+
 	}
 
 
