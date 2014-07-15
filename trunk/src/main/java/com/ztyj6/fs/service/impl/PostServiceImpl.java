@@ -33,7 +33,11 @@ public class PostServiceImpl implements IPostService {
      */
 	public Serializable save(Post o) {
 		// TODO Auto-generated method stub
-		postMapper.insert(o);
+		try{
+			postMapper.insert(o);
+		}catch(Exception e){
+			e.printStackTrace();
+		}  
 		return null;
 	}
     /*
@@ -43,29 +47,59 @@ public class PostServiceImpl implements IPostService {
      */
 	public void delete(Post o) {
 		// TODO Auto-generated method stub
-		postMapper.deleteByPrimaryKey(o.getId());
-
+		try{
+			postMapper.deleteByPrimaryKey(o.getId());
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
-
+  /*
+   * 批量删除 post 表中的记录 
+   * @Input: String id之间使用 ， 隔开
+   * @Return：void
+   * 
+   */
 	public void delete(String ids) {
 		// TODO Auto-generated method stub
-		List<String> arrays = Arrays.asList(ids.split(","));
-        postMapper.deleteBatch(arrays);
+		try{
+			List<String> arrays = Arrays.asList(ids.split(","));
+	        postMapper.deleteBatch(arrays);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
 	}
-
+   /*
+    * 更新 post 表中的记录
+    *
+    */
 	public void update(Post o) {
 		// TODO Auto-generated method stub
-
+        try{
+        	postMapper.updateByPrimaryKeySelective(o);
+        }catch(Exception e){
+        	e.printStackTrace();
+        }
 	}
-
+  /*
+   *  此方法不实现
+   */
 	public void saveOrUpdate(Post o) throws Throwable {
 		// TODO Auto-generated method stub
 
 	}
-
+   /*
+    * 查询 post 表中的 记录
+    */
 	public Post getById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Post post = new Post();
+		try{
+			post = postMapper.selectByPrimaryKey(id);
+		}catch(Exception e){
+			e.printStackTrace();
+			post = null;
+		}
+		return post;
 	}
 
 	public List<Post> getAll() {

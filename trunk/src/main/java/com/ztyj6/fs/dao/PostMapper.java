@@ -4,12 +4,11 @@ import java.util.List;
 
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.ztyj6.fs.model.Post;
-import com.ztyj6.fs.model.Site;
 
 public interface PostMapper {
   
     int deleteByPrimaryKey(Integer id);
-    void deleteBatch(List ids);
+    void deleteBatch(List<String> ids);
 
    
     int insert(Post record);

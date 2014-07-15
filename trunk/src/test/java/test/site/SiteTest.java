@@ -1,7 +1,10 @@
 package test.site;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +27,7 @@ public class SiteTest {
 	public void setSiteService(ISiteService siteService) {
 		this.siteService = siteService;
 	}
-    @Test
+    @Ignore
     public void testAdd(){
     	Site site = new Site();
     	site.setId(2);
@@ -35,5 +38,12 @@ public class SiteTest {
     	site.setUserId(1);
     	site.setProjectName("2");
     	siteService.save(site);
+    }
+    @Test
+    public void testDeleteBatch(){
+    	
+    	String ids = "1,2,3";
+    	siteService.delete(ids);
+		
     }
 }
