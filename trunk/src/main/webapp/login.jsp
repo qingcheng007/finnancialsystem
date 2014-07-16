@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>登陆</title>
-<jsp:include page="include/bootstrapInc.jsp"></jsp:include>
+<jsp:include page="bootstrapInc.jsp"></jsp:include>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/jslib/bootstrapvalidator-dist-0.4.4/dist/css/bootstrapValidator.min.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/bootstrapvalidator-dist-0.4.4/dist/js/bootstrapValidator.min.js"></script>
 <script type="text/javascript" charset="utf-8">
@@ -12,7 +12,7 @@
 			message : '不能为空！',
 			submitHandler : function(validator, form, submitButton) {
 				$.ajax({
-					url : '${pageContext.request.contextPath}/login.do',
+					url : '${pageContext.request.contextPath}/login.jsp',
 					type : 'POST',
 					data : {
 						username : $('#login_username').val(),
@@ -68,7 +68,7 @@
 			<div class="form-group">
 				<label class="col-lg-3 control-label">账号</label>
 				<div class="col-lg-3">
-					<input id="login_username" type="text" class="form-control" name="account" placeholder="学号/用户名" />
+					<input id="login_username" type="text" class="form-control" name="account" placeholder="用户名" />
 				</div>
 			</div>
 
