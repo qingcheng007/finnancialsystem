@@ -10,7 +10,7 @@
 		$('#admin_site_manage_dataGrid')
 		.datagrid(
 				{
-					url : '${pageContext.request.contextPath}/classController/admin/getByPage.do',
+					url : '${pageContext.request.contextPath}/siteController/admin/getByPage.do',
 					fit : true,
 					autoRowHeight : false,
 					striped : true,
@@ -34,13 +34,7 @@
 						checkbox : true
 					} ] ], 
 					columns : [ [ 
-					{
-						field : 'siteId',
-						title : '站点编号',
-						width : 220,
-						align : 'center',
-						sortable : true
-					}, {
+				   {
 						field : 'name',
 						title : '站点名称',
 						width : 220,
@@ -59,12 +53,21 @@
 						align : 'center',
 						sortable : true
 					},{
-						field : 'action',
-						title : '操作',
+						field : 'information',
+						title : '查看',
 						width : 100,
 						align : 'center',
 						formatter : function(value, row, index) {
-							var btn = '<a onclick="addStudent(\''+row.id+'\')" href="javascript:void(0)">查看详情</a>';
+							var btn = '<a onclick="addStudent(\''+row.id+'\')" href="javascript:void(0)">查看站点详情</a>';
+							return btn;
+						} 
+					},{
+						field : 'managerUserOfSite',
+						title : '管理站点用户',
+						width : 100,
+						align : 'center',
+						formatter : function(value, row, index) {
+							var btn = '<a onclick="addStudent(\''+row.id+'\')" href="javascript:void(0)">管理站点用户</a>';
 							return btn;
 						} 
 					}] ],
@@ -80,7 +83,7 @@
 			title : '添加站点',
 			width : 380,
 			height : 260,
-			url:'${pageContext.request.contextPath}/admin/class/add.jsp'
+			url:'${pageContext.request.contextPath}/admin/site/add.jsp'
 		});
 		parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');
 	}
@@ -96,7 +99,7 @@
 				title : '编辑站点',
 				width : 380,
 				height : 260,
-				url : '${pageContext.request.contextPath}/admin/class/edit.jsp'
+				url : '${pageContext.request.contextPath}/admin/site/edit.jsp'
 			});
 			parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');
 			parent.$.modalDialog.row = rows[0];
@@ -128,7 +131,7 @@
 					for(var i=0; i<rows.length; i++)
 						ids.push(rows[i].id);
 					$.ajax({ 
-						url: '${pageContext.request.contextPath}/classController/admin/delete.do', 
+						url: '${pageContext.request.contextPath}/siteController/admin/deleteBatch.do', 
 						type: 'POST',
 						data: {
 							ids: ids.join(',')
@@ -175,16 +178,16 @@
 		<div id="admin_site_manage_toolbar">
 			<table>
 				<tr>
-					<sec:authorize url="/classController/admin/add.do">
-					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="add();">添加</a></td>
+					<sec:authorize url="/siteController/admin/add.do">
+					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="add();">添加站点</a></td>
 					<td><div class="datagrid-btn-separator"></div></td>
 					</sec:authorize>
-					<sec:authorize url="/classController/admin/edit.do">
-					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="edit();">编辑</a></td>
+					<sec:authorize url="/siteController/admin/update.do">
+					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="edit();">编辑站点</a></td>
 					<td><div class="datagrid-btn-separator"></div></td>
 					</sec:authorize>
-					<sec:authorize url="/classController/admin/delete.do">
-					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="deleteBatch();">批量删除</a></td>
+					<sec:authorize url="/siteController/admin/deleteBatch.do">
+					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="deleteBatch();">批量删除站点</a></td>
 					<td><div class="datagrid-btn-separator"></div></td>
 					</sec:authorize>
 					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true" onclick="refresh();">刷新</a></td>
