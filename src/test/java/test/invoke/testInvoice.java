@@ -91,8 +91,7 @@ public class testInvoice {
 	@Test
 	public void TestAuditState(){
 		AuditState auditState = new AuditState();
-		System.out.println(iInvoiceService.saveAudtiStateInitialise(auditState)+"================="+auditState.getId());
-		
+		System.out.println(iInvoiceService.saveAuditStateInitialise(auditState)+"================="+auditState.getId());
 	}
 
 
