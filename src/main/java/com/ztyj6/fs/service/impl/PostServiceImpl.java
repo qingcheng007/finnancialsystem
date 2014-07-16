@@ -97,7 +97,9 @@ public class PostServiceImpl implements IPostService {
 		return post;
 	}
 
-
+    /*
+     * 分页显示 职务 表中的所有信息
+     */
 	public DataGrid getByPage(PageFilter pageFilter) {
 		// TODO Auto-generated method stub
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
