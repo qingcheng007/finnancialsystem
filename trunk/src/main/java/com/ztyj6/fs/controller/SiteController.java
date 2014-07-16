@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ztyj6.fs.model.Site;
+import com.ztyj6.fs.model.SiteUser;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.Json;
 import com.ztyj6.fs.model.page.PageFilter;
@@ -30,8 +31,8 @@ public class SiteController extends BaseController {
      * @Input: PageFilter 对象
      * @Return：DataGrid 对象
      */
-    @RequestMapping("/admin/getByPage")
     @ResponseBody
+    @RequestMapping("/admin/getByPage")
     public DataGrid getByPage(PageFilter pageFilter){
     	try{
     		return siteService.getByPage(pageFilter);
@@ -142,5 +143,86 @@ public class SiteController extends BaseController {
     		e.printStackTrace();
     	}
     	return site;
+    }
+    
+    /*
+     * 向站点中 添加一个用户
+     */
+    @ResponseBody
+    @RequestMapping("/admin/addUserToSite")
+    public Json addUserToSite(SiteUser siteUser,HttpSession session){
+    	Json json = new Json();
+    	String msg = "";
+    	try{
+    		siteService.saveUserToSite(siteUser);
+    		msg = "添加成功";
+    		json.setSuccess(true);
+    		json.setMsg(msg);
+    		json.setObj(siteUser);
+    	}catch(Exception e){
+    		e.printStackTrace();
+    		msg = "添加失败";
+    		json.setSuccess(false);
+    		json.setMsg(msg);
+    	}
+    	return json;
+    }
+    /*
+     * 从站点中删除一个用户
+     */
+    @ResponseBody
+    @RequestMapping("/admin/deleteUserFromSite")
+    public Json deleteUserFromSite(int userId){
+    	Json json = new Json();
+    	String msg = "";
+    	try{
+    		siteService.deleteUserFromSiteByUserId(userId);
+    	    msg = "删除成功";
+    	    json.setSuccess(true);
+    	    json.setMsg(msg);
+    	}catch(Exception e){
+    		msg = "删除失败";
+    		json.setSuccess(false);
+    		json.setMsg(msg);
+    		e.printStackTrace();
+    	}
+    	return json;
+    }
+    /*
+     * 从站点中批量删除用户
+     */
+    @ResponseBody
+    @RequestMapping("/admin/deleteBatchUserFromSite")
+    public Json deleteBatchUserFromSite(String userIds){
+    	Json json = new Json();
+    	String msg = "";
+    	try{
+    		siteService.deleteBatchUserFromSite(userIds);
+    		msg = "批量删除成功";
+    		json.setSuccess(true);
+    		json.setMsg(msg);
+    	}catch(Exception e){
+    		msg = "批量删除失败";
+    		json.setSuccess(false);
+    		json.setMsg(msg);
+    		e.printStackTrace();
+    	}
+    	return json;
+    }
+   
+    /*
+     * 分页显示 
+     * @Input: PageFilter 对象
+     * @Return：DataGrid 对象
+     */
+    @ResponseBody
+    @RequestMapping("/admin/getByPage")
+    public DataGrid getUserOfSiteByPage(PageFilter pageFilter){
+    	try{
+    		return siteService.getAllUserInSiteByPage(pageFilter);
+    	}catch(Exception e){
+    		e.printStackTrace();
+    		return null;
+    	}
     }
 }

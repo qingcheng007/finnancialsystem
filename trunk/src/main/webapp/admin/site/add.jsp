@@ -6,12 +6,12 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/style/css/dialog.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
 	function submit() {
-		if($('#admin_class_add_form').form('validate')){
+		if($('#admin_site_add_form').form('validate')){
 			$('#submit').linkbutton('disable');
 			$.ajax({
-					url : '${pageContext.request.contextPath}/classController/admin/add.do',
+					url : '${pageContext.request.contextPath}/siteController/admin/add.do',
 					type : 'POST',
-					data : $('#admin_class_add_form').serializeObject(),
+					data : $('#admin_site_add_form').serializeObject(),
 					dataType : 'json',
 					success : function(data) {
 						if (data.success) {
@@ -43,28 +43,36 @@
 		}
 	}
 	function reset() {
-		$('#admin_role_add_form').form('clear');
+		$('#admin_site_add_form').form('clear');
 	}
 </script>
 </head>
 <body>
-	<form id="admin_class_add_form">
+	<form id="admin_site_add_form">
 		<table>
 			<tr>
-				<td>年级</td>
-				<td><input class="easyui-validatebox" id="year" name="year" type="text" placeholder="该班级是哪一届" data-options="required:true" /></td>
+				<td>站点名称</td>
+				<td><input class="easyui-validatebox" id="name" name="name" type="text" placeholder="输入站点名称" data-options="required:true" /></td>
 			</tr>
 			<tr>
-				<td>学院</td>
-				<td><input class="easyui-validatebox" id="college" name="college" type="text" placeholder="请输入所属学院" data-options="required:true" /></td>
+				<td>站点地址</td>
+				<td><input class="easyui-validatebox" id="address" name="address" type="text" placeholder="请输入站点物理地址" data-options="required:true" /></td>
 			</tr>
 			<tr>
-				<td>专业</td>
-				<td><input class="easyui-validatebox" id="specialty" name="specialty" type="text" placeholder="请输入专业" data-options="required:true" /></td>
+				<td>创建日期</td>
+				<td><input class="easyui-validatebox" id="createDate" name="createDate" type="text" placeholder="请选择站点日期" data-options="required:true" /></td>
 			</tr>
 			<tr>
-				<td>名称</td>
-				<td><input class="easyui-validatebox" id="name" name="name" type="text" placeholder="请输入班级名称" data-options="required:true" /></td>
+				<td>创建人ID</td>
+				<td><input class="easyui-validatebox" id="userId" name="userId" type="text" placeholder="请输入创建人的用户ID" data-options="required:true" /></td>
+			</tr>
+			<tr>
+				<td>建站目的</td>
+				<td><input class="easyui-validatebox" id="createPurpose" name="createPurpose" type="text" placeholder="请输入建站目的" data-options="required:true" /></td>
+			</tr>
+			<tr>
+				<td>工程名</td>
+				<td><input class="easyui-validatebox" id="projectName" name="projectName" type="text" placeholder="请输入站点所管理的工程的名字"  /></td>
 			</tr>
 			<tr>
 				<td colspan='2' style="text-align: center;"><a href="#" class="easyui-linkbutton" onclick="reset()">重置</a> <a id="submit" href="#" class="easyui-linkbutton" onclick="submit()">提交</a></td>

@@ -12,6 +12,7 @@ import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.ztyj6.fs.dao.SiteMapper;
 import com.ztyj6.fs.model.Site;
+import com.ztyj6.fs.model.SiteUser;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.PageFilter;
 import com.ztyj6.fs.service.ISiteService;
@@ -127,6 +128,48 @@ public class SiteServiceImpl implements ISiteService {
 	public Long count() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void saveUserToSite(SiteUser siteUser) {
+		// TODO Auto-generated method stub
+		try{
+			siteMapper.insertUserToSite(siteUser);		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public DataGrid getAllUserInSiteByPage(PageFilter pageFilter) {
+		// TODO Auto-generated method stub
+		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
+		DataGrid dg = new DataGrid();
+		PageList siteUsers = (PageList) siteMapper.selectUserOfSiteByPage(pageBounds);
+		dg.setRows(siteUsers);
+		dg.setTotal(siteUsers.getPaginator().getTotalCount());
+		return dg;
+	}
+
+	@Override
+	public void deleteUserFromSiteByUserId(Integer id) {
+		// TODO Auto-generated method stub
+		try{
+			siteMapper.deleteUserFromSiteByUserId(id);
+		}catch(	Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void deleteBatchUserFromSite(String ids) {
+		// TODO Auto-generated method stub
+		try{
+			List<String> arrays = Arrays.asList(ids.split(","));
+			siteMapper.deleteBatch(arrays);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 }
