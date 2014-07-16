@@ -1,7 +1,6 @@
 package com.ztyj6.fs.service.impl;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -79,7 +78,10 @@ public class SiteServiceImpl implements ISiteService {
 			e.printStackTrace();
 		}
 	}
-
+  /*
+   * 更新站点信息
+   * 
+   */
 	public void update(Site o) {
 		// TODO Auto-generated method stub
 		try {
@@ -91,45 +93,42 @@ public class SiteServiceImpl implements ISiteService {
 	
     /*
      * 
-     * 此方法 不实现 因为此方法无用
-     * 
+     * 取得单个站点的基本详细信息
      */
-	public void saveOrUpdate(Site o) throws Throwable {
-		// TODO Auto-generated method stub    
-	}
-
 	public Site getById(Integer id) {
 		// TODO Auto-generated method stub
 		Site site = new Site();
-		site = siteMapper.selectByPrimaryKey(id);
+		try{
+			site = siteMapper.selectByPrimaryKey(id);
+		}catch(Exception e){
+			site = null;
+			e.printStackTrace();
+		}
 		return site;
 	}
-
-	public List<Site> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+   /*
+    *分页 显示站点的信息 
+    * 
+    */
 	public DataGrid getByPage(PageFilter pageFilter) {
 		// TODO Auto-generated method stub
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();
-		PageList sites = (PageList) siteMapper.selectByPage(pageBounds);
-		dg.setRows(sites);
-		dg.setTotal(sites.getPaginator().getTotalCount());
+		try{
+			PageList sites = (PageList) siteMapper.selectByPage(pageBounds);
+			dg.setRows(sites);
+			dg.setTotal(sites.getPaginator().getTotalCount());
+		}catch(Exception e){
+			e.printStackTrace();
+			dg = null;
+		}
 		return dg;
 	}
-
-	public DataGrid getByPageFilter(PageFilter pageFilter) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Long count() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
+	/*
+	 * 向站点中添加 用户
+	 * 
+	 */
 	@Override
 	public void saveUserToSite(SiteUser siteUser) {
 		// TODO Auto-generated method stub
@@ -139,18 +138,27 @@ public class SiteServiceImpl implements ISiteService {
 			e.printStackTrace();
 		}
 	}
-
+   /*
+    * 分页显示 站点中的所有用户
+    */
 	@Override
 	public DataGrid getAllUserInSiteByPage(PageFilter pageFilter) {
 		// TODO Auto-generated method stub
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();
-		PageList siteUsers = (PageList) siteMapper.selectUserOfSiteByPage(pageBounds);
-		dg.setRows(siteUsers);
-		dg.setTotal(siteUsers.getPaginator().getTotalCount());
+		try{
+			PageList siteUsers = (PageList) siteMapper.selectUserOfSiteByPage(pageBounds);
+			dg.setRows(siteUsers);
+			dg.setTotal(siteUsers.getPaginator().getTotalCount());
+		}catch(Exception e){
+			e.printStackTrace();
+			dg = null;
+		}
 		return dg;
 	}
-
+    /*
+     * 通过 userId 删除站点中的某个用户
+     */
 	@Override
 	public void deleteUserFromSiteByUserId(Integer id) {
 		// TODO Auto-generated method stub
@@ -160,16 +168,36 @@ public class SiteServiceImpl implements ISiteService {
 			e.printStackTrace();
 		}
 	}
-
+    /*
+     * 批量删除站点中的用户
+     */
 	@Override
 	public void deleteBatchUserFromSite(String ids) {
 		// TODO Auto-generated method stub
+		List<String> arrays = Arrays.asList(ids.split(","));
 		try{
-			List<String> arrays = Arrays.asList(ids.split(","));
 			siteMapper.deleteBatch(arrays);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
+	
+	public void saveOrUpdate(Site o) throws Throwable {
+		// TODO Auto-generated method stub    
+	}
+	
+	public List<Site> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public DataGrid getByPageFilter(PageFilter pageFilter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	public Long count() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

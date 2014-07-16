@@ -81,13 +81,8 @@ public class PostServiceImpl implements IPostService {
         	e.printStackTrace();
         }
 	}
-  /*
-   *  此方法不实现
-   */
-	public void saveOrUpdate(Post o) throws Throwable {
-		// TODO Auto-generated method stub
-
-	}
+ 
+	
    /*
     * 查询 post 表中的 记录
     */
@@ -102,20 +97,20 @@ public class PostServiceImpl implements IPostService {
 		return post;
 	}
 
-	public List<Post> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public DataGrid getByPage(PageFilter pageFilter) {
 		// TODO Auto-generated method stub
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
-		DataGrid dg = new DataGrid();
-		PageList posts = (PageList) postMapper.selectByPage(pageBounds);
-		dg.setRows(posts);
-		dg.setTotal(posts.getPaginator().getTotalCount());
+   		DataGrid dg = new DataGrid();
+        try{
+   		    PageList posts = (PageList) postMapper.selectByPage(pageBounds);
+   		    dg.setRows(posts);
+   		    dg.setTotal(posts.getPaginator().getTotalCount()); 
+        }catch(Exception e){
+    	   e.printStackTrace();
+    	   dg = null;
+       }
 		return dg;
-		
 	}
 
 	public DataGrid getByPageFilter(PageFilter pageFilter) {
@@ -127,5 +122,13 @@ public class PostServiceImpl implements IPostService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public void saveOrUpdate(Post o) throws Throwable {
+		// TODO Auto-generated method stub
 
+	}
+	public List<Post> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

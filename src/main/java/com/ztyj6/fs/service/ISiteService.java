@@ -1,7 +1,5 @@
 package com.ztyj6.fs.service;
 
-import java.util.List;
-
 import com.ztyj6.fs.model.Site;
 import com.ztyj6.fs.model.SiteUser;
 import com.ztyj6.fs.model.page.DataGrid;
