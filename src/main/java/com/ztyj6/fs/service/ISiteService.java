@@ -1,7 +1,6 @@
 package com.ztyj6.fs.service;
 
 import com.ztyj6.fs.model.Site;
-import com.ztyj6.fs.model.SiteUser;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.PageFilter;
 
@@ -9,7 +8,7 @@ public interface ISiteService extends IBaseService<Site> {
 	 /*
      * 为站点关联一个员工
      */
-    void saveUserToSite(SiteUser siteUser);
+    void saveUserToSite(int siteId,int userId,int postId);
     /*
      * 查询站点中的所有员工
      */

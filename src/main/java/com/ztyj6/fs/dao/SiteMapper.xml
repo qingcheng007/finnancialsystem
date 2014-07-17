@@ -35,7 +35,7 @@
   
   <delete id="deleteBatch" parameterType="java.util.List">
 		delete from site where Id in
-		<foreach collection="ids" item="id" open="(" separator=","
+		<foreach collection="list" item="id" open="(" separator=","
 			close=")">
 			#{id}
 		</foreach>
@@ -140,7 +140,8 @@
   <!--  从这里开始是对 Site_User关联表的操作  -->
   
 
-  <!-- <resultMap id="BaseSiteUserResultMap" type="com.ztyj6.fs.model.SiteUser" >
+  <!-- 
+  <resultMap id="BaseSiteUserResultMap" type="com.ztyj6.fs.model.SiteUser" >
     <id column="Id" property="id" jdbcType="INTEGER" />
     <result column="SiteId" property="siteId" jdbcType="INTEGER" />
     <result column="UserId" property="userId" jdbcType="INTEGER" />
@@ -150,15 +151,16 @@
   <sql id="SiteUser_Base_Column_List" >
     Id,SiteId,UserId,PostId
   </sql>
-  
-  <insert id="insertUserToSite" parameterMap="com.ztyj6.fs.model.SiteUser">
-	insert into r_site_user (Id, SiteId, UserId, PostId)
-	values (#{id,jdbcType=INTEGER}, #{siteId,jdbcType=INTEGER},
-	#{userId,jdbcType=INTEGER},
-	#{postId,jdbcType=INTEGER}
-	)
+  -->
+  <insert id="insertUserToSite">
+	insert into r_site_user (SiteId, UserId, PostId)
+	values ({
+	  #{siteId,jdbcType=INTEGER},
+	  #{userId,jdbcType=INTEGER},
+	  #{postId,jdbcType=INTEGER}
+	})
   </insert>
-  
+  <!--  
   <select id="selectUserOfSiteByPage" resultMap="BaseSiteUserResultMap" parameterType="java.lang.Integer">
      select 
      <include refid="SiteUser_Base_Column_List"/>

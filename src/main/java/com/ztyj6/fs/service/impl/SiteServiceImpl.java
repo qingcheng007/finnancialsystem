@@ -11,7 +11,6 @@ import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.ztyj6.fs.dao.SiteMapper;
 import com.ztyj6.fs.model.Site;
-import com.ztyj6.fs.model.SiteUser;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.PageFilter;
 import com.ztyj6.fs.service.ISiteService;
@@ -106,9 +105,9 @@ public class SiteServiceImpl implements ISiteService {
 	 * 
 	 */
 	@Override
-	public void saveUserToSite(SiteUser siteUser) {
+	public void saveUserToSite(int siteId,int userId,int postId) {
 		// TODO Auto-generated method stub
-		siteMapper.insertUserToSite(siteUser);		
+        siteMapper.insertUserToSite(siteId, userId, postId);		
 	}
    /*
     * 分页显示 站点中的所有用户
@@ -118,9 +117,7 @@ public class SiteServiceImpl implements ISiteService {
 		// TODO Auto-generated method stub
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();	
-		PageList siteUsers = (PageList) siteMapper.selectUserOfSiteByPage(pageBounds);
-		dg.setRows(siteUsers);
-		dg.setTotal(siteUsers.getPaginator().getTotalCount());
+		
 		return dg;
 	}
     /*
@@ -159,4 +156,5 @@ public class SiteServiceImpl implements ISiteService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

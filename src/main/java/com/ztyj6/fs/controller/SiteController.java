@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ztyj6.fs.model.Site;
-import com.ztyj6.fs.model.SiteUser;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.Json;
 import com.ztyj6.fs.model.page.PageFilter;
@@ -150,15 +149,14 @@ public class SiteController extends BaseController {
      */
     @ResponseBody
     @RequestMapping("/admin/addUserToSite")
-    public Json addUserToSite(SiteUser siteUser,HttpSession session){
+    public Json addUserToSite(int siteId,int userId,int postId,HttpSession session){
     	Json json = new Json();
     	String msg = "";
     	try{
-    		siteService.saveUserToSite(siteUser);
+    		siteService.saveUserToSite(siteId, userId, postId);
     		msg = "添加成功";
     		json.setSuccess(true);
     		json.setMsg(msg);
-    		json.setObj(siteUser);
     	}catch(Exception e){
     		e.printStackTrace();
     		msg = "添加失败";

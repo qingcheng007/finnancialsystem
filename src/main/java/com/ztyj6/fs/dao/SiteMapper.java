@@ -2,9 +2,10 @@ package com.ztyj6.fs.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.ztyj6.fs.model.Site;
-import com.ztyj6.fs.model.SiteUser;
 
 public interface SiteMapper {
    
@@ -42,11 +43,11 @@ public interface SiteMapper {
     /*
      * 为站点关联一个员工
      */
-    int insertUserToSite(SiteUser siteUser);
+    int insertUserToSite(@Param("siteId") int siteId,@Param("userId") int userId,@Param("postId") int postId);
     /*
      * 查询站点中的所有员工  
      */
-    List<SiteUser> selectUserOfSiteByPage(PageBounds pageBounds);
+    List selectUserOfSiteByPage(PageBounds pageBounds);
     /*
      *删除站点中的一个员工
      */
