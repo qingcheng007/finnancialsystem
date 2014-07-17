@@ -1,4 +1,4 @@
-package test.invoke;
+package test.invoce;
 
 import java.util.List;
 

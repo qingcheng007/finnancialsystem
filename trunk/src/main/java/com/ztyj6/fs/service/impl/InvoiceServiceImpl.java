@@ -226,8 +226,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 
 	@Override
 	public Long count() {
-		// TODO Auto-generated method stub
-		return null;
+		return (long) invoiceMapper.selectCount();
 	}
 
 }

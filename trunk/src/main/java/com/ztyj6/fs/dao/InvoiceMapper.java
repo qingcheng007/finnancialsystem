@@ -18,6 +18,8 @@ public interface InvoiceMapper {
 
     int updateByPrimaryKey(Invoice record);
     
+    int selectCount();
+    
     List<Invoice> getInvoiceAll();
     
 }
