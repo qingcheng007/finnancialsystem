@@ -31,6 +31,11 @@
 		ProjectName, PhotoUrl,
 		Remark
 	</sql>
+	
+	
+<select id="selectCount" parameterType="java.lang.Integer" resultType="INTEGER">
+  select count(*) from invoicedetails
+ </select>
 	<select id="selectByPrimaryKey" parameterType="com.ztyj6.fs.model.InvoiceKey"
 		resultMap="BaseResultMap">
 		select
