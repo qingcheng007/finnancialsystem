@@ -36,6 +36,13 @@
 <select id="selectCount" parameterType="java.lang.Integer" resultType="INTEGER">
   select count(*) from invoicedetails
  </select>
+ <select id="selectByPrimaryID" parameterType="com.ztyj6.fs.model.InvoiceKey"
+		resultMap="BaseResultMap">
+		select
+		from invoice
+		where Id = #{id,jdbcType=INTEGER}
+	</select>
+ 
 	<select id="selectByPrimaryKey" parameterType="com.ztyj6.fs.model.InvoiceKey"
 		resultMap="BaseResultMap">
 		select

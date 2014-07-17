@@ -203,13 +203,13 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	@Override
 	public Invoice getById(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return invoiceMapper.selectByPrimaryID(id);
 	}
 
 	@Override
 	public List<Invoice> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return invoiceMapper.getInvoiceAll();
 	}
 
 	@Override
