@@ -40,11 +40,7 @@ public class SiteServiceImpl implements ISiteService {
 	 */
 	public Serializable save(Site o) {
 		// TODO Auto-generated method stub
-		try {
-			siteMapper.insert(o);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		siteMapper.insert(o);
 		return null;
 	}
 
@@ -57,11 +53,7 @@ public class SiteServiceImpl implements ISiteService {
 	 */
 	public void delete(Site o) {
 		// TODO Auto-generated method stub
-		try {
-			siteMapper.deleteByPrimaryKey(o.getId());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		siteMapper.deleteByPrimaryKey(o.getId());
 	}
 
 	/*
@@ -71,12 +63,10 @@ public class SiteServiceImpl implements ISiteService {
 	 */
 	public void delete(String ids) {
 		// TODO Auto-generated method stub
-		try {
-			List<String> arrays = Arrays.asList(ids.split(","));
-			siteMapper.deleteBatch(arrays);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
+		List<String> arrays = Arrays.asList(ids.split(","));
+		siteMapper.deleteBatch(arrays);
+		
 	}
   /*
    * 更新站点信息
@@ -84,11 +74,7 @@ public class SiteServiceImpl implements ISiteService {
    */
 	public void update(Site o) {
 		// TODO Auto-generated method stub
-		try {
-			siteMapper.updateByPrimaryKeySelective(o);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		siteMapper.updateByPrimaryKeySelective(o);
 	}
 	
     /*
@@ -98,12 +84,7 @@ public class SiteServiceImpl implements ISiteService {
 	public Site getById(Integer id) {
 		// TODO Auto-generated method stub
 		Site site = new Site();
-		try{
-			site = siteMapper.selectByPrimaryKey(id);
-		}catch(Exception e){
-			site = null;
-			e.printStackTrace();
-		}
+		site = siteMapper.selectByPrimaryKey(id);
 		return site;
 	}
    /*
@@ -114,14 +95,9 @@ public class SiteServiceImpl implements ISiteService {
 		// TODO Auto-generated method stub
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();
-		try{
-			PageList sites = (PageList) siteMapper.selectByPage(pageBounds);
-			dg.setRows(sites);
-			dg.setTotal(sites.getPaginator().getTotalCount());
-		}catch(Exception e){
-			e.printStackTrace();
-			dg = null;
-		}
+		PageList sites = (PageList) siteMapper.selectByPage(pageBounds);
+		dg.setRows(sites);
+		dg.setTotal(sites.getPaginator().getTotalCount());
 		return dg;
 	}
 	
@@ -132,11 +108,7 @@ public class SiteServiceImpl implements ISiteService {
 	@Override
 	public void saveUserToSite(SiteUser siteUser) {
 		// TODO Auto-generated method stub
-		try{
-			siteMapper.insertUserToSite(siteUser);		
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+		siteMapper.insertUserToSite(siteUser);		
 	}
    /*
     * 分页显示 站点中的所有用户
@@ -145,15 +117,10 @@ public class SiteServiceImpl implements ISiteService {
 	public DataGrid getAllUserInSiteByPage(PageFilter pageFilter) {
 		// TODO Auto-generated method stub
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
-		DataGrid dg = new DataGrid();
-		try{
-			PageList siteUsers = (PageList) siteMapper.selectUserOfSiteByPage(pageBounds);
-			dg.setRows(siteUsers);
-			dg.setTotal(siteUsers.getPaginator().getTotalCount());
-		}catch(Exception e){
-			e.printStackTrace();
-			dg = null;
-		}
+		DataGrid dg = new DataGrid();	
+		PageList siteUsers = (PageList) siteMapper.selectUserOfSiteByPage(pageBounds);
+		dg.setRows(siteUsers);
+		dg.setTotal(siteUsers.getPaginator().getTotalCount());
 		return dg;
 	}
     /*
@@ -162,11 +129,7 @@ public class SiteServiceImpl implements ISiteService {
 	@Override
 	public void deleteUserFromSiteByUserId(Integer id) {
 		// TODO Auto-generated method stub
-		try{
-			siteMapper.deleteUserFromSiteByUserId(id);
-		}catch(	Exception e){
-			e.printStackTrace();
-		}
+		siteMapper.deleteUserFromSiteByUserId(id);
 	}
     /*
      * 批量删除站点中的用户
@@ -175,11 +138,7 @@ public class SiteServiceImpl implements ISiteService {
 	public void deleteBatchUserFromSite(String ids) {
 		// TODO Auto-generated method stub
 		List<String> arrays = Arrays.asList(ids.split(","));
-		try{
-			siteMapper.deleteBatch(arrays);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+		siteMapper.deleteBatch(arrays);
 	}
 	
 	public void saveOrUpdate(Site o) throws Throwable {
