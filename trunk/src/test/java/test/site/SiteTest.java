@@ -27,13 +27,13 @@ public class SiteTest {
     @Ignore
     public void testAdd(){
     	Site site = new Site();
-    	site.setId(4);
-    	site.setName("2");
-    	site.setAddress("2");
+    	site.setId(2);
+    	site.setName("4");
+    	site.setAddress("4");
     	site.setCreateDate(new Date());
-    	site.setCreatePurpose("2");
+    	site.setCreatePurpose("4");
     	site.setUserId(1);
-    	site.setProjectName("2");
+    	site.setProjectName("4");
     	siteService.save(site);
     }
     @Test
