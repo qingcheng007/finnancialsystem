@@ -22,7 +22,7 @@
     where Id = #{id,jdbcType=INTEGER}
   </select>
   
-   <select id="selectByPage" resultMap="resultMap">
+   <select id="selectByPage" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List"/>
     from site
@@ -140,7 +140,7 @@
   <!--  从这里开始是对 Site_User关联表的操作  -->
   
 
-  <resultMap id="BaseSiteUserResultMap" type="com.ztyj6.fs.model.SiteUser" >
+  <!-- <resultMap id="BaseSiteUserResultMap" type="com.ztyj6.fs.model.SiteUser" >
     <id column="Id" property="id" jdbcType="INTEGER" />
     <result column="SiteId" property="siteId" jdbcType="INTEGER" />
     <result column="UserId" property="userId" jdbcType="INTEGER" />
@@ -178,5 +178,5 @@
 		<foreach collection="ids" item="userId" open="(" separator="," close=")">
 			#{userId}
 		</foreach>
-  </delete>
+  </delete> -->
 </mapper>
