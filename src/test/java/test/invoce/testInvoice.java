@@ -93,6 +93,14 @@ public class testInvoice {
 		AuditState auditState = new AuditState();
 		System.out.println(iInvoiceService.saveAuditStateInitialise(auditState)+"================="+auditState.getId());
 	}
+	
+	/*
+	 * 测试查询发票总数
+	 * **/
+	@Test
+	public void TestCount(){
+		System.out.println(iInvoiceService.count());
+	}
 
 
 }
