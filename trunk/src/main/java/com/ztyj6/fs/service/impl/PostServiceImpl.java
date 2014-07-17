@@ -33,11 +33,7 @@ public class PostServiceImpl implements IPostService {
      */
 	public Serializable save(Post o) {
 		// TODO Auto-generated method stub
-		try{
-			postMapper.insert(o);
-		}catch(Exception e){
-			e.printStackTrace();
-		}  
+		postMapper.insert(o);
 		return null;
 	}
     /*
@@ -47,11 +43,7 @@ public class PostServiceImpl implements IPostService {
      */
 	public void delete(Post o) {
 		// TODO Auto-generated method stub
-		try{
-			postMapper.deleteByPrimaryKey(o.getId());
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+		postMapper.deleteByPrimaryKey(o.getId());
 	}
   /*
    * 批量删除 post 表中的记录 
@@ -61,13 +53,8 @@ public class PostServiceImpl implements IPostService {
    */
 	public void delete(String ids) {
 		// TODO Auto-generated method stub
-		try{
-			List<String> arrays = Arrays.asList(ids.split(","));
-	        postMapper.deleteBatch(arrays);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
+		List<String> arrays = Arrays.asList(ids.split(","));
+	    postMapper.deleteBatch(arrays);
 	}
    /*
     * 更新 post 表中的记录
@@ -75,11 +62,7 @@ public class PostServiceImpl implements IPostService {
     */
 	public void update(Post o) {
 		// TODO Auto-generated method stub
-        try{
-        	postMapper.updateByPrimaryKeySelective(o);
-        }catch(Exception e){
-        	e.printStackTrace();
-        }
+        postMapper.updateByPrimaryKeySelective(o);
 	}
  
 	
@@ -88,12 +71,7 @@ public class PostServiceImpl implements IPostService {
     */
 	public Post getById(Integer id) {
 		Post post = new Post();
-		try{
-			post = postMapper.selectByPrimaryKey(id);
-		}catch(Exception e){
-			e.printStackTrace();
-			post = null;
-		}
+		post = postMapper.selectByPrimaryKey(id);
 		return post;
 	}
 
@@ -104,14 +82,9 @@ public class PostServiceImpl implements IPostService {
 		// TODO Auto-generated method stub
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
    		DataGrid dg = new DataGrid();
-        try{
-   		    PageList posts = (PageList) postMapper.selectByPage(pageBounds);
-   		    dg.setRows(posts);
-   		    dg.setTotal(posts.getPaginator().getTotalCount()); 
-        }catch(Exception e){
-    	   e.printStackTrace();
-    	   dg = null;
-       }
+        PageList posts = (PageList) postMapper.selectByPage(pageBounds);
+   		dg.setRows(posts);
+   		dg.setTotal(posts.getPaginator().getTotalCount()); 
 		return dg;
 	}
 

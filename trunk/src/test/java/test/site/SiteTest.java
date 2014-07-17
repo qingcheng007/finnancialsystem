@@ -1,8 +1,6 @@
 package test.site;
 
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -11,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.ztyj6.fs.controller.SiteController;
 import com.ztyj6.fs.model.Site;
 import com.ztyj6.fs.service.ISiteService;
 
@@ -30,7 +27,7 @@ public class SiteTest {
     @Ignore
     public void testAdd(){
     	Site site = new Site();
-    	site.setId(2);
+    	site.setId(4);
     	site.setName("2");
     	site.setAddress("2");
     	site.setCreateDate(new Date());
