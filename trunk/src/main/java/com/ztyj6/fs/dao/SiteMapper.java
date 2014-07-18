@@ -45,15 +45,15 @@ public interface SiteMapper {
      */
     int insertUserToSite(@Param("siteId") int siteId,@Param("userId") int userId,@Param("postId") int postId);
     /*
-     * 查询站点中的所有员工  
+     * 查询站点中的所有员工  < 注释 >
      */
-    List selectUserOfSiteByPage(PageBounds pageBounds);
+    List selectUserOfSiteByPage(PageBounds pageBounds,Integer siteId);
     /*
      *删除站点中的一个员工
      */
-    void deleteUserFromSiteByUserId(Integer id);
+    void deleteUserFromSiteByUserId(@Param("siteId") Integer siteId,@Param("userId") Integer userId);
     /*
      * 批量删除站点中的员工   输入参数是 站点中员工的 UserId
      */
-    void deleteBatchUserFromSite(List<String> ids);
+    void deleteBatchUserFromSite(@Param("siteId") Integer siteId,@Param("ids") List<String> ids);
 }

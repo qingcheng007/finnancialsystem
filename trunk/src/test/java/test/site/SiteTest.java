@@ -36,11 +36,29 @@ public class SiteTest {
     	site.setProjectName("4");
     	siteService.save(site);
     }
-    @Test
+    @Ignore
     public void testDeleteBatch(){
-    	
     	String ids = "1,2,3";
     	siteService.delete(ids);
-		
+    }
+    @Ignore
+    public void testSaveUserToSite(){
+    	int siteId = 1;
+    	int userId = 1;
+    	int postId = 1;
+    	siteService.saveUserToSite(siteId, userId, postId);
+    }
+    @Ignore
+    public void testDeleteUserFromSiteByUserId(){
+    	int siteId = 1;
+    	int userId  = 1;
+    	siteService.deleteUserFromSiteByUserId(siteId,userId);
+    }
+    
+    @Test
+    public void deleteBatchUserFromSite(){
+    	String ids = "1,2,3";
+    	int siteId = 1;
+    	siteService.deleteBatchUserFromSite(siteId, ids);
     }
 }

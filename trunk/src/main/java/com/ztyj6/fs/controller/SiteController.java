@@ -170,11 +170,11 @@ public class SiteController extends BaseController {
      */
     @ResponseBody
     @RequestMapping("/admin/deleteUserFromSite")
-    public Json deleteUserFromSite(int userId){
+    public Json deleteUserFromSite(int siteId,int userId){
     	Json json = new Json();
     	String msg = "";
     	try{
-    		siteService.deleteUserFromSiteByUserId(userId);
+    		siteService.deleteUserFromSiteByUserId(siteId,userId);
     	    msg = "删除成功";
     	    json.setSuccess(true);
     	    json.setMsg(msg);
@@ -191,11 +191,11 @@ public class SiteController extends BaseController {
      */
     @ResponseBody
     @RequestMapping("/admin/deleteBatchUserFromSite")
-    public Json deleteBatchUserFromSite(String userIds){
+    public Json deleteBatchUserFromSite(int siteId,String userIds){
     	Json json = new Json();
     	String msg = "";
     	try{
-    		siteService.deleteBatchUserFromSite(userIds);
+    		siteService.deleteBatchUserFromSite(siteId,userIds);
     		msg = "批量删除成功";
     		json.setSuccess(true);
     		json.setMsg(msg);
@@ -209,15 +209,15 @@ public class SiteController extends BaseController {
     }
    
     /*
-     * 分页显示 
+     * 分页显示  // 一定要先测试该方法
      * @Input: PageFilter 对象
      * @Return：DataGrid 对象
      */
     @ResponseBody
     @RequestMapping("/admin/getByPage")
-    public DataGrid getUserOfSiteByPage(PageFilter pageFilter){
+    public DataGrid getUserOfSiteByPage(PageFilter pageFilter,int siteId){
     	try{
-    		return siteService.getAllUserInSiteByPage(pageFilter);
+    		return siteService.getAllUserInSiteByPage(pageFilter,siteId);
     	}catch(Exception e){
     		e.printStackTrace();
     		return null;

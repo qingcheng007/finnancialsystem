@@ -138,47 +138,61 @@
   
   
   <!--  从这里开始是对 Site_User关联表的操作  -->
-  
-
-  <!-- 
-  <resultMap id="BaseSiteUserResultMap" type="com.ztyj6.fs.model.SiteUser" >
-    <id column="Id" property="id" jdbcType="INTEGER" />
-    <result column="SiteId" property="siteId" jdbcType="INTEGER" />
-    <result column="UserId" property="userId" jdbcType="INTEGER" />
-    <result column="PostId" property="postId" jdbcType="INTEGER" />
-  </resultMap>
-  
+   
   <sql id="SiteUser_Base_Column_List" >
     Id,SiteId,UserId,PostId
   </sql>
-  -->
-  <insert id="insertUserToSite">
-	insert into r_site_user (SiteId, UserId, PostId)
-	values ({
-	  #{siteId,jdbcType=INTEGER},
-	  #{userId,jdbcType=INTEGER},
-	  #{postId,jdbcType=INTEGER}
-	})
+
+   <insert id="insertUserToSite">
+    insert into r_site_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="siteId != null" >
+        SiteId,
+      </if>
+      <if test="userId != null" >
+        UserId,
+      </if>
+      <if test="postId != null" >
+        PostId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="siteId != null" >
+        #{siteId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="postId != null" >
+        #{postId,jdbcType=INTEGER},
+      </if>
+    </trim>
   </insert>
-  <!--  
-  <select id="selectUserOfSiteByPage" resultMap="BaseSiteUserResultMap" parameterType="java.lang.Integer">
+  
+  <select id="selectUserOfSiteByPage" parameterType="java.lang.Integer" resultType="java.util.List">
      select 
      <include refid="SiteUser_Base_Column_List"/>
      from r_site_user
-    where Id = #{siteId,jdbcType=INTEGER}
+    where SiteId = #{siteId,jdbcType=INTEGER}
   </select>
   
-  <delete id="deleteUserFromSiteByUserId" parameterType="java.lang.Integer">
-     delete from 
-     r_site_user,r_site_user_post
+ 
+  <delete id="deleteUserFromSiteByUserId">
+     delete from r_site_user
      where 
-     r_site_user.Id = #{id,jdbcType=INTEGER} 
+      r_site_user.SiteId = #{siteId,jdbcType=INTEGER} 
+     and
+      r_site_user.UserId = #{userId,jdbcType=INTEGER} 
   </delete>
   
-  <delete id="deleteBatchUserFromSite" parameterType="java.util.List">
-    delete from r_site_user where userId in
+  <delete id="deleteBatchUserFromSite">
+    delete from r_site_user 
+    where 
+     SiteId = #{siteId,jdbcType=INTEGER}
+    and
+     UserId in
 		<foreach collection="ids" item="userId" open="(" separator="," close=")">
 			#{userId}
 		</foreach>
-  </delete> -->
+  </delete>
 </mapper>
