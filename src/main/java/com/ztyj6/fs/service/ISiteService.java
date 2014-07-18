@@ -12,13 +12,13 @@ public interface ISiteService extends IBaseService<Site> {
     /*
      * 查询站点中的所有员工
      */
-    DataGrid getAllUserInSiteByPage(PageFilter pageFilter);
+    DataGrid getAllUserInSiteByPage(PageFilter pageFilter,int siteId);
     /*
      *删除站点中的一个员工
      */
-    void deleteUserFromSiteByUserId(Integer id);
+    void deleteUserFromSiteByUserId(Integer siteId,Integer userId);
     /*
      * 批量删除站点中的员工   输入参数是 站点中员工的 UserId
      */
-    void deleteBatchUserFromSite(String ids);
+    void deleteBatchUserFromSite(Integer siteId,String ids);
 }

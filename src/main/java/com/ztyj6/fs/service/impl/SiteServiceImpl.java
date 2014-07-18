@@ -113,29 +113,31 @@ public class SiteServiceImpl implements ISiteService {
     * 分页显示 站点中的所有用户
     */
 	@Override
-	public DataGrid getAllUserInSiteByPage(PageFilter pageFilter) {
+	public DataGrid getAllUserInSiteByPage(PageFilter pageFilter,int siteId) {
 		// TODO Auto-generated method stub
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();	
-		
+		PageList siteUsers = (PageList) siteMapper.selectUserOfSiteByPage(pageBounds, siteId);
+		dg.setRows(siteUsers);
+		dg.setTotal(siteUsers.getPaginator().getTotalCount());
 		return dg;
 	}
     /*
      * 通过 userId 删除站点中的某个用户
      */
 	@Override
-	public void deleteUserFromSiteByUserId(Integer id) {
+	public void deleteUserFromSiteByUserId(Integer siteId,Integer userId) {
 		// TODO Auto-generated method stub
-		siteMapper.deleteUserFromSiteByUserId(id);
+		siteMapper.deleteUserFromSiteByUserId(siteId,userId);
 	}
     /*
      * 批量删除站点中的用户
      */
 	@Override
-	public void deleteBatchUserFromSite(String ids) {
+	public void deleteBatchUserFromSite(Integer siteId,String ids) {
 		// TODO Auto-generated method stub
 		List<String> arrays = Arrays.asList(ids.split(","));
-		siteMapper.deleteBatch(arrays);
+		siteMapper.deleteBatchUserFromSite(siteId, arrays);
 	}
 	
 	public void saveOrUpdate(Site o) throws Throwable {
