@@ -5,20 +5,12 @@ import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.PageFilter;
 
 public interface ISiteService extends IBaseService<Site> {
-	 /*
-     * 为站点关联一个员工
-     */
-    void saveUserToSite(int siteId,int userId,int postId);
-    /*
-     * 查询站点中的所有员工
-     */
-    DataGrid getAllUserInSiteByPage(PageFilter pageFilter,int siteId);
-    /*
-     *删除站点中的一个员工
-     */
-    void deleteUserFromSiteByUserId(Integer siteId,Integer userId);
-    /*
-     * 批量删除站点中的员工   输入参数是 站点中员工的 UserId
-     */
-    void deleteBatchUserFromSite(Integer siteId,String ids);
+
+	void saveUserSite(int siteId, int userId, int postId);
+
+	DataGrid getAllUserSiteByPage(PageFilter pageFilter, int siteId);
+
+	void deleteUserSite(int siteId, int userId);
+
+	void deleteBatchUserSite(int siteId, String ids);
 }

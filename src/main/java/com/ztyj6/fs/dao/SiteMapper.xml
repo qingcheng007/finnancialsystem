@@ -1,198 +1,200 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ztyj6.fs.dao.SiteMapper" >
-  <resultMap id="BaseResultMap" type="com.ztyj6.fs.model.Site" >
-    <id column="Id" property="id" jdbcType="INTEGER" />
-    <result column="Name" property="name" jdbcType="VARCHAR" />
-    <result column="Address" property="address" jdbcType="VARCHAR" />
-    <result column="CreateDate" property="createDate" jdbcType="TIMESTAMP" />
-    <result column="UserId" property="userId" jdbcType="INTEGER" />
-    <result column="CreatePurpose" property="createPurpose" jdbcType="VARCHAR" />
-    <result column="ProjectName" property="projectName" jdbcType="VARCHAR" />
-  </resultMap>
-  
-  <sql id="Base_Column_List" >
-    Id, Name, Address, CreateDate, UserId, CreatePurpose, ProjectName
-  </sql>
-  
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from site
-    where Id = #{id,jdbcType=INTEGER}
-  </select>
-  
-   <select id="selectByPage" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List"/>
-    from site
-  </select>
-  
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from site
-    where Id = #{id,jdbcType=INTEGER}
-  </delete>
-  
-  <delete id="deleteBatch" parameterType="java.util.List">
+<mapper namespace="com.ztyj6.fs.dao.SiteMapper">
+	<resultMap id="BaseResultMap" type="com.ztyj6.fs.model.Site">
+		<id column="Id" property="id" jdbcType="INTEGER" />
+		<result column="Name" property="name" jdbcType="VARCHAR" />
+		<result column="Address" property="address" jdbcType="VARCHAR" />
+		<result column="CreateDate" property="createDate" jdbcType="TIMESTAMP" />
+		<result column="UserId" property="userId" jdbcType="INTEGER" />
+		<result column="CreatePurpose" property="createPurpose"
+			jdbcType="VARCHAR" />
+		<result column="ProjectName" property="projectName" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		Id, Name, Address, CreateDate, UserId, CreatePurpose, ProjectName
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from site
+		where Id = #{id,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectByPage" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from site
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from site
+		where Id = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<delete id="deleteBatch" parameterType="java.util.List">
 		delete from site where Id in
 		<foreach collection="list" item="id" open="(" separator=","
 			close=")">
 			#{id}
 		</foreach>
 	</delete>
-	
-  <insert id="insert" parameterType="com.ztyj6.fs.model.Site" >
-    insert into site (Id, Name, Address, 
-      CreateDate, UserId, CreatePurpose, 
-      ProjectName)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{createDate,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, #{createPurpose,jdbcType=VARCHAR}, 
-      #{projectName,jdbcType=VARCHAR})
-  </insert>
-  
-  <insert id="insertSelective" parameterType="com.ztyj6.fs.model.Site" >
-    insert into site
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        Id,
-      </if>
-      <if test="name != null" >
-        Name,
-      </if>
-      <if test="address != null" >
-        Address,
-      </if>
-      <if test="createDate != null" >
-        CreateDate,
-      </if>
-      <if test="userId != null" >
-        UserId,
-      </if>
-      <if test="createPurpose != null" >
-        CreatePurpose,
-      </if>
-      <if test="projectName != null" >
-        ProjectName,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null" >
-        #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="createPurpose != null" >
-        #{createPurpose,jdbcType=VARCHAR},
-      </if>
-      <if test="projectName != null" >
-        #{projectName,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  
-  <update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.Site" >
-    update site
-    <set >
-      <if test="name != null" >
-        Name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        Address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null" >
-        CreateDate = #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="userId != null" >
-        UserId = #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="createPurpose != null" >
-        CreatePurpose = #{createPurpose,jdbcType=VARCHAR},
-      </if>
-      <if test="projectName != null" >
-        ProjectName = #{projectName,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where Id = #{id,jdbcType=INTEGER}
-  </update>
-  
-  <update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.Site" >
-    update site
-    set Name = #{name,jdbcType=VARCHAR},
-      Address = #{address,jdbcType=VARCHAR},
-      CreateDate = #{createDate,jdbcType=TIMESTAMP},
-      UserId = #{userId,jdbcType=INTEGER},
-      CreatePurpose = #{createPurpose,jdbcType=VARCHAR},
-      ProjectName = #{projectName,jdbcType=VARCHAR}
-    where Id = #{id,jdbcType=INTEGER}
-  </update>
-  
-  
-  <!--  从这里开始是对 Site_User关联表的操作  -->
-   
-  <sql id="SiteUser_Base_Column_List" >
-    Id,SiteId,UserId,PostId
-  </sql>
 
-   <insert id="insertUserToSite">
-    insert into r_site_user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="siteId != null" >
-        SiteId,
-      </if>
-      <if test="userId != null" >
-        UserId,
-      </if>
-      <if test="postId != null" >
-        PostId,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="siteId != null" >
-        #{siteId,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="postId != null" >
-        #{postId,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  
-  <select id="selectUserOfSiteByPage" parameterType="java.lang.Integer" resultType="java.util.List">
-     select 
-     <include refid="SiteUser_Base_Column_List"/>
-     from r_site_user
-    where SiteId = #{siteId,jdbcType=INTEGER}
-  </select>
-  
- 
-  <delete id="deleteUserFromSiteByUserId">
-     delete from r_site_user
-     where 
-      r_site_user.SiteId = #{siteId,jdbcType=INTEGER} 
-     and
-      r_site_user.UserId = #{userId,jdbcType=INTEGER} 
-  </delete>
-  
-  <delete id="deleteBatchUserFromSite">
-    delete from r_site_user 
-    where 
-     SiteId = #{siteId,jdbcType=INTEGER}
-    and
-     UserId in
-		<foreach collection="ids" item="userId" open="(" separator="," close=")">
+	<insert id="insert" parameterType="com.ztyj6.fs.model.Site">
+		insert into site (Id, Name, Address,
+		CreateDate, UserId, CreatePurpose,
+		ProjectName)
+		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+		#{address,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, #{createPurpose,jdbcType=VARCHAR},
+		#{projectName,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.ztyj6.fs.model.Site">
+		insert into site
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				Id,
+			</if>
+			<if test="name != null">
+				Name,
+			</if>
+			<if test="address != null">
+				Address,
+			</if>
+			<if test="createDate != null">
+				CreateDate,
+			</if>
+			<if test="userId != null">
+				UserId,
+			</if>
+			<if test="createPurpose != null">
+				CreatePurpose,
+			</if>
+			<if test="projectName != null">
+				ProjectName,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="createDate != null">
+				#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=INTEGER},
+			</if>
+			<if test="createPurpose != null">
+				#{createPurpose,jdbcType=VARCHAR},
+			</if>
+			<if test="projectName != null">
+				#{projectName,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.Site">
+		update site
+		<set>
+			<if test="name != null">
+				Name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				Address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="createDate != null">
+				CreateDate = #{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userId != null">
+				UserId = #{userId,jdbcType=INTEGER},
+			</if>
+			<if test="createPurpose != null">
+				CreatePurpose = #{createPurpose,jdbcType=VARCHAR},
+			</if>
+			<if test="projectName != null">
+				ProjectName = #{projectName,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where Id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.Site">
+		update site
+		set Name = #{name,jdbcType=VARCHAR},
+		Address = #{address,jdbcType=VARCHAR},
+		CreateDate = #{createDate,jdbcType=TIMESTAMP},
+		UserId = #{userId,jdbcType=INTEGER},
+		CreatePurpose = #{createPurpose,jdbcType=VARCHAR},
+		ProjectName = #{projectName,jdbcType=VARCHAR}
+		where Id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<sql id="SiteUser_Base_Column_List">
+		Id,SiteId,UserId,PostId
+	</sql>
+
+	<insert id="insertUserSite">
+		insert into r_site_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="siteId != null">
+				SiteId,
+			</if>
+			<if test="userId != null">
+				UserId,
+			</if>
+			<if test="postId != null">
+				PostId,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="siteId != null">
+				#{siteId,jdbcType=INTEGER},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=INTEGER},
+			</if>
+			<if test="postId != null">
+				#{postId,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+
+	<select id="selectUserSiteByPage" parameterType="java.lang.Integer"
+		resultType="java.util.List">
+		select
+		<include refid="SiteUser_Base_Column_List" />
+		from r_site_user
+		where SiteId = #{siteId,jdbcType=INTEGER}
+	</select>
+
+
+	<delete id="deleteUserSite">
+		delete from r_site_user
+		where
+		r_site_user.SiteId = #{siteId,jdbcType=INTEGER}
+		and
+		r_site_user.UserId = #{userId,jdbcType=INTEGER}
+	</delete>
+
+	<delete id="deleteBatchUserSite">
+		delete from r_site_user
+		where
+		SiteId = #{siteId,jdbcType=INTEGER}
+		and
+		UserId in
+		<foreach collection="ids" item="userId" open="(" separator=","
+			close=")">
 			#{userId}
 		</foreach>
-  </delete>
+	</delete>
 </mapper>
