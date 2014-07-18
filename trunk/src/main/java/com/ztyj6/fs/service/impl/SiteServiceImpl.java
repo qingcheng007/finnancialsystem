@@ -30,66 +30,37 @@ public class SiteServiceImpl implements ISiteService {
 		this.siteMapper = siteMapper;
 	}
 
-	/*
-	 * 保存站点信息
-	 * 
-	 * @INput： Site 对象
-	 * 
-	 * @Return： null
-	 */
 	public Serializable save(Site o) {
 		// TODO Auto-generated method stub
 		siteMapper.insert(o);
 		return null;
 	}
 
-	/*
-	 * 根据对象的Id 删除一个对象
-	 * 
-	 * @Input Site 对象
-	 * 
-	 * @Return void
-	 */
 	public void delete(Site o) {
 		// TODO Auto-generated method stub
 		siteMapper.deleteByPrimaryKey(o.getId());
 	}
 
-	/*
-	 * 批量删除 site 表中的记录
-	 * @Input: String 其中的 id 以 ， 隔开
-	 * @Return： void
-	 */
 	public void delete(String ids) {
 		// TODO Auto-generated method stub
-		
+
 		List<String> arrays = Arrays.asList(ids.split(","));
 		siteMapper.deleteBatch(arrays);
-		
+
 	}
-  /*
-   * 更新站点信息
-   * 
-   */
+
 	public void update(Site o) {
 		// TODO Auto-generated method stub
 		siteMapper.updateByPrimaryKeySelective(o);
 	}
-	
-    /*
-     * 
-     * 取得单个站点的基本详细信息
-     */
+
 	public Site getById(Integer id) {
 		// TODO Auto-generated method stub
 		Site site = new Site();
 		site = siteMapper.selectByPrimaryKey(id);
 		return site;
 	}
-   /*
-    *分页 显示站点的信息 
-    * 
-    */
+
 	public DataGrid getByPage(PageFilter pageFilter) {
 		// TODO Auto-generated method stub
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
@@ -99,52 +70,44 @@ public class SiteServiceImpl implements ISiteService {
 		dg.setTotal(sites.getPaginator().getTotalCount());
 		return dg;
 	}
-	/*
-	 * 向站点中添加 用户
-	 * 
-	 */
-	public void saveUserToSite(int siteId, int userId,int postId) {
+
+	public void saveUserSite(int siteId, int userId, int postId) {
 		// TODO Auto-generated method stub
-		siteMapper.insertUserToSite(siteId, userId, postId);		
-		
+		siteMapper.insertUserSite(siteId, userId, postId);
+
 	}
-	/*
-	    * 分页显示 站点中的所有用户
-	    */
-	public DataGrid getAllUserInSiteByPage(PageFilter pageFilter, int siteId) {
+
+	public DataGrid getAllUserSiteByPage(PageFilter pageFilter, int siteId) {
 		// TODO Auto-generated method stub
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
-		DataGrid dg = new DataGrid();	
-		PageList siteUsers = (PageList) siteMapper.selectUserOfSiteByPage(pageBounds, siteId);
+		DataGrid dg = new DataGrid();
+		PageList siteUsers = (PageList) siteMapper.selectUserSiteByPage(
+				pageBounds, siteId);
 		dg.setRows(siteUsers);
 		dg.setTotal(siteUsers.getPaginator().getTotalCount());
 		return dg;
 	}
-	/*
-     * 通过 userId 删除站点中的某个用户
-     */
-	public void deleteUserFromSiteByUserId(Integer siteId, Integer userId) {
+
+	public void deleteUserSite(int siteId, int userId) {
 		// TODO Auto-generated method stub
-		siteMapper.deleteUserFromSiteByUserId(siteId,userId);
+		siteMapper.deleteUserSite(siteId, userId);
 	}
-	/*
-     * 批量删除站点中的用户
-     */
-	public void deleteBatchUserFromSite(Integer siteId, String ids) {
+
+	public void deleteBatchUserSite(int siteId, String ids) {
 		// TODO Auto-generated method stub
 		List<String> arrays = Arrays.asList(ids.split(","));
-		siteMapper.deleteBatchUserFromSite(siteId, arrays);
+		siteMapper.deleteBatchUserSite(siteId, arrays);
 	}
-	
+
 	public void saveOrUpdate(Site o) throws Throwable {
-		// TODO Auto-generated method stub    
+		// TODO Auto-generated method stub
 	}
-	
+
 	public List<Site> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	public DataGrid getByPageFilter(PageFilter pageFilter) {
 		// TODO Auto-generated method stub
 		return null;
