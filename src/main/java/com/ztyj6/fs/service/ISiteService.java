@@ -8,8 +8,6 @@ public interface ISiteService extends IBaseService<Site> {
 
 	void saveUserSite(int siteId, int userId, int postId);
 
-	DataGrid getAllUserSiteByPage(PageFilter pageFilter, int siteId);
-
 	void deleteUserSite(int siteId, int userId);
 
 	void deleteBatchUserSite(int siteId, String ids);

@@ -168,16 +168,7 @@
 			</if>
 		</trim>
 	</insert>
-
-	<select id="selectUserSiteByPage" parameterType="java.lang.Integer"
-		resultType="java.util.List">
-		select
-		<include refid="SiteUser_Base_Column_List" />
-		from r_site_user
-		where SiteId = #{siteId,jdbcType=INTEGER}
-	</select>
-
-
+	
 	<delete id="deleteUserSite">
 		delete from r_site_user
 		where

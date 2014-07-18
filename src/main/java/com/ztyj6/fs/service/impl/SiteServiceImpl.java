@@ -77,16 +77,6 @@ public class SiteServiceImpl implements ISiteService {
 
 	}
 
-	public DataGrid getAllUserSiteByPage(PageFilter pageFilter, int siteId) {
-		// TODO Auto-generated method stub
-		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
-		DataGrid dg = new DataGrid();
-		PageList siteUsers = (PageList) siteMapper.selectUserSiteByPage(
-				pageBounds, siteId);
-		dg.setRows(siteUsers);
-		dg.setTotal(siteUsers.getPaginator().getTotalCount());
-		return dg;
-	}
 
 	public void deleteUserSite(int siteId, int userId) {
 		// TODO Auto-generated method stub
