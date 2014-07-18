@@ -6,11 +6,10 @@
 <jsp:include page="inc.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8">
   $(function (){
-	  alert("dd");
 	  $('#register_dialog').dialog({
 		  modal : true,
 		  buttons :[{
-			  text : 'reg',
+			  text : '注册',
 			  handler : function(){
 				$.ajax({
 					url:'${pageContext.request.contextPath}/userController/register.do',
@@ -35,7 +34,7 @@
 </script>
   
   <body>
-    <div id="register_dialog" title="用户注册" style="width:500px;height:800px">
+    <div id="register_dialog" title="用户注册" style="width:500px;height:400px">
     <form id="register_form" method="post">
      <table>
       <tr>
@@ -54,13 +53,21 @@
         <th>真实姓名：</th>
         <td><input type="text" name="realname"></td>
       </tr>
-            <tr>
+          <tr>
         <th>电话：</th>
         <td><input type="text" name="phone"></td>
       </tr>
          <tr>
         <th>email：</th>
         <td><input type="text" name="email" data-options="required:true,validType:'email'"></td>
+      </tr>
+         <tr>
+        <th>父ID：</th>
+        <td><input type="text" name="parentId"></td>
+      </tr>
+                 <tr>
+        <th>余额ID：</th>
+        <td><input type="text" name="balanceId"></td>
       </tr>
      </table>
      </form>
