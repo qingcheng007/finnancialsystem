@@ -23,6 +23,23 @@ INSERT INTO `role` VALUES ('7', '普通员工', 'ROLE_STAFF', '普通员工', nu
 INSERT INTO `role` VALUES ('8', '测试人员', 'ROLE_TEST', '测试人员，权限仅次于管理员', null, null, null, null, '1');
 
 
+-- Records of r_role_resource
+-- ----------------------------
+INSERT INTO `r_role_resource` VALUES ('1', '1', '1');
+INSERT INTO `r_role_resource` VALUES ('17', '2', '1');
+INSERT INTO `r_role_resource` VALUES ('18', '3', '1');
+INSERT INTO `r_role_resource` VALUES ('19', '4', '1');
+INSERT INTO `r_role_resource` VALUES ('20', '5', '1');
+INSERT INTO `r_role_resource` VALUES ('21', '6', '1');
+INSERT INTO `r_role_resource` VALUES ('22', '7', '1');
+INSERT INTO `r_role_resource` VALUES ('23', '8', '1');
+INSERT INTO `r_role_resource` VALUES ('24', '9', '1');
+INSERT INTO `r_role_resource` VALUES ('25', '10', '1');
+INSERT INTO `r_role_resource` VALUES ('26', '11', '1');
+INSERT INTO `r_role_resource` VALUES ('27', '12', '1');
+INSERT INTO `r_role_resource` VALUES ('28', '13', '1');
+
+
 -- ----------------------------
 -- Records of resource
 -- ----------------------------
