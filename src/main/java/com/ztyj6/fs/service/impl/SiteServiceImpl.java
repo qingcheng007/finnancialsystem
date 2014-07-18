@@ -99,21 +99,19 @@ public class SiteServiceImpl implements ISiteService {
 		dg.setTotal(sites.getPaginator().getTotalCount());
 		return dg;
 	}
-	
 	/*
 	 * 向站点中添加 用户
 	 * 
 	 */
-	@Override
-	public void saveUserToSite(int siteId,int userId,int postId) {
+	public void saveUserToSite(Integer siteId, Integer userId, Integer postId) {
 		// TODO Auto-generated method stub
-        siteMapper.insertUserToSite(siteId, userId, postId);		
+		siteMapper.insertUserToSite(siteId, userId, postId);		
+		
 	}
-   /*
-    * 分页显示 站点中的所有用户
-    */
-	@Override
-	public DataGrid getAllUserInSiteByPage(PageFilter pageFilter,int siteId) {
+	/*
+	    * 分页显示 站点中的所有用户
+	    */
+	public DataGrid getAllUserInSiteByPage(PageFilter pageFilter, int siteId) {
 		// TODO Auto-generated method stub
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();	
@@ -122,19 +120,17 @@ public class SiteServiceImpl implements ISiteService {
 		dg.setTotal(siteUsers.getPaginator().getTotalCount());
 		return dg;
 	}
-    /*
+	/*
      * 通过 userId 删除站点中的某个用户
      */
-	@Override
-	public void deleteUserFromSiteByUserId(Integer siteId,Integer userId) {
+	public void deleteUserFromSiteByUserId(Integer siteId, Integer userId) {
 		// TODO Auto-generated method stub
 		siteMapper.deleteUserFromSiteByUserId(siteId,userId);
 	}
-    /*
+	/*
      * 批量删除站点中的用户
      */
-	@Override
-	public void deleteBatchUserFromSite(Integer siteId,String ids) {
+	public void deleteBatchUserFromSite(Integer siteId, String ids) {
 		// TODO Auto-generated method stub
 		List<String> arrays = Arrays.asList(ids.split(","));
 		siteMapper.deleteBatchUserFromSite(siteId, arrays);
@@ -158,5 +154,4 @@ public class SiteServiceImpl implements ISiteService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
