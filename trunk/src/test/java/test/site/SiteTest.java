@@ -24,16 +24,16 @@ public class SiteTest {
 	public void setSiteService(ISiteService siteService) {
 		this.siteService = siteService;
 	}
-    @Ignore
+    @Test
     public void testAdd(){
     	Site site = new Site();
-    	site.setId(2);
-    	site.setName("4");
-    	site.setAddress("4");
+    	site.setId(7);
+    	site.setName("44");
+    	site.setAddress("44");
     	site.setCreateDate(new Date());
-    	site.setCreatePurpose("4");
+    	site.setCreatePurpose("44");
     	site.setUserId(1);
-    	site.setProjectName("4");
+    	site.setProjectName("44");
     	siteService.save(site);
     }
     @Ignore
