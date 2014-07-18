@@ -103,7 +103,7 @@ public class SiteServiceImpl implements ISiteService {
 	 * 向站点中添加 用户
 	 * 
 	 */
-	public void saveUserToSite(Integer siteId, Integer userId, Integer postId) {
+	public void saveUserToSite(int siteId, int userId,int postId) {
 		// TODO Auto-generated method stub
 		siteMapper.insertUserToSite(siteId, userId, postId);		
 		
