@@ -39,3 +39,16 @@ INSERT INTO `resource` VALUES ('10', '添加角色', null, '2', null, '2', '添�
 INSERT INTO `resource` VALUES ('11', '编辑角色', null, '3', null, '2', '编辑角色', '8', '0', '1');
 INSERT INTO `resource` VALUES ('12', '删除角色', null, '4', null, '2', '删除角色', '8', '0', '1');
 INSERT INTO `resource` VALUES ('13', '授予权限', null, '5', null, '2', '授予角色权限', '8', '0', '1');
+
+-- ----------------------------
+-- Records of r_user_role
+-- ----------------------------
+INSERT INTO `r_user_role` VALUES ('1', '2', '3');
+INSERT INTO `r_user_role` VALUES ('2', '2', '4');
+INSERT INTO `r_user_role` VALUES ('3', '4', '2');
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES ('2', '2', 'ffb08a03a56deaac023dbbfa3ec1f97d', '3', null, null, '2014-07-18 20:18:31', '本地', null, '2014-07-15 10:55:22', '1', '2', '1');
+INSERT INTO `user` VALUES ('4', 'admin', 'ceb4f32325eda6142bd65215f4c0f371', 'admin', '2333', '473028458@qq.com', '2014-07-18 20:27:02', '本地', '本地', '2014-07-18 18:21:38', '1', '2', '3');
