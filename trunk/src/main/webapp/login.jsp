@@ -17,16 +17,17 @@
 					data:$('#login_form').serialize(),				
 					cache:false,
 					dataType:'json',
-					success:function(ret){
+					success:function(data){
+					     data = $.parseJSON(data);
 						if(ret && ret.success==true){
-							data = $.parseJSON(data);
-						}else{
-							$.messager.show({
-								title:'ts',
-								msg:ret.msg
-							});
+							window.location.href = data.obj;
 						}
-					}
+						else{
+							
+							$('#login_error').text(data.msg);
+							};
+						}
+				  
 				});  
 			  }
 		  }]
