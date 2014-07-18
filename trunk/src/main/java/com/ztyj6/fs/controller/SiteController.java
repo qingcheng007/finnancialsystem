@@ -146,15 +146,4 @@ public class SiteController extends BaseController {
 		}
 		return json;
 	}
-
-	@ResponseBody
-	@RequestMapping("/admin/getUserSiteByPage")
-	public DataGrid getUserSiteByPage(PageFilter pageFilter, int siteId) {
-		try {
-			return siteService.getAllUserSiteByPage(pageFilter, siteId);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
 }

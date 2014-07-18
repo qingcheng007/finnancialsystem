@@ -28,8 +28,6 @@ public interface SiteMapper {
 	int insertUserSite(@Param("siteId") int siteId,
 			@Param("userId") int userId, @Param("postId") int postId);
 
-	List selectUserSiteByPage(PageBounds pageBounds, Integer siteId);
-
 	void deleteUserSite(@Param("siteId") Integer siteId,
 			@Param("userId") Integer userId);
 
