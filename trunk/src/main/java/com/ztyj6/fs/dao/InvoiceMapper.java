@@ -10,6 +10,8 @@ import com.ztyj6.fs.model.InvoiceKey;
 public interface InvoiceMapper {
     int deleteByPrimaryKey(InvoiceKey key);
 
+    int deleteByPrimaryID(@Param("id")int Id);
+    
     int insert(Invoice record);
 
     int insertSelective(Invoice record);
@@ -23,7 +25,7 @@ public interface InvoiceMapper {
 
     int updateByPrimaryKey(Invoice record);
     
-    int selectCount();
+    int selectInvoiceCount();
     
     List<Invoice> getInvoiceAll();
     
