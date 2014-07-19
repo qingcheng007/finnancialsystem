@@ -1,8 +1,9 @@
 package test.site;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,29 +37,33 @@ public class SiteTest {
     	site.setProjectName("44");
     	siteService.save(site);
     }
-    @Ignore
+    @Test
     public void testDeleteBatch(){
     	String ids = "1,2,3";
     	siteService.delete(ids);
     }
-    @Ignore
-    public void testSaveUserToSite(){
+    @Test
+    public void testSaveUserSite(){
     	int siteId = 1;
     	int userId = 1;
     	int postId = 1;
-    	siteService.saveUserToSite(siteId, userId, postId);
+    	Map<String,Integer> map = new HashMap<String,Integer>();
+    	map.put("siteId", siteId);
+    	map.put("userId", userId);
+    	map.put("postId", postId);
+    	siteService.saveUserSite(map);
     }
-    @Ignore
-    public void testDeleteUserFromSiteByUserId(){
+    @Test
+    public void testDeleteUserSite(){
     	int siteId = 1;
     	int userId  = 1;
-    	siteService.deleteUserFromSiteByUserId(siteId,userId);
+    	siteService.deleteUserSite(siteId,userId);
     }
     
     @Test
-    public void deleteBatchUserFromSite(){
+    public void deleteBatchUserSite(){
     	String ids = "1,2,3";
     	int siteId = 1;
-    	siteService.deleteBatchUserFromSite(siteId, ids);
+    	siteService.deleteBatchUserSite(siteId, ids);
     }
 }

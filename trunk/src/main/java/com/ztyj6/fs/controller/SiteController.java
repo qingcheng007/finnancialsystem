@@ -1,5 +1,8 @@
 package com.ztyj6.fs.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,8 +117,12 @@ public class SiteController extends BaseController {
 			HttpSession session) {
 		Json json = new Json();
 		String msg = "";
+		Map<String,Integer> map = new HashMap<String,Integer>();
+		map.put("siteId", siteId);
+		map.put("userId", userId);
+		map.put("postId", postId);
 		try {
-			siteService.saveUserSite(siteId, userId, postId);
+			siteService.saveUserSite(map);
 			msg = "添加成功";
 			json.setSuccess(true);
 			json.setMsg(msg);

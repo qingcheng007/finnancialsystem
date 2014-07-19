@@ -23,6 +23,7 @@
 		<include refid="Base_Column_List" />
 		from post
 	</select>
+	
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from post
 		where Id = #{id,jdbcType=INTEGER}
