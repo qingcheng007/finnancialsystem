@@ -1,6 +1,7 @@
 package com.ztyj6.fs.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -59,7 +60,7 @@ public class SiteController extends BaseController {
 		}
 		return json;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/admin/delete")
 	public Json delete(String ids) {
@@ -117,7 +118,7 @@ public class SiteController extends BaseController {
 			HttpSession session) {
 		Json json = new Json();
 		String msg = "";
-		Map<String,Integer> map = new HashMap<String,Integer>();
+		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("siteId", siteId);
 		map.put("userId", userId);
 		map.put("postId", postId);
@@ -142,15 +143,27 @@ public class SiteController extends BaseController {
 		String msg = "";
 		try {
 			siteService.deleteBatchUserSite(siteId, userIds);
-			msg = "批量删除成功";
+			msg = "删除成功";
 			json.setSuccess(true);
 			json.setMsg(msg);
 		} catch (Exception e) {
-			msg = "批量删除失败";
+			msg = "删除失败";
 			json.setSuccess(false);
 			json.setMsg(msg);
 			e.printStackTrace();
 		}
 		return json;
+	}
+
+	@ResponseBody
+	@RequestMapping("/admin/getUserInformationOfOneSite")
+	public DataGrid getUserInformationOfOneSite(PageFilter pageFilter,
+			int siteId) {
+		try {
+			return siteService.getUserInformationOfOneSiteByPage(pageFilter,
+					siteId);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 }

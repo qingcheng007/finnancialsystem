@@ -13,7 +13,8 @@
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		Id, Name, Address, CreateDate, UserId, CreatePurpose, ProjectName
+		Id, Name, Address, CreateDate, UserId, CreatePurpose,
+		ProjectName
 	</sql>
 
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
@@ -44,12 +45,15 @@
 	</delete>
 
 	<insert id="insert" parameterType="com.ztyj6.fs.model.Site">
-		insert into site (Id, Name, Address,
+		insert into site (Id, Name,
+		Address,
 		CreateDate, UserId, CreatePurpose,
 		ProjectName)
-		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+		values
+		(#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
 		#{address,jdbcType=VARCHAR},
-		#{createDate,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, #{createPurpose,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{userId,jdbcType=INTEGER}, #{createPurpose,jdbcType=VARCHAR},
 		#{projectName,jdbcType=VARCHAR})
 	</insert>
 
@@ -130,47 +134,31 @@
 
 	<update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.Site">
 		update site
-		set Name = #{name,jdbcType=VARCHAR},
+		set
+		Name = #{name,jdbcType=VARCHAR},
 		Address = #{address,jdbcType=VARCHAR},
 		CreateDate = #{createDate,jdbcType=TIMESTAMP},
-		UserId = #{userId,jdbcType=INTEGER},
-		CreatePurpose = #{createPurpose,jdbcType=VARCHAR},
-		ProjectName = #{projectName,jdbcType=VARCHAR}
+		UserId =
+		#{userId,jdbcType=INTEGER},
+		CreatePurpose =
+		#{createPurpose,jdbcType=VARCHAR},
+		ProjectName =
+		#{projectName,jdbcType=VARCHAR}
 		where Id = #{id,jdbcType=INTEGER}
 	</update>
 
 	<sql id="SiteUser_Base_Column_List">
 		Id,SiteId,UserId,PostId
 	</sql>
-   <!-- 
+	<!-- <insert id="insertUserSite"> insert into r_site_user <trim prefix="(" 
+		suffix=")" suffixOverrides=","> <if test="siteId != null"> SiteId, </if> 
+		<if test="userId != null"> UserId, </if> <if test="postId != null"> PostId, 
+		</if> </trim> <trim prefix="values (" suffix=")" suffixOverrides=","> <if 
+		test="siteId != null"> #{siteId,jdbcType=INTEGER}, </if> <if test="userId 
+		!= null"> #{userId,jdbcType=INTEGER}, </if> <if test="postId != null"> #{postId,jdbcType=INTEGER}, 
+		</if> </trim> </insert> -->
 	<insert id="insertUserSite">
-		insert into r_site_user
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="siteId != null">
-				SiteId,
-			</if>
-			<if test="userId != null">
-				UserId,
-			</if>
-			<if test="postId != null">
-				PostId,
-			</if>
-		</trim>
-		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="siteId != null">
-				#{siteId,jdbcType=INTEGER},
-			</if>
-			<if test="userId != null">
-				#{userId,jdbcType=INTEGER},
-			</if>
-			<if test="postId != null">
-				#{postId,jdbcType=INTEGER},
-			</if>
-		</trim>
-	</insert>
-	 -->
-	 <insert id="insertUserSite">
-		insert into  r_site_user (SiteId, UserId,
+		insert into r_site_user (SiteId, UserId,
 		PostId)
 		values (
 		#{map.siteId,jdbcType=INTEGER},
@@ -178,13 +166,15 @@
 		#{map.postId,jdbcType=INTEGER}
 		)
 	</insert>
-	 
+
 	<delete id="deleteUserSite">
 		delete from r_site_user
 		where
-		r_site_user.SiteId = #{siteId,jdbcType=INTEGER}
+		r_site_user.SiteId =
+		#{siteId,jdbcType=INTEGER}
 		and
-		r_site_user.UserId = #{userId,jdbcType=INTEGER}
+		r_site_user.UserId =
+		#{userId,jdbcType=INTEGER}
 	</delete>
 
 	<delete id="deleteBatchUserSite">
@@ -198,4 +188,66 @@
 			#{userId}
 		</foreach>
 	</delete>
+	<resultMap id="userResultMap" type="com.ztyj6.fs.model.Site"
+		extends="BaseResultMap">
+		<collection property="users" javaType="list"
+			ofType="com.ztyj6.fs.model.User">
+			<id property="id" column="userId" />
+			<result property="username" column="userName" />
+			<result property="password" column="password" />
+			<result property="realname" column="realName" />
+			<result property="phone" column="phone" />
+			<result property="email" column="email" />
+			<result property="lastLoginDate" column="lastLoginDate" />
+			<result property="lastLoginIp" column="lastLoginIp" />
+			<result property="createIp" column="createIp" />
+			<result property="createDate" column="createDate" />
+			<result property="isEnable" column="isEnable" />
+			<result property="parentId" column="parentId" />
+			<result property="balanceId" column="balanceId" />
+		</collection>
+		<collection property="posts" javaType="list"
+			ofType="com.ztyj6.fs.model.Post">
+			<id property="id" column="postId" />
+			<result property="name" column="postName" />
+		</collection>
+	</resultMap>
+	<select id="selectUsers" resultMap="userResultMap">
+		SELECT
+		site.Id,
+		site.`Name`,
+		site.Address,
+		site.CreateDate,
+		site.UserId,
+		site.CreatePurpose,
+		site.ProjectName,
+		r_site_user.Id,
+		r_site_user.SiteId,
+		r_site_user.UserId,
+		r_site_user.PostId,
+		post.Id postId,
+		post.Name
+		postName,
+		user.Id userId,
+		user.UserName userName,
+		user.Password password,
+		user.RealName realName,
+		user.Phone phone,
+		user.Email email,
+		user.LastLoginDate lastLoginDate,
+		user.LastLoginIp lastLoginIP,
+		user.CreateIp createIp,
+		user.CreateDate createDate,
+		user.IsEnable
+		isEnable,
+		user.ParentId parentId,
+		user.BalanceId balanceId
+		FROM
+		site
+		JOIN r_site_user ON r_site_user.SiteId = #{siteId,jdbcType=INTEGER} and
+		site.Id = #{siteId,jdbcType=INTEGER}
+		JOIN post ON r_site_user.PostId = post.Id
+		JOIN user ON r_site_user.UserId =
+		user.Id
+	</select>
 </mapper>
