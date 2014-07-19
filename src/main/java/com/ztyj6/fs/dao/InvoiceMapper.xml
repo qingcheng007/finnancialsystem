@@ -31,11 +31,122 @@
 		ProjectName, PhotoUrl,
 		Remark
 	</sql>
-	
+	<resultMap type="com.ztyj6.fs.model.Invoice" id="invoiceResultMap" extends="BaseResultMap">
+	<association property="invoiceDetails" javaType="com.ztyj6.fs.model.InvoiceDetails">
+	<id property="id" column="invoice_details_id"/>
+	<result property="content1" column="invoice_details_content1"/>
+	<result property="content2" column="invoice_details_content2"/>
+	<result property="content3" column="invoice_details_content3"/>
+	<result property="content4" column="invoice_details_content4"/>
+	</association>
+	<association property="invoiceType" javaType="com.ztyj6.fs.model.InvoiceType">
+	<id property="id" column="invoice_type_id"/>
+	<result property="name" column="invoice_type_name"/>
+	</association>
+	<association property="auditState" >
+	<id property="id" column="audit_state_id"/>
+	<result property="operator" column="audti_state_operator"/>
+	<result property="prover" column="audti_state_prover"/>
+	<result property="auditor1" column="audti_state_auditor1"/>
+	<result property="auditor2" column="audti_state_auditor2"/>
+	<result property="dearer" column="audti_state_dearer"/>
+	</association>
+	</resultMap>
+	<select id="getInvoiceAll" resultMap="invoiceResultMap">
+		SELECT
+		invoice.Id,
+		invoice.CreateDate,
+		invoice.OccurDate,
+		invoice.Content,
+		invoice.Money,
+		invoice.Penalty,
+		invoice.Description,
+		invoice.InvoiceDetailsId,
+		invoice.InvoiceTypeId,
+		invoice.ProjectName,
+		invoice.OperatorId,
+		invoice.ProverId,
+		invoice.Auditor1Id,
+		invoice.Auditor2Id,
+		invoice.AuditStateId,
+		invoice.PhotoUrl,
+		invoice.Remark,
+		invoice.DearerId,
+		invoicetype.Id invoice_type_id,
+		invoicetype.`Name` invoice_type_name,
+		invoicedetails.Id invoice_details_id,
+		invoicedetails.Content1 invoice_details_content1,
+		invoicedetails.Content2 invoice_details_content2,
+		invoicedetails.Content3 invoice_details_content3,
+		invoicedetails.Content4 invoice_details_content4,
+		auditstate.Id audit_state_id,
+		auditstate.Operator audti_state_operator,
+		auditstate.Prover audti_state_prover,
+		auditstate.Auditor1 audti_state_auditor1,
+		auditstate.Auditor2 audti_state_auditor2,
+		auditstate.Dearer audti_state_dearer
+		FROM
+		invoice
+		JOIN invoicetype ON invoice.InvoiceTypeId = invoicetype.Id
+		JOIN invoicedetails ON invoice.InvoiceDetailsId = invoicedetails.Id
+		JOIN auditstate ON invoice.AuditStateId = auditstate.Id
+
+	</select>
 	
 <select id="selectInvoiceCount" parameterType="java.lang.Integer" resultType="INTEGER">
   select count(*) from invoice
  </select>
+ <select id="selectByFilter" resultMap="invoiceResultMap">
+		SELECT
+		invoice.Id,
+		invoice.CreateDate,
+		invoice.OccurDate,
+		invoice.Content,
+		invoice.Money,
+		invoice.Penalty,
+		invoice.Description,
+		invoice.InvoiceDetailsId,
+		invoice.InvoiceTypeId,
+		invoice.ProjectName,
+		invoice.OperatorId,
+		invoice.ProverId,
+		invoice.Auditor1Id,
+		invoice.Auditor2Id,
+		invoice.AuditStateId,
+		invoice.PhotoUrl,
+		invoice.Remark,
+		invoice.DearerId,
+		invoicetype.Id invoice_type_id,
+		invoicetype.`Name` invoice_type_name,
+		invoicedetails.Id invoice_details_id,
+		invoicedetails.Content1 invoice_details_content1,
+		invoicedetails.Content2 invoice_details_content2,
+		invoicedetails.Content3 invoice_details_content3,
+		invoicedetails.Content4 invoice_details_content4,
+		auditstate.Id audit_state_id,
+		auditstate.Operator audti_state_operator,
+		auditstate.Prover audti_state_prover,
+		auditstate.Auditor1 audti_state_auditor1,
+		auditstate.Auditor2 audti_state_auditor2,
+		auditstate.Dearer audti_state_dearer
+		FROM
+		invoice
+		JOIN invoicetype ON invoice.InvoiceTypeId = invoicetype.Id
+		JOIN invoicedetails ON invoice.InvoiceDetailsId = invoicedetails.Id
+		JOIN auditstate ON invoice.AuditStateId = auditstate.Id  
+		<where>
+			invoice.Id=#{id,jdbcType=INTEGER}
+			<if test="pageFilter.keyword != null">
+				and invoice.Id like #{pageFilter.keyword,jdbcType=VARCHAR}
+			</if>
+			<if test="pageFilter.startTime != null and pageFilter.endTime != null">
+				and invoice.CreateDate between
+				#{pageFilter.startTime,jdbcType=TIMESTAMP} and
+				#{pageFilter.endTime,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+	</select>
+ 
  <select id="selectByPrimaryID" parameterType="com.ztyj6.fs.model.InvoiceKey"
 		resultMap="BaseResultMap">
 		select
@@ -312,65 +423,5 @@
 		and ProverId =
 		#{proverid,jdbcType=INTEGER}
 	</update>
-	<resultMap type="com.ztyj6.fs.model.Invoice" id="invoiceResultMap" extends="BaseResultMap">
-	<association property="invoiceDetails" javaType="com.ztyj6.fs.model.InvoiceDetails">
-	<id property="id" column="invoice_details_id"/>
-	<result property="content1" column="invoice_details_content1"/>
-	<result property="content2" column="invoice_details_content2"/>
-	<result property="content3" column="invoice_details_content3"/>
-	<result property="content4" column="invoice_details_content4"/>
-	</association>
-	<association property="invoiceType" javaType="com.ztyj6.fs.model.InvoiceType">
-	<id property="id" column="invoice_type_id"/>
-	<result property="name" column="invoice_type_name"/>
-	</association>
-	<association property="auditState" >
-	<id property="id" column="audit_state_id"/>
-	<result property="operator" column="audti_state_operator"/>
-	<result property="prover" column="audti_state_prover"/>
-	<result property="auditor1" column="audti_state_auditor1"/>
-	<result property="auditor2" column="audti_state_auditor2"/>
-	<result property="dearer" column="audti_state_dearer"/>
-	</association>
-	</resultMap>
-	<select id="getInvoiceAll" resultMap="invoiceResultMap">
-		SELECT
-		invoice.Id,
-		invoice.CreateDate,
-		invoice.OccurDate,
-		invoice.Content,
-		invoice.Money,
-		invoice.Penalty,
-		invoice.Description,
-		invoice.InvoiceDetailsId,
-		invoice.InvoiceTypeId,
-		invoice.ProjectName,
-		invoice.OperatorId,
-		invoice.ProverId,
-		invoice.Auditor1Id,
-		invoice.Auditor2Id,
-		invoice.AuditStateId,
-		invoice.PhotoUrl,
-		invoice.Remark,
-		invoice.DearerId,
-		invoicetype.Id invoice_type_id,
-		invoicetype.`Name` invoice_type_name,
-		invoicedetails.Id invoice_details_id,
-		invoicedetails.Content1 invoice_details_content1,
-		invoicedetails.Content2 invoice_details_content2,
-		invoicedetails.Content3 invoice_details_content3,
-		invoicedetails.Content4 invoice_details_content4,
-		auditstate.Id audit_state_id,
-		auditstate.Operator audti_state_operator,
-		auditstate.Prover audti_state_prover,
-		auditstate.Auditor1 audti_state_auditor1,
-		auditstate.Auditor2 audti_state_auditor2,
-		auditstate.Dearer audti_state_dearer
-		FROM
-		invoice
-		JOIN invoicetype ON invoice.InvoiceTypeId = invoicetype.Id
-		JOIN invoicedetails ON invoice.InvoiceDetailsId = invoicedetails.Id
-		JOIN auditstate ON invoice.AuditStateId = auditstate.Id
-
-	</select>
+	
 </mapper>
