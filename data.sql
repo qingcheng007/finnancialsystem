@@ -71,7 +71,7 @@ insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,
 -- ----------------------------
 insert into r_user_role(Id,UserId,RoleId) values('1', '2', '3');
 insert into r_user_role(Id,UserId,RoleId) values('2', '2', '4');
-insert into r_user_role(Id,UserId,RoleId) values('3', '4', '2');
+insert into r_user_role(Id,UserId,RoleId) values('3', '4', '1');
 
 
 -- ----------------------------
