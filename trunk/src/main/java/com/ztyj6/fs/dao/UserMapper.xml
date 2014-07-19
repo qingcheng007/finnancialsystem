@@ -292,7 +292,7 @@
 		r_user_role.UserId = `user`.Id
 		INNER JOIN role ON r_user_role.RoleId =
 		role.Id
-		whereuser.UserName =#{username}
+		where user.UserName =#{username}
 	</select>
 	<delete id="delete" parameterType="java.util.List">
 		delete from user where Id in
