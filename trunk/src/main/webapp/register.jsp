@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/style/css/dialog.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
 function submit() {
-          alert("dddd");
 			$.ajax({
 					url : '${pageContext.request.contextPath}/userController/register.do',
 					type : 'POST',
