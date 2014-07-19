@@ -3,6 +3,7 @@ package com.ztyj6.fs.service.impl;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,10 +72,9 @@ public class SiteServiceImpl implements ISiteService {
 		return dg;
 	}
 
-	public void saveUserSite(int siteId, int userId, int postId) {
+	public void saveUserSite(Map<String,Integer> map) {
 		// TODO Auto-generated method stub
-		siteMapper.insertUserSite(siteId, userId, postId);
-
+		siteMapper.insertUserSite(map);
 	}
 
 

@@ -1,6 +1,7 @@
 package com.ztyj6.fs.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -25,8 +26,7 @@ public interface SiteMapper {
 
 	int updateByPrimaryKey(Site record);
 
-	int insertUserSite(@Param("siteId") int siteId,
-			@Param("userId") int userId, @Param("postId") int postId);
+	int insertUserSite(@Param("map") Map<String,Integer> map);
 
 	void deleteUserSite(@Param("siteId") Integer siteId,
 			@Param("userId") Integer userId);

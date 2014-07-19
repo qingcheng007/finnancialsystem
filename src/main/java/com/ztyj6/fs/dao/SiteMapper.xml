@@ -142,7 +142,7 @@
 	<sql id="SiteUser_Base_Column_List">
 		Id,SiteId,UserId,PostId
 	</sql>
-
+   <!-- 
 	<insert id="insertUserSite">
 		insert into r_site_user
 		<trim prefix="(" suffix=")" suffixOverrides=",">
@@ -168,7 +168,17 @@
 			</if>
 		</trim>
 	</insert>
-	
+	 -->
+	 <insert id="insertUserSite">
+		insert into  r_site_user (SiteId, UserId,
+		PostId)
+		values (
+		#{map.siteId,jdbcType=INTEGER},
+		#{map.userId,jdbcType=INTEGER},
+		#{map.postId,jdbcType=INTEGER}
+		)
+	</insert>
+	 
 	<delete id="deleteUserSite">
 		delete from r_site_user
 		where
