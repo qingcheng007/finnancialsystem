@@ -16,7 +16,7 @@
 			data : $('#login_form').serialize(),
 			dataType : 'json',
 			success : function(data) {
-			    data = $.parseJSON(data);
+			   
 				if (data.success) {
 				alert("登录成功");
 				window.location.href = data.obj;
