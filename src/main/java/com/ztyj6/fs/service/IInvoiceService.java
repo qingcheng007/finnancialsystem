@@ -19,13 +19,13 @@ public interface IInvoiceService extends IBaseService<Invoice> {
 	
 	int selectMaxIDFromInvoiceDetails();
 	
-	int insertInvoiceTypeSelective(InvoiceType invoiceType);
+	//int insertInvoiceTypeSelective(InvoiceType invoiceType);
 	
 	int saveInvoiceTypeSelective(InvoiceType invoiceType);
 	
 	int saveInvoiceDetailsSelective(InvoiceDetails invoiceDetails);
 	
-	int insertInvoiceTypeAll(InvoiceType invoiceType);
+	//int insertInvoiceTypeAll(InvoiceType invoiceType);
 	
 	int saveInvoiceAllSelective(Invoice invoice); 
 	

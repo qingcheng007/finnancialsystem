@@ -14,6 +14,8 @@ import com.ztyj6.fs.model.Site;
 import com.ztyj6.fs.model.page.Json;
 import com.ztyj6.fs.service.IInvoiceService;
 
+
+
 @Controller
 @RequestMapping("/invoiceController")
 public class InvoiceController {
@@ -27,21 +29,26 @@ public class InvoiceController {
 	public void setiInvoiceService(IInvoiceService iInvoiceService) {
 		this.iInvoiceService = iInvoiceService;
 	}
-
-	@ResponseBody
-	@RequestMapping("/selectInvoiceAll")
-	public Json selectInvoiceAll(HttpSession session) {
-		Json json = new Json();
-		String message = "";
-		List<Invoice> invoiceList = iInvoiceService.getInvoiceAll();
-		if (invoiceList.size() != 0) {
-			json.setSuccess(true);
-			json.setObj(invoiceList);
-		} else {
-			json.setSuccess(false);
-		}
-
-		return json;
-	}
+    @ResponseBody
+    @RequestMapping("/selectInvoiceAll")
+    public Json selectInvoiceAll(HttpSession session){
+    	Json json = new Json();
+    	String message ="";
+    	List<Invoice> invoiceList = iInvoiceService.getInvoiceAll();
+    	if(invoiceList.size()!=0)
+    	{
+    	json.setSuccess(true);
+    	json.setObj(invoiceList);
+    	}
+    	else
+    	{
+    		json.setSuccess(false);
+    	}
+    
+    	return json;
+    }
+    
+    
+	
 
 }

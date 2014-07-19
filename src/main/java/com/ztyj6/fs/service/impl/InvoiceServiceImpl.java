@@ -99,22 +99,22 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		return invoiceDetailsMapper.selectMaxID();
 	}
 
-	@Override
+/*	@Override
 	public int insertInvoiceTypeSelective(InvoiceType invoiceType) {
 
 		return invoiceTypeMapper.insertSelective(invoiceType);
 
-	}
+	}*/
 
 	@Override
 	public int saveInvoiceTypeSelective(InvoiceType invoiceType) {
 		return invoiceTypeMapper.insertSelective(invoiceType);
 	}
 
-	@Override
+/*	@Override
 	public int insertInvoiceTypeAll(InvoiceType invoiceType) {
 		return invoiceTypeMapper.insert(invoiceType);
-	}
+	}*/
 
 	@Override
 	public int saveInvoiceDetailsSelective(InvoiceDetails invoiceDetails) {
@@ -172,32 +172,32 @@ public class InvoiceServiceImpl implements IInvoiceService {
 
 	@Override
 	public Serializable save(Invoice o) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.saveInvoiceAllSelective(o);
 	}
 
 	@Override
 	public void delete(Invoice o) {
-		// TODO Auto-generated method stub
-		
+		invoiceMapper.deleteByPrimaryKey(o);
+
 	}
 
 	@Override
 	public void delete(String ids) {
-		// TODO Auto-generated method stub
-		
+
+		invoiceMapper.deleteByPrimaryID(Integer.parseInt(ids));
+
 	}
 
 	@Override
 	public void update(Invoice o) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void saveOrUpdate(Invoice o) throws Throwable {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -208,7 +208,6 @@ public class InvoiceServiceImpl implements IInvoiceService {
 
 	@Override
 	public List<Invoice> getAll() {
-		
 		return invoiceMapper.getInvoiceAll();
 	}
 
@@ -223,10 +222,11 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	// 查询发票主表的总数
 	@Override
 	public Long count() {
-		return (long) invoiceMapper.selectCount();
+		return (long) invoiceMapper.selectInvoiceCount();
 	}
 
 }

@@ -33,8 +33,8 @@
 	</sql>
 	
 	
-<select id="selectCount" parameterType="java.lang.Integer" resultType="INTEGER">
-  select count(*) from invoicedetails
+<select id="selectInvoiceCount" parameterType="java.lang.Integer" resultType="INTEGER">
+  select count(*) from invoice
  </select>
  <select id="selectByPrimaryID" parameterType="com.ztyj6.fs.model.InvoiceKey"
 		resultMap="BaseResultMap">
@@ -84,6 +84,11 @@
 		#{operatorid,jdbcType=INTEGER}
 		and ProverId =
 		#{proverid,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteByPrimaryID" parameterType="com.ztyj6.fs.model.InvoiceKey">
+		delete from
+		invoice
+		where Id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.ztyj6.fs.model.Invoice">
 		insert into invoice
