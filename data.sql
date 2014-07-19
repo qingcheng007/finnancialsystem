@@ -10,6 +10,22 @@ insert into invoicetype(id,name) values(9,"材料费");
 insert into invoicetype(id,name) values(10,"工具费");
 insert into invoicetype(id,name) values(11,"其他费");
 
+
+赵文举的表插入按照以下顺序插入
+
+-- ----------------------------
+-- Records of balance
+-- ----------------------------
+
+insert into balance (Id,Available,Frozen) values('3', '4.00', '4.00');
+
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+insert into user (Id,UserName,Password,RealName,Phone,Email,LastLoginDate,LastLoginIp,CreateIp,CreateDate,IsEnable,ParentId,BalanceId) values('4', 'admin', 'ceb4f32325eda6142bd65215f4c0f371', 'admin', '2333', '473028458@qq.com', '2014-07-18 20:27:02', '本地', '本地', '2014-07-18 18:21:38', 1, '4', '3');
+
+
 -- ----------------------------
 -- Records of role
 -- ----------------------------
@@ -23,26 +39,10 @@ insert into role(Id,Name,Code,Description,CreateUserId,CreateDate,ModifyUserId,M
 insert into role(Id,Name,Code,Description,CreateUserId,CreateDate,ModifyUserId,ModifyDate,IsEnable) values(8, '测试人员', 'ROLE_TEST', '测试人员，权限仅次于管理员', null, null, null, null, 1);
 
 
-
-
-
-
--- Records of r_role_resource
 -- ----------------------------
-insert into r_role_resource(Id,ResourceId,RoleId) values('1', '1', '1');
-insert into r_role_resource(Id,ResourceId,RoleId) values('17', '2', '1');
-insert into r_role_resource(Id,ResourceId,RoleId) values('18', '3', '1');
-insert into r_role_resource(Id,ResourceId,RoleId) values('19', '4', '1');
-insert into r_role_resource(Id,ResourceId,RoleId) values('20', '5', '1');
-insert into r_role_resource(Id,ResourceId,RoleId) values('21', '6', '1');
-insert into r_role_resource(Id,ResourceId,RoleId) values ('22', '7', '1');
-insert into r_role_resource(Id,ResourceId,RoleId) values('23', '8', '1');
-insert into r_role_resource(Id,ResourceId,RoleId) values('24', '9', '1');
-insert into r_role_resource(Id,ResourceId,RoleId) values('25', '10', '1');
-insert into r_role_resource(Id,ResourceId,RoleId) values('26', '11', '1');
-insert into r_role_resource(Id,ResourceId,RoleId) values('27', '12', '1');
-insert into r_role_resource(Id,ResourceId,RoleId) values('28', '13', '1');
-
+-- Records of r_user_role
+-- ----------------------------
+insert into r_user_role(Id,UserId,RoleId) values('3', '4', '1');
 
 
 
@@ -71,19 +71,24 @@ insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,
 
 
 -- ----------------------------
--- Records of r_user_role
+-- Records of r_role_resource
 -- ----------------------------
-insert into r_user_role(Id,UserId,RoleId) values('3', '4', '1');
-
-
--- ----------------------------
--- Records of user
--- ----------------------------
-insert into user (Id,UserName,Password,RealName,Phone,Email,LastLoginDate,LastLoginIp,CreateIp,CreateDate,IsEnable,ParentId,BalanceId) values('4', 'admin', 'ceb4f32325eda6142bd65215f4c0f371', 'admin', '2333', '473028458@qq.com', '2014-07-18 20:27:02', '本地', '本地', '2014-07-18 18:21:38', 1, '2', '3');
-
-
--- ----------------------------
--- Records of balance
--- ----------------------------
-
-insert into balance (Id,Available,Frozen)values('3', '4.00', '4.00');
+insert into r_role_resource(Id,ResourceId,RoleId) values('1', '1', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('17', '2', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('18', '3', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('19', '4', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('20', '5', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('21', '6', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values ('22', '7', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('23', '8', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('24', '9', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('25', '10', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('26', '11', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('27', '12', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('28', '13', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('29', '14', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('30', '15', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('31', '16', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('32', '17', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('33', '18', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('34', '19', '1');
