@@ -80,3 +80,10 @@ insert into r_user_role(Id,UserId,RoleId) values('3', '4', '1');
 -- Records of user
 -- ----------------------------
 insert into user (Id,UserName,Password,RealName,Phone,Email,LastLoginDate,LastLoginIp,CreateIp,CreateDate,IsEnable,ParentId,BalanceId) values('4', 'admin', 'ceb4f32325eda6142bd65215f4c0f371', 'admin', '2333', '473028458@qq.com', '2014-07-18 20:27:02', '本地', '本地', '2014-07-18 18:21:38', 1, '2', '3');
+
+
+-- ----------------------------
+-- Records of balance
+-- ----------------------------
+
+insert into balance (Id,Available,Frozen)values('3', '4.00', '4.00');
