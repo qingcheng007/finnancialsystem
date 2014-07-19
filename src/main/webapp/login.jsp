@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>登陆</title>
-<jsp:include page="inc.jsp"></jsp:include>
+<jsp:include page="/include/easyui.jsp"></jsp:include>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/style/css/dialog.css"
 	type="text/css">
