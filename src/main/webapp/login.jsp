@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>注册</title>
+<title>登陆</title>
 <jsp:include page="inc.jsp"></jsp:include>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/style/css/dialog.css"
@@ -16,8 +16,10 @@
 			data : $('#login_form').serialize(),
 			dataType : 'json',
 			success : function(data) {
+			    data = $.parseJSON(data);
 				if (data.success) {
-					alert("登陆成功");
+				alert("登录成功");
+				window.location.href = data.obj;
 				}
 
 			},
