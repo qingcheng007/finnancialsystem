@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>站点管理</title>
-<jsp:include page="../../inc.jsp"></jsp:include>
+<jsp:include page="/include/easyui.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8">
 	$(function() {
 		$('#admin_site_manage_dataGrid')
