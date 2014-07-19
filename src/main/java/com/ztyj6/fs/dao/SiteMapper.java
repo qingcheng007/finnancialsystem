@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.ztyj6.fs.model.Site;
+import com.ztyj6.fs.model.User;
 
 public interface SiteMapper {
 
@@ -26,11 +27,14 @@ public interface SiteMapper {
 
 	int updateByPrimaryKey(Site record);
 
-	int insertUserSite(@Param("map") Map<String,Integer> map);
+	int insertUserSite(@Param("map") Map<String, Integer> map);
 
 	void deleteUserSite(@Param("siteId") Integer siteId,
 			@Param("userId") Integer userId);
 
 	void deleteBatchUserSite(@Param("siteId") Integer siteId,
 			@Param("ids") List<String> ids);
+
+	List<Site> selectUsersByPage(@Param("pageBounds") PageBounds pageBounds,
+			@Param("siteId") Integer siteId);
 }

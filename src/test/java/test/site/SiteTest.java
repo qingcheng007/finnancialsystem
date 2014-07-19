@@ -1,7 +1,9 @@
 package test.site;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
@@ -10,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.ztyj6.fs.model.Post;
 import com.ztyj6.fs.model.Site;
+import com.ztyj6.fs.model.User;
 import com.ztyj6.fs.service.ISiteService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -65,5 +69,29 @@ public class SiteTest {
     	String ids = "1,2,3";
     	int siteId = 1;
     	siteService.deleteBatchUserSite(siteId, ids);
+    }
+    @Test
+    public void testGetUserInformationOfOneSite(){
+    	/*int siteId = 1;
+    	List<Site> siteList = new ArrayList<Site>();
+    	List<User> userList = new ArrayList<User>();
+    	List<Post> postList = new ArrayList<Post>();
+    	User user = new User();
+    	Post post = new Post();
+    	参数 不对
+    	siteList = siteService.getUserInformationOfOneSite(siteId);
+    	for(int i=0;i<siteList.size();i++){
+    		System.out.println(" site--> siteName "+siteList.get(i).getName());
+    		userList = siteList.get(i).getUsers();
+    		for(int j=0;j<userList.size();j++){
+    			user = userList.get(j);
+    			System.out.println("user ---> userName "+user.getUsername());
+    		}
+    		postList = siteList.get(i).getPosts();
+    		for(int k=0;k<postList.size();k++){
+    			post  = postList.get(k);
+    			System.out.println("post ---> postName "+post.getName());
+    		}
+    	}*/
     }
 }

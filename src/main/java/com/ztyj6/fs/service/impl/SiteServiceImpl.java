@@ -72,11 +72,10 @@ public class SiteServiceImpl implements ISiteService {
 		return dg;
 	}
 
-	public void saveUserSite(Map<String,Integer> map) {
+	public void saveUserSite(Map<String, Integer> map) {
 		// TODO Auto-generated method stub
 		siteMapper.insertUserSite(map);
 	}
-
 
 	public void deleteUserSite(int siteId, int userId) {
 		// TODO Auto-generated method stub
@@ -87,6 +86,19 @@ public class SiteServiceImpl implements ISiteService {
 		// TODO Auto-generated method stub
 		List<String> arrays = Arrays.asList(ids.split(","));
 		siteMapper.deleteBatchUserSite(siteId, arrays);
+	}
+
+	@Override
+	public DataGrid getUserInformationOfOneSiteByPage(PageFilter pageFilter,
+			int siteId) {
+		// TODO Auto-generated method stub
+		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
+		DataGrid dg = new DataGrid();
+		PageList sites = (PageList) siteMapper.selectUsersByPage(pageBounds,
+				siteId);
+		dg.setRows(sites);
+		dg.setTotal(sites.getPaginator().getTotalCount());
+		return dg;
 	}
 
 	public void saveOrUpdate(Site o) throws Throwable {
@@ -107,4 +119,5 @@ public class SiteServiceImpl implements ISiteService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }
