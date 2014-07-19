@@ -50,18 +50,18 @@ insert into r_role_resource(Id,ResourceId,RoleId) values('28', '13', '1');
 -- Records of resource
 -- ----------------------------
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(1, '后台管理', null, '1', '/admin', '3', '后台主页', '0', 0, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(2, '系统管理', null, '1', null, '1', '管理系统模块', '1', 0, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(3, '用户管理', null, '1', null, '1', '管理用户模块', '2', 0, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(4, '查看用户', null, '1', null, '2', '查看用户', '3', 0, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(5, '添加用户', null, '2', null, '2', '添加用户', '3', 0, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(6, '编辑用户', null, '3', null, '2', '编辑用户', '3', 0, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(7, '删除用户', null, '4', null, '2', '删除用户', '3', 0, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(8, '角色管理', null, '2', null, '1', '管理角色模块', '2', 0, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(9, '查看角色', null, '1', null, '2', '查看角色', '8', 0, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(10, '添加角色', null, '2', null, '2', '添加角色', '8', 0, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(11, '编辑角色', null, '3', null, '2', '编辑角色', '8', 0, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(12, '删除角色', null, '4', null, '2', '删除角色', '8', 0, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(13, '授予权限', null, '5', null, '2', '授予角色权限', '8', 0, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(2, '系统管理', null, '1', '/xtgl', '1', '管理系统模块', '1', 0, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(3, '用户管理', null, '1', '/admin/user/manage.jsp', '1', '管理用户模块', '2', 0, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(4, '查看用户', null, '1', '/userController/admin/get*.do', '2', '查看用户', '3', 0, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(5, '添加用户', null, '2', '/userController/admin/add*.do', '2', '添加用户', '3', 0, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(6, '编辑用户', null, '3', '/userController/admin/edit*.do', '2', '编辑用户', '3', 0, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(7, '删除用户', null, '4', '/userController/admin/delete*.do', '2', '删除用户', '3', 0, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(8, '角色管理', null, '2', '/admin/role/manage.jsp', '1', '管理角色模块', '2', 0, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(9, '查看角色', null, '1', '/roleController/admin/get*.do', '2', '查看角色', '8', 0, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(10, '添加角色', null, '2', '/roleController/admin/add*.do', '2', '添加角色', '8', 0, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(11, '编辑角色', null, '3', '/roleController/admin/edit*.do', '2', '编辑角色', '8', 0, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(12, '删除角色', null, '4', '/roleController/admin/delete*.do', '2', '删除角色', '8', 0, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(13, '授予权限', null, '5', '/roleController/admin/grant*.do', '2', '授予角色权限', '8', 0, 1);
 
 
 
