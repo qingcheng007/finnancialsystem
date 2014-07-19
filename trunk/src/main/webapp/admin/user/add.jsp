@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
-<jsp:include page="../../inc.jsp"></jsp:include>
+<jsp:include page="/include/easyui.jsp"></jsp:include>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/style/css/dialog.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
 	$(function() {
@@ -38,34 +38,6 @@
 			}
 		});
 		
-		/* $
-				.ajax({
-					url : '${pageContext.request.contextPath}/classController/admin/getAll.do',
-					type : 'GET',
-					dataType : 'json',
-					success : function(data) {
-						if (data.success) {
-							var select = $('#class');
-							for ( var i = 0; i < data.obj.length; i++)
-								select
-										.append('<option value="'+ data.obj[i].id +'">'
-												+ data.obj[i].college
-												+ ' '
-												+ data.obj[i].year
-												+ ' '
-												+ data.obj[i].name
-												+ '</option>');
-						}
-					},
-					error : function() {
-						parent.$.messager.show({
-							title : '提示',
-							msg : '添加班级列表失败！',
-							timeout : 2000,
-							showType : 'slide'
-						});
-					}
-				}); */
 	});
 	
 	function submit() {
@@ -110,7 +82,7 @@
 </script>
 </head>
 <body>
-	<td><input class="easyui-validatebox" id="password" name="password" type="password" maxlength="16" placeholder="请输入密码" data-options="required:true,validType:'length[3,16]'"></td><form id="admin_user_add_form">
+	<form id="admin_user_add_form">
 		<table>
 			<tr>
 				<td>用户名</td>
@@ -118,7 +90,7 @@
 			</tr>
 			<tr>
 				<td>密码</td>
-				
+				<td><input class="easyui-validatebox" id="password" name="password" type="password" maxlength="16" placeholder="请输入密码" data-options="required:true,validType:'length[3,16]'"></td>
 			</tr>
 			<tr>
 				<td>重复密码</td>

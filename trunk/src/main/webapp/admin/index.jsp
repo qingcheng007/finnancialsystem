@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>管理</title>
-<jsp:include page="../inc.jsp"></jsp:include>
+<jsp:include page="/include/easyui.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8">
 	
 </script>

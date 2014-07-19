@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>角色管理</title>
-<jsp:include page="../../inc.jsp"></jsp:include>
+<jsp:include page="/include/easyui.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8">
 	$(function() {
 		$('#admin_role_manage_dataGrid')
