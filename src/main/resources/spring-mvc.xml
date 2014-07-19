@@ -41,9 +41,9 @@
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/" p:suffix=".jsp" />
 	
 	<!-- 对静态资源文件的访问 方案二 （二选一） -->
-	 <mvc:resources mapping="/images/**" location="/images/" cache-period="31556926" /> <mvc:resources mapping="/js/**" location="/js/" cache-period="31556926" /> <mvc:resources mapping="/css/**" location="/css/" 
-		cache-period="31556926" /> 
+	<!-- <mvc:resources mapping="/images/**" location="/images/" cache-period="31556926" /> <mvc:resources mapping="/js/**" location="/js/" cache-period="31556926" /> <mvc:resources mapping="/css/**" location="/css/" 
+		cache-period="31556926" /> -->
 	<!-- 文件上传配置 -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> <property name="defaultEncoding"> <value>UTF-8</value> </property> <property name="maxUploadSize"> 
-		<value>32505856</value> </property> <property name="maxInMemorySize"> <value>4096</value> </property> </bean> 
+	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> <property name="defaultEncoding"> <value>UTF-8</value> </property> <property name="maxUploadSize"> 
+		<value>32505856</value> </property> <property name="maxInMemorySize"> <value>4096</value> </property> </bean> -->
 </beans>
