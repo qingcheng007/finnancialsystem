@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
-<jsp:include page="../../inc.jsp"></jsp:include>
+<jsp:include page="/include/easyui.jsp"></jsp:include>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/style/css/dialog.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
 	var cls = parent.$.modalDialog.row;
