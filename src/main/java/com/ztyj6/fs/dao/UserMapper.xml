@@ -36,7 +36,7 @@
 		delete from user
 		where Id = #{id,jdbcType=INTEGER}
 
-	</delete>
+	</delete>	
 	<delete id="deleteByRoleIdNotIn">
 		delete from r_user_role
 		where UserId = #{userId} and RoleId not in
@@ -226,6 +226,36 @@
 		Id = #{id}
 	</update>
 
+	<select id="selectByFilter" resultMap="BaseResultMap">
+SELECT
+`user`.Id,
+`user`.UserName,
+`user`.`Password`,
+`user`.RealName,
+`user`.Phone,
+`user`.Email,
+`user`.LastLoginDate,
+`user`.LastLoginIp,
+`user`.CreateIp,
+`user`.CreateDate,
+`user`.IsEnable,
+`user`.ParentId,
+`user`.BalanceId
+FROM
+`user`
+
+		<where>
+			<if test="pageFilter.keyword != null">
+				user.Username like #{pageFilter.keyword,jdbcType=VARCHAR} or user.Realname like #{pageFilter.keyword,jdbcType=VARCHAR}
+			</if>
+			<if test="pageFilter.startTime != null and pageFilter.endTime != null">
+				and Create_Time between
+				#{pageFilter.startTime,jdbcType=TIMESTAMP} and
+				#{pageFilter.endTime,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+	
+	</select>
 	<insert id="insertRole">
 		insert into r_user_role
 		(UserId,RoleId)
