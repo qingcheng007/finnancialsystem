@@ -3,7 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <html>
 <head>
-<title>站点管理</title>
+<title>发票信息管理</title>
 <jsp:include page="../../inc.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8">
 	$(function() {

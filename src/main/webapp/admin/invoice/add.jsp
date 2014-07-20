@@ -1,45 +1,49 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <html>
 <head>
-<jsp:include page="../../inc.jsp"></jsp:include>
+<title>发票信息添加</title>
+<jsp:include page="../../include/easyui.jsp"></jsp:include>
+<script type="text/javascript"src="${pageContext.request.contextPath}/jslib/My97DatePicker4.8b3/My97DatePicker/WdatePicker.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/style/css/dialog.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
 	function submit() {
-		if($('#admin_class_add_form').form('validate')){
+		if ($('#admin_class_add_form').form('validate')) {
 			$('#submit').linkbutton('disable');
 			$.ajax({
-					url : '${pageContext.request.contextPath}/classController/admin/add.do',
-					type : 'POST',
-					data : $('#admin_class_add_form').serializeObject(),
-					dataType : 'json',
-					success : function(data) {
-						if (data.success) {
-							parent.$.modalDialog.DataGrid.datagrid('insertRow',
-									{
-										index : 0,
-										row : data.obj
-									});
-							parent.$.modalDialog.handler.dialog('close');
+						url : '${pageContext.request.contextPath}/invoiceController/add.do',
+						type : 'POST',
+						data : $('#admin_class_add_form').serializeObject(),
+						dataType : 'json',
+						success : function(data) {
+						console.info(data.msg);
+							if (data.success) {
+								parent.$.modalDialog.DataGrid.datagrid(
+										'insertRow', {
+											index : 0,
+											row : data.obj
+										});
+								parent.$.modalDialog.handler.dialog('close');
+							}
+							parent.$.messager.show({
+								title : '提示',
+								msg : data.msg,
+								timeout : 2000,
+								showType : 'slide'
+							});
+							$('#submit').linkbutton('enable');
+						},
+						error : function() {
+							parent.$.messager.show({
+								title : '提示',
+								msg : '添加失败！',
+								timeout : 2000,
+								showType : 'slide'
+							});
+							$('#submit').linkbutton('enable');
 						}
-						parent.$.messager.show({
-							title : '提示',
-							msg : data.msg,
-							timeout : 2000,
-							showType : 'slide'
-						});
-						$('#submit').linkbutton('enable');
-					},
-					error : function() {
-						parent.$.messager.show({
-							title : '提示',
-							msg : '添加失败！',
-							timeout : 2000,
-							showType : 'slide'
-						});
-						$('#submit').linkbutton('enable');
-					}
-				});
+					});
 		}
 	}
 	function reset() {
@@ -51,23 +55,94 @@
 	<form id="admin_class_add_form">
 		<table>
 			<tr>
-				<td>年级</td>
-				<td><input class="easyui-validatebox" id="year" name="year" type="text" placeholder="该班级是哪一届" data-options="required:true" /></td>
+				<td>票据类型</td>
+				<td><select id="cc" class="easyui-combobox" name="dept"
+					style="width:200px;" data-options="required:true">
+						<option value="1">卡加油费</option>
+						<option value="2">现金加油费</option>
+						<option value="3">住宿费</option>
+						<option value="4">交通费</option>
+						<option value="5">修理费</option>
+						<option value="6">过停费</option>
+						<option value="7">招待费</option>
+						<option value="8">办公费</option>
+						<option value="9">材料费</option>
+						<option value="10">工具费</option>
+						<option value="11">其他费</option>
+				</select></td>
 			</tr>
 			<tr>
-				<td>学院</td>
-				<td><input class="easyui-validatebox" id="college" name="college" type="text" placeholder="请输入所属学院" data-options="required:true" /></td>
+				<td>录入时间</td>
+				<td><input class="easyui-validatebox" name='a'
+					value="${csrqstart}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+					readonly="readonly" data-options="required:true"/></td>
 			</tr>
 			<tr>
-				<td>专业</td>
-				<td><input class="easyui-validatebox" id="specialty" name="specialty" type="text" placeholder="请输入专业" data-options="required:true" /></td>
+				<td>票据发生日期</td>
+				<td><input class="easyui-validatebox" name='a'
+					value="${csrqstart}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+					readonly="readonly" data-options="required:true"/></td>
 			</tr>
 			<tr>
-				<td>名称</td>
-				<td><input class="easyui-validatebox" id="name" name="name" type="text" placeholder="请输入班级名称" data-options="required:true" /></td>
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
+					data-options="required:true" /></td>
 			</tr>
 			<tr>
-				<td colspan='2' style="text-align: center;"><a href="#" class="easyui-linkbutton" onclick="reset()">重置</a> <a id="submit" href="#" class="easyui-linkbutton" onclick="submit()">提交</a></td>
+				<td>金额</td>
+				<td><input class="easyui-validatebox" id="name" name="name"
+					type="text" placeholder="请输入班级名称" data-options="required:true" /></td>
+			</tr>
+			<tr>
+				<td>费用说明</td>
+				<td><input class="easyui-validatebox" id="name" name="name"
+					type="text" placeholder="请输入班级名称" data-options="required:true" /></td>
+			</tr>
+			<tr>
+				<td>票据类型</td>
+				<td><input class="easyui-validatebox" id="name" name="name"
+					type="text" placeholder="请输入班级名称" data-options="required:true" /></td>
+			</tr>
+			<tr>
+				<td>所属工程</td>
+				<td><input class="easyui-validatebox" id="name" name="name"
+					type="text" placeholder="请输入班级名称" data-options="required:true" /></td>
+			</tr>
+			<tr>
+				<td>经办人</td>
+				<td><input class="easyui-validatebox" id="name" name="name"
+					type="text" placeholder="请输入班级名称" data-options="required:true" /></td>
+			</tr>
+			<tr>
+				<td>证明人</td>
+				<td><input class="easyui-validatebox" id="name" name="name"
+					type="text" placeholder="请输入班级名称" data-options="required:true" /></td>
+			</tr>
+			<tr>
+				<td>审核人</td>
+				<td><input class="easyui-validatebox" id="name" name="name"
+					type="text" placeholder="请输入班级名称" data-options="required:true" /></td>
+			</tr>
+			<tr>
+				<td>审批人</td>
+				<td><input class="easyui-validatebox" id="name" name="name"
+					type="text" placeholder="请输入班级名称" data-options="required:true" /></td>
+			</tr>
+			<tr>
+				<td>清单附照片</td>
+				<td><input class="easyui-validatebox" id="name" name="name"
+					type="text" placeholder="请输入班级名称" data-options="required:true" /></td>
+			</tr>
+			<tr>
+				<td>备注</td>
+				<td><input class="easyui-validatebox" id="name" name="name"
+					type="text" placeholder="请输入班级名称" data-options="required:true" /></td>
+			</tr>
+			<tr>
+				<td colspan='2' style="text-align: center;"><a href="#"
+					class="easyui-linkbutton" onclick="reset()">重置</a> <a id="submit"
+					href="#" class="easyui-linkbutton" onclick="submit()">提交</a></td>
 			</tr>
 		</table>
 	</form>
