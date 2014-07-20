@@ -9,7 +9,7 @@
 		if($('#admin_role_add_form').form('validate')){
 			$('#submit').linkbutton('disable');
 			$.ajax({
-					url : '${pageContext.request.contextPath}/roleController/admin/add.do',
+					url : '${pageContext.request.contextPath}/roleController/admin/addRole.do',
 					type : 'POST',
 					data : $('#admin_role_add_form').serializeObject(),
 					dataType : 'json',

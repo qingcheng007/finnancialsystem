@@ -47,7 +47,8 @@ public class RoleController extends BaseController {
 
 	@RequestMapping("/admin/grant")
 	@ResponseBody
-	public Json grant(@RequestParam("roleId") Integer roleId, @RequestParam("ids") String ids) {
+	public Json grant(@RequestParam("roleId") Integer roleId,
+			@RequestParam("ids") String ids) {
 		Json j = new Json();
 		try {
 			roleService.grant(roleId, ids);
@@ -63,8 +64,10 @@ public class RoleController extends BaseController {
 	@RequestMapping("/admin/addRole")
 	public Json add(Role role, HttpSession session) {
 		Json j = new Json();
-		SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
-		role.setCreateUserId(((User) (ctx.getAuthentication().getPrincipal())).getId());
+		SecurityContext ctx = (SecurityContext) session
+				.getAttribute("SPRING_SECURITY_CONTEXT");
+		role.setCreateUserId(((User) (ctx.getAuthentication().getPrincipal()))
+				.getId());
 		try {
 			roleService.save(role);
 			j.setSuccess(true);
@@ -75,7 +78,7 @@ public class RoleController extends BaseController {
 		}
 		return j;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/admin/delete")
 	public Json delete(String ids) {
@@ -84,43 +87,43 @@ public class RoleController extends BaseController {
 			roleService.delete(ids);
 			j.setSuccess(true);
 			j.setMsg("删除成功！");
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			j.setMsg("删除失败！");
 		}
 		return j;
-	} 
-	
+	}
+
 	@ResponseBody
 	@RequestMapping("/admin/edit")
 	public Json edit(Role role, HttpSession session) {
 		Json j = new Json();
-		SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
-		role.setModifyUserId(((User) (ctx.getAuthentication().getPrincipal())).getId());
+		SecurityContext ctx = (SecurityContext) session
+				.getAttribute("SPRING_SECURITY_CONTEXT");
+		role.setModifyUserId(((User) (ctx.getAuthentication().getPrincipal()))
+				.getId());
 		try {
 			roleService.update(role);
 			j.setSuccess(true);
 			j.setObj(role);
 			j.setMsg("编辑成功！");
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			j.setMsg("编辑失败！");
 		}
 		return j;
-	} 
-	
+	}
+
 	@RequestMapping("/admin/getAllRoleTree")
 	@ResponseBody
 	public List<Tree> getAllRoleTree() {
 		return roleService.getAllRoleTree();
 	}
-	
-	@RequestMapping(value="/admin/getByUserId",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/admin/getByUserId", method = RequestMethod.GET)
 	@ResponseBody
-	public Json getByUserId(@RequestParam("userId")Integer userId) {
+	public Json getByUserId(@RequestParam("userId") Integer userId) {
 		Json j = new Json();
 		try {
-			List<Role> role =  roleService.getByUserId(userId);
+			List<Role> role = roleService.getByUserId(userId);
 			j.setSuccess(true);
 			j.setObj(role);
 		} catch (Exception e) {
