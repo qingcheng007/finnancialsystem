@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>发票信息修改</title>
-<jsp:include page="../../inc.jsp"></jsp:include>
+<jsp:include page="../../include/easyui.jsp"></jsp:include>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/style/css/dialog.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
 	var cls = parent.$.modalDialog.row;
