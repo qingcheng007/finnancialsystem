@@ -17,7 +17,6 @@
 			dataType : 'json',
 			success : function(data) {   
 				if (data.success) {
-				alert("登录成功");
 				window.location.href = data.obj;
 				}
 
