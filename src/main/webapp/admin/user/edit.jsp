@@ -7,92 +7,65 @@
 <script type="text/javascript" charset="utf-8">
 	var user = parent.$.modalDialog.row;
 	$(function() {
-		$('#class').combobox({
-		    url:'${pageContext.request.contextPath}/classController/admin/getAll.do',
-		    valueField:'id',
-		    textField:'name',
-		    mode:'remote',
-		    method:'get', 
-		    panelHeight:'auto',
-		    editable:false,
-		    formatter: function(row){
-	            row.name = row.college
-				+ ' '
-				+ row.year
-				+ ' '
-				+ row.specialty
-				+ ' '
-				+ row.name;
-	    		return row.name;
-			},
-			onSelect:function(row){
-				$(this).combobox('textbox').tooltip({
-					position:'top',
-				    content: '<span style="color:#fff">'+row.name+'</span>',
-				    onShow: function(){
-				        $(this).tooltip('tip').css({
-				            backgroundColor: '#666',
-				            borderColor: '#666'
-				        });
-				    }
-				});
-			},
-			onLoadSuccess:function(){
-				if(user.classId>0)
-		    		$('#class').combobox('select', user.classId);
-		    }
-		});
-		
-		$('#id').attr('value', user.id);
+
+	    $('#id').attr('value', user.id);
 		$('#password').attr('value', user.password);
 		$('#username').attr('value', user.username);
 		$('#realname').attr('value', user.realname);
 		$('#phone').attr('value', user.phone);
 		$('#email').attr('value', user.email);
+		$('#parentId').attr('value', user.parentId);
+		$('#balanceId').attr('value', user.balanceId);
 	});
 
 	function submit() {
-		if($('#admin_user_add_form').form('validate')){
+		if ($('#admin_user_add_form').form('validate')) {
 			$('#submit').linkbutton('disable');
-			$.ajax({
-					url : '${pageContext.request.contextPath}/userController/admin/edit.do',
-					type : 'POST',
-					data : $('#admin_user_edit_form').serializeObject(),
-					dataType : 'json',
-					success : function(data) {
-						if (data.success) {
-							parent.$.modalDialog.DataGrid.datagrid('updateRow',
-									{
-										index : parent.$.modalDialog.DataGrid
-												.datagrid('getRowIndex', user),
-										row : {
-											realname : data.obj.realname,
-											phone : data.obj.phone,
-											email : data.obj.email,
-											classId : data.obj.classId,
-										}
-									});
-							parent.$.modalDialog.handler.dialog('close');
-							parent.$('#admin_user_addUser_form').form('clear');
+			$
+					.ajax({
+						url : '${pageContext.request.contextPath}/userController/admin/edit.do',
+						type : 'POST',
+						data : $('#admin_user_edit_form').serializeObject(),
+						dataType : 'json',
+						success : function(data) {
+							if (data.success) {
+								parent.$.modalDialog.DataGrid
+										.datagrid(
+												'updateRow',
+												{
+													index : parent.$.modalDialog.DataGrid
+															.datagrid(
+																	'getRowIndex',
+																	user),
+													row : {
+														realname : data.obj.realname,
+														phone : data.obj.phone,
+														email : data.obj.email,
+														classId : data.obj.classId,
+													}
+												});
+								parent.$.modalDialog.handler.dialog('close');
+								parent.$('#admin_user_addUser_form').form(
+										'clear');
+							}
+							parent.$.messager.show({
+								title : '提示',
+								msg : data.msg,
+								timeout : 2000,
+								showType : 'slide'
+							});
+							$('#submit').linkbutton('enable');
+						},
+						error : function() {
+							parent.$.messager.show({
+								title : '提示',
+								msg : '添加失败！',
+								timeout : 2000,
+								showType : 'slide'
+							});
+							$('#submit').linkbutton('enable');
 						}
-						parent.$.messager.show({
-							title : '提示',
-							msg : data.msg,
-							timeout : 2000,
-							showType : 'slide'
-						});
-						$('#submit').linkbutton('enable');
-					},
-					error : function() {
-						parent.$.messager.show({
-							title : '提示',
-							msg : '添加失败！',
-							timeout : 2000,
-							showType : 'slide'
-						});
-						$('#submit').linkbutton('enable');
-					}
-				});
+					});
 		}
 	}
 	function closeDialog() {
@@ -126,11 +99,15 @@
 				<td>Email</td>
 				<td><input class="easyui-validatebox" id="email" name="email" type="text" placeholder="请输入电子邮箱（选填）" data-options="validType:'email'" /></td>
 			</tr>
+				<tr>
+				<td>上级ID</td>
+				<td><input class="easyui-validatebox" id="parentId" name="parentId" type="text" placeholder="请输上级ID" /></td>
+			</tr>
 			<tr>
-				<td>所属班级（选填）</td>
-				<td><select id="class" name="classId" class="easyui-combobox" data-options="required:true" style="width:150px;">
-				</select></td>
-			<tr>
+				<td>余額ID</td>
+				<td><input class="easyui-validatebox" id="balanceId" name="balanceId" type="text" placeholder="请输余額ID" /></td>
+			</tr>
+			
 				<td colspan='2' style="text-align: center;"><a id="submit" href="#" class="easyui-linkbutton" onclick="reset()">重置</a> <a href="#" class="easyui-linkbutton" onclick="submit()">保存修改</a></td>
 			</tr>
 		</table>

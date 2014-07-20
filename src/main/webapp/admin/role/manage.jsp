@@ -51,13 +51,13 @@
 										align : 'center'
 									},
 									{
-										field : 'createTime',
+										field : 'createDate',
 										title : '创建时间',
 										width : 150,
 										align : 'center',
 									},
 									{
-										field : 'modifyTime',
+										field : 'modifyDate',
 										title : '修改时间',
 										width : 150,
 										align : 'center',
@@ -116,7 +116,7 @@
 									for ( var i = 0; i < rows.length; i++)
 										ids.push(rows[i].id);
 									$.ajax({
-												url : '${pageContext.request.contextPath}/roleController/admin/deleteRole.do',
+												url : '${pageContext.request.contextPath}/roleController/admin/delete.do',
 												type : 'POST',
 												data : {
 													ids : ids.join(',')

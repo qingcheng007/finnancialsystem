@@ -39,7 +39,8 @@ public class RoleServiceImpl implements IRoleService {
 	}
 
 	@Autowired
-	public void setMySecurityMetadataSource(MySecurityMetadataSource mySecurityMetadataSource) {
+	public void setMySecurityMetadataSource(
+			MySecurityMetadataSource mySecurityMetadataSource) {
 		this.mySecurityMetadataSource = mySecurityMetadataSource;
 	}
 
@@ -129,7 +130,8 @@ public class RoleServiceImpl implements IRoleService {
 				Tree tree = new Tree();
 				tree.setId(role.getId());
 				StringBuilder sb = new StringBuilder();
-				sb.append(role.getName()).append(" ").append(role.getDescription());
+				sb.append(role.getName()).append(" ")
+						.append(role.getDescription());
 				tree.setText(sb.toString());
 				tree.setState("open");
 				trees.add(tree);

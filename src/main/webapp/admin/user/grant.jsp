@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
-<jsp:include page="/include/easyui.jsps"></jsp:include>
+<jsp:include page="/include/easyui.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8">
 	var id = parent.$.modalDialog.id;
 	$(function() {
