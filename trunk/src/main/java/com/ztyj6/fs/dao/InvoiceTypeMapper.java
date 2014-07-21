@@ -1,5 +1,7 @@
 package com.ztyj6.fs.dao;
 
+import java.util.List;
+
 import com.ztyj6.fs.model.InvoiceType;
 
 public interface InvoiceTypeMapper {
@@ -14,5 +16,7 @@ public interface InvoiceTypeMapper {
     int updateByPrimaryKeySelective(InvoiceType record);
 
     int updateByPrimaryKey(InvoiceType record);
+    
+    List<InvoiceType> getInvoiceType();
     
 }

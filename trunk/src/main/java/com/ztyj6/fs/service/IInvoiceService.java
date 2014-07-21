@@ -33,4 +33,7 @@ public interface IInvoiceService extends IBaseService<Invoice> {
 	
 	int updateAuditState(Invoice invoice,int passOne);
 	
+	//test
+	List<InvoiceType> getInvoiceTypeAll();
+	
 }
