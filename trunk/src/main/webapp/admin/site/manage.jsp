@@ -137,7 +137,7 @@
 					for(var i=0; i<rows.length; i++)
 						ids.push(rows[i].id);
 					$.ajax({ 
-						url: '${pageContext.request.contextPath}/siteController/admin/deleteBatch.do', 
+						url: '${pageContext.request.contextPath}/siteController/admin/delete.do', 
 						type: 'POST',
 						data: {
 							ids: ids.join(',')

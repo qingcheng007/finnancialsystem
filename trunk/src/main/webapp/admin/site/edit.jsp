@@ -19,7 +19,7 @@
 		if($('#admin_site_edit_form').form('validate')){
 			$('#submit').linkbutton('disable');
 			$.ajax({
-					url : '${pageContext.request.contextPath}/siteController/admin/update.do',
+					url : '${pageContext.request.contextPath}/siteController/admin/edit.do',
 					type : 'POST',
 					data : $('#admin_site_edit_form').serializeObject(),
 					dataType : 'json',
@@ -31,20 +31,20 @@
 												.datagrid('getRowIndex', cls),
 										row : data.obj
 									});
+							parent.$.messager.show({
+								title : '提示',
+								msg : data.msg,
+								timeout : 2000,
+								showType : 'slide'
+							});
 							parent.$.modalDialog.handler.dialog('close');
 						}
-						parent.$.messager.show({
-							title : '提示',
-							msg : data.msg,
-							timeout : 2000,
-							showType : 'slide'
-						});
 						$('#submit').linkbutton('enable');
 					},
 					error : function() {
 						parent.$.messager.show({
 							title : '提示',
-							msg : '添加失败！',
+							msg : '更新失败！',
 							timeout : 2000,
 							showType : 'slide'
 						});
