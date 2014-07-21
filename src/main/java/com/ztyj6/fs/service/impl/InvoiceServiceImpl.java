@@ -229,4 +229,9 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		return (long) invoiceMapper.selectInvoiceCount();
 	}
 
+	@Override
+	public List<InvoiceType> getInvoiceTypeAll() {
+		return invoiceTypeMapper.getInvoiceType();
+	}
+
 }

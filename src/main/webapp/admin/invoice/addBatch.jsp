@@ -7,8 +7,8 @@
 <head>
 <jsp:include page="../../include/easyui.jsp"></jsp:include>
 <link rel="stylesheet" href="../../style/css/dialog.css" type="text/css">
-<script type="text/javascript" src="../jslib/uploadify/jquery.uploadify.min.js"></script>
-<link rel="stylesheet" href="../../jslib/uploadify/uploadify.css" type="text/css">
+<script type="text/javascript" src="../../jslib/jquery.uploadify/jquery.uploadify.v2.1.4.min.js"></script>
+<link rel="stylesheet" href="../../jslib/jquery.uploadify/uploadify.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
 $(function() {
 	$('#class').combobox({
@@ -47,7 +47,7 @@ $(function() {
 					text : '数据加载中....'
 				});
 				$.ajax({
-					url : '${pageContext.request.contextPath}/studentController/admin/addBatch.do',
+					url : '${pageContext.request.contextPath}/FileController/admin/addBatch.do',
 					type : 'POST',
 					data :  {
 						classId : $('#class').combobox('getValue'),
@@ -103,3 +103,4 @@ $(function() {
 	</div>
 </body>
 </html>
+

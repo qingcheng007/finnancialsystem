@@ -10,7 +10,19 @@
 <link rel="stylesheet" href="../../style/css/dialog.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
 
-
+$(function() {
+	$('#subject')
+			.combobox(
+					{
+						url : '${pageContext.request.contextPath}/invoiceController/getAllTest.do',
+						valueField : 'id',
+						textField : 'name',
+						mode : 'remote',
+						method : 'get',
+						panelHeight : 'auto',
+						editable : false
+					});
+});
 	function submit() {
 		if ($('#invoice_add_form').form('validate')) {
 			$('#submit').linkbutton('disable');
@@ -193,7 +205,9 @@
 	<form id="invoice_add_form">
 
 		<table>
-		
+		<tr><td>测试用的</td><td><select id="subject" class="easyui-combobox" data-options="required:true" style="width:150px;">
+				</select></td></tr>
+			<tr>
 				<td>票据类型</td>
 				<td><select onchange="switchHide(this.value)" id="invoiceTypeId" name="invoiceTypeId"
 					style="width:166px;">

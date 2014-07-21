@@ -2,6 +2,8 @@ package test.invoce;
 
 import java.util.List;
 
+import javax.lang.model.element.Element;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,6 +103,20 @@ public class testInvoice {
 	public void TestCount(){
 		System.out.println(iInvoiceService.count());
 	}
+	/*
+	 * 测试发票类型
+	 * 
+	 * */
+	@Test 
+	public void testInvoiceType(){
+		List<InvoiceType> invoiceType = iInvoiceService.getInvoiceTypeAll();
+		for(InvoiceType invoicetest:invoiceType)
+		{
+			System.out.println(invoicetest.getId()+"--------"+invoicetest.getName());
+		}
+		
+	}
+	
 
 
 }

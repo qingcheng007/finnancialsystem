@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ztyj6.fs.model.Invoice;
+import com.ztyj6.fs.model.InvoiceType;
 import com.ztyj6.fs.model.Post;
 import com.ztyj6.fs.model.Site;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.Json;
 import com.ztyj6.fs.model.page.PageFilter;
 import com.ztyj6.fs.service.IInvoiceService;
+
+
 
 
 
@@ -50,10 +53,26 @@ public class InvoiceController extends BaseController{
     
     	return json;
     }
+    @ResponseBody
+    @RequestMapping("/getAllTest")
+    public List getAllTest(HttpSession session){
+    	List<InvoiceType> invoiceType;
+    	
+		try {
+			invoiceType = iInvoiceService.getInvoiceTypeAll();
+		} catch (Exception e) {
+			return null;
+		}
+		return invoiceType;
+	}
+
+    
+    
 	@ResponseBody
 	@RequestMapping("/add")
 	public Json add(Invoice invoice, HttpSession session) {
 		Json json = new Json();
+		System.out.println(invoice.getInvoiceType()+"----------------------");
 		String msg = "";
 		try {
 			iInvoiceService.saveInvoiceAllSelective(invoice);
@@ -102,6 +121,7 @@ public class InvoiceController extends BaseController{
 	@RequestMapping("/edit")
 	public Json edit(Invoice invoice) {
 		Json json = new Json();
+		
 		String msg = "";
 		try {
 			iInvoiceService.update(invoice);
