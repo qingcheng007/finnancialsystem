@@ -5,12 +5,14 @@
 <head>
 <title>发票信息添加</title>
 <jsp:include page="../../include/easyui.jsp"></jsp:include>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/jslib/My97DatePicker4.8b3/My97DatePicker/WdatePicker.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/style/css/dialog.css"
-	type="text/css">
+<script type="text/javascript" charset="utf-8" src="../../jslib/kindeditor-4.1.10/kindeditor.js"></script>
+<script type="text/javascript" src="../../jslib/My97DatePicker4.8b3/My97DatePicker/WdatePicker.js"></script>
+<link rel="stylesheet" href="../../style/css/dialog.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
+
+ KE.show({
+        id : 'content_1' //TEXTAREA输入框的ID
+    });
 	function submit() {
 		if ($('#invoice_add_form').form('validate')) {
 			$('#submit').linkbutton('disable');
@@ -452,7 +454,9 @@
 				<td>清单附照片</td>
 				<td><input class="easyui-validatebox" id="photoUrl"
 					name="photoUrl" type="text" placeholder="清单附照片"
-					data-options="required:true" style="width:160px;" /></td>
+					data-options="required:true" style="width:160px;" />
+					<textarea id="content_1" name="content" style="width:700px;height:300px;"></textarea>
+					</td>
 			</tr>
 			<tr>
 				<td>备注</td>

@@ -5,8 +5,8 @@
 <head>
 <title>发票信息添加</title>
 <jsp:include page="../../include/easyui.jsp"></jsp:include>
-<script type="text/javascript"src="${pageContext.request.contextPath}/jslib/My97DatePicker4.8b3/My97DatePicker/WdatePicker.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/style/css/dialog.css" type="text/css">
+<script type="text/javascript"src="../../jslib/My97DatePicker4.8b3/My97DatePicker/WdatePicker.js"></script>
+<link rel="stylesheet" href="../../style/css/dialog.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
 	function submit() {
 		if ($('#admin_class_add_form').form('validate')) {
