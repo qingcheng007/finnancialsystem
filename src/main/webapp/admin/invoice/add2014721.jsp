@@ -182,6 +182,63 @@
 		invoice.auditor2Id = $('#auditor2Id').combobox('getValue');
 		invoice.remark = $('#remark').val();
 		//invoice.dearerId = $('#dearerId').val();
+		var knowledge = new Object();
+		knowledge.id = $('#knowledge').combobox('getValue');
+		knowledge.content = $('#knowledge').combobox('getText');
+		invoice.knowledge = knowledge;
+
+		var invoiceType = new Object();
+		invoiceType.id = $('#type').combobox('getValue');
+		invoiceType.name = $('#type').combobox('getText');
+		invoice.invoiceType = invoiceType;
+
+		switch (parseInt($('#type').combobox('getValue'))) {
+		case 1:
+			var invoiceOptions = new Array();
+			$('#choice_option_input input').each(function() {
+				var invoiceOption = new Object();
+				invoiceOption.content = $(this).val();
+				invoiceOptions.push(invoiceOption);
+			});
+			invoice.invoiceOptions = invoiceOptions;
+
+			var answers1 = new Array();
+			var answer1 = new Object();
+			answer1.content = $('#choice_answer_input input').val();
+			answers1.push(answer1);
+			invoice.answers = answers1;
+			break;
+		case 2:
+			var answers2 = new Array();
+			var i = 0;
+			$('#fill_answer_input input').each(function() {
+				var answer = new Object();
+				answer.content = $(this).val();
+				answer.sequence = ++i;
+				answers2.push(answer);
+			});
+			invoice.answers = answers2;
+			invoice.answerQuantity = i;
+			break;
+		case 3:
+			var answers3 = new Array();
+			var answer3 = new Object();
+			if ($('#decide_right_answer:checked').val() != null)
+				answer3.content = '1';
+			else
+				answer3.content = '0';
+			answers3.push(answer3);
+			invoice.answers = answers3;
+			break;
+		default:
+			break;
+		}
+		invoice.categoryId = $('#category').combobox('getValue');
+		if ($('#difficulty').val() == '')
+			invoice.difficulty = 60;
+		else
+			invoice.difficulty = $('#difficulty').val();
+
 		return JSON.stringify(invoice);
 	}
 	//如果初始要显示第一个tr, 请在这里要加上：switchHide(1);
