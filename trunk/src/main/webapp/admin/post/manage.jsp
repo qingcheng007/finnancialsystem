@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <html>
 <head>
-<title>作业管理</title>
-<jsp:include page="../../inc.jsp"></jsp:include>
+<title>职务管理</title>
+<jsp:include page="/include/easyui.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8">
-	$(function() {
-		$('#admin_homework_manage_dataGrid')
+	$(function(){
+		$('#admin_post_manage_dataGrid')
 		.datagrid(
 				{
-					url : '${pageContext.request.contextPath}/homeworkController/admin/getByPage.do',
+					url : '${pageContext.request.contextPath}/postController/admin/getByPage.do',
 					fit : true,
 					autoRowHeight : false,
 					striped : true,
@@ -32,65 +34,40 @@
 					} ] ], 
 					columns : [ [ 
 					{
-						field : 'title',
-						title : '标题',
-						width : 170,
-						align : 'center'
-					}, {
-						field : 'content',
-						title : '内容',
+						field : 'id',
+						title : '职务编号',
 						width : 260,
-						align : 'center'
-					}, {
-						field : 'deadline',
-						title : '截止日期',
-						width : 200,
 						align : 'center',
 						sortable : true
 					},{
-						field : 'hasAttachment',
-						title : '上传附件',
-						width : 90,
-						align : 'center'
-					},{
-						field : 'description',
-						title : '备注',
-						width : 200,
-						align : 'center'
-					} ,{
-						field : 'class',
-						title : '关联班级',
-						width : 100,
+						field : 'name',
+						title : '职务名称',
+						width : 260,
 						align : 'center'
 					}] ],
-					toolbar : '#admin_homework_manage_toolbar'
+					toolbar : '#admin_post_manage_toolbar'
 				});
 	});
 	
 	function add() {
 		parent.$.modalDialog({
-			title : '添加作业',
+			title : '添加职务',
 			width : 520,
 			height : 370,
-			url:'${pageContext.request.contextPath}/admin/homework/add.jsp'
+			url:'${pageContext.request.contextPath}/admin/post/add.jsp'
 		});
-		parent.$.modalDialog.DataGrid = $('#admin_homework_manage_dataGrid');
+		parent.$.modalDialog.DataGrid = $('#admin_post_manage_dataGrid');
 	}
-	
-	function addStudent(){
-		
-	}
-	
 	function edit() {
-		var rows = $('#admin_homework_manage_dataGrid').datagrid('getChecked');
+		var rows = $('#admin_post_manage_dataGrid').datagrid('getChecked');
 		if (rows.length == 1) {
 			parent.$.modalDialog({
-				title : '编辑班级',
+				title : '编辑职务',
 				width : 380,
 				height : 260,
-				url : '${pageContext.request.contextPath}/admin/homework/edit.jsp'
+				url : '${pageContext.request.contextPath}/admin/post/edit.jsp'
 			});
-			parent.$.modalDialog.DataGrid = $('#admin_homework_manage_dataGrid');
+			parent.$.modalDialog.DataGrid = $('#admin_post_manage_dataGrid');
 			parent.$.modalDialog.row = rows[0];
 		} else {
 			if (rows.length == 0) {
@@ -112,7 +89,7 @@
 	}
 	
 	function deleteBatch(){
-		var rows = $('#admin_homework_manage_dataGrid').datagrid('getChecked');
+		var rows = $('#admin_post_manage_dataGrid').datagrid('getChecked');
 		if(rows.length > 0){
 			parent.$.messager.confirm('询问', '您确定要删除此记录？', function(r) {
 				if (r) {
@@ -120,7 +97,7 @@
 					for(var i=0; i<rows.length; i++)
 						ids.push(rows[i].id);
 					$.ajax({ 
-						url: '${pageContext.request.contextPath}/homeworkController/admin/delete.do', 
+						url: '${pageContext.request.contextPath}/postController/admin/delete.do', 
 						type: 'POST',
 						data: {
 							ids: ids.join(',')
@@ -133,7 +110,7 @@
 						           timeout:2000,
 						           showType:'slide'
 						    });
-							$('#admin_homework_manage_dataGrid').datagrid('load');
+							$('#admin_post_manage_dataGrid').datagrid('load');
 				      	},
 				      	error: function(){
 							parent.$.messager.show({
@@ -157,25 +134,25 @@
 	}
 	
 	function refresh() {
-		$('#admin_homework_manage_dataGrid').datagrid('reload');
+		$('#admin_post_manage_dataGrid').datagrid('reload');
 	}
 </script>
 
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit : true,border : false">
-		<div id="admin_homework_manage_toolbar">
+		<div id="admin_post_manage_toolbar">
 			<table>
 				<tr>
-					<sec:authorize url="/homeworkController/admin/add.do">
+					<sec:authorize url="/postController/admin/add.do">
 					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="add();">添加</a></td>
 					<td><div class="datagrid-btn-separator"></div></td>
 					</sec:authorize>
-					<sec:authorize url="/homeworkController/admin/edit.do">
+					<sec:authorize url="/postController/admin/edit.do">
 					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="edit();">编辑</a></td>
 					<td><div class="datagrid-btn-separator"></div></td>
 					</sec:authorize>
-					<sec:authorize url="/homeworkController/admin/delete.do">
+					<sec:authorize url="/postController/admin/delete.do">
 					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="deleteBatch();">批量删除</a></td>
 					<td><div class="datagrid-btn-separator"></div></td>
 					</sec:authorize>
@@ -184,10 +161,8 @@
 			</table>
 		</div>
 		<div data-options="region:'center',border:false">
-			<table id="admin_homework_manage_dataGrid"></table>
+			<table id="admin_post_manage_dataGrid"></table>
 		</div>
 	</div>
 </body>
-</html>
-
 </html>

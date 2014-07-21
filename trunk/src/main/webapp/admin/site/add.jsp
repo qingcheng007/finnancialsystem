@@ -3,7 +3,6 @@
 <html>
 <head>
 <jsp:include page="/include/easyui.jsp"></jsp:include>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/style/css/dialog.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
 	function submit() {
 		if($('#admin_site_add_form').form('validate')){
