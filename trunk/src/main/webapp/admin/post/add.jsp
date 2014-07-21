@@ -55,7 +55,7 @@
 		<table>
 			<tr>
 				<td>职务名称</td>
-				<td><input class="easyui-validatebox" id="address" name="address" type="text" placeholder="请输入职务名称" data-options="required:true" /></td>
+				<td><input class="easyui-validatebox" id="name" name="name" type="text" placeholder="请输入职务名称" data-options="required:true" /></td>
 			</tr>
 			<tr>
 				<td colspan='2' style="text-align: center;"><a href="#" class="easyui-linkbutton" onclick="reset()">重置</a> <a id="submit" href="#" class="easyui-linkbutton" onclick="submit()">提交</a></td>

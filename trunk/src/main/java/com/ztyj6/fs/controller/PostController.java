@@ -30,7 +30,7 @@ public class PostController extends BaseController {
 	@ResponseBody
 	@RequestMapping("/admin/add")
 	public Json add(Post post, HttpSession session) {
-		Json json = new Json();
+	    Json json = new Json();
 		String msg = "";
 		try {
 			postService.save(post);
@@ -85,6 +85,7 @@ public class PostController extends BaseController {
 			msg = "更新成功";
 			json.setSuccess(true);
 			json.setMsg(msg);
+			json.setObj(post);
 		} catch (Exception e) {
 			msg = "更新失败";
 			json.setSuccess(false);
