@@ -30,14 +30,14 @@
 												.datagrid('getRowIndex', cls),
 										row : data.obj
 									});
+							parent.$.messager.show({
+								title : '提示',
+								msg : data.msg,
+								timeout : 2000,
+								showType : 'slide'
+							});
 							parent.$.modalDialog.handler.dialog('close');
 						}
-						parent.$.messager.show({
-							title : '提示',
-							msg : data.msg,
-							timeout : 2000,
-							showType : 'slide'
-						});
 						$('#submit').linkbutton('enable');
 					},
 					error : function() {

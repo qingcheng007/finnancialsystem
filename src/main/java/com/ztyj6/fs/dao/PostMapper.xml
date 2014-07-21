@@ -31,7 +31,7 @@
 
 	<delete id="deleteBatch" parameterType="java.util.List">
 		delete from post where Id in
-		<foreach collection="ids" item="id" open="(" separator=","
+		<foreach collection="list" item="id" open="(" separator=","
 			close=")">
 			#{id}
 		</foreach>
