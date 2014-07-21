@@ -89,6 +89,7 @@ public class SiteController extends BaseController {
 			siteService.update(site);
 			msg = "更新成功";
 			json.setSuccess(true);
+			json.setObj(site);
 			json.setMsg(msg);
 		} catch (Exception e) {
 			msg = "更新失败";
