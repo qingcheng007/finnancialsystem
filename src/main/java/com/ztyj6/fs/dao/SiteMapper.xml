@@ -212,7 +212,7 @@
 			<result property="name" column="postName" />
 		</collection>
 	</resultMap>
-	<select id="selectUsers" resultMap="userResultMap">
+	<select id="selectUsersByPage" resultMap="userResultMap">
 		SELECT
 		site.Id,
 		site.`Name`,

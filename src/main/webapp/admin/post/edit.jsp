@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <html>
 <head>
-<jsp:include page="../../inc.jsp"></jsp:include>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/style/css/dialog.css" type="text/css">
+<title>编辑职务</title>
+<jsp:include page="/include/easyui.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8">
 	var cls = parent.$.modalDialog.row;
 	$(function() {
 		$('#id').attr('value', cls.id);
-		$('#college').attr('value', cls.college);
-		$('#year').attr('value', cls.year);
-		$('#specialty').attr('value', cls.specialty);
-		$('#name').attr('value', cls.name);
-	});
+		$('#name').attr('value', cls.college);
+		});
 
 	function submit() {
-		if($('#admin_class_add_form').form('validate')){
+		if($('#admin_post_edit_form').form('validate')){
 			$('#submit').linkbutton('disable');
 			$.ajax({
-					url : '${pageContext.request.contextPath}/classController/admin/edit.do',
+					url : '${pageContext.request.contextPath}/postController/admin/edit.do',
 					type : 'POST',
-					data : $('#admin_class_add_form').serializeObject(),
+					data : $('#admin_post_edit_form').serializeObject(),
 					dataType : 'json',
 					success : function(data) {
 						if (data.success) {
@@ -43,7 +43,7 @@
 					error : function() {
 						parent.$.messager.show({
 							title : '提示',
-							msg : '添加失败！',
+							msg : '修改失败！',
 							timeout : 2000,
 							showType : 'slide'
 						});
@@ -58,26 +58,14 @@
 </script>
 </head>
 <body>
-	<form id="admin_class_add_form">
+	<form id="admin_post_edit_form">
 		<table>
 			<tr>
 				<td><input id="id" name="id" type="hidden"></input></td>
 			</tr>
 			<tr>
-				<td>学院</td>
-				<td><input class="easyui-validatebox" id="college" name="college" type="text" placeholder="请输入所属学院" data-options="required:true" /></td>
-			</tr>
-			<tr>
-				<td>年级</td>
-				<td><input class="easyui-validatebox" id="year" name="year" type="text" placeholder="该班级是哪一届" data-options="required:true" /></td>
-			</tr>
-			<tr>
-				<td>专业</td>
-				<td><input class="easyui-validatebox" id="specialty" name="specialty" type="text" placeholder="请输入专业" data-options="required:true" /></td>
-			</tr>
-			<tr>
-				<td>名称</td>
-				<td><input class="easyui-validatebox" id="name" name="name" type="text" placeholder="请输入班级名称" data-options="required:true" /></td>
+				<td>职务名称</td>
+				<td><input class="easyui-validatebox" id="name" name="name" type="text" placeholder="请输入职务名称" data-options="required:true" /></td>
 			</tr>
 			<tr>
 				<td colspan='2' style="text-align: center;"><a href="#" class="easyui-linkbutton" onclick="closeDialog()">取消</a> <a href="#" class="easyui-linkbutton" onclick="submit()">保存修改</a></td>

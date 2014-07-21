@@ -156,8 +156,8 @@ public class SiteController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/admin/getUserInformationOfOneSite")
-	public DataGrid getUserInformationOfOneSite(PageFilter pageFilter,
+	@RequestMapping("/admin/getUserInformationOfOneSiteByPage")
+	public DataGrid getUserInformationOfOneSiteByPage(PageFilter pageFilter,
 			int siteId) {
 		try {
 			return siteService.getUserInformationOfOneSiteByPage(pageFilter,
