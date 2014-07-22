@@ -31,16 +31,14 @@ public class PostController extends BaseController {
 	@RequestMapping("/admin/add")
 	public Json add(Post post, HttpSession session) {
 	    Json json = new Json();
-		String msg = "";
 		try {
 			postService.save(post);
-			msg = "添加成功";
 			json.setSuccess(true);
 			json.setObj(post);
-			json.setMsg(msg);
+			json.setMsg("添加成功");
 		} catch (Exception e) {
-			msg = "添加失败";
-			json.setMsg(msg);
+			json.setMsg("添加失败");
+			e.printStackTrace();
 		}
 		return json;
 	}
@@ -49,17 +47,13 @@ public class PostController extends BaseController {
 	@RequestMapping("/admin/delete")
 	public Json delete(String ids) {
 		Json json = new Json();
-		String msg = "";
 		try {
 			postService.delete(ids);
-			msg = "删除成功";
 			json.setSuccess(true);
-			json.setMsg(msg);
+			json.setMsg("删除成功");
 		} catch (Exception e) {
 			e.printStackTrace();
-			msg = "删除失败";
-			json.setSuccess(false);
-			json.setMsg(msg);
+			json.setMsg("删除失败");
 		}
 		return json;
 	}
@@ -79,17 +73,13 @@ public class PostController extends BaseController {
 	@RequestMapping("/admin/edit")
 	public Json edit(Post post) {
 		Json json = new Json();
-		String msg = "";
 		try {
 			postService.update(post);
-			msg = "更新成功";
 			json.setSuccess(true);
-			json.setMsg(msg);
+			json.setMsg("更新成功");
 			json.setObj(post);
 		} catch (Exception e) {
-			msg = "更新失败";
-			json.setSuccess(false);
-			json.setMsg(msg);
+			json.setMsg("更新失败");
 			e.printStackTrace();
 		}
 		return json;

@@ -64,7 +64,8 @@
 						width : 100,
 						align : 'center',
 						formatter : function(value, row, index) {
-							var btn = '<a onclick="addStudent(\''+row.id+'\')" href="javascript:void(0)">查看站点详情</a>';
+							var btn = '<a onclick="siteCheck()" href="javascript:void(0)">查看站点详情1</a>';
+							//var btn = '<a onclick="addStudent(\''+row.id+'\')" href="javascript:void(0)">查看站点详情</a>';
 							return btn;
 						} 
 					},{
@@ -83,7 +84,9 @@
 					},
 				});
 	});
-	
+	function siteCheck(){
+		alert("3333");
+	}
 	function add() {
 		parent.$.modalDialog({
 			title : '添加站点',
