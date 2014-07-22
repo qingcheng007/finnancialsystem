@@ -148,14 +148,13 @@
 	}
 	function toJson() {
 		var invoice = new Object();
-
+		var invoiceDetail = new obect();
 		//var question = new Object();
 		//alert('fuck');
 		if ($('#invoiceTypeId').val() != null)
-			invoice.invoiceTypeId = $('#invoiceTypeId').val();
+			invoiceDetail.invoiceTypeId = $('#invoiceTypeId').val();
 
 		invoice.content = $('#content').val();
-		var invoiceDetail = new Object();
 		for ( var i = 1; i <= 3; i++) {
 			var inputName = "content" + invoice.id;
 			var contenti = document.getElementById(inputName + i).value;
@@ -168,6 +167,7 @@
 					invoiceDetail.content3 = contenti;
 			}
 		}
+		
 		invoice.invoiceDetail = invoiceDetail;
 		invoice.createDate = $('#createDate').val();
 		invoice.occurDate = $('#createDate').val();
