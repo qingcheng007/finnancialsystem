@@ -9,7 +9,6 @@
 <jsp:include page="/include/easyui.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8">
 	$(function(){
-		alert(siteId);
 		$('#admin_siteUser_manage_dataGrid')
 		.datagrid(
 				{
@@ -33,56 +32,116 @@
 						field : 'ck',
 						checkbox : true
 					} ] ], 
-					columns : [ [ 
+					columns : [ [ 	             
 					{
-						field : 'siteId',
+						field : 'id',
 						title : '站点编号',
 						width : 260,
 						align : 'center',
 						sortable : true
 					},{
-						field : 'siteName',
-						title : '站点名称',
-						width : 260,
-						align : 'center',
-						sortable : true
-					},{
-						field : 'userId',
+						field : 'userID',
 						title : '用户编号',
 						width : 260,
 						align : 'center',
-						sortable : true
+						sortable : true,
+						formatter : function(value,row,index){
+							var str = '';
+							for(var i=0;i<row.users.length;i++){
+								var temp = i+ 1;
+								str += '<front color="#FF0000"> 编号'
+								+ temp
+								+': </front>'
+								+row.users[i].id
+								+'<br/>';
+							}
+							return str;
+						}
 					},{
 						field : 'userName',
 						title : '用户名',
 						width : 260,
 						align : 'center',
-						sortable : true
+						formatter : function(value,row,index){
+							var str = '';
+							for(var i=0;i<row.users.length;i++){
+								var temp = i+ 1;
+								str += '<front color="#FF0000"> 用户名'
+								+ temp
+								+': </front>'
+								+row.users[i].username
+								+'<br/>';
+							}
+							return str;
+						}
 					},{
 						field : 'realName',
 						title : '真实姓名',
 						width : 260,
-						align : 'center'
+						align : 'center',
+						formatter : function(value,row,index){
+							var str = '';
+							for(var i=0;i<row.users.length;i++){
+								var temp = i+ 1;
+								str += '<front color="#FF0000"> 编号'
+								+ temp
+								+': </front>'
+								+row.users[i].realname
+								+'<br/>';
+							}
+							return str;
+						}
 					},{
 						field : 'phone',
 						title : '联系电话',
 						width : 260,
-						align : 'center'
+						align : 'center',
+						formatter : function(value,row,index){
+							var str = '';
+							for(var i=0;i<row.users.length;i++){
+								var temp = i+ 1;
+								str += '<front color="#FF0000"> 编号'
+								+ temp
+								+': </front>'
+								+row.users[i].phone
+								+'<br/>';
+							}
+							return str;
+						}
 					},{
 						field : 'email',
 						title : '邮箱',
 						width : 260,
-						align : 'center'
-					},{
-						field : 'balanceId',
-						title : '余额账号',
-						width : 260,
-						align : 'center'
+						align : 'center',
+						formatter : function(value,row,index){
+							var str = '';
+							for(var i=0;i<row.users.length;i++){
+								var temp = i+ 1;
+								str += '<front color="#FF0000"> 编号'
+								+ temp
+								+': </front>'
+								+row.users[i].email
+								+'<br/>';
+							}
+							return str;
+						}
 					},{
 						field : 'postName',
 						title : '职务',
 						width : 260,
-						align : 'center'
+						align : 'center',
+						formatter : function(value,row,index){
+							var str = '';
+							for(var i=0;i<row.posts.length;i++){
+								var temp = i+ 1;
+								str += '<front color="#FF0000"> 编号'
+								+ temp
+								+': </front>'
+								+row.posts[i].name
+								+'<br/>';
+							}
+							return str;
+						}
 					}] ],
 					toolbar : '#admin_siteUser_manage_toolbar'
 				});
