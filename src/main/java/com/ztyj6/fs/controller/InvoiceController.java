@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ztyj6.fs.model.AuditState;
 import com.ztyj6.fs.model.Invoice;
 import com.ztyj6.fs.model.InvoiceType;
 import com.ztyj6.fs.model.Post;
@@ -77,7 +78,10 @@ public class InvoiceController extends BaseController{
 		try {
 			SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
 			System.out.println("----------------------------------------------------------------------------");
-			System.out.println("--------"+((Invoice) (ctx.getAuthentication().getPrincipal())).getId());
+			//System.out.println("--------"+((Invoice) (ctx.getAuthentication().getPrincipal())).getId());
+			//System.out.println("-------content:"+invoice.getContent());
+			System.out.println("-------content:"+invoice.getInvoiceDetails().getId()+invoice.getContent());
+			System.out.println("-------content:"+invoice.getDescription());
 			invoice.setId(((Invoice) (ctx.getAuthentication().getPrincipal())).getId());
 			invoice.setInvoicedetailsid(((Invoice) (ctx.getAuthentication().getPrincipal())).getInvoicetypeid());
 			iInvoiceService.save(invoice);
@@ -97,7 +101,14 @@ public class InvoiceController extends BaseController{
 		//SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
 		//System.out.println("------------------"+((Invoice) (ctx.getAuthentication().getPrincipal())).getId());
 		//invoice.setCreateRealname(((Invoice) (ctx.getAuthentication().getPrincipal())).getRealname());
-		System.out.println("------"+invoice.getContent());
+		//System.out.println("------"+invoice.getContent()+invoice.getInvoiceType().getId()+"--date:"+invoice.getCreatedate());
+		//System.out.println("-------content:"+invoice.getPhotourl());
+		AuditState auditState = new AuditState();
+		invoice.setAuditState(auditState);
+		//需要修改
+		invoice.setDearerid(1);
+		invoice.setInvoicedetailsid(invoice.getInvoiceDetails().getId());
+		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
 		
 		String msg = "";
 		try {

@@ -1,5 +1,9 @@
 package test.invoce;
 
+import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 import javax.lang.model.element.Element;
@@ -65,7 +69,7 @@ public class testInvoice {
 		System.out.println(iInvoiceService.selectMaxIDFromInvoiceDetails());
 		
 	}
-	/**
+	/*
 	 * 
 	 * 发票类型插入
 	 * 
@@ -85,7 +89,7 @@ public class testInvoice {
 		//System.out.println(iInvoiceService.insertInvoiceTypeAll(invoiceType));
 
 	}
-	/**
+	/*
 	 * 测试审计状态初始化插入
 	 * 
 	 * 
@@ -116,6 +120,93 @@ public class testInvoice {
 		}
 		
 	}
+	/*
+	 * 发票详细类型插入
+	 * */
+	@Test
+	public void testinvoiceDetails()
+	{
+		Invoice invoice = new Invoice();
+		InvoiceDetails invoiceDetails = new InvoiceDetails();
+		invoiceDetails.setContent1("1");
+		invoiceDetails.setContent2("2");
+		invoiceDetails.setContent3("3");
+		invoice.setInvoiceDetails(invoiceDetails);
+		
+		iInvoiceService.insertInvoiceDetails(invoice.getInvoiceDetails());
+		System.out.println(invoice.getInvoiceDetails().getId());
+	}
+	/*
+	 * 测试发票所有信息插入
+	 * */
+	@Test
+	public void testinvoiceAll()
+	{
+		AuditState auditState =new AuditState();
+		Invoice invoice = new Invoice();
+		InvoiceDetails invoiceDetails = new InvoiceDetails();
+		invoiceDetails.setContent1("1");
+		invoiceDetails.setContent2("2");
+		invoiceDetails.setContent3("3");
+		invoice.setInvoiceDetails(invoiceDetails);
+		invoice.setAuditor1id(1);
+		invoice.setAuditor2id(1);
+		invoice.setContent("1");
+		Date m=new Date();
+		
+		  String ds = "November 1, 2000";
+	      DateFormat df = DateFormat.getDateInstance();
+	     
+	         try {
+				 m = df.parse(ds);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		invoice.setCreatedate(m);
+		invoice.setDearerid(1);
+		invoice.setDescription("1");
+		InvoiceType invoiceType = new InvoiceType();
+		invoiceType.setId(1);
+		invoice.setInvoiceType(invoiceType);
+		System.out.println(invoice.getInvoiceType().getId());
+		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
+		BigDecimal b = new BigDecimal("100.1");
+		invoice.setMoney(b);
+		invoice.setOccurdate(m);
+		invoice.setOperatorid(1);
+		invoice.setPenalty(b);
+		invoice.setPhotourl("11");
+		invoice.setProjectname("121");
+		invoice.setProverid(1);
+		invoice.setRemark("test");
+		invoice.setAuditState(auditState);
+		//iInvoiceService.saveAuditStateInitialise(invoice.getAuditState());
+		//iInvoiceService.saveAuditStateInitialise(invoice.getAuditState());
+		//invoice.setAuditstateid(invoice.getAuditState().getId());
+		//iInvoiceService.saveInvoiceDetailsSelective(invoice.getInvoiceDetails());
+		//invoice.setInvoicedetailsid(invoice.getInvoiceDetails().getId());
+		//iInvoiceService.insertSelective(invoice);
+		
+		//iInvoiceService.insertInvoiceDetails(invoice.getInvoiceDetails());
+		iInvoiceService.saveInvoiceAllSelective(invoice);
+		System.out.println(invoice.getId());
+	}
+	
+	/*
+	 * 审计状态插入测试
+	 * */
+	@Test
+	public void testauditstate()
+	{
+		Invoice invoice = new Invoice();
+		AuditState auditState = new AuditState();
+		invoice.setAuditState(auditState);
+		iInvoiceService.saveAuditStateInitialise(invoice.getAuditState());
+		System.out.println(invoice.getAuditState().getId());
+	}
+	
 	
 
 

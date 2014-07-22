@@ -15,7 +15,8 @@
 		if ($('#invoice_add_form').form('validate')) {
 			$('#submit').linkbutton('disable');
 			var data = toJson();
-			$.ajax({
+			$
+					.ajax({
 						url : '${pageContext.request.contextPath}/invoiceController/add.do',
 						type : 'POST',
 						//data : $('#admin_class_add_form').serializeObject(),
@@ -57,38 +58,54 @@
 
 		//var question = new Object();
 		//alert('fuck');
-		//if ($('#invoiceTypeId').val() != null)
-		//	invoice.invoiceTypeId = $('#invoiceTypeId').val();
 
-		invoice.content = $('#content').val();
-		/*	var invoiceDetail = new Object();
+		var invoiceType = new Object();
+		var invoiceDetails = new Object();
+		if ($('#invoiceTypeId').val() != null)
+			invoiceType.id = $('#invoiceTypeId').val();
+
 		for ( var i = 1; i <= 3; i++) {
-			var inputName = "content" + invoice.invoiceTypeId;
+			var inputName = "content" + invoiceType.id;
+			//console.info(inputName + i);
 			var contenti = document.getElementById(inputName + i).value;
 			console.info(inputName + i);
 			if (contenti != null) {
 				if (i == 1)
-					invoiceDetail.content1 = contenti;
+					invoiceDetails.content1 = contenti;
 				if (i == 2)
-					invoiceDetail.content2 = contenti;
+					invoiceDetails.content2 = contenti;
 				if (i == 3)
-					invoiceDetail.content3 = contenti;
+					invoiceDetails.content3 = contenti;
 			}
 		}
-	
-		invoice.invoiceDetail = invoiceDetail;
+		invoice.invoiceType = invoiceType;
+		invoice.invoiceDetails = invoiceDetails;
 		invoice.createDate = $('#createDate').val();
 		invoice.occurDate = $('#createDate').val();
 		invoice.content = $('#content').val();
 		invoice.money = $('#money').val();
 		invoice.description = $('#description').val();
 		invoice.projectName = $('#projectName').val();
-		//invoice.operatorId = $('#operatorId').combobox('getValue');
-		invoice.proverId = $('#proverId').combobox('getValue');
-		invoice.auditor1Id = $('#auditor1Id').combobox('getValue');
-		invoice.auditor2Id = $('#auditor2Id').combobox('getValue');
+		invoice.operatorId = $('#operatorId').val();
+		invoice.proverId = $('#proverId').val();
+		invoice.auditor1Id = $('#auditor1Id').val();
+		invoice.auditor2Id = $('#auditor2Id').val();
 		invoice.remark = $('#remark').val();
-		//invoice.dearerId = $('#dearerId').val();*/
+		invoice.Photourl=$('#photoUrl').val();
+		//	invoice.proverId = $('#proverId').combobox('getValue');
+		//	invoice.auditor1Id = $('#auditor1Id').combobox('getValue');
+		//	invoice.auditor2Id = $('#auditor2Id').combobox('getValue');
+		/*
+			invoice.invoiceDetail = invoiceDetail;
+			
+			
+			
+			
+			
+			//invoice.operatorId = $('#operatorId').combobox('getValue');
+			
+			
+			//invoice.dearerId = $('#dearerId').val();*/
 		return JSON.stringify(invoice);
 	}
 	function reset() {
