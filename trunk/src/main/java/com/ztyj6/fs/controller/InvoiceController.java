@@ -5,7 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -17,6 +19,8 @@ import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.Json;
 import com.ztyj6.fs.model.page.PageFilter;
 import com.ztyj6.fs.service.IInvoiceService;
+
+
 
 
 
@@ -66,13 +70,34 @@ public class InvoiceController extends BaseController{
 		return invoiceType;
 	}
 
-    
+	@ResponseBody
+	@RequestMapping("/admin/add")
+	public Json addtest(@RequestBody Invoice invoice, HttpSession session) {
+		Json j = new Json();
+		try {
+			SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
+			System.out.println("----------------------------------------------------------------------------");
+			System.out.println("--------"+((Invoice) (ctx.getAuthentication().getPrincipal())).getId());
+			invoice.setId(((Invoice) (ctx.getAuthentication().getPrincipal())).getId());
+			invoice.setInvoicedetailsid(((Invoice) (ctx.getAuthentication().getPrincipal())).getInvoicetypeid());
+			iInvoiceService.save(invoice);
+			j.setSuccess(true);
+			j.setObj(invoice);
+			j.setMsg("添加成功！");
+		}  catch (Exception e) {
+			j.setMsg("添加失败！");
+		}
+		return j;
+	}
     
 	@ResponseBody
 	@RequestMapping("/add")
-	public Json add(Invoice invoice, HttpSession session) {
+	public Json add(@RequestBody Invoice invoice, HttpSession session) {
 		Json json = new Json();
-		System.out.println(invoice.getInvoiceType()+"----------------------");
+		SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
+		System.out.println("------------------"+((Invoice) (ctx.getAuthentication().getPrincipal())).getId());
+		//invoice.setCreateRealname(((Invoice) (ctx.getAuthentication().getPrincipal())).getRealname());
+		System.out.println("---------------------"+invoice.getPhotourl()+"----------------------");
 		String msg = "";
 		try {
 			iInvoiceService.saveInvoiceAllSelective(invoice);

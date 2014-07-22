@@ -6,13 +6,15 @@
 <html>
 <head>
 <jsp:include page="../../include/easyui.jsp"></jsp:include>
-<link rel="stylesheet" href="../../style/css/dialog.css" type="text/css">
-<script type="text/javascript" src="../../jslib/jquery.uploadify/jquery.uploadify.v2.1.4.min.js"></script>
-<link rel="stylesheet" href="../../jslib/jquery.uploadify/uploadify.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/style/css/dialog.css" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/jslib/uploadify/jquery.uploadify.v2.1.4.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/jslib/uploadify/uploadify.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
 $(function() {
+$('#file_upload').display('');
+//document.getElementById('file_upload').style.display = '';
 	$('#class').combobox({
-	    url:'${pageContext.request.contextPath}/classController/admin/getAll.do',
+	    url:'${pageContext.request.contextPath}/invoiceController/getAllTest.do',
 	    valueField:'id',
 	    textField:'name',
 	    mode:'remote',
@@ -35,7 +37,9 @@ $(function() {
 	$('#file_upload').uploadify({
 		swf : '${pageContext.request.contextPath}/jslib/uploadify/uploadify.swf',
         cancelImg : '${pageContext.request.contextPath}/jslib/uploadify/uploadify-cancel.png',
-        uploader : '${pageContext.request.contextPath}/fileController/upload.do;jsessionid=<%=sessionid%>?type=addStudentExcel',
+
+uploader : '${pageContext.request.contextPath}/fileController/upload.do;jsessionid=<%=sessionid%>?type=addStudentExcel',
+		
 		multi : false,
 		queueSizeLimit : 1,
 		fileSizeLimit : '10MB',
@@ -99,7 +103,7 @@ $(function() {
 				</select>
 	</div>
 	<div>导入Excel格式文件，支持.xls，.xlsx格式</br><a href="javascript:void(0)" onclick="checkTemplate()">点击查看Excel格式</a>
-	<input type="file" name="file_upload" id="file_upload" />
+	<input type="file" name="file_upload" id="file_upload" style="display: null;"/>
 	</div>
 </body>
 </html>

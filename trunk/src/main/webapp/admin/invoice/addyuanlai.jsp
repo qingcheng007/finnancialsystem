@@ -5,12 +5,12 @@
 <head>
 <title>发票信息添加</title>
 <jsp:include page="../../include/easyui.jsp"></jsp:include>
-<script type="text/javascript" charset="utf-8" src="../../jslib/kindeditor-4.1.10/kindeditor.js"></script>
-<script type="text/javascript" src="../../jslib/My97DatePicker4.8b3/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="../../jslib/kindeditor-4.1.10/kindeditor.js"></script>
+<script type="text/javascript"
+	src="../../jslib/My97DatePicker4.8b3/My97DatePicker/WdatePicker.js"></script>
 <link rel="stylesheet" href="../../style/css/dialog.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
-
-
 	function submit() {
 		if ($('#invoice_add_form').form('validate')) {
 			$('#submit').linkbutton('disable');
@@ -18,8 +18,10 @@
 			$.ajax({
 						url : '${pageContext.request.contextPath}/invoiceController/add.do',
 						type : 'POST',
+						//data : $('#admin_class_add_form').serializeObject(),
 						data : data,
 						dataType : 'json',
+						contentType : 'application/json;charset=utf-8',
 						success : function(data) {
 							console.info(data.msg);
 							if (data.success) {
@@ -59,10 +61,11 @@
 			invoice.invoiceTypeId = $('#invoiceTypeId').val();
 
 		invoice.content = $('#content').val();
-		var invoiceDetail = new Object();
+		/*	var invoiceDetail = new Object();
 		for ( var i = 1; i <= 3; i++) {
 			var inputName = "content" + invoice.invoiceTypeId;
 			var contenti = document.getElementById(inputName + i).value;
+			console.info(inputName + i);
 			if (contenti != null) {
 				if (i == 1)
 					invoiceDetail.content1 = contenti;
@@ -72,6 +75,7 @@
 					invoiceDetail.content3 = contenti;
 			}
 		}
+	
 		invoice.invoiceDetail = invoiceDetail;
 		invoice.createDate = $('#createDate').val();
 		invoice.occurDate = $('#createDate').val();
@@ -84,7 +88,7 @@
 		invoice.auditor1Id = $('#auditor1Id').combobox('getValue');
 		invoice.auditor2Id = $('#auditor2Id').combobox('getValue');
 		invoice.remark = $('#remark').val();
-		//invoice.dearerId = $('#dearerId').val();
+		//invoice.dearerId = $('#dearerId').val();*/
 		return JSON.stringify(invoice);
 	}
 	function reset() {
@@ -185,7 +189,7 @@
 		//	document.getElementById('tr2').style.display = '';
 		//}
 	}
-	
+
 	//如果初始要显示第一个tr, 请在这里要加上：switchHide(1);
 </script>
 </head>
@@ -193,22 +197,22 @@
 	<form id="invoice_add_form">
 
 		<table>
-		
-				<td>票据类型</td>
-				<td><select onchange="switchHide(this.value)" id="invoiceTypeId" name="invoiceTypeId"
-					style="width:166px;">
-						<option value="1">卡加油费</option>
-						<option value="2">现金加油费</option>
-						<option value="3">住宿费</option>
-						<option value="4">交通费</option>
-						<option value="5">修理费</option>
-						<option value="6">过停费</option>
-						<option value="7">招待费</option>
-						<option value="8">办公费</option>
-						<option value="9">材料费</option>
-						<option value="10">工具费</option>
-						<option value="11">其他费</option>
-				</select></td>
+
+			<td>票据类型</td>
+			<td><select onchange="switchHide(this.value)" id="invoiceTypeId"
+				name="invoiceTypeId" style="width:166px;">
+					<option value="1">卡加油费</option>
+					<option value="2">现金加油费</option>
+					<option value="3">住宿费</option>
+					<option value="4">交通费</option>
+					<option value="5">修理费</option>
+					<option value="6">过停费</option>
+					<option value="7">招待费</option>
+					<option value="8">办公费</option>
+					<option value="9">材料费</option>
+					<option value="10">工具费</option>
+					<option value="11">其他费</option>
+			</select></td>
 			</tr>
 
 			<tr id="tr11">
@@ -440,13 +444,13 @@
 			</tr>
 			<tr>
 				<td>审核人</td>
-				<td><input class="easyui-validatebox" id="auditorId1"
+				<td><input class="easyui-validatebox" id="auditor1Id"
 					name="auditorId1" type="text" placeholder="审核人"
 					data-options="required:true" style="width:160px;" /></td>
 			</tr>
 			<tr>
 				<td>审批人</td>
-				<td><input class="easyui-validatebox" id="auditorId2"
+				<td><input class="easyui-validatebox" id="auditor2Id"
 					name="auditorId2" type="text" placeholder="审批人"
 					data-options="required:true" style="width:160px;" /></td>
 			</tr>
@@ -454,9 +458,9 @@
 				<td>清单附照片</td>
 				<td><input class="easyui-validatebox" id="photoUrl"
 					name="photoUrl" type="text" placeholder="清单附照片"
-					data-options="required:true" style="width:160px;" />
-					<textarea id="content_1" name="content" style="width:700px;height:300px;"></textarea>
-					</td>
+					data-options="required:true" style="width:160px;" /> <textarea
+						id="content_1" name="content" style="width:700px;height:300px;"></textarea>
+				</td>
 			</tr>
 			<tr>
 				<td>备注</td>
