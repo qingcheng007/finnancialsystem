@@ -58,10 +58,6 @@
 				<td><input class="easyui-validatebox" id="address" name="address" type="text" placeholder="请输入站点物理地址" data-options="required:true" /></td>
 			</tr>
 			<tr>
-				<td>创建日期</td>
-				<td><input class="easyui-validatebox" id="createDate" name="createDate" type="text" placeholder="请选择站点日期" data-options="required:true" /></td>
-			</tr>
-			<tr>
 				<td>创建人ID</td>
 				<td><input class="easyui-validatebox" id="userId" name="userId" type="text" placeholder="请输入创建人的用户ID" data-options="required:true" /></td>
 			</tr>

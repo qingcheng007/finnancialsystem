@@ -1,5 +1,7 @@
 package com.ztyj6.fs.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.ztyj6.fs.model.Site;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.Json;
@@ -46,6 +49,7 @@ public class SiteController extends BaseController {
 	public Json add(Site site, HttpSession session) {
 		Json json = new Json();
 		try {
+			site.setCreateDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())));
 			siteService.save(site);
 			json.setSuccess(true);
 			json.setObj(site);
@@ -138,8 +142,9 @@ public class SiteController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping("/admin/getUserInformationOfOneSiteByPage")
-	public DataGrid getUserInformationOfOneSiteByPage(PageFilter pageFilter,
-			int siteId) {
+	public DataGrid getUserInformationOfOneSiteByPage(PageFilter pageFilter
+		) {
+		int siteId = 1;
 		try {
 			return siteService.getUserInformationOfOneSiteByPage(pageFilter,
 					siteId);

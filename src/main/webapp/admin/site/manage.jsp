@@ -64,7 +64,7 @@
 						width : 100,
 						align : 'center',
 						formatter : function(value, row, index) {
-							var btn = '<a onclick="siteCheck(\''+row.id+'\')" href="javascript:void(0)">查看站点详情</a>';
+							var btn = '<a onclick="siteCheck()" href="javascript:void(0)">查看站点详情</a>';
 							return btn;
 						} 
 					},{
@@ -73,7 +73,7 @@
 						width : 100,
 						align : 'center',
 						formatter : function(value, row, index) {
-							var btn = '<a onclick="siteUserManange(\''+row.id+'\')" href="javascript:void(0)">管理站点用户</a>';
+							var btn = '<a onclick="siteUserManange()" href="javascript:void(0)">管理站点用户</a>';
 							return btn;
 						} 
 					}] ],
@@ -83,7 +83,7 @@
 					},
 				});
 	});
-	function siteCheck(id){
+	function siteCheck(){
 		var rows = $('#admin_site_manage_dataGrid').datagrid('getChecked');
 		if (rows.length == 1) {
 			parent.$.modalDialog({
@@ -112,17 +112,37 @@
 			}
 		}
 	}
-	function siteUserManange(siteId){
-		alert("1111");
-		parent.$.modalDialog({
-			title : ' 站点用户管理界面',
-			width : 1200,
-			height : 600,
-			collapsible : true,
-			maximizable : true,
-			resizable : true,
-			url:'${pageContext.request.contextPath}/admin/site/siteUserManage.jsp'
-		});
+	function siteUserManange(){
+		var rows = $('#admin_site_manage_dataGrid').datagrid('getChecked');
+		if (rows.length == 1) {
+			parent.$.modalDialog.row = rows[0];
+			parent.$.modalDialog({
+				title : ' 站点用户管理',
+				width : 600,
+				height : 400,
+				collapsible : true,
+				maximizable : true,
+				resizable : true,
+				fit : true,
+				url:'${pageContext.request.contextPath}/admin/site/siteUserManage.jsp'
+			});
+		} else {
+			if (rows.length == 0) {
+				parent.$.messager.show({
+					title : '提示',
+					msg : '请勾选要编辑的记录！',
+					timeout : 2000,
+					showType : 'slide'
+				});
+			} else {
+				parent.$.messager.show({
+					title : '提示',
+					msg : '每次只能编辑一个记录，请勾选一个记录！',
+					timeout : 2000,
+					showType : 'slide'
+				});
+			}
+		}
 	}
 	function add() {
 		parent.$.modalDialog({
@@ -133,11 +153,6 @@
 		});
 		parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');
 	}
-	
-	function addStudent(){
-		
-	}
-	
 	function edit() {
 		var rows = $('#admin_site_manage_dataGrid').datagrid('getChecked');
 		if (rows.length == 1) {
