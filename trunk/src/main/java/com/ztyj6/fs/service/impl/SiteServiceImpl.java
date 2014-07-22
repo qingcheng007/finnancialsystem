@@ -14,7 +14,6 @@ import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.ztyj6.fs.dao.SiteMapper;
 import com.ztyj6.fs.model.Site;
-import com.ztyj6.fs.model.SiteUserPost;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.PageFilter;
 import com.ztyj6.fs.service.ISiteService;
