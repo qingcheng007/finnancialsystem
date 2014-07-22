@@ -8,6 +8,7 @@
 <title>站点用户管理</title>
 <jsp:include page="/include/easyui.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8">
+var cls = parent.$.modalDialog.row;
 	$(function(){
 		$('#admin_siteUser_manage_dataGrid')
 		.datagrid(
@@ -40,35 +41,46 @@
 						align : 'center',
 						sortable : true
 					},{
+						field : 'siteName',
+						title : '站点名称',
+						width : 260,
+						align : 'center',
+						sortable : true
+					},{
 						field : 'userId',
+						title : '用户编号',
+						width : 260,
+						align : 'center',
+						sortable : true
+					},{
+						field : 'userName',
 						title : '用户名',
 						width : 260,
 						align : 'center',
 						sortable : true
 					},{
-						field : 'username',
-						title : '用户名',
-						width : 260,
-						align : 'center',
-						sortable : true
-					},{
-						field : 'realname',
+						field : 'realName',
 						title : '真实姓名',
 						width : 260,
 						align : 'center'
 					},{
-						field : '联系电话',
-						title : 'phone',
+						field : 'phone',
+						title : '联系电话',
 						width : 260,
 						align : 'center'
 					},{
-						field : '邮箱',
-						title : 'email',
+						field : 'email',
+						title : '邮箱',
 						width : 260,
 						align : 'center'
 					},{
-						field : '职务',
-						title : 'postName',
+						field : 'balanceId',
+						title : '余额账号',
+						width : 260,
+						align : 'center'
+					},{
+						field : 'postName',
+						title : '职务',
 						width : 260,
 						align : 'center'
 					}] ],

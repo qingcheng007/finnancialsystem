@@ -214,7 +214,7 @@
 	</resultMap>
 	<select id="selectUsersByPage" resultMap="userResultMap">
 		SELECT
-		site.Id siteId,
+		site.Id,
 		site.Name siteName,
 		site.Address siteAddress,
 		site.CreateDate siteCreateDate,

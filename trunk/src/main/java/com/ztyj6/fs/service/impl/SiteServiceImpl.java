@@ -1,6 +1,7 @@
 package com.ztyj6.fs.service.impl;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -8,10 +9,12 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSON;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.ztyj6.fs.dao.SiteMapper;
 import com.ztyj6.fs.model.Site;
+import com.ztyj6.fs.model.SiteUserPost;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.PageFilter;
 import com.ztyj6.fs.service.ISiteService;
@@ -94,8 +97,7 @@ public class SiteServiceImpl implements ISiteService {
 		// TODO Auto-generated method stub
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();
-		PageList sites = (PageList) siteMapper.selectUsersByPage(pageBounds,
-				siteId);
+		PageList sites = (PageList)siteMapper.selectUsersByPage(pageBounds,siteId);
 		dg.setRows(sites);
 		dg.setTotal(sites.getPaginator().getTotalCount());
 		return dg;
