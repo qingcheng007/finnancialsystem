@@ -21,7 +21,7 @@ var cls = parent.$.modalDialog.row;
 </script>
 </head>
 <body>
-	<form id="admin_site_detailInformation_form">
+	<form id="admin_site_check_form">
 		<table>
 			<tr>
 			    <td>站点编号</td>
