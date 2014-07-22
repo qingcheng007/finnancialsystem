@@ -1,7 +1,6 @@
 package com.ztyj6.fs.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -45,18 +44,15 @@ public class SiteController extends BaseController {
 	@ResponseBody
 	@RequestMapping("/admin/add")
 	public Json add(Site site, HttpSession session) {
-		String message = "";
 		Json json = new Json();
 		try {
 			siteService.save(site);
 			json.setSuccess(true);
 			json.setObj(site);
-			message = "添加成功";
-			json.setMsg(message);
+			json.setMsg("添加成功");
 		} catch (Exception e) {
-			message = "添加失败";
-			json.setMsg(message);
-			json.setSuccess(false);
+			json.setMsg( "添加失败");
+		    e.printStackTrace();
 		}
 		return json;
 	}
@@ -64,17 +60,13 @@ public class SiteController extends BaseController {
 	@ResponseBody
 	@RequestMapping("/admin/delete")
 	public Json delete(String ids) {
-		String msg = "";
 		Json json = new Json();
 		try {
 			siteService.delete(ids);
-			msg = "删除成功";
 			json.setSuccess(true);
-			json.setMsg(msg);
+			json.setMsg("删除成功");
 		} catch (Exception e) {
-			msg = "删除失败";
-			json.setSuccess(false);
-			json.setMsg(msg);
+			json.setMsg("删除失败");
 			e.printStackTrace();
 		}
 		return json;
@@ -83,18 +75,14 @@ public class SiteController extends BaseController {
 	@ResponseBody
 	@RequestMapping("/admin/edit")
 	public Json edit(Site site, HttpSession session) {
-		String msg = "";
 		Json json = new Json();
 		try {
 			siteService.update(site);
-			msg = "更新成功";
 			json.setSuccess(true);
 			json.setObj(site);
-			json.setMsg(msg);
+			json.setMsg("更新成功");
 		} catch (Exception e) {
-			msg = "更新失败";
-			json.setSuccess(false);
-			json.setMsg(msg);
+			json.setMsg("更新失败");
 			e.printStackTrace();
 		}
 		return json;
@@ -118,21 +106,17 @@ public class SiteController extends BaseController {
 	public Json addUserSite(int siteId, int userId, int postId,
 			HttpSession session) {
 		Json json = new Json();
-		String msg = "";
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("siteId", siteId);
 		map.put("userId", userId);
 		map.put("postId", postId);
 		try {
 			siteService.saveUserSite(map);
-			msg = "添加成功";
 			json.setSuccess(true);
-			json.setMsg(msg);
+			json.setMsg("添加成功");
 		} catch (Exception e) {
 			e.printStackTrace();
-			msg = "添加失败";
-			json.setSuccess(false);
-			json.setMsg(msg);
+			json.setMsg("添加失败");
 		}
 		return json;
 	}
@@ -141,16 +125,12 @@ public class SiteController extends BaseController {
 	@RequestMapping("/admin/deleteUserSite")
 	public Json deleteUserSite(int siteId, String userIds) {
 		Json json = new Json();
-		String msg = "";
 		try {
 			siteService.deleteBatchUserSite(siteId, userIds);
-			msg = "删除成功";
 			json.setSuccess(true);
-			json.setMsg(msg);
+			json.setMsg("删除成功");
 		} catch (Exception e) {
-			msg = "删除失败";
-			json.setSuccess(false);
-			json.setMsg(msg);
+			json.setMsg("删除失败");
 			e.printStackTrace();
 		}
 		return json;
@@ -164,6 +144,7 @@ public class SiteController extends BaseController {
 			return siteService.getUserInformationOfOneSiteByPage(pageFilter,
 					siteId);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
