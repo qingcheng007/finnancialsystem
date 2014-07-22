@@ -64,8 +64,7 @@
 						width : 100,
 						align : 'center',
 						formatter : function(value, row, index) {
-							var btn = '<a onclick="siteCheck()" href="javascript:void(0)">查看站点详情1</a>';
-							//var btn = '<a onclick="addStudent(\''+row.id+'\')" href="javascript:void(0)">查看站点详情</a>';
+							var btn = '<a onclick="siteCheck(\''+row.id+'\')" href="javascript:void(0)">查看站点详情</a>';
 							return btn;
 						} 
 					},{
@@ -74,7 +73,7 @@
 						width : 100,
 						align : 'center',
 						formatter : function(value, row, index) {
-							var btn = '<a onclick="addStudent(\''+row.id+'\')" href="javascript:void(0)">管理站点用户</a>';
+							var btn = '<a onclick="siteCheck(\''+row.id+'\')" href="javascript:void(0)">管理站点用户</a>';
 							return btn;
 						} 
 					}] ],
@@ -84,8 +83,34 @@
 					},
 				});
 	});
-	function siteCheck(){
-		alert("3333");
+	function siteCheck(id){
+		var rows = $('#admin_site_manage_dataGrid').datagrid('getChecked');
+		if (rows.length == 1) {
+			parent.$.modalDialog({
+				title : '站点详细信息',
+				width : 400,
+				height : 600,
+				url : '${pageContext.request.contextPath}/admin/site/check.jsp'
+			});
+			parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');
+			parent.$.modalDialog.row = rows[0];
+		} else {
+			if (rows.length == 0) {
+				parent.$.messager.show({
+					title : '提示',
+					msg : '请勾选要查看的站点记录！',
+					timeout : 2000,
+					showType : 'slide'
+				});
+			} else {
+				parent.$.messager.show({
+					title : '提示',
+					msg : '每次只能查看一个记录，请勾选一个记录！',
+					timeout : 2000,
+					showType : 'slide'
+				});
+			}
+		}
 	}
 	function add() {
 		parent.$.modalDialog({

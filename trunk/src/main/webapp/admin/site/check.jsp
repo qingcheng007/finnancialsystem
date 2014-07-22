@@ -24,30 +24,32 @@ var cls = parent.$.modalDialog.row;
 	<form id="admin_site_detailInformation_form">
 		<table>
 			<tr>
-				<td><input id="id" name="id" type="text" /></td>
+			    <td>站点编号</td>
+				<td><input id="id" name="id" type="text" readOnly/></td>
 			</tr>
 			<tr>
 				<td>站点名称</td>
-				<td><input id="name" name="name" type="text" /></td>
+				<td><input id="name" name="name" type="text" readOnly/></td>
 			</tr>
 			<tr>
 				<td>站点地址</td>
-				<td><input id="address" name="address" type="text" /></td>
+				<td><input id="address" name="address" type="text" readOnly/></td>
 			</tr>
 			<tr>
-				<td><input id="createDate" name="createDate" type="text" /></td>
+			    <td>站点创建日期</td>
+				<td><input id="createDate" name="createDate" type="text" readOnly/></td>
 			</tr>
 			<tr>
 				<td>创建人ID</td>
-				<td><input id="userId" name="userId" type="text" /></td>
+				<td><input id="userId" name="userId" type="text" readOnly/></td>
 			</tr>
 			<tr>
 				<td>创建目的</td>
-				<td><input id="createPurpose" name="createPurpose" type="text" /></td>
+				<td><input id="createPurpose" name="createPurpose" type="text" readOnly/></td>
 			</tr>
 			<tr>
 				<td>工程名</td>
-				<td><input id="projectName" name="projectName" type="text" /></td>
+				<td><input id="projectName" name="projectName" type="text" readOnly/></td>
 			</tr>
 			<tr>
 				<td colspan='2' style="text-align: center;"><a href="#" class="easyui-linkbutton" onclick="closeDialog()">关闭</a></td>
