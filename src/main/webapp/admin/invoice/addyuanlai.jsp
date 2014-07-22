@@ -57,8 +57,8 @@
 
 		//var question = new Object();
 		//alert('fuck');
-		if ($('#invoiceTypeId').val() != null)
-			invoice.invoiceTypeId = $('#invoiceTypeId').val();
+		//if ($('#invoiceTypeId').val() != null)
+		//	invoice.invoiceTypeId = $('#invoiceTypeId').val();
 
 		invoice.content = $('#content').val();
 		/*	var invoiceDetail = new Object();
