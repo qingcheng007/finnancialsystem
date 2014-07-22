@@ -73,7 +73,7 @@
 						width : 100,
 						align : 'center',
 						formatter : function(value, row, index) {
-							var btn = '<a onclick="siteCheck(\''+row.id+'\')" href="javascript:void(0)">管理站点用户</a>';
+							var btn = '<a onclick="siteUserManange(\''+row.id+'\')" href="javascript:void(0)">管理站点用户</a>';
 							return btn;
 						} 
 					}] ],
@@ -111,6 +111,18 @@
 				});
 			}
 		}
+	}
+	function siteUserManange(siteId){
+		alert("1111");
+		parent.$.modalDialog({
+			title : ' 站点用户管理界面',
+			width : 1200,
+			height : 600,
+			collapsible : true,
+			maximizable : true,
+			resizable : true,
+			url:'${pageContext.request.contextPath}/admin/site/siteUserManage.jsp'
+		});
 	}
 	function add() {
 		parent.$.modalDialog({

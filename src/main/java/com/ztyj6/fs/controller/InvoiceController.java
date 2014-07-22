@@ -94,10 +94,11 @@ public class InvoiceController extends BaseController{
 	@RequestMapping("/add")
 	public Json add(@RequestBody Invoice invoice, HttpSession session) {
 		Json json = new Json();
-		SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
-		System.out.println("------------------"+((Invoice) (ctx.getAuthentication().getPrincipal())).getId());
+		//SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
+		//System.out.println("------------------"+((Invoice) (ctx.getAuthentication().getPrincipal())).getId());
 		//invoice.setCreateRealname(((Invoice) (ctx.getAuthentication().getPrincipal())).getRealname());
-		System.out.println("---------------------"+invoice.getPhotourl()+"----------------------");
+		System.out.println("------"+invoice.getContent());
+		
 		String msg = "";
 		try {
 			iInvoiceService.saveInvoiceAllSelective(invoice);
