@@ -143,8 +143,9 @@ public class SiteController extends BaseController {
 	@ResponseBody
 	@RequestMapping("/admin/getUserInformationOfOneSiteByPage")
 	public DataGrid getUserInformationOfOneSiteByPage(PageFilter pageFilter
-		) {
-		int siteId = 1;
+		,int siteId) {
+		System.out.println("-----------------------");
+		System.out.println("---------------111-----"+siteId);
 		try {
 			return siteService.getUserInformationOfOneSiteByPage(pageFilter,
 					siteId);

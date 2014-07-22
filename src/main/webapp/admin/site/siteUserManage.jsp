@@ -8,8 +8,8 @@
 <title>站点用户管理</title>
 <jsp:include page="/include/easyui.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8">
-var cls = parent.$.modalDialog.row;
 	$(function(){
+		alert(siteId);
 		$('#admin_siteUser_manage_dataGrid')
 		.datagrid(
 				{
