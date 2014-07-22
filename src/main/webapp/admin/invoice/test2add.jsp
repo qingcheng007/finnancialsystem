@@ -37,7 +37,7 @@
 						error : function() {
 							parent.$.messager.show({
 								title : '提示',
-								msg : '添加失败！',
+								msg : '添加失败！后台无响应',
 								timeout : 2000,
 								showType : 'slide'
 							});

@@ -1,7 +1,19 @@
-<?php
-header('content-type:text/html charset:utf-8');
-//不存在当前上传文件则上传
-if(!file_exists($_FILES['upload_file']['name'])) move_uploaded_file($_FILES['upload_file']['tmp_name'],iconv('utf-8','gb2312',$_FILES['upload_file']['name']));
-//输出图片文件<img>标签
-echo "<textarea><img src='{$_FILES['upload_file']['name']}'/></textarea>";
-//End_php
+
+ <?php
+if (!empty($_FILES)) {
+ $tempFile = $_FILES['Filedata']['tmp_name'];
+ $targetPath = $_SERVER['DOCUMENT_ROOT'] . $_GET['folder'] . '/';
+ $targetFile =  str_replace('//','/',$targetPath) . $_FILES['Filedata']['name'];
+ 
+ if(move_uploaded_file($tempFile,$targetFile)){
+  echo "".$_FILES['Filedata']['name'];//此行表示要返回所上传的文件名;
+ }else{
+  echo "2";
+ }
+ 
+}else{
+ 
+echo '1';
+}
+
+?>
