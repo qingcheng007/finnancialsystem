@@ -5,10 +5,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -142,9 +144,9 @@ public class SiteController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping("/admin/getUserInformationOfOneSiteByPage")
-	public DataGrid getUserInformationOfOneSiteByPage(PageFilter pageFilter){
-		//,int siteId) {
-		int siteId=1;
+	public DataGrid getUserInformationOfOneSiteByPage(PageFilter pageFilter
+		,HttpServletRequest request) {
+		int siteId = Integer.parseInt(request.getParameter("siteId"));
 		try {
 			return siteService.getUserInformationOfOneSiteByPage(pageFilter,
 					siteId);
