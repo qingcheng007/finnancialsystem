@@ -66,7 +66,15 @@ public class PostServiceImpl implements IPostService {
 		dg.setTotal(posts.getPaginator().getTotalCount());
 		return dg;
 	}
-
+	/**
+	 * 返回 值 >0 代表数据库中已经存在了该条数据
+	 * 返回 = 0 代表 该记录还不存在
+	 */
+	@Override
+	public int isExist(String postName) {
+		// TODO Auto-generated method stub
+		return postMapper.countByPostName(postName);
+	}
 	public DataGrid getByPageFilter(PageFilter pageFilter) {
 		// TODO Auto-generated method stub
 		return null;
@@ -86,4 +94,6 @@ public class PostServiceImpl implements IPostService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 }

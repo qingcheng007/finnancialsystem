@@ -15,4 +15,8 @@ public interface ISiteService extends IBaseService<Site> {
 	void deleteBatchUserSite(int siteId, String ids);
 
 	DataGrid getUserInformationOfOneSiteByPage(PageFilter pageFilter, int siteId);
+	
+	int isExistSite(String siteName);
+	
+	int isExistUserInSite(int userId,int siteId);
 }

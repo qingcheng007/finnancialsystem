@@ -30,7 +30,15 @@
 		<include refid="Base_Column_List" />
 		from site
 	</select>
-
+	
+    <select id="countBySiteName" parameterType="java.lang.String"
+		resultType="int">
+		select
+		count(*) c
+		from site where Name =
+		#{name,jdbcType=VARCHAR}
+	</select>
+	
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from site
 		where Id = #{id,jdbcType=INTEGER}
@@ -248,5 +256,12 @@
 		JOIN post ON r_site_user.PostId = post.Id
 		JOIN user ON r_site_user.UserId =
 		user.Id
+	</select>
+	<select id="countByUserIdAndSiteId" resultType="int">
+		select
+		count(*) c
+		from r_site_user where 
+		SiteId =#{siteId,jdbcType=INTEGER} 
+		and UserId =#{userId,jdbcType=INTEGER}
 	</select>
 </mapper>

@@ -17,10 +17,12 @@ public interface PostMapper {
 
 	Post selectByPrimaryKey(Integer id);
 
+	int  countByPostName(String name);
+	
 	List<Post> selectByPage(PageBounds pageBounds);
 
 	int updateByPrimaryKeySelective(Post record);
 
 	int updateByPrimaryKey(Post record);
-
+	
 }

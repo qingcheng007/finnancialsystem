@@ -1,5 +1,6 @@
 package test.post;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,14 @@ public class PostTest {
     @Test
 	public void addTset(){
 		Post post = new Post();
-		post.setId(1);
+		post.setId(100);
 		post.setName("普通员工");
 		postService.save(post);
 		
+	}
+    @Test
+	public void testIsExist(){
+		String name = "站长";
+		System.out.println("-----fsnhui----"+postService.isExist(name));
 	}
 }
