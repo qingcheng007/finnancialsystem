@@ -8,11 +8,13 @@
 <title>站点用户管理</title>
 <jsp:include page="/include/easyui.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8">
+    var cls = parent.$.modalDialog.row;
+    var siteId = cls.id;
 	$(function(){
 		$('#admin_siteUser_manage_dataGrid')
 		.datagrid(
 				{
-					url : '${pageContext.request.contextPath}/siteController/admin/getUserInformationOfOneSiteByPage.do',
+					url : '${pageContext.request.contextPath}/siteController/admin/getUserInformationOfOneSiteByPage.do?siteId='+siteId,
 					fit : true,
 					autoRowHeight : false,
 					striped : true,
@@ -41,7 +43,7 @@
 						sortable : true
 					},{
 						field : 'userID',
-						title : '用户编号',
+						title : '用户ID',
 						width : 260,
 						align : 'center',
 						sortable : true,
@@ -49,7 +51,7 @@
 							var str = '';
 							for(var i=0;i<row.users.length;i++){
 								var temp = i+ 1;
-								str += '<front color="#FF0000"> 编号'
+								str += '<front color="#FF0000"> ID'
 								+ temp
 								+': </front>'
 								+row.users[i].id
@@ -83,7 +85,7 @@
 							var str = '';
 							for(var i=0;i<row.users.length;i++){
 								var temp = i+ 1;
-								str += '<front color="#FF0000"> 编号'
+								str += '<front color="#FF0000"> 姓名'
 								+ temp
 								+': </front>'
 								+row.users[i].realname
@@ -100,7 +102,7 @@
 							var str = '';
 							for(var i=0;i<row.users.length;i++){
 								var temp = i+ 1;
-								str += '<front color="#FF0000"> 编号'
+								str += '<front color="#FF0000"> 电话'
 								+ temp
 								+': </front>'
 								+row.users[i].phone
@@ -117,7 +119,7 @@
 							var str = '';
 							for(var i=0;i<row.users.length;i++){
 								var temp = i+ 1;
-								str += '<front color="#FF0000"> 编号'
+								str += '<front color="#FF0000"> Email'
 								+ temp
 								+': </front>'
 								+row.users[i].email
@@ -134,7 +136,7 @@
 							var str = '';
 							for(var i=0;i<row.posts.length;i++){
 								var temp = i+ 1;
-								str += '<front color="#FF0000"> 编号'
+								str += '<front color="#FF0000"> 职务'
 								+ temp
 								+': </front>'
 								+row.posts[i].name
