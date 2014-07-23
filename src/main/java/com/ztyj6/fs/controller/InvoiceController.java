@@ -40,6 +40,9 @@ public class InvoiceController extends BaseController{
 	public void setiInvoiceService(IInvoiceService iInvoiceService) {
 		this.iInvoiceService = iInvoiceService;
 	}
+	
+
+	
     @ResponseBody
     @RequestMapping("/getInvoiceAll")
     public Json selectInvoiceAll(HttpSession session){
