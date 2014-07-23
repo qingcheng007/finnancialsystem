@@ -10,15 +10,12 @@
 		$('#admin_site_manage_dataGrid')
 		.datagrid(
 				{
-					url : '${pageContext.request.contextPath}/classController/admin/getByPage.do',
+					url : '${pageContext.request.contextPath}/invoiceController/getByPage.do',
 					fit : true,
 					autoRowHeight : false,
 					striped : true,
 					border : false,
 					pagination : true,
-					
-					
-					
 					pageSize : 10,
 					pageList : [ 10, 20, 30, 40, 50 ],
 					sortName : 'id',

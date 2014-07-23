@@ -35,4 +35,6 @@ public interface InvoiceMapper {
     
     List selectByFilter(@Param("pageFilter")PageFilter pageFilter,PageBounds pageBounds);
     
+    List selectByPage(PageBounds pageBounds);
+    
 }

@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	String sessionid = session.getId();
+	
 %>
 <html>
 <head>
@@ -12,7 +13,7 @@
 <script type="text/javascript" charset="utf-8">
 $(function() {
 	$('#class').combobox({
-	    url:'${pageContext.request.contextPath}/classController/admin/getAll.do',
+	    url:'${pageContext.request.contextPath}/invoiceController/getAll.do',
 	    valueField:'id',
 	    textField:'name',
 	    mode:'remote',
@@ -39,57 +40,18 @@ $(function() {
 		multi : false,
 		queueSizeLimit : 1,
 		fileSizeLimit : '10MB',
-		fileTypeExts : '*.xls; *.xlsx;',
+		fileTypeExts : '*.jpg; *.jpeg;',
 		buttonText : '选择文件',
 		onUploadSuccess : function(file, data, response) {
 				var obj = JSON.parse(data);
-				parent.$.messager.progress({
-					text : '数据加载中....'
-				});
-				$.ajax({
-					url : '${pageContext.request.contextPath}/studentController/admin/addBatch.do',
-					type : 'POST',
-					data :  {
-						classId : $('#class').combobox('getValue'),
-						excelUrl : obj.url
-					},
-					dataType : 'json',
-					success : function(data) {
-						parent.$.messager.progress('close');
-						if (data.success) {
-							parent.$.modalDialog.DataGrid.datagrid('reload');
-							parent.$.messager.show({
-								title : '提示',
-								msg : data.msg,
-								timeout : 2000,
-								showType : 'slide'
-							});
-							parent.$.modalDialog.handler.dialog('close');
-						}else{
-							parent.$.messager.show({
-								title : '提示',
-								msg : data.msg,
-								timeout : 2000,
-								showType : 'slide'
-							});
-						}
-					},
-					error : function() {
-						parent.$.messager.progress('close');
-						parent.$.messager.show({
-							title : '提示',
-							msg : '添加失败！',
-							timeout : 2000,
-							showType : 'slide'
-						});
-					}
-				});
+			console.info(obj.url);
+			alert(obj.url);
 			}
 		});
 	});
 
 	function checkTemplate() {
-		window.open('${pageContext.request.contextPath}/admin/student/addStudentExcelTemplate.jpg');
+		//window.open('${pageContext.request.contextPath}/admin/student/addStudentExcelTemplate.jpg');
 	}
 </script>
 </head>
@@ -101,5 +63,6 @@ $(function() {
 	<div>导入Excel格式文件，支持.xls，.xlsx格式</br><a href="javascript:void(0)" onclick="checkTemplate()">点击查看Excel格式</a>
 	<input type="file" name="file_upload" id="file_upload" />
 	</div>
+	
 </body>
 </html>
