@@ -32,20 +32,20 @@
 					} ] ], 
 					columns : [ [ 
 					{
-						field : 'siteId',
-						title : '站点编号',
+						field : 'createdate',
+						title : '录入时间',
 						width : 220,
 						align : 'center',
 						sortable : true
 					}, {
-						field : 'name',
+						field : 'occurdate',
 						title : '站点名称',
 						width : 220,
 						align : 'center',
 						sortable : true
 					}, {
-						field : 'createDate',
-						title : '建站时间',
+						field : 'content',
+						title : '费用内容',
 						width : 220,
 						align : 'center',
 						sortable : true
@@ -77,7 +77,7 @@
 			title : '添加站点',
 			width : 380,
 			height : 260,
-			url:'${pageContext.request.contextPath}/admin/class/add.jsp'
+			url:'${pageContext.request.contextPath}/admin/invoice/add.jsp'
 		});
 		parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');
 	}
