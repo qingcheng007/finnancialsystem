@@ -160,48 +160,8 @@
 	}
 
 	function deleteBatch(){
-		var rows = $('#admin_siteUser_manage_dataGrid').datagrid('getChecked');
-		if(rows.length > 0){
-			parent.$.messager.confirm('询问', '您确定要删除此记录？', function(r) {
-				if (r) {
-					var ids = [];
-					for(var i=0; i<rows.length; i++)
-						ids.push(rows[i].id);
-					$.ajax({ 
-						url: '${pageContext.request.contextPath}/siteController/admin/delete.do', 
-						type: 'POST',
-						data: {
-							ids: ids.join(',')
-						}, 
-						dataType : 'json',
-						success: function(data){
-							parent.$.messager.show({
-						           title:'提示',
-						           msg: data.msg,
-						           timeout:2000,
-						           showType:'slide'
-						    });
-							$('#admin_siteUser_manage_dataGrid').datagrid('load');
-				      	},
-				      	error: function(){
-							parent.$.messager.show({
-						           title:'提示',
-						           msg:data.msg,
-						           timeout:2000,
-						           showType:'slide'
-						    });
-				      	}
-					});
-				}
-			});
-		}else{
-			parent.$.messager.show({
-		           title:'提示',
-		           msg:'请勾选要删除的记录！',
-		           timeout:2000,
-		           showType:'slide'
-		        });
-		}
+		window.open('${pageContext.request.contextPath}/admin/site/deleteUser.jsp');
+		//window.showModalDialog('${pageContext.request.contextPath}/admin/site/deleteUser.jsp',window,"dialogWidth:400px;dialogHeight:300px;dialogLocation:no;center:yes;status:no;menubar:no");
 	}
 	
 	function refresh() {
@@ -215,14 +175,9 @@
 		<div id="admin_siteUser_manage_toolbar">
 			<table>
 				<tr>
-					<sec:authorize url="/siteController/admin/addUserSite.do">
-					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="add();">添加</a></td>
+					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="add();">向站点添加用户</a></td>
 					<td><div class="datagrid-btn-separator"></div></td>
-					</sec:authorize>
-					<sec:authorize url="/siteController/admin/deleteUserSite.do">
-					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="deleteBatch();">批量删除</a></td>
-					<td><div class="datagrid-btn-separator"></div></td>
-					</sec:authorize>
+					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="deleteBatch();">从站点中删除用户</a></td>					
 					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true" onclick="refresh();">刷新</a></td>
 				</tr>
 			</table>
