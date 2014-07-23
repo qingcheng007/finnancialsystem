@@ -91,7 +91,17 @@ public class SiteTest {
     		for(int k=0;k<postList.size();k++){
     			post  = postList.get(k);
     			System.out.println("post ---> postName "+post.getName());
-    		}
-    	}*/
+    		}*/
+    	}
+    @Test
+    public void testIsExistSite(){
+    	String name="1";
+    	System.out.println("-----siteCount----"+siteService.isExistSite(name));
+    }
+    @Test
+    public void testIsExistUserInSite(){
+    	int userId = 1;
+    	int siteId = 1;
+    	System.out.println("-----siteUserCount----"+siteService.isExistUserInSite(userId, siteId));
     }
 }

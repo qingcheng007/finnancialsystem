@@ -24,6 +24,14 @@
 		from post
 	</select>
 	
+	<select id="countByPostName" parameterType="java.lang.String"
+		resultType="int">
+		select
+		count(*) c
+		from post where Name =
+		#{name,jdbcType=VARCHAR}
+	</select> 
+	
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from post
 		where Id = #{id,jdbcType=INTEGER}

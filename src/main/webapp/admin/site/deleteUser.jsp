@@ -3,19 +3,9 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>从站点中删除用户</title>
+<title>从站点删除用户</title>
 <jsp:include page="/include/easyui.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8">
-	$(function() {
-		$('#delete_dia').dialog({
-			title : 'sc',
-			width : 600,
-			height : 400,
-			closed : false,
-			cache : false,
-			modal : true
-		});
-	});
 	function submit() {
 		if ($('#admin_site_delete_form').form('validate')) {
 			$('#submit').linkbutton('disable');
@@ -27,6 +17,13 @@
 						dataType : 'json',
 						success : function(data) {
 							if (data.success) {
+								parent.$.messager.show({
+									title : '提示',
+									msg : data.msg,
+									timeout : 2000,
+									showType : 'slide'
+								});
+							}else{
 								parent.$.messager.show({
 									title : '提示',
 									msg : data.msg,
@@ -55,7 +52,6 @@
 </script>
 </head>
 <body>
-	<div id="delete_dia" class="easyui-dialog">
 		<form id="admin_site_delete_form">
 			<table>
 				<tr>
@@ -71,6 +67,5 @@
 				</tr>
 			</table>
 		</form>
-	</div>
 </body>
 </html>

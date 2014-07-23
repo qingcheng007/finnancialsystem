@@ -31,11 +31,18 @@ public class PostController extends BaseController {
 	@RequestMapping("/admin/add")
 	public Json add(Post post, HttpSession session) {
 	    Json json = new Json();
+	    int flag = 0;
 		try {
-			postService.save(post);
-			json.setSuccess(true);
-			json.setObj(post);
-			json.setMsg("添加成功");
+			flag = postService.isExist(post.getName());
+			if(flag == 0){
+			   postService.save(post);
+			   json.setObj(post);
+			   json.setSuccess(true);
+			   json.setMsg("添加成功");
+			}else{
+			   json.setSuccess(false);
+			   json.setMsg("该职务已经存在");
+			}	  
 		} catch (Exception e) {
 			json.setMsg("添加失败");
 			e.printStackTrace();

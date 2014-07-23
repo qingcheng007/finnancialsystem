@@ -101,7 +101,22 @@ public class SiteServiceImpl implements ISiteService {
 		dg.setTotal(sites.getPaginator().getTotalCount());
 		return dg;
 	}
-
+	/**
+	 *  返回  >0 代表存在该条记录
+	 *  返回 =0 代表该条记录不存在 
+	 */
+	@Override
+	public int isExistSite(String siteName) {
+		return siteMapper.countBySiteName(siteName);
+	}
+	/**
+	 *  返回  >0 代表存在该条记录
+	 *  返回 =0 代表该条记录不存在 
+	 */
+	@Override
+	public int isExistUserInSite(int userId,int siteId) {
+		return siteMapper.countByUserIdAndSiteId(userId, siteId);
+	}
 	public void saveOrUpdate(Site o) throws Throwable {
 		// TODO Auto-generated method stub
 	}
@@ -120,5 +135,4 @@ public class SiteServiceImpl implements ISiteService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

@@ -54,7 +54,7 @@
 		}
 	}
 	function closeDialog() {
-		$.modalDialog.handler.dialog('close');
+		parent.$.modalDialog.handler.dialog('close');
 	}
 </script>
 </head>

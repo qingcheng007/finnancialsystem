@@ -160,8 +160,8 @@
 	}
 
 	function deleteBatch(){
-		window.open('${pageContext.request.contextPath}/admin/site/deleteUser.jsp');
-		//window.showModalDialog('${pageContext.request.contextPath}/admin/site/deleteUser.jsp',window,"dialogWidth:400px;dialogHeight:300px;dialogLocation:no;center:yes;status:no;menubar:no");
+		//window.open('${pageContext.request.contextPath}/admin/site/deleteUser.jsp','location=no');
+		window.showModalDialog('${pageContext.request.contextPath}/admin/site/deleteUser.jsp',window,"dialogWidth:400px;dialogHeight:300px;location:no;center:yes;status:no;menubar:no");
 	}
 	
 	function refresh() {

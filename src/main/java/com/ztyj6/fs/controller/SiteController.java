@@ -50,12 +50,19 @@ public class SiteController extends BaseController {
 	@RequestMapping("/admin/add")
 	public Json add(Site site, HttpSession session) {
 		Json json = new Json();
+		int flag = 0;
 		try {
-			site.setCreateDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())));
-			siteService.save(site);
-			json.setSuccess(true);
-			json.setObj(site);
-			json.setMsg("添加成功");
+			flag = siteService.isExistSite(site.getName());
+			if(flag==0){
+				site.setCreateDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())));
+				siteService.save(site);
+				json.setSuccess(true);
+				json.setObj(site);
+				json.setMsg("添加成功");
+			}else{
+				json.setMsg("添加失败，站点已经存在");
+			}
+			
 		} catch (Exception e) {
 			json.setMsg( "添加失败");
 		    e.printStackTrace();
@@ -109,17 +116,24 @@ public class SiteController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping("/admin/addUserSite")
-	public Json addUserSite(int siteId, int userId, int postId,
+	public Json addUserSite(int userId, int postId,
 			HttpSession session) {
 		Json json = new Json();
+		int flag = 0;
+		int siteId = (int)session.getAttribute("siteId");
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("siteId", siteId);
 		map.put("userId", userId);
 		map.put("postId", postId);
 		try {
-			siteService.saveUserSite(map);
-			json.setSuccess(true);
-			json.setMsg("添加成功");
+			flag = siteService.isExistUserInSite(userId, siteId);
+			if(flag == 0){
+				siteService.saveUserSite(map);
+				json.setSuccess(true);
+				json.setMsg("添加成功");
+			}else{
+				json.setMsg("该用户已经存在于站点中");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			json.setMsg("添加失败");
@@ -133,12 +147,19 @@ public class SiteController extends BaseController {
 		//从getUserInformationOfOneSiteByPage中为siteId完成赋值
 		int siteId = (int)session.getAttribute("siteId");
 		String userIds = request.getParameter("userId");
-
+        int userId = Integer.parseInt(userIds);
+		int flag = 0;
+		
 		Json json = new Json();
 		try {
+			flag = siteService.isExistUserInSite(userId, siteId);
+			if(flag > 0){
 			siteService.deleteBatchUserSite(siteId, userIds);
 			json.setSuccess(true);
 			json.setMsg("删除成功");
+			}else{
+				json.setMsg("删除失败，删除的对象不存在");
+			}
 		} catch (Exception e) {
 			json.setMsg("删除失败");
 			e.printStackTrace();

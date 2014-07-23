@@ -18,7 +18,9 @@ public interface SiteMapper {
 	int insert(Site record);
 
 	int insertSelective(Site record);
-
+    
+	int countBySiteName(String name); 
+	
 	Site selectByPrimaryKey(Integer id);
 
 	List<Site> selectByPage(PageBounds pageBounds);
@@ -37,4 +39,6 @@ public interface SiteMapper {
 
 	List<Site> selectUsersByPage(@Param("pageBounds") PageBounds pageBounds,
 			@Param("siteId") Integer siteId);
+	
+	int countByUserIdAndSiteId(@Param("userId") int userId,@Param("siteId") int siteId);
 }
