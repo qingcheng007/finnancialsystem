@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.ztyj6.fs.dao.AuditStateMapper;
 import com.ztyj6.fs.dao.InvoiceDetailsMapper;
 import com.ztyj6.fs.dao.InvoiceMapper;
@@ -17,6 +19,7 @@ import com.ztyj6.fs.model.InvoiceType;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.PageFilter;
 import com.ztyj6.fs.service.IInvoiceService;
+import com.ztyj6.fs.utils.PageFilterUtil;
 
 @Service("invoiceService")
 public class InvoiceServiceImpl implements IInvoiceService {
@@ -217,8 +220,12 @@ public class InvoiceServiceImpl implements IInvoiceService {
 
 	@Override
 	public DataGrid getByPage(PageFilter pageFilter) {
-		// TODO Auto-generated method stub
-		return null;
+		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
+		DataGrid dg = new DataGrid();
+		PageList roles = (PageList) invoiceMapper.selectByPage(pageBounds);
+		dg.setRows(roles);
+		dg.setTotal(roles.getPaginator().getTotalCount());
+		return dg;
 	}
 
 	@Override

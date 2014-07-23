@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	String sessionid = session.getId();
-%>
 <html>
 <head>
-
 <title>发票信息添加</title>
 <jsp:include page="../../include/easyui.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8"
@@ -14,39 +10,9 @@
 <script type="text/javascript"
 	src="../../jslib/My97DatePicker4.8b3/My97DatePicker/WdatePicker.js"></script>
 <link rel="stylesheet" href="../../style/css/dialog.css" type="text/css">
-<script type="text/javascript"
-	src="../../jslib/uploadify/jquery.uploadify.min.js"></script>
-<link rel="stylesheet" href="../../jslib/uploadify/uploadify.css"
-	type="text/css">
 <script type="text/javascript" charset="utf-8">
-$(function() {
-	$('#photoUrl').uploadify({
-		swf : '${pageContext.request.contextPath}/jslib/uploadify/uploadify.swf',
-        cancelImg : '${pageContext.request.contextPath}/jslib/uploadify/uploadify-cancel.png',
-        uploader : '${pageContext.request.contextPath}/fileController/upload.do;jsessionid=<%=sessionid%>?type=addStudentExcel',
-							multi : false,
-							queueSizeLimit : 1,
-							fileSizeLimit : '10MB',
-							fileTypeExts : '*.jpg; *.jpeg;',
-							buttonText : '选择文件',
-							onUploadSuccess : function(file, data, response) {
-								var obj = JSON.parse(data);
-								console.info(obj.url);
-								//alert(obj.url);
-								document.getElementById("photoUrl").value = obj.url;
-							}
-						});
-	});
 	function submit() {
-		//if($('#invoice_add_form input[name=photoUrl]').val()==null)
-		if (document.getElementById("photoUrl").value == null) {
-			$.messager.show({
-				title : '提示',
-				msg : '图片信息为空',
-				timeout : 2000,
-				showType : 'slide'
-			});
-		} else if ($('#invoice_add_form').form('validate')) {
+		if ($('#invoice_add_form').form('validate')) {
 			$('#submit').linkbutton('disable');
 			var data = toJson();
 			$
@@ -97,111 +63,20 @@ $(function() {
 		var invoiceDetails = new Object();
 		if ($('#invoiceTypeId').val() != null)
 			invoiceType.id = $('#invoiceTypeId').val();
-		var inputName = "content" + invoiceType.id;
-		for ( var i = 1; i <= 3; i++) {
-			
-			console.info(inputName + i);
-	
-			console.info(invoiceType.id);
-			switch(invoiceType.id)
-			{
-			case '1':{
-				
-				if (i == 1)
-					invoiceDetails.content1 = document.getElementById(inputName + i).value;
-				if (i == 2)
-					invoiceDetails.content2 = document.getElementById(inputName + i).value;
-				if (i == 3)
-					invoiceDetails.content3 = document.getElementById(inputName + i).value;
-				
-			}break;
-			case '2':{
-				
-				if (i == 1)
-					invoiceDetails.content1 = document.getElementById(inputName + i).value;
-				if (i == 2)
-					invoiceDetails.content2 = document.getElementById(inputName + i).value;
-				if (i == 3)
-					invoiceDetails.content3 = document.getElementById(inputName + i).value;
-				
-			}break;
-			case '3':{
-				
-				if (i == 1)
-					invoiceDetails.content1 = document.getElementById(inputName + i).value;
-				if (i == 2)
-					invoiceDetails.content2 = document.getElementById(inputName + i).value;
-				if (i == 3)
-					invoiceDetails.content3 = document.getElementById(inputName + i).value;
-				
-			}break;
-			case '4':{
-				
-				if (i == 1)
-					invoiceDetails.content1 = document.getElementById(inputName + i).value;
-				if (i == 2)
-					invoiceDetails.content2 = document.getElementById(inputName + i).value;
-					
-			}break;
-			case '5':{
-			
-				if (i == 1)
-					invoiceDetails.content1 = document.getElementById(inputName + i).value;
-				if (i == 2)
-					invoiceDetails.content2 = document.getElementById(inputName + i).value;
-			
-			}break;
-			case '6':{
-					
-			}break;
-			case '7':{
-			
-				if (i == 1)
-					invoiceDetails.content1 = document.getElementById(inputName + i).value;
-				if (i == 2)
-					invoiceDetails.content2 = document.getElementById(inputName + i).value;
-		
-			}break;
-			case '8':{
-				
-				if (i == 1)
-					invoiceDetails.content1 = document.getElementById(inputName + i).value;
-				if (i == 2)
-					invoiceDetails.content2 = document.getElementById(inputName + i).value;
-		
-			}break;
-			case '9':{
-				
-				if (i == 1)
-					invoiceDetails.content1 = document.getElementById(inputName + i).value;
-				if (i == 2)
-					invoiceDetails.content2 = document.getElementById(inputName + i).value;
-				if (i == 3)
-					invoiceDetails.content3 = document.getElementById(inputName + i).value;
-	
-			}break;
-			case '10':{
-				
-				if (i == 1)
-					invoiceDetails.content1 = document.getElementById(inputName + i).value;
-				if (i == 2)
-					invoiceDetails.content2 = document.getElementById(inputName + i).value;
-				if (i == 3)
-					invoiceDetails.content3 = document.getElementById(inputName + i).value;
-	
-			}break;
-			case '11':{
-				
-				if (i == 1)
-					{
-					invoiceDetails.content1 = document.getElementById(inputName + i).value;
-					console.info(document.getElementById(inputName + i).value);
-					}
-				
-			}break;
 
+		for ( var i = 1; i <= 3; i++) {
+			var inputName = "content" + invoiceType.id;
+			//console.info(inputName + i);
+			var contenti = document.getElementById(inputName + i).value;
+			console.info(inputName + i);
+			if (contenti != null) {
+				if (i == 1)
+					invoiceDetails.content1 = contenti;
+				if (i == 2)
+					invoiceDetails.content2 = contenti;
+				if (i == 3)
+					invoiceDetails.content3 = contenti;
 			}
-			
 		}
 		invoice.invoiceType = invoiceType;
 		invoice.invoiceDetails = invoiceDetails;
@@ -216,7 +91,7 @@ $(function() {
 		invoice.auditor1Id = $('#auditor1Id').val();
 		invoice.auditor2Id = $('#auditor2Id').val();
 		invoice.remark = $('#remark').val();
-		invoice.Photourl = $('#photoUrl').val();
+		invoice.Photourl=$('#photoUrl').val();
 		//	invoice.proverId = $('#proverId').combobox('getValue');
 		//	invoice.auditor1Id = $('#auditor1Id').combobox('getValue');
 		//	invoice.auditor2Id = $('#auditor2Id').combobox('getValue');
@@ -290,12 +165,13 @@ $(function() {
 
 		document.getElementById('tr41').style.display = 'none';
 		document.getElementById('tr42').style.display = 'none';
+		document.getElementById('tr43').style.display = 'none';
 
 		document.getElementById('tr51').style.display = 'none';
 		document.getElementById('tr52').style.display = 'none';
 
-		document.getElementById('tr71').style.display = 'none';
-		document.getElementById('tr72').style.display = 'none';
+		document.getElementById('tr61').style.display = 'none';
+		document.getElementById('tr62').style.display = 'none';
 
 		document.getElementById('tr81').style.display = 'none';
 		document.getElementById('tr82').style.display = 'none';
@@ -309,6 +185,8 @@ $(function() {
 		document.getElementById('tr103').style.display = 'none';
 
 		document.getElementById('tr111').style.display = 'none';
+		document.getElementById('tr112').style.display = 'none';
+		document.getElementById('tr113').style.display = 'none';
 
 		i = 1;
 		for (; i <= 3; i++) {
@@ -336,22 +214,22 @@ $(function() {
 	<form id="invoice_add_form">
 
 		<table>
-			<tr>
-				<td>票据类型</td>
-				<td><select onchange="switchHide(this.value)"
-					id="invoiceTypeId" name="invoiceTypeId" style="width:166px;">
-						<option value="1">卡加油费</option>
-						<option value="2">现金加油费</option>
-						<option value="3">住宿费</option>
-						<option value="4">交通费</option>
-						<option value="5">修理费</option>
-						<option value="6">过停费</option>
-						<option value="7">招待费</option>
-						<option value="8">办公费</option>
-						<option value="9">材料费</option>
-						<option value="10">工具费</option>
-						<option value="11">其他费</option>
-				</select></td>
+<tr>
+			<td>票据类型</td>
+			<td><select onchange="switchHide(this.value)" id="invoiceTypeId"
+				name="invoiceTypeId" style="width:166px;">
+					<option value="1">卡加油费</option>
+					<option value="2">现金加油费</option>
+					<option value="3">住宿费</option>
+					<option value="4">交通费</option>
+					<option value="5">修理费</option>
+					<option value="6">过停费</option>
+					<option value="7">招待费</option>
+					<option value="8">办公费</option>
+					<option value="9">材料费</option>
+					<option value="10">工具费</option>
+					<option value="11">其他费</option>
+			</select></td>
 			</tr>
 
 			<tr id="tr11">
@@ -373,139 +251,160 @@ $(function() {
 					style="width:160px;" /></td>
 			</tr>
 			<tr id="tr21" style="display:none">
-				<td>加油对象</td>
-				<td><input class="easyui-validatebox" id="content21"
-					name="content21" type="text" placeholder="加油对象"
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
 					style="width:160px;" /></td>
 			</tr>
 			<tr id="tr22" style="display:none">
-				<td>加油升数</td>
-				<td><input class="easyui-validatebox" id="content22"
-					name="content22" type="text" placeholder="加油升数"
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
 					style="width:160px;" /></td>
 			</tr>
 			<tr id="tr23" style="display:none">
-				<td>车辆公里数</td>
-				<td><input class="easyui-validatebox" id="content23"
-					name="content23" type="text" placeholder="车辆公里数"
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
 					style="width:160px;" /></td>
 			</tr>
 
 			<tr id="tr31" style="display:none">
-				<td>天数</td>
-				<td><input class="easyui-validatebox" id="content31"
-					name="content31" type="text" placeholder="天数" style="width:160px;" /></td>
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
+					style="width:160px;" /></td>
 			</tr>
 			<tr id="tr32" style="display:none">
-				<td>人数</td>
-				<td><input class="easyui-validatebox" id="content32"
-					name="content32" type="text" placeholder="人数" style="width:160px;" /></td>
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
+					style="width:160px;" /></td>
 			</tr>
 			<tr id="tr33" style="display:none">
-				<td>住宿地点</td>
-				<td><input class="easyui-validatebox" id="content33"
-					name="content33" type="text" placeholder="住宿地点"
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
 					style="width:160px;" /></td>
 			</tr>
 
 			<tr id="tr41" style="display:none">
-				<td>交通工具</td>
-				<td><input class="easyui-validatebox" id="content41"
-					name="content41" type="text" placeholder="交通工具"
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
 					style="width:160px;" /></td>
 			</tr>
 			<tr id="tr42" style="display:none">
-				<td>起止点</td>
-				<td><input class="easyui-validatebox" id="content42"
-					name="content42" type="text" placeholder="起止点" style="width:160px;" /></td>
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
+					style="width:160px;" /></td>
+			</tr>
+			<tr id="tr43" style="display:none">
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
+					style="width:160px;" /></td>
 			</tr>
 
-
 			<tr id="tr51" style="display:none">
-				<td>修理对象</td>
-				<td><input class="easyui-validatebox" id="content51"
-					name="content51" type="text" placeholder="修理对象"
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
 					style="width:160px;" /></td>
 			</tr>
 			<tr id="tr52" style="display:none">
-				<td>修理内容</td>
-				<td><input class="easyui-validatebox" id="content52"
-					name="content52" type="text" placeholder="修理内容"
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
 					style="width:160px;" /></td>
 			</tr>
 
-			<tr id="tr71" style="display:none">
-				<td>招待事由</td>
-				<td><input class="easyui-validatebox" id="content71"
-					name="content71" type="text" placeholder="招待事由"
+			<tr id="tr61" style="display:none">
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
 					style="width:160px;" /></td>
 			</tr>
-			<tr id="tr72" style="display:none">
-				<td>饭店名称</td>
-				<td><input class="easyui-validatebox" id="content72"
-					name="content72" type="text" placeholder="饭店名称"
+			<tr id="tr62" style="display:none">
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
 					style="width:160px;" /></td>
 			</tr>
 
 
 			<tr id="tr81" style="display:none">
-				<td>票据内容</td>
-				<td><input class="easyui-validatebox" id="content81"
-					name="content81" type="text" placeholder="票据内容"
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
 					style="width:160px;" /></td>
 			</tr>
 			<tr id="tr82" style="display:none">
-				<td>数量</td>
-				<td><input class="easyui-validatebox" id="content82"
-					name="content81" type="text" placeholder="数据" style="width:160px;" /></td>
-			</tr>
-			<tr id="tr83" style="display:none">
-				<td>单价</td>
-				<td><input class="easyui-validatebox" id="content83"
-					name="content83" type="text" placeholder="单价" style="width:160px;" /></td>
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
+					style="width:160px;" /></td>
 			</tr>
 
 
 			<tr id="tr91" style="display:none">
-				<td>票据内容</td>
-				<td><input class="easyui-validatebox" id="content91"
-					name="content91" type="text" placeholder="票据内容"
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
 					style="width:160px;" /></td>
 			</tr>
 			<tr id="tr92" style="display:none">
-				<td>数量</td>
-				<td><input class="easyui-validatebox" id="content92"
-					name="content92" type="text" placeholder="数量" style="width:160px;" /></td>
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
+					style="width:160px;" /></td>
 			</tr>
 			<tr id="tr93" style="display:none">
-				<td>单价</td>
-				<td><input class="easyui-validatebox" id="content93"
-					name="content93" type="text" placeholder="单价" style="width:160px;" /></td>
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
+					style="width:160px;" /></td>
 			</tr>
 
 			<tr id="tr101" style="display:none">
-				<td>票据内容</td>
-				<td><input class="easyui-validatebox" id="content101"
-					name="content101" type="text" placeholder="票据内容"
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
 					style="width:160px;" /></td>
 			</tr>
 			<tr id="tr102" style="display:none">
-				<td>数量</td>
-				<td><input class="easyui-validatebox" id="content102"
-					name="content102" type="text" placeholder="数量" style="width:160px;" /></td>
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
+					style="width:160px;" /></td>
 			</tr>
 			<tr id="tr103" style="display:none">
-				<td>单价</td>
-				<td><input class="easyui-validatebox" id="content103"
-					name="content103" type="text" placeholder="单价" style="width:160px;" /></td>
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
+					style="width:160px;" /></td>
 			</tr>
 
 			<tr id="tr111" style="display:none">
 				<td>费用内容</td>
-				<td><input class="easyui-validatebox" id="content111"
-					name="content111" type="text" placeholder="费用内容"
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
 					style="width:160px;" /></td>
 			</tr>
+			<tr id="tr112" style="display:none">
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
+					style="width:160px;" /></td>
+			</tr>
+			<tr id="tr113" style="display:none">
+				<td>费用内容</td>
+				<td><input class="easyui-validatebox" id="specialty"
+					name="specialty" type="text" placeholder="请输入专业"
+					style="width:160px;" /></td>
+			</tr>
+
 
 			<tr>
 				<td>录入时间</td>
@@ -574,7 +473,12 @@ $(function() {
 			</tr>
 			<tr>
 				<td>清单附照片</td>
-				<td><input type="file" name="photoUrl" id="photoUrl" /></td>
+				<td><input type="file" name="file_upload" id="file_upload" />
+				<input class="easyui-validatebox" id="photoUrl"
+					name="photoUrl" type="text" placeholder="清单附照片"
+					data-options="required:true" style="width:160px;" /> <textarea
+						id="content_1" name="content" style="width:700px;height:300px;"></textarea>
+				</td>
 			</tr>
 			<tr>
 				<td>备注</td>

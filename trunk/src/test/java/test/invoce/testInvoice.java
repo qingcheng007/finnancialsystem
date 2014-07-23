@@ -207,6 +207,16 @@ public class testInvoice {
 		System.out.println(invoice.getAuditState().getId());
 	}
 	
+	@Test
+	public void testselectAll()
+	{
+		List<Invoice> invoiceList=iInvoiceService.getAll();
+		for(Invoice i:invoiceList)
+		{
+			System.out.print(i.getContent()+"----"+i.getId());
+		}
+	}
+	
 	
 
 
