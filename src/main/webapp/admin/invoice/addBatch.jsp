@@ -6,15 +6,13 @@
 <html>
 <head>
 <jsp:include page="../../include/easyui.jsp"></jsp:include>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/style/css/dialog.css" type="text/css">
-<script type="text/javascript" src="${pageContext.request.contextPath }/jslib/uploadify/jquery.uploadify.v2.1.4.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/jslib/uploadify/uploadify.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/style/css/dialog.css" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/uploadify/jquery.uploadify.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/jslib/uploadify/uploadify.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
 $(function() {
-$('#file_upload').display('');
-//document.getElementById('file_upload').style.display = '';
 	$('#class').combobox({
-	    url:'${pageContext.request.contextPath}/invoiceController/getAllTest.do',
+	    url:'${pageContext.request.contextPath}/classController/admin/getAll.do',
 	    valueField:'id',
 	    textField:'name',
 	    mode:'remote',
@@ -37,9 +35,7 @@ $('#file_upload').display('');
 	$('#file_upload').uploadify({
 		swf : '${pageContext.request.contextPath}/jslib/uploadify/uploadify.swf',
         cancelImg : '${pageContext.request.contextPath}/jslib/uploadify/uploadify-cancel.png',
-
-uploader : '${pageContext.request.contextPath}/fileController/upload.do;jsessionid=<%=sessionid%>?type=addStudentExcel',
-		
+        uploader : '${pageContext.request.contextPath}/fileController/upload.do;jsessionid=<%=sessionid%>?type=addStudentExcel',
 		multi : false,
 		queueSizeLimit : 1,
 		fileSizeLimit : '10MB',
@@ -51,7 +47,7 @@ uploader : '${pageContext.request.contextPath}/fileController/upload.do;jsession
 					text : '数据加载中....'
 				});
 				$.ajax({
-					url : '${pageContext.request.contextPath}/FileController/admin/addBatch.do',
+					url : '${pageContext.request.contextPath}/studentController/admin/addBatch.do',
 					type : 'POST',
 					data :  {
 						classId : $('#class').combobox('getValue'),
@@ -103,8 +99,7 @@ uploader : '${pageContext.request.contextPath}/fileController/upload.do;jsession
 				</select>
 	</div>
 	<div>导入Excel格式文件，支持.xls，.xlsx格式</br><a href="javascript:void(0)" onclick="checkTemplate()">点击查看Excel格式</a>
-	<input type="file" name="file_upload" id="file_upload" style="display: null;"/>
+	<input type="file" name="file_upload" id="file_upload" />
 	</div>
 </body>
 </html>
-
