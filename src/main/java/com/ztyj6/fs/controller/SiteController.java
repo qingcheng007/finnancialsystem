@@ -129,7 +129,11 @@ public class SiteController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping("/admin/deleteUserSite")
-	public Json deleteUserSite(int siteId, String userIds) {
+	public Json deleteUserSite(HttpServletRequest request,HttpSession session) {
+		//从getUserInformationOfOneSiteByPage中为siteId完成赋值
+		int siteId = (int)session.getAttribute("siteId");
+		String userIds = request.getParameter("userId");
+
 		Json json = new Json();
 		try {
 			siteService.deleteBatchUserSite(siteId, userIds);
@@ -145,8 +149,9 @@ public class SiteController extends BaseController {
 	@ResponseBody
 	@RequestMapping("/admin/getUserInformationOfOneSiteByPage")
 	public DataGrid getUserInformationOfOneSiteByPage(PageFilter pageFilter
-		,HttpServletRequest request) {
+		,HttpServletRequest request,HttpSession session) {
 		int siteId = Integer.parseInt(request.getParameter("siteId"));
+		session.setAttribute("siteId",siteId);
 		try {
 			return siteService.getUserInformationOfOneSiteByPage(pageFilter,
 					siteId);
