@@ -214,7 +214,7 @@
 	<form id="invoice_add_form">
 
 		<table>
-
+<tr>
 			<td>票据类型</td>
 			<td><select onchange="switchHide(this.value)" id="invoiceTypeId"
 				name="invoiceTypeId" style="width:166px;">
