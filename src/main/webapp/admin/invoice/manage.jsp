@@ -34,28 +34,82 @@
 					{
 						field : 'createdate',
 						title : '录入时间',
-						width : 220,
+						width : 100,
 						align : 'center',
 						sortable : true
 					}, {
 						field : 'occurdate',
-						title : '站点名称',
-						width : 220,
+						title : '发生时间',
+						width : 100,
 						align : 'center',
 						sortable : true
 					}, {
 						field : 'content',
-						title : '费用内容',
-						width : 220,
+						title : '报销金额',
+						width : 80,
 						align : 'center',
 						sortable : true
 					}, {
-						field : 'userId',
-						title : '建站人用户ID',
-						width : 220,
+						field : 'description',
+						title : '费用说明',
+						width : 180,
 						align : 'center',
 						sortable : true
 					},{
+						field : 'invoicetypeid',
+						title : '发票类型',
+						width : 80,
+						align : 'center',
+						sortable : true
+					},
+					{
+						field : 'projectname',
+						title : '工程名字',
+						width : 80,
+						align : 'center',
+						sortable : true
+					},
+					{
+						field : 'proverid',
+						title : '证明人',
+						width : 80,
+						align : 'center',
+						sortable : true
+					},{
+						field : 'auditor1id',
+						title : '审核人',
+						width : 80,
+						align : 'center',
+						sortable : true
+					},{
+						field : 'auditor2id',
+						title : '审批人',
+						width : 80,
+						align : 'center',
+						sortable : true
+					},
+					{
+						field : 'photourl',
+						title : '图片URL',
+						width : 180,
+						align : 'center',
+						sortable : true
+					},
+					{
+						field : 'remark',
+						title : '备注',
+						width : 80,
+						align : 'center',
+						sortable : true
+					},
+					{
+						field : 'dearerid',
+						title : '审票人',
+						width : 80,
+						align : 'center',
+						sortable : true
+					},
+					{
 						field : 'action',
 						title : '操作',
 						width : 100,
