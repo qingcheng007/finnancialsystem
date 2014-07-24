@@ -104,4 +104,16 @@ public class SiteTest {
     	int siteId = 1;
     	System.out.println("-----siteUserCount----"+siteService.isExistUserInSite(userId, siteId));
     }
+    @Test
+    public void testsaveUserSite(){
+    	int userId =2;
+		int siteId = 1;
+		int postId = 1;
+		System.out.println();
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("siteId", siteId);
+		map.put("userId", userId);
+		map.put("postId", postId);
+		siteService.saveUserSite(map);
+    }
 }

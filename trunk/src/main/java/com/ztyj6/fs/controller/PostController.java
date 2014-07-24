@@ -1,5 +1,8 @@
 package com.ztyj6.fs.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,5 +93,12 @@ public class PostController extends BaseController {
 			e.printStackTrace();
 		}
 		return json;
+	}
+	@ResponseBody
+	@RequestMapping("/admin/getAllPost")
+	public List<Post> getAllPost(){
+		List<Post> list = new ArrayList<Post>();
+		list = postService.getAllPost();
+		return list;
 	}
 }
