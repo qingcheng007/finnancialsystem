@@ -13,6 +13,7 @@ import com.alibaba.fastjson.JSON;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.ztyj6.fs.dao.SiteMapper;
+import com.ztyj6.fs.model.Post;
 import com.ztyj6.fs.model.Site;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.PageFilter;
@@ -117,6 +118,7 @@ public class SiteServiceImpl implements ISiteService {
 	public int isExistUserInSite(int userId,int siteId) {
 		return siteMapper.countByUserIdAndSiteId(userId, siteId);
 	}
+	
 	public void saveOrUpdate(Site o) throws Throwable {
 		// TODO Auto-generated method stub
 	}
@@ -135,4 +137,6 @@ public class SiteServiceImpl implements ISiteService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 }

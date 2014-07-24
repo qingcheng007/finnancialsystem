@@ -75,6 +75,11 @@ public class PostServiceImpl implements IPostService {
 		// TODO Auto-generated method stub
 		return postMapper.countByPostName(postName);
 	}
+	@Override
+	public List<Post> getAllPost() {
+		return postMapper.selectAllPost();
+	}
+	
 	public DataGrid getByPageFilter(PageFilter pageFilter) {
 		// TODO Auto-generated method stub
 		return null;
@@ -93,7 +98,5 @@ public class PostServiceImpl implements IPostService {
 	public List<Post> getAll() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	
+	}	
 }

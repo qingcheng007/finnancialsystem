@@ -1,6 +1,7 @@
 package test.post;
 
-import org.junit.Ignore;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,4 +37,12 @@ public class PostTest {
 		String name = "站长";
 		System.out.println("-----fsnhui----"+postService.isExist(name));
 	}
+    @Test
+    public void testGetAllPost(){
+    	System.out.println("---------listSize----------"+postService.getAllPost().size());
+    	List<Post> list = postService.getAllPost();
+    	for(Post post : list){
+    		System.out.println(post.getId()+"    "+post.getName());
+    	}
+    }
 }

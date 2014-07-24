@@ -116,11 +116,13 @@ public class SiteController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping("/admin/addUserSite")
-	public Json addUserSite(int userId, int postId,
+	public Json addUserSite(HttpServletRequest request,
 			HttpSession session) {
 		Json json = new Json();
 		int flag = 0;
+		int userId =Integer.parseInt(request.getParameter("userId"));
 		int siteId = (int)session.getAttribute("siteId");
+		int postId = Integer.parseInt(request.getParameter("postId"));
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("siteId", siteId);
 		map.put("userId", userId);

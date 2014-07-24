@@ -24,6 +24,12 @@
 		from post
 	</select>
 	
+	<select id="selectAllPost" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from post
+	</select>
+	
 	<select id="countByPostName" parameterType="java.lang.String"
 		resultType="int">
 		select

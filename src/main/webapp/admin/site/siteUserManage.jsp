@@ -150,13 +150,7 @@
 	});
 	
 	function add() {
-		parent.$.modalDialog({
-			title : '为站点添加用户',
-			width : 520,
-			height : 370,
-			url:'${pageContext.request.contextPath}/admin/post/add.jsp'
-		});
-		parent.$.modalDialog.DataGrid = $('#admin_siteUser_manage_dataGrid');
+		window.showModalDialog('${pageContext.request.contextPath}/admin/site/addUser.jsp',window,"dialogWidth:400px;dialogHeight:300px;location:no;center:yes;status:no;menubar:no");
 	}
 
 	function deleteBatch(){
