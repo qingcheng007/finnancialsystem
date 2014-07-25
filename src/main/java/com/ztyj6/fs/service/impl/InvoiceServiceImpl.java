@@ -144,11 +144,11 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	@Override
 	public int saveAuditStateInitialise(AuditState auditState) {
 
-		auditState.setAuditor1(false);
-		auditState.setAuditor2(false);
-		auditState.setDearer(false);
-		auditState.setOperator(true);
-		auditState.setProver(false);
+		auditState.setAuditor1(0);
+		auditState.setAuditor2(0);
+		auditState.setDearer(0);
+		auditState.setOperator(1);
+		auditState.setProver(0);
 		return auditStateMapper.insertSelective(auditState);
 	}
 
@@ -158,19 +158,19 @@ public class InvoiceServiceImpl implements IInvoiceService {
 
 		switch (passOne) {
 		case 1: {
-			invoice.getAuditState().setProver(false);
+			invoice.getAuditState().setProver(1);
 		}
 			break;
 		case 2: {
-			invoice.getAuditState().setAuditor1(true);
+			invoice.getAuditState().setAuditor1(1);
 		}
 			break;
 		case 3: {
-			invoice.getAuditState().setAuditor2(true);
+			invoice.getAuditState().setAuditor2(1);
 		}
 			break;
 		default: {
-			invoice.getAuditState().setProver(true);
+			invoice.getAuditState().setProver(1);
 		}
 		}
 		return auditStateMapper.updateByPrimaryKeySelective(invoice

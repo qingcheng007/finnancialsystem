@@ -5,11 +5,14 @@
 <head>
 <title>发票信息管理</title>
 <jsp:include page="../../include/easyui.jsp"></jsp:include>
+<sec:authentication property="principal" var="authentication" />
 <script type="text/javascript" charset="utf-8">
 	$(function() {
 	//var test= $(authentication.id);
 	//console.info(test);
-	var passid=2;
+	//var passid=${authentication.id};
+	var passid=1;
+	
 		$('#admin_site_manage_dataGrid')
 		.datagrid(
 				{
@@ -108,7 +111,14 @@
 						align : 'center',
 						formatter : function(value, row, index) {
 							var url=row.auditState.prover;
-							return url;
+									var state = null;
+							
+							switch(url){
+							case 0: state="未审核";break;
+							case 1: state="审核通过";break;
+							case 2: state="审核不通过";break;
+							}
+							return state;
 						} 
 					},
 					{
@@ -125,7 +135,14 @@
 						align : 'center',
 						formatter : function(value, row, index) {
 							var url=row.auditState.auditor1;
-							return url;
+									var state = null;
+							
+							switch(url){
+							case 0: state="未审核";break;
+							case 1: state="审核通过";break;
+							case 2: state="审核不通过";break;
+							}
+							return state;
 						} 
 					},{
 						field : 'auditor2id',
@@ -141,7 +158,14 @@
 						align : 'center',
 						formatter : function(value, row, index) {
 							var url=row.auditState.auditor2;
-							return url;
+								var state = null;
+							
+							switch(url){
+							case 0: state="未审核";break;
+							case 1: state="审核通过";break;
+							case 2: state="审核不通过";break;
+							}
+							return state;
 						} 
 					},
 					{
@@ -158,7 +182,14 @@
 						align : 'center',
 						formatter : function(value, row, index) {
 							var url=row.auditState.dearer;
-							return url;
+								var state = null;
+							
+							switch(url){
+							case 0: state="未审核";break;
+							case 1: state="审核通过";break;
+							case 2: state="审核不通过";break;
+							}
+							return state;
 						} 
 					},
 					{
@@ -186,12 +217,12 @@
 	});
 	
 	function add() {
-	
+		
 		parent.$.modalDialog({
 			title : '添加报帐目发票信息',
 			width : 380,
 			height : 260,
-			url:'${pageContext.request.contextPath}/admin/invoice/audit.jsp?id='+passid
+			url:'${pageContext.request.contextPath}/admin/invoice/add.jsp?'
 		});
 		parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');
 	}
@@ -209,14 +240,15 @@
 		
 	}
 	
-	function edit() {
+	function audit() {
+		var passid=2;
 		var rows = $('#admin_site_manage_dataGrid').datagrid('getChecked');
 		if (rows.length == 1) {
 			parent.$.modalDialog({
 				title : '编辑发票',
 				width : 380,
-				height : 260,
-				url : '${pageContext.request.contextPath}/admin/invoice/editAuditState.jsp'
+				//height : 260,
+				url : '${pageContext.request.contextPath}/admin/invoice/audit.jsp?id='+passid
 			});
 			parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');
 			parent.$.modalDialog.row = rows[0];
@@ -302,7 +334,7 @@
 					<td><div class="datagrid-btn-separator"></div></td>
 					</sec:authorize> --%>
 					<sec:authorize url="/invoiceController/edit.do">
-					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="edit();">审批</a></td>
+					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="audit();">审批</a></td>
 					<td><div class="datagrid-btn-separator"></div></td>
 					</sec:authorize>
 					<sec:authorize url="/invoiceController/delete.do">

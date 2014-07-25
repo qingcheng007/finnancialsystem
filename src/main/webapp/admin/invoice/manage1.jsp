@@ -105,7 +105,14 @@
 						align : 'center',
 						formatter : function(value, row, index) {
 							var url=row.auditState.prover;
-							return url;
+							var state = null;
+							
+							switch(url){
+							case 0: state="未审核";break;
+							case 1: state="审核通过";break;
+							case 2: state="审核不通过";break;
+							}
+							return state;
 						} 
 					},
 					{
@@ -122,7 +129,13 @@
 						align : 'center',
 						formatter : function(value, row, index) {
 							var url=row.auditState.auditor1;
-							return url;
+								var state = null;
+							switch(url){
+							case 0: state="未审核";break;
+							case 1: state="审核通过";break;
+							case 2: state="审核不通过";break;
+							}
+							return state;
 						} 
 					},{
 						field : 'auditor2id',
@@ -138,7 +151,13 @@
 						align : 'center',
 						formatter : function(value, row, index) {
 							var url=row.auditState.auditor2;
-							return url;
+								var state = null;
+							switch(url){
+							case 0: state="未审核";break;
+							case 1: state="审核通过";break;
+							case 2: state="审核不通过";break;
+							}
+							return state;
 						} 
 					},
 					{
@@ -155,7 +174,13 @@
 						align : 'center',
 						formatter : function(value, row, index) {
 							var url=row.auditState.dearer;
-							return url;
+								var state = null;
+							switch(url){
+							case 0: state="未审核";break;
+							case 1: state="审核通过";break;
+							case 2: state="审核不通过";break;
+							}
+							return state;
 						} 
 					},
 					{
@@ -186,7 +211,7 @@
 		parent.$.modalDialog({
 			title : '添加报帐目发票信息',
 			width : 380,
-			height : 260,
+			height : 660,
 			url:'${pageContext.request.contextPath}/admin/invoice/add.jsp'
 		});
 		parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');

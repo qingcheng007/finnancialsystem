@@ -144,7 +144,7 @@
 		parent.$.modalDialog({
 			title : '添加站点',
 			width : 380,
-			height : 260,
+			height : 960,
 			url:'${pageContext.request.contextPath}/admin/invoice/add.jsp'
 		});
 		parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');

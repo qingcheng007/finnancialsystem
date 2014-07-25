@@ -576,7 +576,7 @@ $(function() {
 			<tr>
 				<td>审票人</td>
 				<td><input class="easyui-validatebox" id="dearerId"
-					name="auditorId2" type="text" placeholder="审票人"
+					name="dearerId" type="text" placeholder="审票人"
 					data-options="required:true" style="width:160px;" /></td>
 			</tr>
 			<tr>

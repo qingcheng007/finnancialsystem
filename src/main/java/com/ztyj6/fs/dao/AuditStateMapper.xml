@@ -3,11 +3,11 @@
 <mapper namespace="com.ztyj6.fs.dao.AuditStateMapper" >
   <resultMap id="BaseResultMap" type="com.ztyj6.fs.model.AuditState" >
     <id column="Id" property="id" jdbcType="INTEGER" />
-    <result column="Operator" property="operator" jdbcType="BIT" />
-    <result column="Prover" property="prover" jdbcType="BIT" />
-    <result column="Auditor1" property="auditor1" jdbcType="BIT" />
-    <result column="Auditor2" property="auditor2" jdbcType="BIT" />
-    <result column="Dearer" property="dearer" jdbcType="BIT" />
+    <result column="Operator" property="operator" jdbcType="INTEGER" />
+    <result column="Prover" property="prover" jdbcType="INTEGER" />
+    <result column="Auditor1" property="auditor1" jdbcType="INTEGER" />
+    <result column="Auditor2" property="auditor2" jdbcType="INTEGER" />
+    <result column="Dearer" property="dearer" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     Id, Operator, Prover, Auditor1, Auditor2, Dearer
@@ -25,8 +25,8 @@
   <insert id="insert" parameterType="com.ztyj6.fs.model.AuditState" >
     insert into auditstate (Id, Operator, Prover, 
       Auditor1, Auditor2, Dearer)
-    values (#{id,jdbcType=INTEGER}, #{operator,jdbcType=BIT}, #{prover,jdbcType=BIT}, 
-      #{auditor1,jdbcType=BIT}, #{auditor2,jdbcType=BIT}, #{dearer,jdbcType=BIT})
+    values (#{id,jdbcType=INTEGER}, #{operator,jdbcType=INTEGER}, #{prover,jdbcType=INTEGER}, 
+      #{auditor1,jdbcType=INTEGER}, #{auditor2,jdbcType=INTEGER}, #{dearer,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.ztyj6.fs.model.AuditState" >
     insert into auditstate
@@ -55,19 +55,19 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="operator != null" >
-        #{operator,jdbcType=BIT},
+        #{operator,jdbcType=INTEGER},
       </if>
       <if test="prover != null" >
-        #{prover,jdbcType=BIT},
+        #{prover,jdbcType=INTEGER},
       </if>
       <if test="auditor1 != null" >
-        #{auditor1,jdbcType=BIT},
+        #{auditor1,jdbcType=INTEGER},
       </if>
       <if test="auditor2 != null" >
-        #{auditor2,jdbcType=BIT},
+        #{auditor2,jdbcType=INTEGER},
       </if>
       <if test="dearer != null" >
-        #{dearer,jdbcType=BIT},
+        #{dearer,jdbcType=INTEGER},
       </if>
     </trim>
     <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
@@ -78,30 +78,30 @@
     update auditstate
     <set >
       <if test="operator != null" >
-        Operator = #{operator,jdbcType=BIT},
+        Operator = #{operator,jdbcType=INTEGER},
       </if>
       <if test="prover != null" >
-        Prover = #{prover,jdbcType=BIT},
+        Prover = #{prover,jdbcType=INTEGER},
       </if>
       <if test="auditor1 != null" >
-        Auditor1 = #{auditor1,jdbcType=BIT},
+        Auditor1 = #{auditor1,jdbcType=INTEGER},
       </if>
       <if test="auditor2 != null" >
-        Auditor2 = #{auditor2,jdbcType=BIT},
+        Auditor2 = #{auditor2,jdbcType=INTEGER},
       </if>
       <if test="dearer != null" >
-        Dearer = #{dearer,jdbcType=BIT},
+        Dearer = #{dearer,jdbcType=INTEGER},
       </if>
     </set>
     where Id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.AuditState" >
     update auditstate
-    set Operator = #{operator,jdbcType=BIT},
-      Prover = #{prover,jdbcType=BIT},
-      Auditor1 = #{auditor1,jdbcType=BIT},
-      Auditor2 = #{auditor2,jdbcType=BIT},
-      Dearer = #{dearer,jdbcType=BIT}
+    set Operator = #{operator,jdbcType=INTEGER},
+      Prover = #{prover,jdbcType=INTEGER},
+      Auditor1 = #{auditor1,jdbcType=INTEGER},
+      Auditor2 = #{auditor2,jdbcType=INTEGER},
+      Dearer = #{dearer,jdbcType=INTEGER}
     where Id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
