@@ -145,23 +145,15 @@ public class SiteController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping("/admin/deleteUserSite")
-	public Json deleteUserSite(HttpServletRequest request,HttpSession session) {
+	public Json deleteUserSite(String ids,HttpSession session) {
 		//从getUserInformationOfOneSiteByPage中为siteId完成赋值
 		int siteId = (int)session.getAttribute("siteId");
-		String userIds = request.getParameter("userId");
-        int userId = Integer.parseInt(userIds);
-		int flag = 0;
-		
 		Json json = new Json();
 		try {
-			flag = siteService.isExistUserInSite(userId, siteId);
-			if(flag > 0){
-			siteService.deleteBatchUserSite(siteId, userIds);
+			siteService.deleteBatchUserSite(siteId, ids);
 			json.setSuccess(true);
 			json.setMsg("删除成功");
-			}else{
-				json.setMsg("删除失败，删除的对象不存在");
-			}
+			
 		} catch (Exception e) {
 			json.setMsg("删除失败");
 			e.printStackTrace();

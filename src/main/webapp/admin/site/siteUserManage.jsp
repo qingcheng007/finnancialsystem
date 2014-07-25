@@ -36,12 +36,6 @@
 					} ] ], 
 					columns : [ [ 	             
 					{
-						field : 'id',
-						title : '站点编号',
-						width : 260,
-						align : 'center',
-						sortable : true
-					},{
 						field : 'userID',
 						title : '用户ID',
 						width : 260,
@@ -50,11 +44,7 @@
 						formatter : function(value,row,index){
 							var str = '';
 							for(var i=0;i<row.users.length;i++){
-								var temp = i+ 1;
-								str += '<front color="#FF0000"> ID'
-								+ temp
-								+': </front>'
-								+row.users[i].id
+								str += row.users[i].id
 								+'<br/>';
 							}
 							return str;
@@ -67,11 +57,7 @@
 						formatter : function(value,row,index){
 							var str = '';
 							for(var i=0;i<row.users.length;i++){
-								var temp = i+ 1;
-								str += '<front color="#FF0000"> 用户名'
-								+ temp
-								+': </front>'
-								+row.users[i].username
+								str += row.users[i].username
 								+'<br/>';
 							}
 							return str;
@@ -84,11 +70,7 @@
 						formatter : function(value,row,index){
 							var str = '';
 							for(var i=0;i<row.users.length;i++){
-								var temp = i+ 1;
-								str += '<front color="#FF0000"> 姓名'
-								+ temp
-								+': </front>'
-								+row.users[i].realname
+								str += row.users[i].realname
 								+'<br/>';
 							}
 							return str;
@@ -101,11 +83,7 @@
 						formatter : function(value,row,index){
 							var str = '';
 							for(var i=0;i<row.users.length;i++){
-								var temp = i+ 1;
-								str += '<front color="#FF0000"> 电话'
-								+ temp
-								+': </front>'
-								+row.users[i].phone
+								str += row.users[i].phone
 								+'<br/>';
 							}
 							return str;
@@ -118,11 +96,7 @@
 						formatter : function(value,row,index){
 							var str = '';
 							for(var i=0;i<row.users.length;i++){
-								var temp = i+ 1;
-								str += '<front color="#FF0000"> Email'
-								+ temp
-								+': </front>'
-								+row.users[i].email
+								str += row.users[i].email
 								+'<br/>';
 							}
 							return str;
@@ -135,11 +109,7 @@
 						formatter : function(value,row,index){
 							var str = '';
 							for(var i=0;i<row.posts.length;i++){
-								var temp = i+ 1;
-								str += '<front color="#FF0000"> 职务'
-								+ temp
-								+': </front>'
-								+row.posts[i].name
+								str += row.posts[i].name
 								+'<br/>';
 							}
 							return str;
@@ -154,8 +124,48 @@
 	}
 
 	function deleteBatch(){
-		//window.open('${pageContext.request.contextPath}/admin/site/deleteUser.jsp','location=no');
-		window.showModalDialog('${pageContext.request.contextPath}/admin/site/deleteUser.jsp',window,"dialogWidth:400px;dialogHeight:300px;location:no;center:yes;status:no;menubar:no");
+		var rows = $('#admin_siteUser_manage_dataGrid').datagrid('getChecked');
+		if(rows.length > 0){
+			parent.$.messager.confirm('询问', '您确定要删除此记录？', function(r) {
+				if (r) {
+					var ids = [];
+					for(var i=0; i<rows.length; i++)
+						ids.push(rows[i].id);
+					$.ajax({ 
+						url: '${pageContext.request.contextPath}/siteController/admin/deleteUserSite.do', 
+						type: 'POST',
+						data: {
+							ids: ids.join(',')
+						}, 
+						dataType : 'json',
+						success: function(data){
+							parent.$.messager.show({
+						           title:'提示',
+						           msg: data.msg,
+						           timeout:2000,
+						           showType:'slide'
+						    });
+							$('#admin_siteUser_manage_dataGrid').datagrid('load');
+				      	},
+				      	error: function(){
+							parent.$.messager.show({
+						           title:'提示',
+						           msg:data.msg,
+						           timeout:2000,
+						           showType:'slide'
+						    });
+				      	}
+					});
+				}
+			});
+		}else{
+			parent.$.messager.show({
+		           title:'提示',
+		           msg:'请勾选要删除的记录！',
+		           timeout:2000,
+		           showType:'slide'
+		        });
+		}
 	}
 	
 	function refresh() {

@@ -200,18 +200,14 @@
 		extends="BaseResultMap">
 		<collection property="users" javaType="list"
 			ofType="com.ztyj6.fs.model.User">
-			<id property="id" column="userId" />
-			<result property="username" column="userName" />
+			<id property="id" column="id" />
+			<result property="username" column="username" />
 			<result property="password" column="password" />
-			<result property="realname" column="realName" />
+			<result property="realname" column="realname" />
 			<result property="phone" column="phone" />
 			<result property="email" column="email" />
 			<result property="lastLoginDate" column="lastLoginDate" />
 			<result property="lastLoginIp" column="lastLoginIp" />
-			<result property="createIp" column="createIp" />
-			<result property="createDate" column="createDate" />
-			<result property="isEnable" column="isEnable" />
-			<result property="parentId" column="parentId" />
 			<result property="balanceId" column="balanceId" />
 		</collection>
 		<collection property="posts" javaType="list"
@@ -222,40 +218,23 @@
 	</resultMap>
 	<select id="selectUsersByPage" resultMap="userResultMap">
 		SELECT
-		site.Id,
-		site.Name siteName,
-		site.Address siteAddress,
-		site.CreateDate siteCreateDate,
-		site.UserId siteUserId,
-		site.CreatePurpose,
-		site.ProjectName,
-		r_site_user.Id rId,
-		r_site_user.SiteId rSiteId,
-		r_site_user.UserId rUserId,
-		r_site_user.PostId rPostId,
-		post.Id postId,
-		post.Name postName,
-		user.Id userId,
-		user.UserName userName,
+		user.Id id,
+		user.UserName username, 
 		user.Password password,
 		user.RealName realName,
 		user.Phone phone,
 		user.Email email,
 		user.LastLoginDate lastLoginDate,
-		user.LastLoginIp lastLoginIP,
-		user.CreateIp createIp,
-		user.CreateDate createDate,
-		user.IsEnable
-		isEnable,
-		user.ParentId parentId,
-		user.BalanceId balanceId
+		user.LastLoginIp lastLoginIp,
+		user.BalanceId balanceId,
+		post.Id postId,
+		post.Name postName
 		FROM
-		site
-		JOIN r_site_user ON r_site_user.SiteId = #{siteId,jdbcType=INTEGER} and
-		site.Id = #{siteId,jdbcType=INTEGER}
-		JOIN post ON r_site_user.PostId = post.Id
-		JOIN user ON r_site_user.UserId =
-		user.Id
+		user
+		JOIN r_site_user ON r_site_user.UserId = user.Id 
+        JOIN post ON post.Id = r_site_user.PostId
+        JOIN site ON r_site_user.SiteId = site.Id
+	    where site.Id = #{siteId,jdbcType=INTEGER}
 	</select>
 	<select id="countByUserIdAndSiteId" resultType="int">
 		select
