@@ -128,14 +128,14 @@
 			if (rows.length == 0) {
 				parent.$.messager.show({
 					title : '提示',
-					msg : '请勾选要编辑的记录！',
+					msg : '请勾选要管理的站点！',
 					timeout : 2000,
 					showType : 'slide'
 				});
 			} else {
 				parent.$.messager.show({
 					title : '提示',
-					msg : '每次只能编辑一个记录，请勾选一个记录！',
+					msg : '每次只能管理一个站点，请勾选一个站点！',
 					timeout : 2000,
 					showType : 'slide'
 				});
