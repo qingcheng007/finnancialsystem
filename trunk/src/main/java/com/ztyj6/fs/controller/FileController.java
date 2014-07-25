@@ -66,12 +66,14 @@ public class FileController extends BaseController {
 
 		String dirName = request.getParameter("dir");
 		String type = request.getParameter("type");
-
+		System.out.println(dirName);
 		// 文件保存目录URL
 		StringBuilder savePath = new StringBuilder();
+		System.out.println(savePath);
 		// 访问URL
 		StringBuilder saveUrl = new StringBuilder();
-
+		System.out.println(saveUrl);
+		StringBuilder photoUrl = new StringBuilder();
 		if (type != null) {
 			if (type.equals(TYPE_QUESTION)) {
 				savePath.append(application.getRealPath("/")).append(UPLOAD_DIR).append("/");
@@ -79,6 +81,7 @@ public class FileController extends BaseController {
 			} else if (type.equals(TYPE_ADD_STUDENT_EXCEL)) {
 				savePath.append(application.getRealPath("/")).append(TEMP_DIR).append("/");
 				saveUrl.append(request.getContextPath()).append("/").append(TEMP_DIR).append("/");
+				photoUrl.append("../../").append(TEMP_DIR).append("/");
 			}
 		} else
 			return getError("类型不能为空。");
@@ -126,7 +129,7 @@ public class FileController extends BaseController {
 				if (type.equals(TYPE_QUESTION)) {
 					savePath.append(type).append("/").append(dirName).append("/");
 					saveUrl.append(type).append("/").append(dirName).append("/");
-
+					photoUrl.append(type).append("/").append(dirName).append("/");
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 					String ymd = sdf.format(new Date());
 
@@ -136,6 +139,7 @@ public class FileController extends BaseController {
 				} else if (type.equals(TYPE_ADD_STUDENT_EXCEL)) {
 					savePath.append(dirName).append("/");
 					saveUrl.append(dirName).append("/");
+					photoUrl.append(dirName).append("/");
 				}
 
 				File saveDirFile = new File(savePath.toString());
@@ -159,8 +163,14 @@ public class FileController extends BaseController {
 
 				JSONObject obj = new JSONObject();
 				obj.put("error", 0);
+				System.out.println(newFileName);
+				System.out.println(savePath);
+				System.out.println(saveUrl);
+				System.out.println(photoUrl);
 				if (type.equals(TYPE_ADD_STUDENT_EXCEL))
-					obj.put("url", savePath + newFileName);
+				{
+					obj.put("url", photoUrl + newFileName);
+				}
 				else
 					obj.put("url", saveUrl + newFileName);
 				return obj;

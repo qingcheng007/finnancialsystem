@@ -6,6 +6,8 @@ import com.ztyj6.fs.model.AuditState;
 import com.ztyj6.fs.model.Invoice;
 import com.ztyj6.fs.model.InvoiceDetails;
 import com.ztyj6.fs.model.InvoiceType;
+import com.ztyj6.fs.model.page.DataGrid;
+import com.ztyj6.fs.model.page.PageFilter;
 
 public interface IInvoiceService extends IBaseService<Invoice> {
 
@@ -35,5 +37,7 @@ public interface IInvoiceService extends IBaseService<Invoice> {
 	
 	//test
 	List<InvoiceType> getInvoiceTypeAll();
+	
+	public DataGrid getPageById(PageFilter pageFilter,int id);
 	
 }

@@ -7,14 +7,10 @@
 <jsp:include page="../../include/easyui.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8">
 	$(function() {
-	//var test= $(authentication.id);
-	//console.info(test);
-	var passid=2;
 		$('#admin_site_manage_dataGrid')
 		.datagrid(
 				{
-					url : '${pageContext.request.contextPath}/invoiceController/getPageById.do?id='+passid,
-					//url : '${pageContext.request.contextPath}/invoiceController/getByPage.do',
+					url : '${pageContext.request.contextPath}/invoiceController/getByPage.do',
 					fit : true,
 					autoRowHeight : true,
 					striped : true,
@@ -63,7 +59,7 @@
 					}, {
 						field : 'description',
 						title : '费用说明',
-						width : 80,
+						width : 180,
 						align : 'center',
 						sortable : true
 					},{
@@ -84,6 +80,25 @@
 						sortable : true
 					},
 					{
+						field : 'proverid',
+						title : '证明人',
+						width : 80,
+						align : 'center',
+						sortable : true
+					},{
+						field : 'auditor1id',
+						title : '审核人',
+						width : 80,
+						align : 'center',
+						sortable : true
+					},{
+						field : 'auditor2id',
+						title : '审批人',
+						width : 80,
+						align : 'center',
+						sortable : true
+					},
+					{
 						field : 'photourl',
 						title : '图片URL',
 						width : 180,
@@ -95,75 +110,15 @@
 						} 
 					},
 					{
-						field : 'proverid',
-						title : '证明人',
-						width : 70,
+						field : 'remark',
+						title : '备注',
+						width : 80,
 						align : 'center',
 						sortable : true
-					},
-					{
-						field : 'proverState',
-						title : '证明人审核状态',
-						width : 100,
-						align : 'center',
-						formatter : function(value, row, index) {
-							var url=row.auditState.prover;
-							return url;
-						} 
-					},
-					{
-						field : 'auditor1id',
-						title : '审核人',
-						width : 70,
-						align : 'center',
-						sortable : true
-					},
-					{
-						field : 'auditor1State',
-						title : '审核人审核状态',
-						width : 100,
-						align : 'center',
-						formatter : function(value, row, index) {
-							var url=row.auditState.auditor1;
-							return url;
-						} 
-					},{
-						field : 'auditor2id',
-						title : '审批人',
-						width : 70,
-						align : 'center',
-						sortable : true
-					},
-					{
-						field : 'auditor1State',
-						title : '审批人审核状态',
-						width : 100,
-						align : 'center',
-						formatter : function(value, row, index) {
-							var url=row.auditState.auditor2;
-							return url;
-						} 
 					},
 					{
 						field : 'dearerid',
 						title : '审票人',
-						width : 70,
-						align : 'center',
-						sortable : true
-					},
-					{
-						field : 'dearerState',
-						title : '审票人审核状态',
-						width : 100,
-						align : 'center',
-						formatter : function(value, row, index) {
-							var url=row.auditState.dearer;
-							return url;
-						} 
-					},
-					{
-						field : 'remark',
-						title : '备注',
 						width : 80,
 						align : 'center',
 						sortable : true
@@ -174,7 +129,7 @@
 						width : 100,
 						align : 'center',
 						formatter : function(value, row, index) {
-							var btn = '<a onclick="check(\''+row.id+'\')" href="javascript:void(0)">查看详情</a>';
+							var btn = '<a onclick="addStudent(\''+row.id+'\')" href="javascript:void(0)">查看详情</a>';
 							return btn;
 						} 
 					}] ],
@@ -186,25 +141,15 @@
 	});
 	
 	function add() {
-	
 		parent.$.modalDialog({
-			title : '添加报帐目发票信息',
+			title : '添加站点',
 			width : 380,
 			height : 260,
-			url:'${pageContext.request.contextPath}/admin/invoice/audit.jsp?id='+passid
+			url:'${pageContext.request.contextPath}/admin/invoice/add.jsp'
 		});
 		parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');
 	}
-		function check(id){
-		console.info(id);
-		parent.$.modalDialog({
-			title : '查看详细信息',
-			width : 800,
-			height : 550,
-			url:'${pageContext.request.contextPath}/admin/invoice/check.jsp?id='+id
-		});
-		parent.$.modalDialog.DataGrid = $('#admin_question_manage_dataGrid');
-	}
+	
 	function addStudent(){
 		
 	}
@@ -216,7 +161,7 @@
 				title : '编辑发票',
 				width : 380,
 				height : 260,
-				url : '${pageContext.request.contextPath}/admin/invoice/editAuditState.jsp'
+				url : '${pageContext.request.contextPath}/admin/invoice/edit.jsp'
 			});
 			parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');
 			parent.$.modalDialog.row = rows[0];
@@ -297,12 +242,12 @@
 		<div id="admin_site_manage_toolbar">
 			<table>
 				<tr>
-				<%-- 	<sec:authorize url="/invoiceController/add.do">
+					<sec:authorize url="/invoiceController/add.do">
 					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="add();">添加</a></td>
 					<td><div class="datagrid-btn-separator"></div></td>
-					</sec:authorize> --%>
+					</sec:authorize>
 					<sec:authorize url="/invoiceController/edit.do">
-					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="edit();">审批</a></td>
+					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="edit();">编辑</a></td>
 					<td><div class="datagrid-btn-separator"></div></td>
 					</sec:authorize>
 					<sec:authorize url="/invoiceController/delete.do">

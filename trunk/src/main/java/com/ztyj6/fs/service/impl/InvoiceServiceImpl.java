@@ -1,6 +1,7 @@
 package com.ztyj6.fs.service.impl;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -191,7 +192,9 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	@Override
 	public void delete(String ids) {
 
-		invoiceMapper.deleteByPrimaryID(Integer.parseInt(ids));
+		List<String> arrays = Arrays.asList(ids.split(","));
+		invoiceMapper.deleteBatch(arrays);
+//		invoiceMapper.deleteByPrimaryID(Integer.parseInt(ids));
 
 	}
 
@@ -227,6 +230,16 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		dg.setTotal(roles.getPaginator().getTotalCount());
 		return dg;
 	}
+	@Override
+	public DataGrid getPageById(PageFilter pageFilter, int id) {
+		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
+		DataGrid dg = new DataGrid();
+		PageList roles = (PageList) invoiceMapper.selectPageById(pageBounds,id);
+		dg.setRows(roles);
+		dg.setTotal(roles.getPaginator().getTotalCount());
+		return dg;
+		
+	}
 
 	@Override
 	public DataGrid getByPageFilter(PageFilter pageFilter) {
@@ -244,5 +257,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	public List<InvoiceType> getInvoiceTypeAll() {
 		return invoiceTypeMapper.getInvoiceType();
 	}
+
+
 
 }
