@@ -119,11 +119,9 @@
 			parent.$.modalDialog({
 				title : ' 站点用户管理',
 				width : 600,
-				height : 400,
-				collapsible : true,
+				height : 400,	
 				maximizable : true,
 				resizable : true,
-				fit : true,
 				url:'${pageContext.request.contextPath}/admin/site/siteUserManage.jsp'
 			});
 		} else {
