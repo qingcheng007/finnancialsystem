@@ -120,7 +120,12 @@
 	});
 	
 	function add() {
-		window.showModalDialog('${pageContext.request.contextPath}/admin/site/addUser.jsp',window,"dialogWidth:400px;dialogHeight:300px;location:no;center:yes;status:no;menubar:no");
+		$.modalDialog({
+			title : '添加站点',
+			width : 380,
+			height : 260,
+			url:'${pageContext.request.contextPath}/admin/site/addUser.jsp'
+		});
 	}
 
 	function deleteBatch(){
