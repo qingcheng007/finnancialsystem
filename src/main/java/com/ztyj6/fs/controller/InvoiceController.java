@@ -2,6 +2,7 @@ package com.ztyj6.fs.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ztyj6.fs.model.AuditState;
@@ -109,7 +111,7 @@ public class InvoiceController extends BaseController{
 		AuditState auditState = new AuditState();
 		invoice.setAuditState(auditState);
 		//需要修改
-		invoice.setDearerid(1);
+		//invoice.setDearerid(1);
 		invoice.setInvoicedetailsid(invoice.getInvoiceDetails().getId());
 		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
 		
@@ -131,6 +133,7 @@ public class InvoiceController extends BaseController{
 	@RequestMapping("/delete")
 	public Json delete(String ids) {
 		Json json = new Json();
+		System.out.println(ids);
 		String msg = "";
 		try {
 			iInvoiceService.delete(ids);
@@ -140,7 +143,6 @@ public class InvoiceController extends BaseController{
 		} catch (Exception e) {
 			e.printStackTrace();
 			msg = "删除失败";
-			json.setSuccess(false);
 			json.setMsg(msg);
 		}
 		return json;
@@ -149,8 +151,21 @@ public class InvoiceController extends BaseController{
 	@ResponseBody
 	@RequestMapping("/getByPage")
 	public DataGrid getByPage(PageFilter pageFilter) {
+		
 		try {
 			return iInvoiceService.getByPage(pageFilter);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	@ResponseBody
+	@RequestMapping("/getPageById")
+	public DataGrid getByPageByid(PageFilter pageFilter,HttpServletRequest request) {
+		String id=request.getParameter("id");
+		System.out.println(id);
+		try {
+			return iInvoiceService.getPageById(pageFilter,Integer.parseInt(id));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

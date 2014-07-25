@@ -7,14 +7,11 @@
 <jsp:include page="../../include/easyui.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8">
 	$(function() {
-	//var test= $(authentication.id);
-	//console.info(test);
-	var passid=2;
+	
 		$('#admin_site_manage_dataGrid')
 		.datagrid(
 				{
-					url : '${pageContext.request.contextPath}/invoiceController/getPageById.do?id='+passid,
-					//url : '${pageContext.request.contextPath}/invoiceController/getByPage.do',
+					url : '${pageContext.request.contextPath}/invoiceController/getByPage.do',
 					fit : true,
 					autoRowHeight : true,
 					striped : true,
@@ -186,12 +183,11 @@
 	});
 	
 	function add() {
-	
 		parent.$.modalDialog({
 			title : '添加报帐目发票信息',
 			width : 380,
 			height : 260,
-			url:'${pageContext.request.contextPath}/admin/invoice/audit.jsp?id='+passid
+			url:'${pageContext.request.contextPath}/admin/invoice/add.jsp'
 		});
 		parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');
 	}
@@ -216,7 +212,7 @@
 				title : '编辑发票',
 				width : 380,
 				height : 260,
-				url : '${pageContext.request.contextPath}/admin/invoice/editAuditState.jsp'
+				url : '${pageContext.request.contextPath}/admin/invoice/edit.jsp'
 			});
 			parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');
 			parent.$.modalDialog.row = rows[0];
@@ -297,12 +293,12 @@
 		<div id="admin_site_manage_toolbar">
 			<table>
 				<tr>
-				<%-- 	<sec:authorize url="/invoiceController/add.do">
+					<sec:authorize url="/invoiceController/add.do">
 					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="add();">添加</a></td>
 					<td><div class="datagrid-btn-separator"></div></td>
-					</sec:authorize> --%>
+					</sec:authorize>
 					<sec:authorize url="/invoiceController/edit.do">
-					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="edit();">审批</a></td>
+					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="edit();">编辑</a></td>
 					<td><div class="datagrid-btn-separator"></div></td>
 					</sec:authorize>
 					<sec:authorize url="/invoiceController/delete.do">

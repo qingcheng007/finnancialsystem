@@ -217,7 +217,6 @@ $(function() {
 		invoice.auditor2Id = $('#auditor2Id').val();
 		invoice.remark = $('#remark').val();
 		invoice.Photourl = $('#photoUrl').val();
-		invoice.dearerId = $('#dearerId').val();
 		//	invoice.proverId = $('#proverId').combobox('getValue');
 		//	invoice.auditor1Id = $('#auditor1Id').combobox('getValue');
 		//	invoice.auditor2Id = $('#auditor2Id').combobox('getValue');
@@ -571,12 +570,6 @@ $(function() {
 				<td>审批人</td>
 				<td><input class="easyui-validatebox" id="auditor2Id"
 					name="auditorId2" type="text" placeholder="审批人"
-					data-options="required:true" style="width:160px;" /></td>
-			</tr>
-			<tr>
-				<td>审票人</td>
-				<td><input class="easyui-validatebox" id="dearerId"
-					name="auditorId2" type="text" placeholder="审票人"
 					data-options="required:true" style="width:160px;" /></td>
 			</tr>
 			<tr>
