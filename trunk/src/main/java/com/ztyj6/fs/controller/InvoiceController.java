@@ -128,6 +128,37 @@ public class InvoiceController extends BaseController{
 		}
 		return json;
 	}
+	@ResponseBody
+	@RequestMapping("/audit")
+	public Json audit(@RequestBody Invoice invoice, HttpSession session) {
+		Json json = new Json();
+		//SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
+		//System.out.println("------------------"+((Invoice) (ctx.getAuthentication().getPrincipal())).getId());
+		//invoice.setCreateRealname(((Invoice) (ctx.getAuthentication().getPrincipal())).getRealname());
+		//System.out.println("------"+invoice.getContent()+invoice.getInvoiceType().getId()+"--date:"+invoice.getCreatedate());
+		//System.out.println("-------content:"+invoice.getPhotourl());
+		AuditState auditState = invoice.getAuditState();
+		iInvoiceService.updateAuditState(invoice, 1);//(auditState);
+		//需要修改
+		//invoice.setDearerid(1);
+		invoice.setInvoicedetailsid(invoice.getInvoiceDetails().getId());
+		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
+		
+		Invoice invoiceNew =iInvoiceService.getById(invoice.getId());
+		
+		String msg = "";
+		try {
+			iInvoiceService.saveInvoiceAllSelective(invoice);
+			msg = "添加成功";
+			json.setSuccess(true);
+			json.setObj(invoice);
+			json.setMsg(msg);
+		} catch (Exception e) {
+			msg = "添加失败";
+			json.setMsg(msg);
+		}
+		return json;
+	}
 
 	@ResponseBody
 	@RequestMapping("/delete")
