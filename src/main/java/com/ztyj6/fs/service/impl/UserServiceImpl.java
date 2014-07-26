@@ -99,7 +99,7 @@ public class UserServiceImpl implements IUserService {
 		return dg;
 	}
 
-	@Override
+
 	public void delete(User o) {
 
 	}
@@ -113,7 +113,7 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	public User getById(Integer id) {
-		return (User) userMapper.selectByIdFilter(id);
+		return userMapper.selectByPrimaryKey(Integer.valueOf(id));
 	}
 
 	public User getByUsername(String username) {
@@ -150,6 +150,15 @@ public class UserServiceImpl implements IUserService {
 		mySecurityMetadataSource.load();
 	}
 
-
+	@Override
+	public DataGrid getByIdPage(PageFilter pageFilter, int id) {
+		// TODO Auto-generated method stub
+		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
+		DataGrid dg = new DataGrid();
+		PageList users = (PageList) userMapper.selectByIdFilter(pageFilter, pageBounds,id);			
+		dg.setRows(users);
+		dg.setTotal(users.getPaginator().getTotalCount());
+		return dg;
+	}
 
 }
