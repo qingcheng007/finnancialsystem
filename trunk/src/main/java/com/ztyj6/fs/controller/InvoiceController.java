@@ -1,5 +1,7 @@
 package com.ztyj6.fs.controller;
 
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ztyj6.fs.model.AuditState;
+import com.ztyj6.fs.model.Balance;
 import com.ztyj6.fs.model.Invoice;
 import com.ztyj6.fs.model.InvoiceType;
+import com.ztyj6.fs.model.PenaltyRate;
 import com.ztyj6.fs.model.Post;
 import com.ztyj6.fs.model.Site;
 import com.ztyj6.fs.model.page.DataGrid;
@@ -23,15 +27,9 @@ import com.ztyj6.fs.model.page.Json;
 import com.ztyj6.fs.model.page.PageFilter;
 import com.ztyj6.fs.service.IInvoiceService;
 
-
-
-
-
-
-
 @Controller
 @RequestMapping("/invoiceController")
-public class InvoiceController extends BaseController{
+public class InvoiceController extends BaseController {
 	IInvoiceService iInvoiceService;
 
 	public IInvoiceService getiInvoiceService() {
@@ -42,32 +40,28 @@ public class InvoiceController extends BaseController{
 	public void setiInvoiceService(IInvoiceService iInvoiceService) {
 		this.iInvoiceService = iInvoiceService;
 	}
-	
 
-	
-    @ResponseBody
-    @RequestMapping("/getInvoiceAll")
-    public Json selectInvoiceAll(HttpSession session){
-    	Json json = new Json();
-    	String message ="";
-    	List<Invoice> invoiceList = iInvoiceService.getInvoiceAll();
-    	if(invoiceList.size()!=0)
-    	{
-    	json.setSuccess(true);
-    	json.setObj(invoiceList);
-    	}
-    	else
-    	{
-    		json.setSuccess(false);
-    	}
-    
-    	return json;
-    }
-    @ResponseBody
-    @RequestMapping("/getAllTest")
-    public List getAllTest(HttpSession session){
-    	List<InvoiceType> invoiceType;
-    	
+	@ResponseBody
+	@RequestMapping("/getInvoiceAll")
+	public Json selectInvoiceAll(HttpSession session) {
+		Json json = new Json();
+		String message = "";
+		List<Invoice> invoiceList = iInvoiceService.getInvoiceAll();
+		if (invoiceList.size() != 0) {
+			json.setSuccess(true);
+			json.setObj(invoiceList);
+		} else {
+			json.setSuccess(false);
+		}
+
+		return json;
+	}
+
+	@ResponseBody
+	@RequestMapping("/getAllTest")
+	public List getAllTest(HttpSession session) {
+		List<InvoiceType> invoiceType;
+
 		try {
 			invoiceType = iInvoiceService.getInvoiceTypeAll();
 		} catch (Exception e) {
@@ -81,40 +75,50 @@ public class InvoiceController extends BaseController{
 	public Json addtest(@RequestBody Invoice invoice, HttpSession session) {
 		Json j = new Json();
 		try {
-			SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
-			System.out.println("----------------------------------------------------------------------------");
-			//System.out.println("--------"+((Invoice) (ctx.getAuthentication().getPrincipal())).getId());
-			//System.out.println("-------content:"+invoice.getContent());
-			System.out.println("-------content:"+invoice.getInvoiceDetails().getId()+invoice.getContent());
-			System.out.println("-------content:"+invoice.getDescription());
-			invoice.setId(((Invoice) (ctx.getAuthentication().getPrincipal())).getId());
-			invoice.setInvoicedetailsid(((Invoice) (ctx.getAuthentication().getPrincipal())).getInvoicetypeid());
+			SecurityContext ctx = (SecurityContext) session
+					.getAttribute("SPRING_SECURITY_CONTEXT");
+			System.out
+					.println("----------------------------------------------------------------------------");
+			// System.out.println("--------"+((Invoice)
+			// (ctx.getAuthentication().getPrincipal())).getId());
+			// System.out.println("-------content:"+invoice.getContent());
+			System.out.println("-------content:"
+					+ invoice.getInvoiceDetails().getId()
+					+ invoice.getContent());
+			System.out.println("-------content:" + invoice.getDescription());
+			invoice.setId(((Invoice) (ctx.getAuthentication().getPrincipal()))
+					.getId());
+			invoice.setInvoicedetailsid(((Invoice) (ctx.getAuthentication()
+					.getPrincipal())).getInvoicetypeid());
 			iInvoiceService.save(invoice);
 			j.setSuccess(true);
 			j.setObj(invoice);
 			j.setMsg("添加成功！");
-		}  catch (Exception e) {
+		} catch (Exception e) {
 			j.setMsg("添加失败！");
 		}
 		return j;
 	}
-    
+
 	@ResponseBody
 	@RequestMapping("/add")
 	public Json add(@RequestBody Invoice invoice, HttpSession session) {
 		Json json = new Json();
-		//SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
-		//System.out.println("------------------"+((Invoice) (ctx.getAuthentication().getPrincipal())).getId());
-		//invoice.setCreateRealname(((Invoice) (ctx.getAuthentication().getPrincipal())).getRealname());
-		//System.out.println("------"+invoice.getContent()+invoice.getInvoiceType().getId()+"--date:"+invoice.getCreatedate());
-		//System.out.println("-------content:"+invoice.getPhotourl());
+		// SecurityContext ctx = (SecurityContext)
+		// session.getAttribute("SPRING_SECURITY_CONTEXT");
+		// System.out.println("------------------"+((Invoice)
+		// (ctx.getAuthentication().getPrincipal())).getId());
+		// invoice.setCreateRealname(((Invoice)
+		// (ctx.getAuthentication().getPrincipal())).getRealname());
+		// System.out.println("------"+invoice.getContent()+invoice.getInvoiceType().getId()+"--date:"+invoice.getCreatedate());
+		// System.out.println("-------content:"+invoice.getPhotourl());
 		AuditState auditState = new AuditState();
 		invoice.setAuditState(auditState);
-		//需要修改
-		//invoice.setDearerid(1);
+		// 需要修改
+		// invoice.setDearerid(1);
 		invoice.setInvoicedetailsid(invoice.getInvoiceDetails().getId());
 		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
-		
+
 		String msg = "";
 		try {
 			iInvoiceService.saveInvoiceAllSelective(invoice);
@@ -128,6 +132,7 @@ public class InvoiceController extends BaseController{
 		}
 		return json;
 	}
+
 	@ResponseBody
 	@RequestMapping("/audit")
 	public Json audit(@RequestBody Invoice invoice, HttpSession session) {
@@ -145,8 +150,30 @@ public class InvoiceController extends BaseController{
 		//invoice.setDearerid(1);
 		invoice.setInvoicedetailsid(invoice.getInvoiceDetails().getId());
 		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
+	/*	BigDecimal rate= new BigDecimal("0.1");
+		//
+		PenaltyRate penaltyRate = new PenaltyRate();
 		
+		Balance balance =new Balance();
+		//balance = role.get();
+		BigDecimal frozen;
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
+	    long to = invoice.getCreatedate().getTime();
+	    long from = invoice.getOccurdate().getTime();
+	    long bg;
+	   
+	    if(from>to)
+	    	bg=(to - from) / (1000 * 60 * 60 * 24);
+	    else
+	    	bg=(to - from) / (1000 * 60 * 60 * 24);
+	    
+	    BigDecimal calculate =new BigDecimal(bg);
+	    
+	    frozen = invoice.getMoney().subtract(rate.multiply(calculate));
+	  
+		balance.setFrozen(frozen);
+		penaltyRate.getRate();*/
 		
 		String msg = "";
 		try {
@@ -184,7 +211,7 @@ public class InvoiceController extends BaseController{
 	@ResponseBody
 	@RequestMapping("/getByPage")
 	public DataGrid getByPage(PageFilter pageFilter) {
-		
+
 		try {
 			return iInvoiceService.getByPage(pageFilter);
 		} catch (Exception e) {
@@ -192,13 +219,16 @@ public class InvoiceController extends BaseController{
 			return null;
 		}
 	}
+
 	@ResponseBody
 	@RequestMapping("/getPageById")
-	public DataGrid getByPageByid(PageFilter pageFilter,HttpServletRequest request) {
-		String id=request.getParameter("id");
+	public DataGrid getByPageByid(PageFilter pageFilter,
+			HttpServletRequest request) {
+		String id = request.getParameter("id");
 		System.out.println(id);
 		try {
-			return iInvoiceService.getPageById(pageFilter,Integer.parseInt(id));
+			return iInvoiceService
+					.getPageById(pageFilter, Integer.parseInt(id));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -209,7 +239,7 @@ public class InvoiceController extends BaseController{
 	@RequestMapping("/edit")
 	public Json edit(Invoice invoice) {
 		Json json = new Json();
-		
+
 		String msg = "";
 		try {
 			iInvoiceService.update(invoice);
@@ -224,9 +254,5 @@ public class InvoiceController extends BaseController{
 		}
 		return json;
 	}
-
-    
-    
-	
 
 }

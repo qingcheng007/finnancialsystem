@@ -16,6 +16,7 @@
 	type="text/css">
 <link rel="stylesheet" href="../../style/css/dialog.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
+
 	var cls = parent.$.modalDialog.row;
 	$(function() {
 		$('#id').attr('value', cls.id);
@@ -23,10 +24,12 @@
 		$('#audit1Id').attr('value', cls.auditor1id);
 		$('#audit2Id').attr('value', cls.auditor2id);
 		$('#dearerId').attr('value', cls.dearerid);
-		console.info(cls.auditState.auditor1);
+		console.info(cls);
 		
-		
-		//$('#proverauditState').attr("readonly",false);
+		$('select').prop({'disabled':true});
+		// $("#proverauditState").attr('disabled','disabled');
+	//	$(document).ready(function(){ $(":input[type='text']").attr("disabled","true");});YOUYONG
+		//$(document).ready(function(){ $('#proverauditState').attr("disabled","true");});
 		//$('#proverauditState').combobox('false');
 		$('#proverauditState').combobox('select', cls.auditState.prover);
 		$('#audit1State').combobox('select', cls.auditState.auditor1);
@@ -36,7 +39,7 @@
 		//$('#ID').combobox('disable');
 		//document.getElementById("proverauditState").readOnly=true;
 		//console.info(document.getElementById("proverauditState").readOnly);
-	//	if(cls.auditState.prover)
+		//	if(cls.auditState.prover)
 		//{
 		//	document.getElementById("proverauditState").select=1;
 		//	
@@ -61,11 +64,13 @@
 		if ($('#admin_class_add_form').form('validate')) {
 			$('#submit').linkbutton('disable');
 			var data = toJson();
-			$.ajax({
+			$
+					.ajax({
 						url : '${pageContext.request.contextPath}/invoiceController/audit.do',
 						type : 'POST',
 						data : data,
 						dataType : 'json',
+						contentType : 'application/json;charset=utf-8',
 						success : function(data) {
 							if (data.success) {
 								parent.$.modalDialog.DataGrid
@@ -105,28 +110,33 @@
 
 		//var question = new Object();
 		//alert('fuck');
-
-		
+		var invoiceTyp = new Object();
+		var invoiceDetails = new Object();
 		var auditState = new Object();
-		auditState.id=cls.auditstateid;
-		auditState.prover=$('#proverauditState').combobox('getValue');
-		auditState.auditor1=$('#audit1State').combobox('getValue');
-		auditState.auditor2=$('#audit2State').combobox('getValue');
-		auditState.dearer=$('#dearerState').combobox('getValue');
-		
-		invoice.id=$('id').val();
+		invoiceType = cls.invoiceType;
+		invoiceDetails = cls.invoiceDetails;
+		invoice.invoiceType = invoiceType;
+		invoice.invoiceDetails = invoiceDetails;
+		auditState.id = cls.auditstateid;
+		auditState.prover = $('#proverauditState').combobox('getValue');
+		auditState.auditor1 = $('#audit1State').combobox('getValue');
+		auditState.auditor2 = $('#audit2State').combobox('getValue');
+		auditState.dearer = $('#dearerState').combobox('getValue');
+		invoice.occurDate =cls.occurdate;
+		invoice.createDate=cls.createdate;
+		invoice.id = cls.id;
+		console.info(invoice.id);
 		invoice.proverId = $('#proverId').val();
 		invoice.auditor1Id = $('#auditor1Id').val();
 		invoice.auditor2Id = $('#auditor2Id').val();
 		invoice.dearerId = $('#dearerId').val();
 		console.info(cls);
-		
-		invoice.auditStateId =  cls.auditstateid;
+
+		invoice.auditStateId = cls.auditstateid;
 		console.info(cls.auditstateid);
-		
+
 		invoice.auditState = auditState;
-		
-		
+
 		//	invoice.proverId = $('#proverId').combobox('getValue');
 		//	invoice.auditor1Id = $('#auditor1Id').combobox('getValue');
 		//	invoice.auditor2Id = $('#auditor2Id').combobox('getValue');
@@ -144,7 +154,7 @@
 		return JSON.stringify(invoice);
 	}
 	function closeDialog() {
-	$.modalDialog.handler.dialog('close');
+		$.modalDialog.handler.dialog('close');
 	}
 </script>
 </head>
@@ -162,12 +172,12 @@
 
 				<td><input class="easyui-validatebox" id="proverId"
 					name="proverId" type="text" placeholder="证明人"
-					data-options="required:true" style="width:160px;" readonly/></td>
+					data-options="required:true" style="width:160px;" readonly /></td>
 			</tr>
 			<tr>
 				<td>证明人审核状态</td>
 				<td><select id="proverauditState" class="easyui-combobox"
-					data-options="required:true" style="width:150px;" >
+					data-options="required:true" style="width:150px;">
 						<option value='2'>审核不通过</option>
 						<option value='1'>审核通过</option>
 						<option value='0'>未审核</option>
@@ -177,12 +187,12 @@
 				<td>审核人</td>
 				<td><input class="easyui-validatebox" id="audit1Id"
 					name="audit1Id" type="text" placeholder="证明人"
-					data-options="required:true" style="width:160px;" readonly/></td>
+					data-options="required:true" style="width:160px;" readonly /></td>
 			</tr>
 			<tr>
 				<td>审核人审批状态
 				<td><select id="audit1State" class="easyui-combobox"
-					data-options="required:true" style="width:150px;" >
+					data-options="required:true" style="width:150px;">
 						<option value='2'>审核不通过</option>
 						<option value='1'>审核通过</option>
 						<option value='0'>未审核</option>
@@ -192,12 +202,12 @@
 				<td>审批人</td>
 				<td><input class="easyui-validatebox" id="audit2Id"
 					name="audit2Id" type="text" placeholder="证明人"
-					data-options="required:true" style="width:160px;" readonly/></td>
+					data-options="required:true" style="width:160px;" readonly /></td>
 			</tr>
 			<tr>
 				<td>审批人状态</td>
 				<td><select id="audit2State" class="easyui-combobox"
-					data-options="required:true" style="width:150px;" >
+					data-options="required:true" style="width:150px;">
 						<option value='2'>审核不通过</option>
 						<option value='1'>审核通过</option>
 						<option value='0'>未审核</option>
@@ -207,12 +217,12 @@
 				<td>审票人</td>
 				<td><input class="easyui-validatebox" id="dearerId"
 					name="dearerId" type="text" placeholder="证明人"
-					data-options="required:true" style="width:160px;" readonly/></td>
+					data-options="required:true" style="width:160px;" readonly /></td>
 			</tr>
 			<tr>
 				<td>审票人审核状态</td>
 				<td><select id="dearerState" class="easyui-combobox"
-					data-options="required:true" style="width:150px;" >
+					data-options="required:true" style="width:150px;">
 						<option value='2'>审核不通过</option>
 						<option value='1'>审核通过</option>
 						<option value='0'>未审核</option>
@@ -221,7 +231,8 @@
 
 			<tr>
 				<td colspan='2' style="text-align: center;"><a href="#"
-					class="easyui-linkbutton" onclick="closeDialog()">取消</a><a href="#" class="easyui-linkbutton" onclick="submit()">保存修改</a></td>
+					class="easyui-linkbutton" onclick="closeDialog()">取消</a><a href="#"
+					class="easyui-linkbutton" onclick="submit()">保存修改</a></td>
 			</tr>
 		</table>
 	</form>
