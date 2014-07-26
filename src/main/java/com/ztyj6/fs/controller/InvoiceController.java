@@ -138,20 +138,22 @@ public class InvoiceController extends BaseController{
 		//System.out.println("------"+invoice.getContent()+invoice.getInvoiceType().getId()+"--date:"+invoice.getCreatedate());
 		//System.out.println("-------content:"+invoice.getPhotourl());
 		AuditState auditState = invoice.getAuditState();
-		iInvoiceService.updateAuditState(invoice, 1);//(auditState);
+		System.out.println(auditState.getId());
+		Invoice invoiceNew = new Invoice();
+		iInvoiceService.updateAuditStateOnly(auditState);
 		//需要修改
 		//invoice.setDearerid(1);
 		invoice.setInvoicedetailsid(invoice.getInvoiceDetails().getId());
 		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
 		
-		Invoice invoiceNew =iInvoiceService.getById(invoice.getId());
+		
 		
 		String msg = "";
 		try {
-			iInvoiceService.saveInvoiceAllSelective(invoice);
+			invoiceNew = iInvoiceService.getById(invoice.getId());
 			msg = "添加成功";
 			json.setSuccess(true);
-			json.setObj(invoice);
+			json.setObj(invoiceNew);
 			json.setMsg(msg);
 		} catch (Exception e) {
 			msg = "添加失败";

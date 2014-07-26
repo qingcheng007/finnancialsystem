@@ -60,12 +60,12 @@
 	function submit() {
 		if ($('#admin_class_add_form').form('validate')) {
 			$('#submit').linkbutton('disable');
-			$
-					.ajax({
+			var data = toJson();
+			$.ajax({
 						url : '${pageContext.request.contextPath}/invoiceController/audit.do',
 						type : 'POST',
-						data : $('#admin_class_add_form').serializeObject(),
-						dataType : toJson(),
+						data : data,
+						dataType : 'json',
 						success : function(data) {
 							if (data.success) {
 								parent.$.modalDialog.DataGrid
@@ -108,19 +108,22 @@
 
 		
 		var auditState = new Object();
-		
+		auditState.id=cls.auditstateid;
 		auditState.prover=$('#proverauditState').combobox('getValue');
 		auditState.auditor1=$('#audit1State').combobox('getValue');
 		auditState.auditor2=$('#audit2State').combobox('getValue');
 		auditState.dearer=$('#dearerState').combobox('getValue');
+		
 		invoice.id=$('id').val();
 		invoice.proverId = $('#proverId').val();
 		invoice.auditor1Id = $('#auditor1Id').val();
 		invoice.auditor2Id = $('#auditor2Id').val();
 		invoice.dearerId = $('#dearerId').val();
 		console.info(cls);
+		
 		invoice.auditStateId =  cls.auditstateid;
 		console.info(cls.auditstateid);
+		
 		invoice.auditState = auditState;
 		
 		
