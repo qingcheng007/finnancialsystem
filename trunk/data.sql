@@ -82,9 +82,9 @@ insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(31, '编辑站点', null, '3', '/siteController/admin/edit*.do', '2', '编辑站点', '28', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(32, '删除站点', null, '4', '/siteController/admin/delete*.do', '2', '删除站点', '28', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(33, '查看站点详细信息', null, '4', '/siteController/admin/getSiteInformation*.do', '2', '查看站点详细信息', '28', 1, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(34, '查看站点用户及其职务', null, '1', '/siteController/admin/getUserInformationOfOneSiteByPage*.do', '2', '查看站点用户及其职务', '29', 1, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(35, '添加站点用户', null, '2', '/siteController/admin/addUserSite*.do', '2', '添加站点用户', '27', 1, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(36, '删除站点用户', null, '3', '/siteController/admin/deleteUserSite*.do', '2', '删除站点用户', '27', 1, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(34, '查看站点用户及其职务', null, '1', '/siteController/admin/getUserInformationOfOneSiteByPage*.do', '2', '查看站点用户及其职务', '28', 1, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(35, '添加站点用户', null, '2', '/siteController/admin/addUserSite*.do', '2', '添加站点用户', '28', 1, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(36, '删除站点用户', null, '3', '/siteController/admin/deleteUserSite*.do', '2', '删除站点用户', '28', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(37, '我的信息', null, '1', '/admin/userinfo/userinfo.jsp', '1', '查看个人信息', '5', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(38, '我的审核信息', null, '2', '/admin/userinfo/myAudit.jsp', '1', '查看个人审核信息', '5', 1, 1);
 
@@ -129,3 +129,25 @@ insert into r_role_resource(Id,ResourceId,RoleId) values('35', '35', '1');
 insert into r_role_resource(Id,ResourceId,RoleId) values('36', '36', '1');
 insert into r_role_resource(Id,ResourceId,RoleId) values('37', '37', '1');
 insert into r_role_resource(Id,ResourceId,RoleId) values('38', '38', '1');
+
+insert into r_role_resource(Id,ResourceId,RoleId) values('39', '1', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('40', '2', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('41', '3', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('42', '4', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('43', '5', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('44', '6', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('45', '7', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('46', '17', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('47', '18', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('48', '19', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('49', '20', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('50', '21', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('51', '22', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('52', '23', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('53', '24', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('54', '28', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('55', '29', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('56', '33', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('57', '34', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('58', '37', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('59', '38', '2');
