@@ -245,7 +245,7 @@
 		var rows = $('#admin_site_manage_dataGrid').datagrid('getChecked');
 		if (rows.length == 1) {
 			parent.$.modalDialog({
-				title : '编辑发票',
+				title : '审批发票',
 				width : 380,
 				//height : 260,
 				url : '${pageContext.request.contextPath}/admin/invoice/audit.jsp?id='+passid

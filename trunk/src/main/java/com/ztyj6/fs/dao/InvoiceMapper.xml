@@ -234,10 +234,45 @@
 	</select>
  
  <select id="selectByPrimaryID" parameterType="com.ztyj6.fs.model.InvoiceKey"
-		resultMap="BaseResultMap">
-		select
-		from invoice
-		where Id = #{id,jdbcType=INTEGER}
+		resultMap="invoiceResultMap">
+		SELECT
+		invoice.Id,
+		invoice.CreateDate,
+		invoice.OccurDate,
+		invoice.Content,
+		invoice.Money,
+		invoice.Penalty,
+		invoice.Description,
+		invoice.InvoiceDetailsId,
+		invoice.InvoiceTypeId,
+		invoice.ProjectName,
+		invoice.OperatorId,
+		invoice.ProverId,
+		invoice.Auditor1Id,
+		invoice.Auditor2Id,
+		invoice.AuditStateId,
+		invoice.PhotoUrl,
+		invoice.Remark,
+		invoice.DearerId,
+		invoicetype.Id invoice_type_id,
+		invoicetype.`Name` invoice_type_name,
+		invoicedetails.Id invoice_details_id,
+		invoicedetails.Content1 invoice_details_content1,
+		invoicedetails.Content2 invoice_details_content2,
+		invoicedetails.Content3 invoice_details_content3,
+		invoicedetails.Content4 invoice_details_content4,
+		auditstate.Id audit_state_id,
+		auditstate.Operator audti_state_operator,
+		auditstate.Prover audti_state_prover,
+		auditstate.Auditor1 audti_state_auditor1,
+		auditstate.Auditor2 audti_state_auditor2,
+		auditstate.Dearer audti_state_dearer
+		FROM
+		invoice
+		JOIN invoicetype ON invoice.InvoiceTypeId = invoicetype.Id
+		JOIN invoicedetails ON invoice.InvoiceDetailsId = invoicedetails.Id
+		JOIN auditstate ON invoice.AuditStateId = auditstate.Id 
+		where invoice.Id = #{id,jdbcType=INTEGER}
 	</select>
  
 	<select id="selectByPrimaryKey" parameterType="com.ztyj6.fs.model.InvoiceKey"

@@ -177,6 +177,11 @@ public class InvoiceServiceImpl implements IInvoiceService {
 				.getAuditState());
 
 	}
+	
+	@Override
+	public int updateAuditStateOnly(AuditState auditState) {
+		return auditStateMapper.updateByPrimaryKeySelective(auditState);
+	}
 
 	@Override
 	public Serializable save(Invoice o) {
@@ -257,6 +262,8 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	public List<InvoiceType> getInvoiceTypeAll() {
 		return invoiceTypeMapper.getInvoiceType();
 	}
+
+
 
 
 
