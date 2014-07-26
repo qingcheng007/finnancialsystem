@@ -93,7 +93,7 @@ public class UserServiceImpl implements IUserService {
 	public DataGrid getByPageFilter(PageFilter pageFilter) {
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();
-		PageList users = (PageList) userMapper.selectByFilter(pageFilter, pageBounds);
+		PageList users = (PageList) userMapper.selectByFilter(pageFilter, pageBounds);			
 		dg.setRows(users);
 		dg.setTotal(users.getPaginator().getTotalCount());
 		return dg;

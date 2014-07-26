@@ -7,7 +7,7 @@
 <body>
 	<div style="position: absolute; right: 5px; bottom: 5px;">
 		<sec:authentication property="principal" var="authentication" />
-		[<strong>${authentication.username }</strong>]，欢迎你！
+		[<strong>${authentication.realname }</strong>]，欢迎你！
 		<sec:authentication property="details" var="myDetails" />
 		您使用[<strong>${myDetails.remoteAddress}</strong>]IP登录！ 
 		<a href="${pageContext.request.contextPath}/logout.do">注销</a>

@@ -61,7 +61,7 @@
 									{
 										field : 'realname',
 										title : '真实姓名',
-										width : 100,
+										width : 70,
 										align : 'center',
 										sortable : true
 									},
@@ -74,34 +74,62 @@
 									{
 										field : 'email',
 										title : '电子邮箱',
-										width : 130,
+										width : 100,
 										align : 'center'
 									},
 									{
 										field : 'lastLoginDate',
 										title : '上次登录时间',
-										width : 150,
+										width : 130,
 										align : 'center',
 										sortable : true
 									},
 									{
 										field : 'lastLoginIp',
 										title : '上次登录IP',
-										width : 100,
+										width : 90,
 										align : 'center'
 									},
 									{
 										field : 'createDate',
 										title : '创建时间',
-										width : 150,
+										width : 130,
 										align : 'center',
 										sortable : true
 									},
 									{
 										field : 'createIp',
 										title : '创建IP',
-										width : 100,
+										width : 80,
 										align : 'center'
+									},
+									{
+										field : 'available',
+										title : '可用余额',
+										width : 70,
+										align : 'center',
+										formatter : function(value, row, index) {
+											var str = '';
+											for ( var i = 0; i < row.balance.length; i++) {
+                                            
+												str += row.balance[i].available+ '<br/>';
+											}
+											return str;
+										}
+									},
+									{
+										field : 'frozen',
+										title : '冻结余额',
+										width : 70,
+										align : 'center',
+										formatter : function(value, row, index) {
+											var str = '';
+											for ( var i = 0; i < row.balance.length; i++) {
+                                            
+												str += row.balance[i].frozen+ '<br/>';
+											}
+											return str;
+										}
 									},
 									{
 										field : 'isEnable',

@@ -10,6 +10,8 @@ public interface BalanceMapper {
     int insertSelective(Balance record);
 
     Balance selectByPrimaryKey(Integer id);
+   
+    int selectByMaxId();
 
     int updateByPrimaryKeySelective(Balance record);
 

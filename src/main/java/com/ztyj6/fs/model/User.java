@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class User implements UserDetails{
+public class User implements UserDetails {
 
 	private static final long serialVersionUID = -6423763412444451119L;
 
@@ -22,7 +22,7 @@ public class User implements UserDetails{
 	private String phone;
 
 	private String email;
-	
+
 	private Date lastLoginDate;
 
 	private String lastLoginIp;
@@ -32,9 +32,19 @@ public class User implements UserDetails{
 	private Date createDate;
 
 	private Boolean isEnable;
-	
+
 	private Integer parentId;
 	
+	private List<Balance> balance;
+
+	public List<Balance> getBalance() {
+		return balance;
+	}
+
+	public void setBalance(List<Balance> balance) {
+		this.balance = balance;
+	}
+
 	public Integer getParentId() {
 		return parentId;
 	}
@@ -106,14 +116,12 @@ public class User implements UserDetails{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	
-
-	public Date getlastLoginDate() {
+    
+	public Date getLastLoginDate() {
 		return lastLoginDate;
 	}
 
-	public void setlastLoginDate(Date lastLoginDate) {
+	public void setLastLoginDate(Date lastLoginDate) {
 		this.lastLoginDate = lastLoginDate;
 	}
 
@@ -161,7 +169,8 @@ public class User implements UserDetails{
 		this.resources = resources;
 	}
 
-	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
+	public void setAuthorities(
+			Collection<? extends GrantedAuthority> authorities) {
 		this.authorities = authorities;
 	}
 

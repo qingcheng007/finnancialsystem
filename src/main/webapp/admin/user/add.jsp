@@ -78,10 +78,13 @@
 				<td><input class="easyui-validatebox" id="parentId" name="parentId" type="text" placeholder="请输上级ID" /></td>
 			</tr>
 			<tr>
-				<td>余額ID</td>
-				<td><input class="easyui-validatebox" id="balanceId" name="balanceId" type="text" placeholder="请输余額ID" /></td>
+				<td>可用余额</td>
+				<td><input class="easyui-validatebox" id="available" name="available" type="text" placeholder="请输入可用余額" /></td>
 			</tr>
-			
+			<tr>
+				<td>冻结余额</td>
+				<td><input class="easyui-validatebox" id="frozen" name="frozen" type="text" placeholder="请输入冻结余額" /></td>
+			</tr>
              <tr>
 				<td colspan='2' style="text-align: center;"><a href="#" class="easyui-linkbutton" onclick="reset()">重置</a> <a id="submit" href="#" class="easyui-linkbutton" onclick="submit()">提交</a></td>
 			</tr>

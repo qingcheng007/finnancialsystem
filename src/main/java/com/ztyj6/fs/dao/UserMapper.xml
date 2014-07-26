@@ -227,7 +227,15 @@
 		Id = #{id}
 	</update>
 
-	<select id="selectByFilter" resultMap="BaseResultMap">
+	<resultMap id="ExtendResultMap1" type="com.ztyj6.fs.model.User"
+		extends="BaseResultMap">
+		<collection property="balance" javaType="list" ofType="com.ztyj6.fs.model.Balance">
+			<id property="id" column="balance_id" />
+			<result column="Available" property="available" />
+			<result column="Frozen" property="frozen" />
+		</collection>
+	</resultMap>
+	<select id="selectByFilter" resultMap="ExtendResultMap1">
 		SELECT
 		`user`.Id,
 		`user`.UserName,
@@ -241,14 +249,17 @@
 		`user`.CreateDate,
 		`user`.IsEnable,
 		`user`.ParentId,
-		`user`.BalanceId
+		`user`.BalanceId,
+		balance.Id balance_id,
+		balance.Available,
+		balance.Frozen
 		FROM
 		`user`
-
+		INNER JOIN balance ON `user`.BalanceId = balance.Id
 		<where>
 			<if test="pageFilter.keyword != null">
-				user.Username like #{pageFilter.keyword,jdbcType=VARCHAR}
-				or user.Realname like #{pageFilter.keyword,jdbcType=VARCHAR}
+				user.UserName like #{pageFilter.keyword,jdbcType=VARCHAR}
+				or user.RealName like #{pageFilter.keyword,jdbcType=VARCHAR}
 			</if>
 			<if test="pageFilter.startTime != null and pageFilter.endTime != null">
 				and Create_Time between
@@ -256,8 +267,8 @@
 				#{pageFilter.endTime,jdbcType=TIMESTAMP}
 			</if>
 		</where>
-
 	</select>
+
 	<insert id="insertRole">
 		insert into r_user_role
 		(UserId,RoleId)
@@ -272,6 +283,7 @@
 		from user where UserName =
 		#{username,jdbcType=VARCHAR}
 	</select>
+
 
 	<resultMap id="ExtendResultMap2" type="com.ztyj6.fs.model.User"
 		extends="BaseResultMap">
