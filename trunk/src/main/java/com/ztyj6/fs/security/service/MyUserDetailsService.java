@@ -44,7 +44,9 @@ public class MyUserDetailsService implements UserDetailsService {
 		if (user == null)
 			throw new UsernameNotFoundException("用户不存在,请重新输入!");
 		// 获取首个用户名
+	  
 		return init(user);
+	
 	}
 
 	/** 初始化 */

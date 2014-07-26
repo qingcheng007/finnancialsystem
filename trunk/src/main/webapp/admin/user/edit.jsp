@@ -103,10 +103,6 @@
 				<td>上级ID</td>
 				<td><input class="easyui-validatebox" id="parentId" name="parentId" type="text" placeholder="请输上级ID" /></td>
 			</tr>
-			<tr>
-				<td>余額ID</td>
-				<td><input class="easyui-validatebox" id="balanceId" name="balanceId" type="text" placeholder="请输余額ID" /></td>
-			</tr>
 			
 				<td colspan='2' style="text-align: center;"><a id="submit" href="#" class="easyui-linkbutton" onclick="reset()">重置</a> <a href="#" class="easyui-linkbutton" onclick="submit()">保存修改</a></td>
 			</tr>

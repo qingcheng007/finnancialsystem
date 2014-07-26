@@ -1,27 +1,19 @@
 package com.ztyj6.fs.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ztyj6.fs.model.Resource;
+import com.ztyj6.fs.model.Balance;
 import com.ztyj6.fs.model.User;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.Json;
 import com.ztyj6.fs.model.page.PageFilter;
-import com.ztyj6.fs.model.page.Tree;
-import com.ztyj6.fs.model.page.UserPage;
+import com.ztyj6.fs.service.IBalanceService;
 import com.ztyj6.fs.service.IUserService;
 import com.ztyj6.fs.utils.IPUtil;
 
@@ -29,6 +21,17 @@ import com.ztyj6.fs.utils.IPUtil;
 @RequestMapping("/userController")
 public class UserController extends BaseController {
 	private IUserService userService;
+
+	private IBalanceService balanceService;
+
+	public IBalanceService getBalanceService() {
+		return balanceService;
+	}
+	
+	@Autowired
+	public void setBalanceService(IBalanceService balanceService) {
+		this.balanceService = balanceService;
+	}
 
 	public IUserService getUserService() {
 		return userService;
@@ -41,7 +44,7 @@ public class UserController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping("/register")
-	public Json register(User user,HttpServletRequest request) {
+	public Json register(User user, HttpServletRequest request) {
 		Json j = new Json();
 		user.setCreateIp(IPUtil.getIp(request));
 		try {
@@ -70,10 +73,13 @@ public class UserController extends BaseController {
 			return null;
 		}
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/admin/add")
-	public Json add(User user,HttpServletRequest request) {
+	public Json add(User user,Balance balance,HttpServletRequest request) {	
+		balanceService.add(balance);
+		int Id=balanceService.getByMaxId();
+	    user.setBalanceId(Id);
 		Json j = new Json();
 		user.setCreateIp(IPUtil.getIp(request));
 		try {
@@ -92,9 +98,7 @@ public class UserController extends BaseController {
 			j.setMsg("添加失败！");
 		}
 		return j;
-	} 
-	
-	@ResponseBody
+	}	@ResponseBody
 	@RequestMapping("/admin/delete")
 	public Json delete(String ids) {
 		Json j = new Json();
@@ -102,13 +106,12 @@ public class UserController extends BaseController {
 			userService.delete(ids);
 			j.setSuccess(true);
 			j.setMsg("删除成功！");
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			j.setMsg("删除失败！");
 		}
 		return j;
-	} 
-	
+	}
+
 	@ResponseBody
 	@RequestMapping("/admin/edit")
 	public Json edit(User user) {
@@ -118,16 +121,16 @@ public class UserController extends BaseController {
 			j.setSuccess(true);
 			j.setObj(user);
 			j.setMsg("编辑成功！");
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			j.setMsg("编辑失败！");
 		}
 		return j;
-	} 
-	
+	}
+
 	@RequestMapping("/admin/grant")
 	@ResponseBody
-	public Json grant(@RequestParam("userId") Integer userId, @RequestParam("ids") String ids) {
+	public Json grant(@RequestParam("userId") Integer userId,
+			@RequestParam("ids") String ids) {
 		Json j = new Json();
 		try {
 			userService.grant(userId, ids);
@@ -139,6 +142,4 @@ public class UserController extends BaseController {
 		return j;
 	}
 
-	
 }
-	

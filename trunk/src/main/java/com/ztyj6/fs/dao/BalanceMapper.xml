@@ -15,6 +15,11 @@
     from balance
     where Id = #{id,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByMaxId"  resultType="int">
+  select max(Id) maxId from balance
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from balance
     where Id = #{id,jdbcType=INTEGER}
