@@ -121,7 +121,7 @@ public class SiteController extends BaseController {
 		Json json = new Json();
 		int flag = 0;
 		int userId =Integer.parseInt(request.getParameter("userId"));
-		int siteId = (int)session.getAttribute("siteId");
+		int siteId = (Integer)session.getAttribute("siteId");
 		int postId = Integer.parseInt(request.getParameter("postId"));
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("siteId", siteId);
@@ -147,7 +147,7 @@ public class SiteController extends BaseController {
 	@RequestMapping("/admin/deleteUserSite")
 	public Json deleteUserSite(String ids,HttpSession session) {
 		//从getUserInformationOfOneSiteByPage中为siteId完成赋值
-		int siteId = (int)session.getAttribute("siteId");
+		int siteId = (Integer)session.getAttribute("siteId");
 		Json json = new Json();
 		try {
 			siteService.deleteBatchUserSite(siteId, ids);
