@@ -25,34 +25,31 @@ var cls = parent.$.modalDialog.row;
 		<table>
 			<tr>
 			    <td>站点编号</td>
-				<td><input id="id" name="id" type="text" readOnly/></td>
+				<td><input id="id" name="id" type="text" style="width:300px;" readOnly/></td>
 			</tr>
 			<tr>
 				<td>站点名称</td>
-				<td><input id="name" name="name" type="text" readOnly/></td>
+				<td><input id="name" name="name" type="text" style="width:300px;" readOnly/></td>
 			</tr>
 			<tr>
 				<td>站点地址</td>
-				<td><input id="address" name="address" type="text" readOnly/></td>
+				<td><input id="address" name="address" type="text" style="width:300px;height:40px" readOnly/></td>
 			</tr>
 			<tr>
 			    <td>站点创建日期</td>
-				<td><input id="createDate" name="createDate" type="text" readOnly/></td>
+				<td><input id="createDate" name="createDate" type="text" style="width:300px;" readOnly/></td>
 			</tr>
 			<tr>
 				<td>创建人ID</td>
-				<td><input id="userId" name="userId" type="text" readOnly/></td>
+				<td><input id="userId" name="userId" type="text" style="width:300px;" readOnly/></td>
 			</tr>
 			<tr>
 				<td>创建目的</td>
-				<td><input id="createPurpose" name="createPurpose" type="text" readOnly/></td>
+				<td><input id="createPurpose" name="createPurpose" type="text" style="width:300px;height:80px" readOnly/></td>
 			</tr>
 			<tr>
 				<td>工程名</td>
-				<td><input id="projectName" name="projectName" type="text" readOnly/></td>
-			</tr>
-			<tr>
-				<td colspan='2' style="text-align: center;"><a href="#" class="easyui-linkbutton" onclick="closeDialog()">关闭</a></td>
+				<td><input id="projectName" name="projectName" type="text" style="width:300px;height:80px" readOnly/></td>
 			</tr>
 		</table>
 	</form>

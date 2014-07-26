@@ -88,7 +88,7 @@
 		if (rows.length == 1) {
 			parent.$.modalDialog({
 				title : '站点详细信息',
-				width : 400,
+				width : 600,
 				height : 600,
 				url : '${pageContext.request.contextPath}/admin/site/check.jsp'
 			});
@@ -145,8 +145,8 @@
 	function add() {
 		parent.$.modalDialog({
 			title : '添加站点',
-			width : 380,
-			height : 260,
+			width : 600,
+			height : 400,
 			url:'${pageContext.request.contextPath}/admin/site/add.jsp'
 		});
 		parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');
