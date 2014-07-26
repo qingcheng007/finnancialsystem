@@ -268,7 +268,30 @@
 			</if>
 		</where>
 	</select>
-
+	<select id="selectByIdFilter" resultMap="ExtendResultMap1">
+		SELECT
+		`user`.Id,
+		`user`.UserName,
+		`user`.`Password`,
+		`user`.RealName,
+		`user`.Phone,
+		`user`.Email,
+		`user`.LastLoginDate,
+		`user`.LastLoginIp,
+		`user`.CreateIp,
+		`user`.CreateDate,
+		`user`.IsEnable,
+		`user`.ParentId,
+		`user`.BalanceId,
+		balance.Id balance_id,
+		balance.Available,
+		balance.Frozen
+		FROM
+		`user`
+		INNER JOIN balance ON `user`.BalanceId = balance.Id
+		WHERE `user`.Id= #{id,jdbcType=INTEGER}
+		
+	</select>
 	<insert id="insertRole">
 		insert into r_user_role
 		(UserId,RoleId)
