@@ -68,13 +68,13 @@
 									{
 										field : 'phone',
 										title : '电话',
-										width : 100,
+										width : 120,
 										align : 'center'
 									},
 									{
 										field : 'email',
 										title : '电子邮箱',
-										width : 100,
+										width : 120,
 										align : 'center'
 									},
 									{
@@ -87,7 +87,7 @@
 									{
 										field : 'lastLoginIp',
 										title : '上次登录IP',
-										width : 90,
+										width : 100,
 										align : 'center'
 									},
 									{
@@ -100,7 +100,7 @@
 									{
 										field : 'createIp',
 										title : '创建IP',
-										width : 80,
+										width : 100,
 										align : 'center'
 									},
 									{
