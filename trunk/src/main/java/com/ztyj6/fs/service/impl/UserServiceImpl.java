@@ -99,6 +99,7 @@ public class UserServiceImpl implements IUserService {
 		return dg;
 	}
 
+	@Override
 	public void delete(User o) {
 
 	}
@@ -112,7 +113,7 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	public User getById(Integer id) {
-		return userMapper.selectByPrimaryKey(Integer.valueOf(id));
+		return (User) userMapper.selectByIdFilter(id);
 	}
 
 	public User getByUsername(String username) {
@@ -148,5 +149,7 @@ public class UserServiceImpl implements IUserService {
 		userMapper.insertUserRole(userId, arrays);
 		mySecurityMetadataSource.load();
 	}
+
+
 
 }
