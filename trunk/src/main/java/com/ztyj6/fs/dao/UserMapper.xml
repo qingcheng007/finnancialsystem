@@ -268,7 +268,7 @@
 			</if>
 		</where>
 	</select>
-	<select id="selectByIdFilter" resultMap="ExtendResultMap1">
+	<select id="selectByIdFilter"  resultMap="ExtendResultMap1">
 		SELECT
 		`user`.Id,
 		`user`.UserName,
@@ -290,7 +290,17 @@
 		`user`
 		INNER JOIN balance ON `user`.BalanceId = balance.Id
 		WHERE `user`.Id= #{id,jdbcType=INTEGER}
-		
+			<where>
+			<if test="pageFilter.keyword != null">
+				user.UserName like #{pageFilter.keyword,jdbcType=VARCHAR}
+				or user.RealName like #{pageFilter.keyword,jdbcType=VARCHAR}
+			</if>
+			<if test="pageFilter.startTime != null and pageFilter.endTime != null">
+				and Create_Time between
+				#{pageFilter.startTime,jdbcType=TIMESTAMP} and
+				#{pageFilter.endTime,jdbcType=TIMESTAMP}
+			</if>
+		</where>
 	</select>
 	<insert id="insertRole">
 		insert into r_user_role

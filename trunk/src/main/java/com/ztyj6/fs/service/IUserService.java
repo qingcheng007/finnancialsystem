@@ -19,5 +19,6 @@ public interface IUserService extends IBaseService<User>{
 	public User getByUsername(String account);
 	public void updateLogin(HttpServletRequest request, Authentication authentication);
 	public void grant(Integer userId,String ids);
+	public DataGrid getByIdPage(PageFilter pageFilter, int id1);
 
 }
