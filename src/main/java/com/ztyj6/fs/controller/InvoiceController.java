@@ -150,7 +150,8 @@ public class InvoiceController extends BaseController {
 		//invoice.setDearerid(1);
 		invoice.setInvoicedetailsid(invoice.getInvoiceDetails().getId());
 		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
-	/*	BigDecimal rate= new BigDecimal("0.1");
+		
+		BigDecimal rate= new BigDecimal("0.1");
 		//
 		PenaltyRate penaltyRate = new PenaltyRate();
 		
@@ -158,6 +159,9 @@ public class InvoiceController extends BaseController {
 		//balance = role.get();
 		BigDecimal frozen;
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		int proverid = invoice.getAuditState().getProver();
+		
+		
 		
 	    long to = invoice.getCreatedate().getTime();
 	    long from = invoice.getOccurdate().getTime();
@@ -173,7 +177,7 @@ public class InvoiceController extends BaseController {
 	    frozen = invoice.getMoney().subtract(rate.multiply(calculate));
 	  
 		balance.setFrozen(frozen);
-		penaltyRate.getRate();*/
+		penaltyRate.getRate();
 		
 		String msg = "";
 		try {
