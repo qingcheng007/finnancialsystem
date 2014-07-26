@@ -195,16 +195,7 @@
 						align : 'center',
 						sortable : true
 					},
-					{
-						field : 'action',
-						title : '操作',
-						width : 100,
-						align : 'center',
-						formatter : function(value, row, index) {
-							var btn = '<a onclick="check(\''+row.id+'\')" href="javascript:void(0)">查看详情</a>';
-							return btn;
-						} 
-					}] ],
+				] ],
 					toolbar : '#admin_site_manage_toolbar',
 					onLoadSuccess : function() {
 						
