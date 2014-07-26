@@ -85,7 +85,8 @@ insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(34, '查看站点用户及其职务', null, '1', '/siteController/admin/getUserInformationOfOneSiteByPage*.do', '2', '查看站点用户及其职务', '29', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(35, '添加站点用户', null, '2', '/siteController/admin/addUserSite*.do', '2', '添加站点用户', '27', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(36, '删除站点用户', null, '3', '/siteController/admin/deleteUserSite*.do', '2', '删除站点用户', '27', 1, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(37, '个人信息', null, '1', '/admin/userinfo/userinfo.jsp', '1', '查看个人信息', '5', 1, 1)
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(37, '我的信息', null, '1', '/admin/userinfo/userinfo.jsp', '1', '查看个人信息', '5', 1, 1)
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(38, '我的审核信息', null, '2', '/admin/userinfo/myAudit.jsp', '1', '查看个人审核信息', '5', 1, 1)
 
 -- ----------------------------
 -- Records of r_role_resource
@@ -127,3 +128,4 @@ insert into r_role_resource(Id,ResourceId,RoleId) values('34', '34', '1');
 insert into r_role_resource(Id,ResourceId,RoleId) values('35', '35', '1');
 insert into r_role_resource(Id,ResourceId,RoleId) values('36', '36', '1');
 insert into r_role_resource(Id,ResourceId,RoleId) values('37', '37', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('38', '38', '1');
