@@ -122,3 +122,5 @@ insert into r_role_resource(Id,ResourceId,RoleId) values('30', '30', '1');
 insert into r_role_resource(Id,ResourceId,RoleId) values('31', '31', '1');
 insert into r_role_resource(Id,ResourceId,RoleId) values('32', '32', '1');
 insert into r_role_resource(Id,ResourceId,RoleId) values('33', '33', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('34', '34', '1');
+insert into r_role_resource(Id,ResourceId,RoleId) values('35', '35', '1');
