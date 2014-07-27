@@ -92,7 +92,7 @@ public class SiteServiceImpl implements ISiteService {
 	}
 
 	@Override
-	public DataGrid getUserInformationOfOneSiteByPage(PageFilter pageFilter,
+	public DataGrid getUserByPage(PageFilter pageFilter,
 			int siteId) {
 		// TODO Auto-generated method stub
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
