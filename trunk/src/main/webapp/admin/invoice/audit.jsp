@@ -131,7 +131,7 @@
 		invoice.auditor2Id = $('#auditor2Id').val();
 		invoice.dearerId = $('#dearerId').val();
 		console.info(cls);
-
+		invoice.money = cls.money;
 		invoice.auditStateId = cls.auditstateid;
 		console.info(cls.auditstateid);
 
