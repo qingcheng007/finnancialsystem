@@ -162,13 +162,13 @@ public class SiteController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/admin/getUserInformationOfOneSiteByPage")
-	public DataGrid getUserInformationOfOneSiteByPage(PageFilter pageFilter
+	@RequestMapping("/admin/getUserByPage")
+	public DataGrid getUserByPage(PageFilter pageFilter
 		,HttpServletRequest request,HttpSession session) {
 		int siteId = Integer.parseInt(request.getParameter("siteId"));
 		session.setAttribute("siteId",siteId);
 		try {
-			return siteService.getUserInformationOfOneSiteByPage(pageFilter,
+			return siteService.getUserByPage(pageFilter,
 					siteId);
 		} catch (Exception e) {
 			e.printStackTrace();

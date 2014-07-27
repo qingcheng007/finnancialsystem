@@ -14,7 +14,7 @@
 		$('#admin_siteUser_manage_dataGrid')
 		.datagrid(
 				{
-					url : '${pageContext.request.contextPath}/siteController/admin/getUserInformationOfOneSiteByPage.do?siteId='+siteId,
+					url : '${pageContext.request.contextPath}/siteController/admin/getUserByPage.do?siteId='+siteId,
 					fit : true,
 					autoRowHeight : false,
 					striped : true,
