@@ -1,6 +1,5 @@
 package com.ztyj6.fs.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,11 +9,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSON;
 import com.ztyj6.fs.model.Site;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.Json;
@@ -54,7 +51,8 @@ public class SiteController extends BaseController {
 		try {
 			flag = siteService.isExistSite(site.getName());
 			if(flag==0){
-				site.setCreateDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())));
+				site.setCreateDate(new Date());
+				System.out.println("234");
 				siteService.save(site);
 				json.setSuccess(true);
 				json.setObj(site);
@@ -116,12 +114,11 @@ public class SiteController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping("/admin/addUserSite")
-	public Json addUserSite(HttpServletRequest request,
-			HttpSession session) {
+	public Json addUserSite(HttpServletRequest request) {
 		Json json = new Json();
 		int flag = 0;
 		int userId =Integer.parseInt(request.getParameter("userId"));
-		int siteId = (Integer)session.getAttribute("siteId");
+		int siteId = Integer.parseInt(request.getParameter("siteId"));
 		int postId = Integer.parseInt(request.getParameter("postId"));
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("siteId", siteId);
@@ -145,12 +142,10 @@ public class SiteController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping("/admin/deleteUserSite")
-	public Json deleteUserSite(String ids,HttpSession session) {
-		//从getUserInformationOfOneSiteByPage中为siteId完成赋值
-		int siteId = (Integer)session.getAttribute("siteId");
+	public Json deleteUserSite(String ids,Site site) {
 		Json json = new Json();
 		try {
-			siteService.deleteBatchUserSite(siteId, ids);
+			siteService.deleteBatchUserSite(site.getId(), ids);
 			json.setSuccess(true);
 			json.setMsg("删除成功");
 			
@@ -163,13 +158,9 @@ public class SiteController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping("/admin/getUserByPage")
-	public DataGrid getUserByPage(PageFilter pageFilter
-		,HttpServletRequest request,HttpSession session) {
-		int siteId = Integer.parseInt(request.getParameter("siteId"));
-		session.setAttribute("siteId",siteId);
+	public DataGrid getUserByPage(PageFilter pageFilter,Site site) {
 		try {
-			return siteService.getUserByPage(pageFilter,
-					siteId);
+			return siteService.getUserByPage(pageFilter,site.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
