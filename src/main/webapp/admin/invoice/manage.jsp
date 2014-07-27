@@ -311,7 +311,6 @@
 		$('#admin_site_manage_dataGrid').datagrid('reload');
 	}
 </script>
-
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit : true,border : false">
@@ -319,18 +318,18 @@
 			<table>
 				<tr>
 					<sec:authorize url="/invoiceController/add.do">
-					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="add();">添加</a></td>
-					<td><div class="datagrid-btn-separator"></div></td>
-					</sec:authorize>
-					<sec:authorize url="/invoiceController/edit.do">
-					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="edit();">编辑</a></td>
-					<td><div class="datagrid-btn-separator"></div></td>
-					</sec:authorize>
-					<sec:authorize url="/invoiceController/delete.do">
-					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="deleteBatch();">批量删除</a></td>
-					<td><div class="datagrid-btn-separator"></div></td>
-					</sec:authorize>
-					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true" onclick="refresh();">刷新</a></td>
+								<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="add();">添加</a></td>
+								<td><div class="datagrid-btn-separator"></div></td>
+								</sec:authorize>
+								<sec:authorize url="/invoiceController/edit.do">
+								<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="edit();">编辑</a></td>
+								<td><div class="datagrid-btn-separator"></div></td>
+								</sec:authorize>
+								<sec:authorize url="/invoiceController/delete.do">
+								<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="deleteBatch();">批量删除</a></td>
+								<td><div class="datagrid-btn-separator"></div></td>
+								</sec:authorize>
+								<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true" onclick="refresh();">刷新</a></td>
 				</tr>
 			</table>
 		</div>

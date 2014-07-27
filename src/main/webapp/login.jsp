@@ -36,7 +36,7 @@
 
 			},
 			error : function() {
-				alert("登陆失敗");
+				alert("登陆失败");
 			}
 		});
 	}
@@ -61,7 +61,7 @@ function submit2() {
 					
 					},
 					error : function() {
-					alert("添加失敗");
+					alert("添加失败");
 									}
 				});
 		}
