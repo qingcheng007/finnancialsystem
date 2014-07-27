@@ -151,3 +151,26 @@ insert into r_role_resource(Id,ResourceId,RoleId) values('56', '33', '2');
 insert into r_role_resource(Id,ResourceId,RoleId) values('57', '34', '2');
 insert into r_role_resource(Id,ResourceId,RoleId) values('58', '37', '2');
 insert into r_role_resource(Id,ResourceId,RoleId) values('59', '38', '2');
+
+insert into r_role_resource(Id,ResourceId,RoleId) values('60', '1', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('61', '2', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('62', '3', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('63', '4', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('64', '5', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('65', '6', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('66', '7', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('67', '17', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('68', '18', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('69', '19', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('70', '20', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('71', '21', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('72', '22', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('73', '23', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('74', '24', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('75', '28', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('76', '29', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('77', '33', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('78', '34', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('79', '37', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('80', '38', '3');
+
