@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.sun.xml.internal.bind.v2.model.core.ID;
 
+import com.ztyj6.fs.model.Balance;
 import com.ztyj6.fs.model.User;
 import com.ztyj6.fs.model.page.PageFilter;
 
@@ -47,4 +48,6 @@ public interface UserMapper {
     void count();
     
     int countByUsername(String username);
+    
+    Balance selectBalanceById(int id);
 }

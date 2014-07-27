@@ -23,6 +23,7 @@ import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 
 import com.ztyj6.fs.dao.UserMapper;
+import com.ztyj6.fs.model.Balance;
 import com.ztyj6.fs.model.User;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.PageFilter;
@@ -98,6 +99,13 @@ public class UserServiceImpl implements IUserService {
 		dg.setTotal(users.getPaginator().getTotalCount());
 		return dg;
 	}
+public Balance getBanlanceById(int id) {
+		//PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
+	//	DataGrid dg = new DataGrid();
+	Balance userBalance =  userMapper.selectBalanceById(id);			
+		
+		return userBalance;
+	}
 
 
 	public void delete(User o) {
@@ -159,6 +167,11 @@ public class UserServiceImpl implements IUserService {
 		dg.setRows(users);
 		dg.setTotal(users.getPaginator().getTotalCount());
 		return dg;
+	}
+
+	@Override
+	public Balance getBalanceById(int id) {
+		return userMapper.selectBalanceById(id);
 	}
 
 }

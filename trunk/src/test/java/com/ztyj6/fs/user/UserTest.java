@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.ztyj6.fs.model.Balance;
 import com.ztyj6.fs.model.User;
 import com.ztyj6.fs.service.IUserService;
+import com.ztyj6.fs.service.impl.InvoiceServiceImpl;
+import com.ztyj6.fs.service.impl.UserServiceImpl;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -32,5 +35,11 @@ public void TestInsertUser(){
 	user.setBalanceId(1);
 	user.setIsEnable(true);
 	userService.save(user);
+}
+@Test
+public void TestSelectBalanceById()
+{ 
+	Balance b = userService.getBalanceById(1);
+	System.out.println(b.getAvailable()+"-"+b.getFrozen());
 }
 }
