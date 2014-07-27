@@ -1,22 +1,18 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <html>
 <head>
 <title>用户管理</title>
 <jsp:include page="/include/easyui.jsp"></jsp:include>
-<script type="text/javascript"
-	src="../../jslib/My97DatePicker4.8b3/My97DatePicker/WdatePicker.js"
-	charset="utf-8"></script>
+<script type="text/javascript" src="../../jslib/My97DatePicker4.8b3/My97DatePicker/WdatePicker.js" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
-	var canGrant = false;
+	    var canGrant = false;
 </script>
 <sec:authentication property="principal.id" var="currentUserId" />
 <sec:authorize url="/userController/admin/grant.do">
 	<script type="text/javascript" charset="utf-8">
-		canGrant = true;
+	    canGrant = true;
 	</script>
 </sec:authorize>
 <script type="text/javascript" charset="utf-8">

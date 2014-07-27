@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <html>
 <head>
 <title>站点管理</title>
@@ -238,24 +237,18 @@
 			<table>
 				<tr>
 					<sec:authorize url="/siteController/admin/add.do">
-						<td><a href="javascript:void(0);" class="easyui-linkbutton"
-							data-options="iconCls:'icon-add',plain:true" onclick="add();">添加站点</a></td>
-						<td><div class="datagrid-btn-separator"></div></td>
-					</sec:authorize>
-					<sec:authorize url="/siteController/admin/update.do">
-						<td><a href="javascript:void(0);" class="easyui-linkbutton"
-							data-options="iconCls:'icon-edit',plain:true" onclick="edit();">编辑站点</a></td>
-						<td><div class="datagrid-btn-separator"></div></td>
-					</sec:authorize>
-					<sec:authorize url="/siteController/admin/deleteBatch.do">
-						<td><a href="javascript:void(0);" class="easyui-linkbutton"
-							data-options="iconCls:'icon-remove',plain:true"
-							onclick="deleteBatch();">批量删除站点</a></td>
-						<td><div class="datagrid-btn-separator"></div></td>
-					</sec:authorize>
-					<td><a href="javascript:void(0);" class="easyui-linkbutton"
-						data-options="iconCls:'icon-reload',plain:true"
-						onclick="refresh();">刷新</a></td>
+								<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="add();">添加</a></td>
+								<td><div class="datagrid-btn-separator"></div></td>
+								</sec:authorize>
+								<sec:authorize url="/siteController/admin/update.do">
+								<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="edit();">编辑</a></td>
+								<td><div class="datagrid-btn-separator"></div></td>
+								</sec:authorize> 
+								<sec:authorize url="/siteController/admin/deleteBatch.do">
+								<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="deleteBatch();">批量删除</a></td>
+								<td><div class="datagrid-btn-separator"></div></td>
+								</sec:authorize>
+								<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true" onclick="refresh();">刷新</a></td>
 				</tr>
 			</table>
 		</div>
