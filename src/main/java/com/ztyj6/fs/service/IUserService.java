@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.core.Authentication;
 
+import com.ztyj6.fs.model.Balance;
 import com.ztyj6.fs.model.User;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.PageFilter;
@@ -20,5 +21,5 @@ public interface IUserService extends IBaseService<User>{
 	public void updateLogin(HttpServletRequest request, Authentication authentication);
 	public void grant(Integer userId,String ids);
 	public DataGrid getByIdPage(PageFilter pageFilter, int id1);
-
+	public Balance getBalanceById(int id);
 }
