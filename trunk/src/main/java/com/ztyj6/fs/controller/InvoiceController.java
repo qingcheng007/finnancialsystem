@@ -1,7 +1,6 @@
 package com.ztyj6.fs.controller;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +11,6 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ztyj6.fs.model.AuditState;
@@ -20,17 +18,26 @@ import com.ztyj6.fs.model.Balance;
 import com.ztyj6.fs.model.Invoice;
 import com.ztyj6.fs.model.InvoiceType;
 import com.ztyj6.fs.model.PenaltyRate;
-import com.ztyj6.fs.model.Post;
-import com.ztyj6.fs.model.Site;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.Json;
 import com.ztyj6.fs.model.page.PageFilter;
 import com.ztyj6.fs.service.IInvoiceService;
+import com.ztyj6.fs.service.IUserService;
 
 @Controller
 @RequestMapping("/invoiceController")
 public class InvoiceController extends BaseController {
 	IInvoiceService iInvoiceService;
+
+	IUserService iUserService;
+	
+	public IUserService getiUserService() {
+		return iUserService;
+	}
+	@Autowired
+	public void setiUserService(IUserService iUserService) {
+		this.iUserService = iUserService;
+	}
 
 	public IInvoiceService getiInvoiceService() {
 		return iInvoiceService;
@@ -137,6 +144,7 @@ public class InvoiceController extends BaseController {
 	@RequestMapping("/audit")
 	public Json audit(@RequestBody Invoice invoice, HttpSession session) {
 		Json json = new Json();
+		
 		//SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
 		//System.out.println("------------------"+((Invoice) (ctx.getAuthentication().getPrincipal())).getId());
 		//invoice.setCreateRealname(((Invoice) (ctx.getAuthentication().getPrincipal())).getRealname());
@@ -152,13 +160,14 @@ public class InvoiceController extends BaseController {
 		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
 		
 		BigDecimal rate= new BigDecimal("0.1");
-		//
+	
 		PenaltyRate penaltyRate = new PenaltyRate();
+		//penaltyRate.getRate();
 		
 		Balance balance =new Balance();
 		//balance = role.get();
-		BigDecimal frozen;
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		BigDecimal frozen =null;
+		BigDecimal available = null;
 		int proverid = invoice.getAuditState().getProver();
 		
 		
@@ -176,8 +185,46 @@ public class InvoiceController extends BaseController {
 	    
 	    frozen = invoice.getMoney().subtract(rate.multiply(calculate));
 	  
+	    balance = iUserService.getBalanceById(proverid);
+	    
+	    //审批人审核通过，冻结金额减少，
+	    if(invoice.getAuditState().getDearer()==2||invoice.getAuditState().getDearer()==1)
+	    {
+	    	if(invoice.getAuditState().getDearer()==2)
+	    	{
+	    		available=balance.getAvailable().subtract(frozen);
+	    		frozen=balance.getFrozen().add(frozen);
+	    		
+	    	}
+	    }
+	    	else
+	    {
+	    if(invoice.getAuditState().getAuditor2()==1)
+	    {
+	    	
+	    	frozen= balance.getFrozen().subtract(frozen);
+	    }//如果有一个人审核失败，冻结金额减少，重新加入可用余额中
+	    else
+	    {
+	    if(invoice.getAuditState().getProver()==2||invoice.getAuditState().getAuditor1()==2||invoice.getAuditState().getAuditor2()==2)
+	    {
+	    	available=balance.getAvailable().subtract(frozen);
+    		frozen=balance.getFrozen().add(frozen);
+	    	
+	    }else
+	    {
+	    	if(invoice.getAuditState().getProver()==0)
+	    	{
+	    		available=balance.getAvailable().subtract(frozen);
+	    		frozen=balance.getFrozen().add(frozen);
+	    	}
+	    }
+	    }
+	    
+	    }
 		balance.setFrozen(frozen);
-		penaltyRate.getRate();
+		balance.setAvailable(available);
+		
 		
 		String msg = "";
 		try {
