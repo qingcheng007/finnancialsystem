@@ -9,12 +9,12 @@
 <jsp:include page="/include/easyui.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8">
     var cls = parent.$.modalDialog.row;
-    var siteId = cls.id;
+    var id = cls.id;
 	$(function(){
 		$('#admin_siteUser_manage_dataGrid')
 		.datagrid(
 				{
-					url : '${pageContext.request.contextPath}/siteController/admin/getUserByPage.do?siteId='+siteId,
+					url : '${pageContext.request.contextPath}/siteController/admin/getUserByPage.do?id='+id,
 					fit : true,
 					autoRowHeight : false,
 					striped : true,
@@ -124,7 +124,7 @@
 			title : '添加站点',
 			width : 380,
 			height : 260,
-			url:'${pageContext.request.contextPath}/admin/site/addUser.jsp'
+			url:'${pageContext.request.contextPath}/admin/site/addUser.jsp?id='+id
 		});
 	}
 
@@ -137,7 +137,7 @@
 					for(var i=0; i<rows.length; i++)
 						ids.push(rows[i].id);
 					$.ajax({ 
-						url: '${pageContext.request.contextPath}/siteController/admin/deleteUserSite.do', 
+						url: '${pageContext.request.contextPath}/siteController/admin/deleteUserSite.do?id='+id, 
 						type: 'POST',
 						data: {
 							ids: ids.join(',')
