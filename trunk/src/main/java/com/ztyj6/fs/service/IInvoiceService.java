@@ -1,8 +1,10 @@
 package com.ztyj6.fs.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.ztyj6.fs.model.AuditState;
+import com.ztyj6.fs.model.Balance;
 import com.ztyj6.fs.model.Invoice;
 import com.ztyj6.fs.model.InvoiceDetails;
 import com.ztyj6.fs.model.InvoiceType;
@@ -40,5 +42,9 @@ public interface IInvoiceService extends IBaseService<Invoice> {
 	List<InvoiceType> getInvoiceTypeAll();
 	
 	public DataGrid getPageById(PageFilter pageFilter,int id);
+	
+	BigDecimal calculatePenalty(Invoice invoice,BigDecimal rate);
+	
+	int saveBalance(Balance balance);
 	
 }

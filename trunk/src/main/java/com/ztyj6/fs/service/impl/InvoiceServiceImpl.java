@@ -1,6 +1,7 @@
 package com.ztyj6.fs.service.impl;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,13 +11,16 @@ import org.springframework.stereotype.Service;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.ztyj6.fs.dao.AuditStateMapper;
+import com.ztyj6.fs.dao.BalanceMapper;
 import com.ztyj6.fs.dao.InvoiceDetailsMapper;
 import com.ztyj6.fs.dao.InvoiceMapper;
 import com.ztyj6.fs.dao.InvoiceTypeMapper;
 import com.ztyj6.fs.model.AuditState;
+import com.ztyj6.fs.model.Balance;
 import com.ztyj6.fs.model.Invoice;
 import com.ztyj6.fs.model.InvoiceDetails;
 import com.ztyj6.fs.model.InvoiceType;
+import com.ztyj6.fs.model.PenaltyRate;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.PageFilter;
 import com.ztyj6.fs.service.IInvoiceService;
@@ -32,6 +36,8 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	InvoiceTypeMapper invoiceTypeMapper;
 
 	AuditStateMapper auditStateMapper;
+	
+	BalanceMapper balanceMapper;
 
 	public AuditStateMapper getAuditStateMapper() {
 		return auditStateMapper;
@@ -261,6 +267,31 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	@Override
 	public List<InvoiceType> getInvoiceTypeAll() {
 		return invoiceTypeMapper.getInvoiceType();
+	}
+
+	@Override
+	public BigDecimal calculatePenalty(Invoice invoice,BigDecimal rate) {
+		//BigDecimal rate = new BigDecimal("0.1");
+		
+
+		long to = invoice.getCreatedate().getTime();
+		long from = invoice.getOccurdate().getTime();
+		long bg;
+
+		if (from > to)
+			bg = (to - from) / (1000 * 60 * 60 * 24);
+		else
+			bg = (to - from) / (1000 * 60 * 60 * 24);
+
+		BigDecimal calculate = new BigDecimal(bg);
+		calculate = calculate.multiply(rate);
+		return calculate;
+	}
+
+	@Override
+	public int saveBalance(Balance balance) {
+		return balanceMapper.insertSelective(balance);
+		
 	}
 
 
