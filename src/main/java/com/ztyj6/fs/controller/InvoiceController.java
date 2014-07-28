@@ -126,39 +126,43 @@ public class InvoiceController extends BaseController {
 		// invoice.setDearerid(1);
 		invoice.setInvoicedetailsid(invoice.getInvoiceDetails().getId());
 		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
-		BigDecimal rate = new BigDecimal("0.1");
-		BigDecimal calculatePenalty = iInvoiceService.calculatePenalty(invoice,
-				rate);
-		int proverid = invoice.getAuditState().getProver();
-		Balance balance = new Balance();
-		BigDecimal available = null;
-		BigDecimal frozen = null;
-		BigDecimal money =null;
-		money = invoice.getMoney();
-		balance = iUserService.getBalanceById(proverid);
-		available = balance.getAvailable();
-		frozen = balance.getFrozen();
 		
-		if (!calculatePenalty.equals(0)) {
-			money = money.subtract(calculatePenalty);
-		}
-		frozen = frozen.add(money.subtract(calculatePenalty));
-		available = available.subtract(frozen);
-		balance.setAvailable(available);
-		balance.setFrozen(frozen);
-		iInvoiceService.saveBalance(balance);
+		
+		
 		
 		String msg = "";
-		try {
+	//	try {
 			iInvoiceService.saveInvoiceAllSelective(invoice);
+			BigDecimal rate = new BigDecimal("0.1");
+			BigDecimal calculatePenalty = iInvoiceService.calculatePenalty(invoice,
+					rate);
+			int proverid = invoice.getProverid();
+			System.out.println("prover"+proverid);
+			Balance balance = new Balance();
+			BigDecimal available = null;
+			BigDecimal frozen = null;
+			BigDecimal money =null;
+			money = invoice.getMoney();
+			balance = iUserService.getBalanceById(proverid);
+			available = balance.getAvailable();
+			frozen = balance.getFrozen();
+			
+			if (!calculatePenalty.equals(0)) {
+				money = money.subtract(calculatePenalty);
+			}
+			frozen = frozen.add(money.subtract(calculatePenalty));
+			available = available.subtract(frozen);
+			balance.setAvailable(available);
+			balance.setFrozen(frozen);
+			iInvoiceService.updateBalance(balance);
 			msg = "添加成功";
 			json.setSuccess(true);
 			json.setObj(invoice);
 			json.setMsg(msg);
-		} catch (Exception e) {
-			msg = "添加失败";
-			json.setMsg(msg);
-		}
+	//	} catch (Exception e) {
+	//		msg = "添加失败";
+	//		json.setMsg(msg);
+	//	}
 		return json;
 	}
 
@@ -191,12 +195,13 @@ public class InvoiceController extends BaseController {
 		// 计算罚款金额
 		BigDecimal calculatePenalty = iInvoiceService.calculatePenalty(invoice,
 				rate);
-
+		//整合到service中
+		
 		Balance balance = new Balance();
 		// balance = role.get();
 		BigDecimal frozen = null;
 		BigDecimal available = null;
-		int proverid = invoice.getAuditState().getProver();
+		int proverid = invoice.getProverid();
 
 		frozen = invoice.getMoney().subtract(calculatePenalty);
 		balance = iUserService.getBalanceById(proverid);
@@ -235,7 +240,7 @@ public class InvoiceController extends BaseController {
 		balance.setFrozen(frozen);
 		balance.setAvailable(available);
 
-		iInvoiceService.saveBalance(balance);
+		iInvoiceService.updateBalance(balance);
 
 		String msg = "";
 		try {
