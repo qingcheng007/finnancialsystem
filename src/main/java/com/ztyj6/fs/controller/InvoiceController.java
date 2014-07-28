@@ -30,10 +30,11 @@ public class InvoiceController extends BaseController {
 	IInvoiceService iInvoiceService;
 
 	IUserService iUserService;
-	
+
 	public IUserService getiUserService() {
 		return iUserService;
 	}
+
 	@Autowired
 	public void setiUserService(IUserService iUserService) {
 		this.iUserService = iUserService;
@@ -125,7 +126,28 @@ public class InvoiceController extends BaseController {
 		// invoice.setDearerid(1);
 		invoice.setInvoicedetailsid(invoice.getInvoiceDetails().getId());
 		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
-
+		BigDecimal rate = new BigDecimal("0.1");
+		BigDecimal calculatePenalty = iInvoiceService.calculatePenalty(invoice,
+				rate);
+		int proverid = invoice.getAuditState().getProver();
+		Balance balance = new Balance();
+		BigDecimal available = null;
+		BigDecimal frozen = null;
+		BigDecimal money =null;
+		money = invoice.getMoney();
+		balance = iUserService.getBalanceById(proverid);
+		available = balance.getAvailable();
+		frozen = balance.getFrozen();
+		
+		if (!calculatePenalty.equals(0)) {
+			money = money.subtract(calculatePenalty);
+		}
+		frozen = frozen.add(money.subtract(calculatePenalty));
+		available = available.subtract(frozen);
+		balance.setAvailable(available);
+		balance.setFrozen(frozen);
+		iInvoiceService.saveBalance(balance);
+		
 		String msg = "";
 		try {
 			iInvoiceService.saveInvoiceAllSelective(invoice);
@@ -144,88 +166,77 @@ public class InvoiceController extends BaseController {
 	@RequestMapping("/audit")
 	public Json audit(@RequestBody Invoice invoice, HttpSession session) {
 		Json json = new Json();
-		
-		//SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
-		//System.out.println("------------------"+((Invoice) (ctx.getAuthentication().getPrincipal())).getId());
-		//invoice.setCreateRealname(((Invoice) (ctx.getAuthentication().getPrincipal())).getRealname());
-		//System.out.println("------"+invoice.getContent()+invoice.getInvoiceType().getId()+"--date:"+invoice.getCreatedate());
-		//System.out.println("-------content:"+invoice.getPhotourl());
+
+		// SecurityContext ctx = (SecurityContext)
+		// session.getAttribute("SPRING_SECURITY_CONTEXT");
+		// System.out.println("------------------"+((Invoice)
+		// (ctx.getAuthentication().getPrincipal())).getId());
+		// invoice.setCreateRealname(((Invoice)
+		// (ctx.getAuthentication().getPrincipal())).getRealname());
+		// System.out.println("------"+invoice.getContent()+invoice.getInvoiceType().getId()+"--date:"+invoice.getCreatedate());
+		// System.out.println("-------content:"+invoice.getPhotourl());
 		AuditState auditState = invoice.getAuditState();
 		System.out.println(auditState.getId());
 		Invoice invoiceNew = new Invoice();
 		iInvoiceService.updateAuditStateOnly(auditState);
-		//需要修改
-		//invoice.setDearerid(1);
+		// 需要修改
+		// invoice.setDearerid(1);
 		invoice.setInvoicedetailsid(invoice.getInvoiceDetails().getId());
 		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
-		
-		BigDecimal rate= new BigDecimal("0.1");
-	
-		PenaltyRate penaltyRate = new PenaltyRate();
-		//penaltyRate.getRate();
-		
-		Balance balance =new Balance();
-		//balance = role.get();
-		BigDecimal frozen =null;
+
+		//
+		// BigeDecimal rate = iInvoiceService.getRate();
+		BigDecimal rate = new BigDecimal("0.1");
+
+		// 计算罚款金额
+		BigDecimal calculatePenalty = iInvoiceService.calculatePenalty(invoice,
+				rate);
+
+		Balance balance = new Balance();
+		// balance = role.get();
+		BigDecimal frozen = null;
 		BigDecimal available = null;
 		int proverid = invoice.getAuditState().getProver();
-		
-		
-		
-	    long to = invoice.getCreatedate().getTime();
-	    long from = invoice.getOccurdate().getTime();
-	    long bg;
-	   
-	    if(from>to)
-	    	bg=(to - from) / (1000 * 60 * 60 * 24);
-	    else
-	    	bg=(to - from) / (1000 * 60 * 60 * 24);
-	    
-	    BigDecimal calculate =new BigDecimal(bg);
-	    
-	    frozen = invoice.getMoney().subtract(rate.multiply(calculate));
-	  
-	    balance = iUserService.getBalanceById(proverid);
-	    
-	    //审批人审核通过，冻结金额减少，
-	    if(invoice.getAuditState().getDearer()==2||invoice.getAuditState().getDearer()==1)
-	    {
-	    	if(invoice.getAuditState().getDearer()==2)
-	    	{
-	    		available=balance.getAvailable().subtract(frozen);
-	    		frozen=balance.getFrozen().add(frozen);
-	    		
-	    	}
-	    }
-	    	else
-	    {
-	    if(invoice.getAuditState().getAuditor2()==1)
-	    {
-	    	
-	    	frozen= balance.getFrozen().subtract(frozen);
-	    }//如果有一个人审核失败，冻结金额减少，重新加入可用余额中
-	    else
-	    {
-	    if(invoice.getAuditState().getProver()==2||invoice.getAuditState().getAuditor1()==2||invoice.getAuditState().getAuditor2()==2)
-	    {
-	    	available=balance.getAvailable().subtract(frozen);
-    		frozen=balance.getFrozen().add(frozen);
-	    	
-	    }else
-	    {
-	    	if(invoice.getAuditState().getProver()==0)
-	    	{
-	    		available=balance.getAvailable().subtract(frozen);
-	    		frozen=balance.getFrozen().add(frozen);
-	    	}
-	    }
-	    }
-	    
-	    }
+
+		frozen = invoice.getMoney().subtract(calculatePenalty);
+		balance = iUserService.getBalanceById(proverid);
+		available = balance.getAvailable();
+		// 审批人审核通过，冻结金额减少，
+		if (invoice.getAuditState().getDearer() == 2
+				|| invoice.getAuditState().getDearer() == 1) {
+			if (invoice.getAuditState().getDearer() == 2) {
+				available = balance.getAvailable().subtract(frozen);
+				frozen = balance.getFrozen().subtract(frozen);
+
+			} else {
+				frozen = balance.getFrozen().subtract(frozen);
+			}
+		} else {
+			if (invoice.getAuditState().getAuditor2() == 1) {
+
+				frozen = balance.getFrozen().subtract(frozen);
+			}// 如果有一个人审核失败，冻结金额减少，重新加入可用余额中
+			else {
+				if (invoice.getAuditState().getProver() == 2
+						|| invoice.getAuditState().getAuditor1() == 2
+						|| invoice.getAuditState().getAuditor2() == 2) {
+					available = balance.getAvailable().subtract(frozen);
+					frozen = balance.getFrozen().add(frozen);
+
+				} else {
+					if (invoice.getAuditState().getProver() == 0) {
+						available = balance.getAvailable().subtract(frozen);
+						frozen = balance.getFrozen().add(frozen);
+					}
+				}
+			}
+
+		}
 		balance.setFrozen(frozen);
 		balance.setAvailable(available);
-		
-		
+
+		iInvoiceService.saveBalance(balance);
+
 		String msg = "";
 		try {
 			invoiceNew = iInvoiceService.getById(invoice.getId());
