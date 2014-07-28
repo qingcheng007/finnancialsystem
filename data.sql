@@ -85,11 +85,9 @@ insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(33, '删除站点', null, '4', '/siteController/admin/deleteBatch*.do', '2', '删除站点', '29', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(34, '查看站点详情', null, '4', '/siteController/admin/getByPage*.do', '2', '查看站点详情', '29', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(35, '管理站点用户', null, '1', '/siteController/admin/getUserByPage*.do', '2', '管理站点用户', '29', 1, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(36, '向站点添加用户', null, '2', '/siteController/admin/addUserSite*.do', '2', '向站点添加用户', '35', 1, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(37, '从站点删除用户', null, '3', '/siteController/admin/deleteUserSite*.do', '2', '从站点删除用户', '35', 1, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(38, '我的信息', null, '1', '/admin/userinfo/userinfo.jsp', '1', '查看个人信息', '5', 1, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(39, '我的审核信息', null, '2', '/admin/myaudit/myAudit.jsp', '1', '查看个人审核信息', '5', 1, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(40, '我的报账信息', null, '3', '/admin/mybill/mybill.jsp', '1', '查看个人报账信息', '5', 1, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(36, '我的信息', null, '1', '/admin/userinfo/userinfo.jsp', '1', '查看个人信息', '5', 1, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(37, '我的审核信息', null, '2', '/admin/myaudit/myAudit.jsp', '1', '查看个人审核信息', '5', 1, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(38, '我的报账信息', null, '3', '/admin/mybill/mybill.jsp', '1', '查看个人报账信息', '5', 1, 1);
 
 -- ----------------------------
 -- Records of r_role_resource
@@ -132,8 +130,7 @@ insert into r_role_resource(Id,ResourceId,RoleId) values('35', '35', '1');
 insert into r_role_resource(Id,ResourceId,RoleId) values('36', '36', '1');
 insert into r_role_resource(Id,ResourceId,RoleId) values('37', '37', '1');
 insert into r_role_resource(Id,ResourceId,RoleId) values('38', '38', '1');
-insert into r_role_resource(Id,ResourceId,RoleId) values('39', '39', '1');
-insert into r_role_resource(Id,ResourceId,RoleId) values('40', '40', '1');
+
 
 insert into r_role_resource(Id,ResourceId,RoleId) values('41', '1', '2');
 insert into r_role_resource(Id,ResourceId,RoleId) values('42', '2', '2');
@@ -154,9 +151,9 @@ insert into r_role_resource(Id,ResourceId,RoleId) values('56', '29', '2');
 insert into r_role_resource(Id,ResourceId,RoleId) values('57', '30', '2');
 insert into r_role_resource(Id,ResourceId,RoleId) values('58', '34', '2');
 insert into r_role_resource(Id,ResourceId,RoleId) values('59', '35', '2');
-insert into r_role_resource(Id,ResourceId,RoleId) values('60', '38', '2');
-insert into r_role_resource(Id,ResourceId,RoleId) values('61', '39', '2');
-insert into r_role_resource(Id,ResourceId,RoleId) values('62', '40', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('60', '36', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('61', '37', '2');
+insert into r_role_resource(Id,ResourceId,RoleId) values('62', '38', '2');
 
 insert into r_role_resource(Id,ResourceId,RoleId) values('63', '1', '3');
 insert into r_role_resource(Id,ResourceId,RoleId) values('64', '2', '3');
@@ -177,9 +174,9 @@ insert into r_role_resource(Id,ResourceId,RoleId) values('78', '29', '3');
 insert into r_role_resource(Id,ResourceId,RoleId) values('79', '30', '3');
 insert into r_role_resource(Id,ResourceId,RoleId) values('80', '34', '3');
 insert into r_role_resource(Id,ResourceId,RoleId) values('81', '35', '3');
-insert into r_role_resource(Id,ResourceId,RoleId) values('82', '38', '3');
-insert into r_role_resource(Id,ResourceId,RoleId) values('83', '39', '3');
-insert into r_role_resource(Id,ResourceId,RoleId) values('84', '40', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('82', '36', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('83', '37', '3');
+insert into r_role_resource(Id,ResourceId,RoleId) values('84', '38', '3');
 
 insert into r_role_resource(Id,ResourceId,RoleId) values('85', '1', '4');
 insert into r_role_resource(Id,ResourceId,RoleId) values('86', '2', '4');
@@ -200,9 +197,9 @@ insert into r_role_resource(Id,ResourceId,RoleId) values('100', '29', '4');
 insert into r_role_resource(Id,ResourceId,RoleId) values('101', '30', '4');
 insert into r_role_resource(Id,ResourceId,RoleId) values('102', '34', '4');
 insert into r_role_resource(Id,ResourceId,RoleId) values('103', '35', '4');
-insert into r_role_resource(Id,ResourceId,RoleId) values('104', '38', '4');
-insert into r_role_resource(Id,ResourceId,RoleId) values('105', '39', '4');
-insert into r_role_resource(Id,ResourceId,RoleId) values('106', '40', '4');
+insert into r_role_resource(Id,ResourceId,RoleId) values('104', '36', '4');
+insert into r_role_resource(Id,ResourceId,RoleId) values('105', '37', '4');
+insert into r_role_resource(Id,ResourceId,RoleId) values('106', '38', '4');
 
 insert into r_role_resource(Id,ResourceId,RoleId) values('107', '1', '5');
 insert into r_role_resource(Id,ResourceId,RoleId) values('108', '2', '5');
@@ -223,9 +220,9 @@ insert into r_role_resource(Id,ResourceId,RoleId) values('122', '29', '5');
 insert into r_role_resource(Id,ResourceId,RoleId) values('123', '30', '5');
 insert into r_role_resource(Id,ResourceId,RoleId) values('124', '34', '5');
 insert into r_role_resource(Id,ResourceId,RoleId) values('125', '35', '5');
-insert into r_role_resource(Id,ResourceId,RoleId) values('126', '38', '5');
-insert into r_role_resource(Id,ResourceId,RoleId) values('127', '39', '5');
-insert into r_role_resource(Id,ResourceId,RoleId) values('128', '40', '5');
+insert into r_role_resource(Id,ResourceId,RoleId) values('126', '36', '5');
+insert into r_role_resource(Id,ResourceId,RoleId) values('127', '37', '5');
+insert into r_role_resource(Id,ResourceId,RoleId) values('128', '38', '5');
 
 
 insert into r_role_resource(Id,ResourceId,RoleId) values('129', '1', '6');
@@ -240,30 +237,28 @@ insert into r_role_resource(Id,ResourceId,RoleId) values('137', '20', '6');
 insert into r_role_resource(Id,ResourceId,RoleId) values('138', '21', '6');
 insert into r_role_resource(Id,ResourceId,RoleId) values('139', '22', '6');
 insert into r_role_resource(Id,ResourceId,RoleId) values('140', '23', '6');
-insert into r_role_resource(Id,ResourceId,RoleId) values('141', '38', '6');
-insert into r_role_resource(Id,ResourceId,RoleId) values('142', '39', '6');
-insert into r_role_resource(Id,ResourceId,RoleId) values('143', '40', '6');
+insert into r_role_resource(Id,ResourceId,RoleId) values('141', '36', '6');
+insert into r_role_resource(Id,ResourceId,RoleId) values('142', '37', '6');
+insert into r_role_resource(Id,ResourceId,RoleId) values('143', '38', '6');
 
 insert into r_role_resource(Id,ResourceId,RoleId) values('144', '1', '7');
 insert into r_role_resource(Id,ResourceId,RoleId) values('145', '2', '7');
 insert into r_role_resource(Id,ResourceId,RoleId) values('146', '3', '7');
 insert into r_role_resource(Id,ResourceId,RoleId) values('147', '5', '7');
-insert into r_role_resource(Id,ResourceId,RoleId) values('148', '6', '7');
-insert into r_role_resource(Id,ResourceId,RoleId) values('149', '7', '7');
 insert into r_role_resource(Id,ResourceId,RoleId) values('150', '18', '7');
 insert into r_role_resource(Id,ResourceId,RoleId) values('151', '19', '7');
 insert into r_role_resource(Id,ResourceId,RoleId) values('152', '20', '7');
 insert into r_role_resource(Id,ResourceId,RoleId) values('153', '21', '7');
 insert into r_role_resource(Id,ResourceId,RoleId) values('154', '22', '7');
-insert into r_role_resource(Id,ResourceId,RoleId) values('155', '38', '7');
-insert into r_role_resource(Id,ResourceId,RoleId) values('156', '39', '7');
-insert into r_role_resource(Id,ResourceId,RoleId) values('157', '40', '7');
+insert into r_role_resource(Id,ResourceId,RoleId) values('155', '36', '7');
+insert into r_role_resource(Id,ResourceId,RoleId) values('156', '37', '7');
+insert into r_role_resource(Id,ResourceId,RoleId) values('157', '38', '7');
 
 insert into r_role_resource(Id,ResourceId,RoleId) values('158', '1', '8');
 insert into r_role_resource(Id,ResourceId,RoleId) values('160', '5', '8');
-insert into r_role_resource(Id,ResourceId,RoleId) values('161', '38', '8');
-insert into r_role_resource(Id,ResourceId,RoleId) values('162', '39', '8');
-insert into r_role_resource(Id,ResourceId,RoleId) values('163', '40', '8');
+insert into r_role_resource(Id,ResourceId,RoleId) values('161', '36', '8');
+insert into r_role_resource(Id,ResourceId,RoleId) values('162', '37', '8');
+insert into r_role_resource(Id,ResourceId,RoleId) values('163', '38', '8');
 
 
 
