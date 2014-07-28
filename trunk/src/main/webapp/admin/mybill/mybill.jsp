@@ -13,7 +13,7 @@
 		$('#admin_site_manage_dataGrid')
 		.datagrid(
 				{
-					url : '${pageContext.request.contextPath}/invoiceController/getPageById.do?id='+u_id,
+					url : '${pageContext.request.contextPath}/invoiceController/doGetPageById.do?id='+u_id,
 					fit : true,
 					autoRowHeight : true,
 					striped : true,

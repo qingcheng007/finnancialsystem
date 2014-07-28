@@ -74,8 +74,8 @@ public class UserController extends BaseController {
 		}
 	}
 	@ResponseBody
-	@RequestMapping("/admin/getById")
-	public DataGrid getById(PageFilter pageFilter,Integer id,HttpServletRequest request) {
+	@RequestMapping("/admin/geetById")
+	public DataGrid geetById(PageFilter pageFilter,Integer id,HttpServletRequest request) {
 		int myId = Integer.parseInt(request.getParameter("id"));
 		try{
 			return userService.getByIdPage(pageFilter, myId);
