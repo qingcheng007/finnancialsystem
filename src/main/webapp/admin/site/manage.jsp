@@ -155,8 +155,8 @@
 		if (rows.length == 1) {
 			parent.$.modalDialog({
 				title : '编辑站点',
-				width : 380,
-				height : 260,
+				width : 600,
+				height : 400,
 				url : '${pageContext.request.contextPath}/admin/site/edit.jsp'
 			});
 			parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');
