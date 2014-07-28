@@ -81,8 +81,8 @@ insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(29, '站点管理', null, '1', '/admin/site/manage.jsp', '1', '站点管理模块', '4', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(30, '查看站点', null, '1', '/siteController/admin/getByPage*.do ', '2', '查看站点', '29', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(31, '添加站点', null, '2', '/siteController/admin/add*.do', '2', '添加站点', '29', 1, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(32, '编辑站点', null, '3', '/siteController/admin/edit*.do', '2', '编辑站点', '29', 1, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(33, '删除站点', null, '4', '/siteController/admin/delete*.do', '2', '删除站点', '29', 1, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(32, '编辑站点', null, '3', '/siteController/admin/update*.do', '2', '编辑站点', '29', 1, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(33, '删除站点', null, '4', '/siteController/admin/deleteBatch*.do', '2', '删除站点', '29', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(34, '查看站点详情', null, '4', '/siteController/admin/getByPage*.do', '2', '查看站点详情', '29', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(35, '管理站点用户', null, '1', '/siteController/admin/getUserByPage*.do', '2', '管理站点用户', '29', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(36, '向站点添加用户', null, '2', '/siteController/admin/addUserSite*.do', '2', '向站点添加用户', '35', 1, 1);
