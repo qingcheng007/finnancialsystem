@@ -39,6 +39,14 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	
 	BalanceMapper balanceMapper;
 
+	public BalanceMapper getBalanceMapper() {
+		return balanceMapper;
+	}
+	@Autowired
+	public void setBalanceMapper(BalanceMapper balanceMapper) {
+		this.balanceMapper = balanceMapper;
+	}
+
 	public AuditStateMapper getAuditStateMapper() {
 		return auditStateMapper;
 	}
@@ -292,6 +300,10 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	public int saveBalance(Balance balance) {
 		return balanceMapper.insertSelective(balance);
 		
+	}
+	@Override
+	public int updateBalance(Balance balance) {
+		return balanceMapper.updateByPrimaryKeySelective(balance);
 	}
 
 

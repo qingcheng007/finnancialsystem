@@ -47,4 +47,6 @@ public interface IInvoiceService extends IBaseService<Invoice> {
 	
 	int saveBalance(Balance balance);
 	
+	int updateBalance(Balance balance);
+	
 }

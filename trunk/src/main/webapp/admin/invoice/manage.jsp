@@ -86,7 +86,7 @@
 						width : 180,
 						align : 'center',
 						formatter : function(value, row, index) {
-							var url=row.photourl;
+							var url="${pageContext.request.contextPath}/"+row.photourl;
 							var btn = '<img src="'+ url +'"/>';
 							return btn;
 						} 

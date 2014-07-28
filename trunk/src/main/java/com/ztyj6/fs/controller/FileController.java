@@ -81,7 +81,8 @@ public class FileController extends BaseController {
 			} else if (type.equals(TYPE_ADD_STUDENT_EXCEL)) {
 				savePath.append(application.getRealPath("/")).append(TEMP_DIR).append("/");
 				saveUrl.append(request.getContextPath()).append("/").append(TEMP_DIR).append("/");
-				photoUrl.append("../../").append(TEMP_DIR).append("/");
+				//photoUrl.append("../../").append(TEMP_DIR).append("/");
+				photoUrl.append(TEMP_DIR).append("/");
 			}
 		} else
 			return getError("类型不能为空。");
