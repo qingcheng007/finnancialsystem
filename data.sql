@@ -85,7 +85,7 @@ insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(33, '删除站点', null, '4', '/siteController/admin/delete*.do', '2', '删除站点', '29', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(34, '查看站点详情', null, '4', '/siteController/admin/getByPage*.do', '2', '查看站点详情', '29', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(35, '管理站点用户', null, '1', '/siteController/admin/getUserByPage*.do', '2', '管理站点用户', '29', 1, 1);
-insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(36, '向站点添加用户', null, '2', '/siteController//admin/addUserSite*.do', '2', '向站点添加用户', '35', 1, 1);
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(36, '向站点添加用户', null, '2', '/siteController/admin/addUserSite*.do', '2', '向站点添加用户', '35', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(37, '从站点删除用户', null, '3', '/siteController/admin/deleteUserSite*.do', '2', '从站点删除用户', '35', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(38, '我的信息', null, '1', '/admin/userinfo/userinfo.jsp', '1', '查看个人信息', '5', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(39, '我的审核信息', null, '2', '/admin/myaudit/myAudit.jsp', '1', '查看个人审核信息', '5', 1, 1);
