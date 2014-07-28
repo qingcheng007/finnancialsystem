@@ -7,6 +7,14 @@
 <title>站点管理</title>
 <jsp:include page="/include/easyui.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8">
+	    var canManage = false;
+</script>
+<sec:authorize url="/siteController/admin/getUserByPage.do">
+	<script type="text/javascript" charset="utf-8">
+	    canManage = true;
+	</script>
+</sec:authorize>
+<script type="text/javascript" charset="utf-8">
 	$(function() {
 		$('#admin_site_manage_dataGrid')
 		.datagrid(

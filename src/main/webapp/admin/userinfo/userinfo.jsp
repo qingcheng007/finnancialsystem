@@ -27,7 +27,7 @@
 		$('#admin_user_manage_dataGrid')
 				.datagrid(
 						{
-							url : '${pageContext.request.contextPath}/userController/admin/getById.do?id='+u_id,
+							url : '${pageContext.request.contextPath}/userController/admin/geetById.do?id='+u_id,
 							fit : true,
 							autoRowHeight : false,
 							striped : true,
@@ -300,13 +300,12 @@
 						<table>
 							<tr>
 								
-								<sec:authorize url="/userController/admin/edit.do">
 									<td><a href="javascript:void(0);"
 										class="easyui-linkbutton"
 										data-options="iconCls:'icon-edit',plain:true"
 										onclick="edit();">编辑</a></td>
 									<td><div class="datagrid-btn-separator"></div></td>
-								</sec:authorize>
+							
 								
 								<td><a href="javascript:void(0);" class="easyui-linkbutton"
 									data-options="iconCls:'icon-reload',plain:true"

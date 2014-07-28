@@ -1,15 +1,7 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 lt8"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 lt8"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
-
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>登陆</title>
 <jsp:include page="/include/easyui.jsp"></jsp:include>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
@@ -46,30 +38,6 @@
 	}
 </script>
 
-<script type="text/javascript" charset="utf-8">
-function submit2() {
-
-			$.ajax({
-					url : '${pageContext.request.contextPath}/userController/register.do',
-					type : 'POST',
-					data : $('#register_form').serialize(),
-					dataType : 'json',
-					success : function(data) {
-						if (data.success) {
-								alert("添加成功");	
-						}
-					
-					},
-					error : function() {
-					alert("添加失败");
-									}
-				});
-		}
-	
-	function reset2() {
-		$('#register_form').form('clear');
-	}
-</script>
 </head>
 <body>
 	<div class="logotop">
