@@ -118,7 +118,15 @@ public class SiteServiceImpl implements ISiteService {
 	public int isExistUserInSite(int userId,int siteId) {
 		return siteMapper.countByUserIdAndSiteId(userId, siteId);
 	}
-	
+	@Override
+	public DataGrid getSiteByUserId(PageFilter pageFilter, int userId) {
+		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
+		DataGrid dg = new DataGrid();
+		PageList sites = (PageList)siteMapper.selectSiteByUserId(pageBounds, userId);
+		dg.setRows(sites);
+		dg.setTotal(sites.getPaginator().getTotalCount());
+		return dg;
+	}
 	public void saveOrUpdate(Site o) throws Throwable {
 		// TODO Auto-generated method stub
 	}
@@ -137,6 +145,5 @@ public class SiteServiceImpl implements ISiteService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	
 }
