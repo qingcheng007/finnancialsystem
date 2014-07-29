@@ -244,7 +244,7 @@
 		<div id="admin_site_manage_toolbar">
 			<table>
 				<tr>
-					<sec:authorize url="/siteController/admin/add.do">
+					            <sec:authorize url="/siteController/admin/add.do">
 								<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="add();">添加</a></td>
 								<td><div class="datagrid-btn-separator"></div></td>
 								</sec:authorize>
