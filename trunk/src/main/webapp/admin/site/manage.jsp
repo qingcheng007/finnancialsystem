@@ -80,10 +80,16 @@
 						width : 100,
 						align : 'center',
 						formatter : function(value, row, index) {
-							var btn = '<a onclick="siteUserManange()" href="javascript:void(0)">管理站点用户</a>';
-							return btn;
+						
+									var btn;
+											if (canManage == true) {
+												btn = '<a onclick="siteUserManange()" href="javascript:void(0)">管理站点用户</a>';
+											}
+											return btn;
+										}
+						
 						} 
-					}] ],
+					] ],
 					toolbar : '#admin_site_manage_toolbar',
 					onLoadSuccess : function() {
 						

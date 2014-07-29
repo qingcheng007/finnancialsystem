@@ -288,8 +288,8 @@ public class InvoiceController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/getPageById")
-	public DataGrid getByPageByid(PageFilter pageFilter,
+	@RequestMapping("/geTPageById")
+	public DataGrid geTByPageByid(PageFilter pageFilter,
 			HttpServletRequest request) {
 		String id = request.getParameter("id");
 		System.out.println(id);
@@ -301,7 +301,20 @@ public class InvoiceController extends BaseController {
 			return null;
 		}
 	}
-
+	@ResponseBody
+	@RequestMapping("/doGetPageById")
+	public DataGrid doGetByPageByid(PageFilter pageFilter,
+			HttpServletRequest request) {
+		String id = request.getParameter("id");
+		System.out.println(id);
+		try {
+			return iInvoiceService
+					.getPageById(pageFilter, Integer.parseInt(id));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	@ResponseBody
 	@RequestMapping("/edit")
 	public Json edit(Invoice invoice) {
