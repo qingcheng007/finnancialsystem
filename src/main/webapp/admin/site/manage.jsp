@@ -9,13 +9,90 @@
 <script type="text/javascript" charset="utf-8">
 	    var canManage = false;
 </script>
+<sec:authentication property="principal" var="authentication" />
 <sec:authorize url="/siteController/admin/getUserByPage.do">
 	<script type="text/javascript" charset="utf-8">
 	    canManage = true;
 	</script>
 </sec:authorize>
 <script type="text/javascript" charset="utf-8">
+    var userId=${authentication.id};
 	$(function() {
+		$('#admin_site_manage_dataGrid')
+		.datagrid(
+				{
+					url : '${pageContext.request.contextPath}/siteController/admin/getSiteByUserId.do?id='+userId,
+					fit : true,
+					autoRowHeight : false,
+					striped : true,
+					border : false,
+					pagination : true,
+					
+					pageSize : 10,
+					pageList : [ 10, 20, 30, 40, 50 ],
+					sortName : 'id',
+					sortOrder : 'asc',
+					singleSelect : false,
+					checkOnSelect : false,
+					selectOnCheck : true,
+					nowrap : false,
+					rownumbers : true,
+					loadMsg : '正在加载，请稍后...',
+					frozenColumns : [ [ {
+						field : 'ck',
+						checkbox : true
+					} ] ], 
+					columns : [ [ 
+                    {   
+                    	field : 'id',
+	                    title : '站点编号',
+						width : 220,
+						align : 'center',
+						sortable : true
+					},{
+						field : 'name',
+						title : '站点名称',
+						width : 220,
+						align : 'center',
+						sortable : true
+					}, {
+						field : 'createDate',
+						title : '建站时间',
+						width : 220,
+						align : 'center',
+						sortable : true
+					}, {
+						field : 'userId',
+						title : '建站人用户ID',
+						width : 220,
+						align : 'center',
+						sortable : true
+					},{
+						field : 'information',
+						title : '查看',
+						width : 100,
+						align : 'center',
+						formatter : function(value, row, index) {
+							var btn = '<a onclick="siteCheck()" href="javascript:void(0)">查看站点详情</a>';
+							return btn;
+						} 
+					},{
+						field : 'managerUserOfSite',
+						title : '管理站点用户',
+						width : 100,
+						align : 'center',
+						formatter : function(value, row, index) {
+							var btn = '<a onclick="siteUserManange()" href="javascript:void(0)">管理站点用户</a>';
+							return btn;
+						} 
+					}] ],
+					toolbar : '#admin_site_manage_toolbar',
+					onLoadSuccess : function() {
+						
+					},
+				});
+	});
+	function checkALLSite() {
 		$('#admin_site_manage_dataGrid')
 		.datagrid(
 				{
@@ -95,7 +172,7 @@
 						
 					},
 				});
-	});
+	}
 	function siteCheck(){
 		var rows = $('#admin_site_manage_dataGrid').datagrid('getChecked');
 		if (rows.length == 1) {
@@ -250,6 +327,10 @@
 		<div id="admin_site_manage_toolbar">
 			<table>
 				<tr>
+				                <sec:authorize url="/siteController/admin/getByPage.do">
+								<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="checkALLSite();"></a>查看全部站点</td>
+								<td><div class="datagrid-btn-separator"></div></td>
+								</sec:authorize>
 					            <sec:authorize url="/siteController/admin/add.do">
 								<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="add();">添加</a></td>
 								<td><div class="datagrid-btn-separator"></div></td>

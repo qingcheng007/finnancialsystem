@@ -30,7 +30,12 @@
 		<include refid="Base_Column_List" />
 		from site
 	</select>
-	
+	<select id="selectSiteByUserId" resultMap="BaseResultMap">
+	    select
+		<include refid="Base_Column_List" />
+		from site
+		where site.id in (select SiteId from r_site_user where r_site_user.UserId =#{userId,jdbcType=INTEGER})
+	</select>
     <select id="countBySiteName" parameterType="java.lang.String"
 		resultType="int">
 		select

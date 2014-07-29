@@ -42,7 +42,17 @@ public class SiteController extends BaseController {
 			return null;
 		}
 	}
-
+	@ResponseBody
+    @RequestMapping("/admin/getSiteByUserId")
+	public DataGrid getSiteByUserId(PageFilter pageFilter,HttpServletRequest request){
+		int userId = Integer.parseInt(request.getParameter("id"));
+		try{
+			return siteService.getSiteByUserId(pageFilter, userId);
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
 	@ResponseBody
 	@RequestMapping("/admin/add")
 	public Json add(Site site, HttpSession session) {
@@ -85,7 +95,7 @@ public class SiteController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping("/admin/edit")
-	public Json edit(Site site, HttpSession session) {
+	public Json edit(Site site) {
 		Json json = new Json();
 		try {
 			siteService.update(site);

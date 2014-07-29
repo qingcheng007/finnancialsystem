@@ -41,4 +41,6 @@ public interface SiteMapper {
 			@Param("siteId") Integer siteId);
 	
 	int countByUserIdAndSiteId(@Param("userId") int userId,@Param("siteId") int siteId);
+	
+	List<Site> selectSiteByUserId(@Param("pageBounds") PageBounds pageBounds,@Param("userId") Integer userId);
 }
