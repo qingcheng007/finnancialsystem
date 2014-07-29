@@ -36,6 +36,7 @@ public class User implements UserDetails {
 	private Integer parentId;
 	
 	private List<Balance> balance;
+	
 
 	public List<Balance> getBalance() {
 		return balance;

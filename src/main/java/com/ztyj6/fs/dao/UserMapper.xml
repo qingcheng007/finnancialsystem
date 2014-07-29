@@ -298,6 +298,32 @@
 				user.Id = #{id,jdbcType=VARCHAR}
 		</where>
 	</select>
+		<select id="selectbalanceById" resultMap="ExtendResultMap1">
+		SELECT
+		`user`.Id,
+		`user`.UserName,
+		`user`.`Password`,
+		`user`.RealName,
+		`user`.Phone,
+		`user`.Email,
+		`user`.LastLoginDate,
+		`user`.LastLoginIp,
+		`user`.CreateIp,
+		`user`.CreateDate,
+		`user`.IsEnable,
+		`user`.ParentId,
+		`user`.BalanceId,
+		balance.Id User_id,
+		balance.Available Balance_available,
+		balance.Frozen Balance_frozen
+		FROM
+		`user`
+		INNER JOIN balance ON `user`.BalanceId = balance.Id
+		<where>
+				user.Id = #{id,jdbcType=VARCHAR}
+		</where>
+	</select>
+	
 	<select id="selectByIdFilter"  resultMap="ExtendResultMap1">
 		SELECT
 		`user`.Id,

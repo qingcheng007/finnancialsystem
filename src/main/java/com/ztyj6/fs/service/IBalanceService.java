@@ -1,5 +1,6 @@
 package com.ztyj6.fs.service;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -18,5 +19,7 @@ public interface IBalanceService extends IBaseService<Balance> {
 	public int getByMaxId();
 
 	public int add(Balance balance);
+	
+	public int updatebalance(Balance balance);
 
 }
