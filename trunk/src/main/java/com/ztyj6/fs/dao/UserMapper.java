@@ -39,6 +39,8 @@ public interface UserMapper {
     
     List selectByIdFilter(@Param("pageFilter")PageFilter pageFilter,PageBounds pageBounds,@Param("id") Integer id);
     
+    List selectbalanceById(@Param("id") Integer id);
+    
     void updateByPrimaryKeySelective(User record);
 
     void updateByPrimaryKey(User record);

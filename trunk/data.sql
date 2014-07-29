@@ -88,7 +88,7 @@ insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(36, '我的信息', null, '1', '/admin/userinfo/userinfo.jsp', '1', '查看个人信息', '5', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(37, '我的审核信息', null, '2', '/admin/myaudit/myAudit.jsp', '1', '查看个人审核信息', '5', 1, 1);
 insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(38, '我的报账信息', null, '3', '/admin/mybill/mybill.jsp', '1', '查看个人报账信息', '5', 1, 1);
-
+insert into resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(39, '会计转账', null, '6', '/userController/admin/transfer*.do', '2', '转账给用户', '6', 1, 1);
 -- ----------------------------
 -- Records of r_role_resource
 -- ----------------------------
@@ -130,7 +130,7 @@ insert into r_role_resource(Id,ResourceId,RoleId) values('35', '35', '1');
 insert into r_role_resource(Id,ResourceId,RoleId) values('36', '36', '1');
 insert into r_role_resource(Id,ResourceId,RoleId) values('37', '37', '1');
 insert into r_role_resource(Id,ResourceId,RoleId) values('38', '38', '1');
-
+insert into r_role_resource(Id,ResourceId,RoleId) values('39', '39', '1');
 
 insert into r_role_resource(Id,ResourceId,RoleId) values('41', '1', '2');
 insert into r_role_resource(Id,ResourceId,RoleId) values('42', '2', '2');

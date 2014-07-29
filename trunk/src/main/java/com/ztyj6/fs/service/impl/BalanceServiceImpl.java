@@ -32,11 +32,6 @@ public class BalanceServiceImpl implements IBalanceService {
 
 	}
 
-	@Override
-	public Serializable save(Balance o) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void delete(Balance o) {
@@ -51,9 +46,9 @@ public class BalanceServiceImpl implements IBalanceService {
 	}
 
 	@Override
-	public void update(Balance o) {
+	public int updatebalance(Balance o) {
 		// TODO Auto-generated method stub
-
+  return balanceMapper.updateByPrimaryKeySelective(o);
 	}
 
 	@Override
@@ -96,6 +91,18 @@ public class BalanceServiceImpl implements IBalanceService {
 	public int add(Balance balance) {
 		// TODO Auto-generated method stub
 		return balanceMapper.insert(balance);
+	}
+
+	@Override
+	public Serializable save(Balance o) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void update(Balance o) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

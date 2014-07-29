@@ -8,11 +8,17 @@
 <script type="text/javascript" src="../../jslib/My97DatePicker4.8b3/My97DatePicker/WdatePicker.js" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
 	    var canGrant = false;
+	    var canTransfer = false;
 </script>
 <sec:authentication property="principal.id" var="currentUserId" />
 <sec:authorize url="/userController/admin/grant.do">
 	<script type="text/javascript" charset="utf-8">
 	    canGrant = true;
+	</script>
+</sec:authorize>
+<sec:authorize url="/userController/admin/transfer.do">
+	<script type="text/javascript" charset="utf-8">
+	    canTransfer = true;
 	</script>
 </sec:authorize>
 <script type="text/javascript" charset="utf-8">
@@ -102,7 +108,7 @@
 									{
 										field : 'available',
 										title : '可用余额',
-										width : 70,
+										width : 55,
 										align : 'center',
 										formatter : function(value, row, index) {
 											var str = '';
@@ -116,7 +122,7 @@
 									{
 										field : 'frozen',
 										title : '冻结余额',
-										width : 70,
+										width : 55,
 										align : 'center',
 										formatter : function(value, row, index) {
 											var str = '';
@@ -141,8 +147,8 @@
 									},
 									{
 										field : 'action',
-										title : '操作',
-										width : 100,
+										title : '操作1',
+										width : 60,
 										align : 'center',
 										formatter : function(value, row, index) {
 											var btn;
@@ -150,6 +156,21 @@
 												btn = '<a onclick="grant('
 														+ row.id
 														+ ')" href="javascript:void(0)">授权</a>';
+											}
+											return btn;
+										}
+									},
+									{
+									field : 'transfer',
+										title : '操作2',
+										width : 60,
+										align : 'center',
+										formatter : function(value, row, index) {
+											var btn;
+											if (canTransfer == true) {
+												btn = '<a onclick="transfer('
+														+ row.id
+														+ ')" href="javascript:void(0)">转账</a>';
 											}
 											return btn;
 										}
@@ -279,6 +300,36 @@
 		parent.$.modalDialog.id = id;
 	}
 
+	function transfer(id) {
+	var rows = $('#admin_user_manage_dataGrid').datagrid('getChecked');
+		if (rows.length == 1) {
+			parent.$.modalDialog({
+				title : '转账',
+				width : 470,
+				height : 330,
+				url : '${pageContext.request.contextPath}/admin/transfer/transfer.jsp'
+			});
+			parent.$.modalDialog.DataGrid = $('#admin_user_manage_dataGrid');
+			parent.$.modalDialog.row = rows[0];
+		} else {
+			if (rows.length == 0) {
+				parent.$.messager.show({
+					title : '提示',
+					msg : '请勾选转账的用户！',
+					timeout : 2000,
+					showType : 'slide'
+				});
+			} else {
+				parent.$.messager.show({
+					title : '提示',
+					msg : '每次只能转账一个用户！',
+					timeout : 2000,
+					showType : 'slide'
+				});
+			}
+		}
+	}
+	
 	function refresh() {
 		$('#admin_user_manage_dataGrid').datagrid('reload');
 	}
