@@ -147,8 +147,7 @@ public class SiteController extends BaseController {
 		try {
 			siteService.deleteBatchUserSite(site.getId(), ids);
 			json.setSuccess(true);
-			json.setMsg("删除成功");
-			
+			json.setMsg("删除成功");		
 		} catch (Exception e) {
 			json.setMsg("删除失败");
 			e.printStackTrace();
