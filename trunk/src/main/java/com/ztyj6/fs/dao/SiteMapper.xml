@@ -21,36 +21,36 @@
 		parameterType="java.lang.Integer">
 		select
 		<include refid="Base_Column_List" />
-		from site
+		from Site
 		where Id = #{id,jdbcType=INTEGER}
 	</select>
 
 	<select id="selectByPage" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from site
+		from Site
 	</select>
 	<select id="selectSiteByUserId" resultMap="BaseResultMap">
 	    select
 		<include refid="Base_Column_List" />
-		from site
-		where site.id in (select SiteId from r_site_user where r_site_user.UserId =#{userId,jdbcType=INTEGER})
+		from Site
+		where Site.id in (select SiteId from R_Site_User where R_Site_User.UserId =#{userId,jdbcType=INTEGER})
 	</select>
     <select id="countBySiteName" parameterType="java.lang.String"
 		resultType="int">
 		select
 		count(*) c
-		from site where Name =
+		from Site where Name =
 		#{name,jdbcType=VARCHAR}
 	</select>
 	
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from site
+		delete from Site
 		where Id = #{id,jdbcType=INTEGER}
 	</delete>
 
 	<delete id="deleteBatch" parameterType="java.util.List">
-		delete from site where Id in
+		delete from Site where Id in
 		<foreach collection="list" item="id" open="(" separator=","
 			close=")">
 			#{id}
@@ -58,7 +58,7 @@
 	</delete>
 
 	<insert id="insert" parameterType="com.ztyj6.fs.model.Site">
-		insert into site (Id, Name,
+		insert into Site (Id, Name,
 		Address,
 		CreateDate, UserId, CreatePurpose,
 		ProjectName)
@@ -71,7 +71,7 @@
 	</insert>
 
 	<insert id="insertSelective" parameterType="com.ztyj6.fs.model.Site">
-		insert into site
+		insert into Site
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
 				Id,
@@ -121,7 +121,7 @@
 	</insert>
 
 	<update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.Site">
-		update site
+		update Site
 		<set>
 			<if test="name != null">
 				Name = #{name,jdbcType=VARCHAR},
@@ -146,7 +146,7 @@
 	</update>
 
 	<update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.Site">
-		update site
+		update Site
 		set
 		Name = #{name,jdbcType=VARCHAR},
 		Address = #{address,jdbcType=VARCHAR},
@@ -163,15 +163,8 @@
 	<sql id="SiteUser_Base_Column_List">
 		Id,SiteId,UserId,PostId
 	</sql>
-	<!-- <insert id="insertUserSite"> insert into r_site_user <trim prefix="(" 
-		suffix=")" suffixOverrides=","> <if test="siteId != null"> SiteId, </if> 
-		<if test="userId != null"> UserId, </if> <if test="postId != null"> PostId, 
-		</if> </trim> <trim prefix="values (" suffix=")" suffixOverrides=","> <if 
-		test="siteId != null"> #{siteId,jdbcType=INTEGER}, </if> <if test="userId 
-		!= null"> #{userId,jdbcType=INTEGER}, </if> <if test="postId != null"> #{postId,jdbcType=INTEGER}, 
-		</if> </trim> </insert> -->
 	<insert id="insertUserSite">
-		insert into r_site_user (SiteId, UserId,
+		insert into R_Site_User (SiteId, UserId,
 		PostId)
 		values (
 		#{map.siteId,jdbcType=INTEGER},
@@ -181,17 +174,17 @@
 	</insert>
 
 	<delete id="deleteUserSite">
-		delete from r_site_user
+		delete from R_Site_User
 		where
-		r_site_user.SiteId =
+		R_Site_User.SiteId =
 		#{siteId,jdbcType=INTEGER}
 		and
-		r_site_user.UserId =
+		R_Site_User.UserId =
 		#{userId,jdbcType=INTEGER}
 	</delete>
 
 	<delete id="deleteBatchUserSite">
-		delete from r_site_user
+		delete from R_Site_User
 		where
 		SiteId = #{siteId,jdbcType=INTEGER}
 		and
@@ -223,28 +216,28 @@
 	</resultMap>
 	<select id="selectUsersByPage" resultMap="userResultMap">
 		SELECT
-		user.Id id,
-		user.UserName username, 
-		user.Password password,
-		user.RealName realName,
-		user.Phone phone,
-		user.Email email,
-		user.LastLoginDate lastLoginDate,
-		user.LastLoginIp lastLoginIp,
-		user.BalanceId balanceId,
-		post.Id postId,
-		post.Name postName
+		User.Id id,
+		User.UserName username, 
+		User.Password password,
+		User.RealName realName,
+		User.Phone phone,
+		User.Email email,
+		User.LastLoginDate lastLoginDate,
+		User.LastLoginIp lastLoginIp,
+		User.BalanceId balanceId,
+		Post.Id postId,
+		Post.Name postName
 		FROM
-		user
-		JOIN r_site_user ON r_site_user.UserId = user.Id 
-        JOIN post ON post.Id = r_site_user.PostId
-        JOIN site ON r_site_user.SiteId = site.Id
-	    where site.Id = #{siteId,jdbcType=INTEGER}
+		User
+		JOIN R_Site_User ON R_Site_User.UserId = User.Id 
+        JOIN Post ON Post.Id = R_Site_User.PostId
+        JOIN Site ON R_Site_User.SiteId = Site.Id
+	    where Site.Id = #{siteId,jdbcType=INTEGER}
 	</select>
 	<select id="countByUserIdAndSiteId" resultType="int">
 		select
 		count(*) c
-		from r_site_user where 
+		from R_Site_User where 
 		SiteId =#{siteId,jdbcType=INTEGER} 
 		and UserId =#{userId,jdbcType=INTEGER}
 	</select>
