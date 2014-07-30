@@ -28,17 +28,17 @@
 		parameterType="com.ztyj6.fs.model.User">
 		select
 		<include refid="Base_Column_List" />
-		from user
+		from User
 		where Id = #{id,jdbcType=INTEGER}
 	</select>
 
 	<delete id="deleteByPrimaryKey" parameterType="com.ztyj6.fs.model.User">
-		delete from user
+		delete from User
 		where Id = #{id,jdbcType=INTEGER}
 
 	</delete>
 	<delete id="deleteByRoleIdNotIn">
-		delete from r_user_role
+		delete from R_user_role
 		where UserId = #{userId} and RoleId not in
 		<foreach collection="ids" item="String" open="(" separator=","
 			close=")">
@@ -47,7 +47,7 @@
 	</delete>
 
 	<insert id="insertUserRole">
-		insert ignore into r_user_role (UserId,RoleId) values
+		insert ignore into R_user_role (UserId,RoleId) values
 		<foreach collection="ids" item="String" open="(" separator="),("
 			close=")">
 			#{userId} , #{String}
@@ -55,7 +55,7 @@
 	</insert>
 
 	<insert id="insert" parameterType="com.ztyj6.fs.model.User">
-		insert into user (Id,
+		insert into User (Id,
 		ParentId, BalanceId,
 		UserName, Password, RealName,
 		Phone, Email,
@@ -75,7 +75,7 @@
 	</insert>
 
 	<insert id="insertSelective" parameterType="com.ztyj6.fs.model.User">
-		insert into user
+		insert into User
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			UserName,
 			Password,
@@ -152,7 +152,7 @@
 	</insert>
 
 	<update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.User">
-		update user
+		update User
 		<set>
 			<if test="parentId != null">
 				ParentId = #{parentId,jdbcType=INTEGER},
@@ -195,7 +195,7 @@
 	</update>
 
 	<update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.User">
-		update user
+		update User
 		set
 		UserName = #{username,jdbcType=VARCHAR},
 		Password =
@@ -217,7 +217,7 @@
 		where Id = #{id,jdbcType=INTEGER}
 	</update>
 	<update id="updateStateByPrimaryKey">
-		update user
+		update User
 		set
 		LastLoginDate =
 		#{param.lastLoginDate},
@@ -237,29 +237,29 @@
 	</resultMap>
 	<select id="selectByFilter" resultMap="ExtendResultMap1">
 		SELECT
-		`user`.Id,
-		`user`.UserName,
-		`user`.`Password`,
-		`user`.RealName,
-		`user`.Phone,
-		`user`.Email,
-		`user`.LastLoginDate,
-		`user`.LastLoginIp,
-		`user`.CreateIp,
-		`user`.CreateDate,
-		`user`.IsEnable,
-		`user`.ParentId,
-		`user`.BalanceId,
-		balance.Id balance_id,
-		balance.Available,
-		balance.Frozen
+		`User`.Id,
+		`User`.UserName,
+		`User`.`Password`,
+		`User`.RealName,
+		`User`.Phone,
+		`User`.Email,
+		`User`.LastLoginDate,
+		`User`.LastLoginIp,
+		`User`.CreateIp,
+		`User`.CreateDate,
+		`User`.IsEnable,
+		`User`.ParentId,
+		`User`.BalanceId,
+		Balance.Id balance_id,
+		Balance.Available,
+		Balance.Frozen
 		FROM
-		`user`
-		INNER JOIN balance ON `user`.BalanceId = balance.Id
+		`User`
+		INNER JOIN Balance ON `User`.BalanceId = Balance.Id
 		<where>
 			<if test="pageFilter.keyword != null">
-				user.UserName like #{pageFilter.keyword,jdbcType=VARCHAR}
-				or user.RealName like #{pageFilter.keyword,jdbcType=VARCHAR}
+				User.UserName like #{pageFilter.keyword,jdbcType=VARCHAR}
+				or User.RealName like #{pageFilter.keyword,jdbcType=VARCHAR}
 			</if>
 			<if test="pageFilter.startTime != null and pageFilter.endTime != null">
 				and Create_Time between
@@ -275,81 +275,81 @@
 	</resultMap>
 		<select id="selectBalanceById"  parameterType="java.lang.Integer" resultMap="Balance">
 		SELECT
-		`user`.Id,
-		`user`.UserName,
-		`user`.`Password`,
-		`user`.RealName,
-		`user`.Phone,
-		`user`.Email,
-		`user`.LastLoginDate,
-		`user`.LastLoginIp,
-		`user`.CreateIp,
-		`user`.CreateDate,
-		`user`.IsEnable,
-		`user`.ParentId,
-		`user`.BalanceId,
-		balance.Id User_id,
-		balance.Available Balance_available,
-		balance.Frozen Balance_frozen
+		`User`.Id,
+		`User`.UserName,
+		`User`.`Password`,
+		`User`.RealName,
+		`User`.Phone,
+		`User`.Email,
+		`User`.LastLoginDate,
+		`User`.LastLoginIp,
+		`User`.CreateIp,
+		`User`.CreateDate,
+		`User`.IsEnable,
+		`User`.ParentId,
+		`User`.BalanceId,
+		Balance.Id User_id,
+		Balance.Available Balance_available,
+		Balance.Frozen Balance_frozen
 		FROM
-		`user`
-		INNER JOIN balance ON `user`.BalanceId = balance.Id
+		`User`
+		INNER JOIN Balance ON `User`.BalanceId = Balance.Id
 		<where>
-				user.Id = #{id,jdbcType=VARCHAR}
+				User.Id = #{id,jdbcType=VARCHAR}
 		</where>
 	</select>
 		<select id="selectbalanceById" resultMap="ExtendResultMap1">
 		SELECT
-		`user`.Id,
-		`user`.UserName,
-		`user`.`Password`,
-		`user`.RealName,
-		`user`.Phone,
-		`user`.Email,
-		`user`.LastLoginDate,
-		`user`.LastLoginIp,
-		`user`.CreateIp,
-		`user`.CreateDate,
-		`user`.IsEnable,
-		`user`.ParentId,
-		`user`.BalanceId,
-		balance.Id User_id,
-		balance.Available Balance_available,
-		balance.Frozen Balance_frozen
+		`User`.Id,
+		`User`.UserName,
+		`User`.`Password`,
+		`User`.RealName,
+		`User`.Phone,
+		`User`.Email,
+		`User`.LastLoginDate,
+		`User`.LastLoginIp,
+		`User`.CreateIp,
+		`User`.CreateDate,
+		`User`.IsEnable,
+		`User`.ParentId,
+		`User`.BalanceId,
+		Balance.Id User_id,
+		Balance.Available Balance_available,
+		Balance.Frozen Balance_frozen
 		FROM
-		`user`
-		INNER JOIN balance ON `user`.BalanceId = balance.Id
+		`User`
+		INNER JOIN Balance ON `User`.BalanceId = Balance.Id
 		<where>
-				user.Id = #{id,jdbcType=VARCHAR}
+				User.Id = #{id,jdbcType=VARCHAR}
 		</where>
 	</select>
 	
 	<select id="selectByIdFilter"  resultMap="ExtendResultMap1">
 		SELECT
-		`user`.Id,
-		`user`.UserName,
-		`user`.`Password`,
-		`user`.RealName,
-		`user`.Phone,
-		`user`.Email,
-		`user`.LastLoginDate,
-		`user`.LastLoginIp,
-		`user`.CreateIp,
-		`user`.CreateDate,
-		`user`.IsEnable,
-		`user`.ParentId,
-		`user`.BalanceId,
-		balance.Id balance_id,
-		balance.Available,
-		balance.Frozen
+		`User`.Id,
+		`User`.UserName,
+		`User`.`Password`,
+		`User`.RealName,
+		`User`.Phone,
+		`User`.Email,
+		`User`.LastLoginDate,
+		`User`.LastLoginIp,
+		`User`.CreateIp,
+		`User`.CreateDate,
+		`User`.IsEnable,
+		`User`.ParentId,
+		`User`.BalanceId,
+		Balance.Id balance_id,
+		Balance.Available,
+		Balance.Frozen
 		FROM
-		`user`
-		INNER JOIN balance ON `user`.BalanceId = balance.Id
-		WHERE `user`.Id= #{id,jdbcType=INTEGER}
+		`User`
+		INNER JOIN Balance ON `User`.BalanceId = Balance.Id
+		WHERE `User`.Id= #{id,jdbcType=INTEGER}
 			<where>
 			<if test="pageFilter.keyword != null">
-				user.UserName like #{pageFilter.keyword,jdbcType=VARCHAR}
-				or user.RealName like #{pageFilter.keyword,jdbcType=VARCHAR}
+				User.UserName like #{pageFilter.keyword,jdbcType=VARCHAR}
+				or User.RealName like #{pageFilter.keyword,jdbcType=VARCHAR}
 			</if>
 			<if test="pageFilter.startTime != null and pageFilter.endTime != null">
 				and Create_Time between
@@ -359,7 +359,7 @@
 		</where>
 	</select>
 	<insert id="insertRole">
-		insert into r_user_role
+		insert into R_user_role
 		(UserId,RoleId)
 		value
 		(#{userId} , #{roleId})
@@ -369,7 +369,7 @@
 		resultType="int">
 		select
 		count(*) c
-		from user where UserName =
+		from User where UserName =
 		#{username,jdbcType=VARCHAR}
 	</select>
 
@@ -391,44 +391,44 @@
 
 	<select id="selectByUsername" resultMap="ExtendResultMap2">
 		SELECT
-		`user`.Id,
-		`user`.UserName,
-		`user`.`Password`,
-		`user`.RealName,
-		`user`.Phone,
-		`user`.Email,
-		`user`.LastLoginDate,
-		`user`.LastLoginIp,
-		`user`.CreateIp,
-		`user`.CreateDate,
-		`user`.IsEnable,
-		`user`.ParentId,
-		`user`.BalanceId,
-		r_user_role.Id,
-		r_user_role.UserId,
-		r_user_role.RoleId,
-		role.Id role_Id,
-		role.`Name` role_Name,
-		role.`Code` role_Code,
-		role.Description
-		role_Description,
-		role.CreateUserId role_CreateUserId,
-		role.CreateDate
-		role_CreateDate,
-		role.ModifyUserId role_ModifyUserId,
-		role.ModifyDate
-		role_ModifyDate,
-		role.IsEnable
+		`User`.Id,
+		`User`.UserName,
+		`User`.`Password`,
+		`User`.RealName,
+		`User`.Phone,
+		`User`.Email,
+		`User`.LastLoginDate,
+		`User`.LastLoginIp,
+		`User`.CreateIp,
+		`User`.CreateDate,
+		`User`.IsEnable,
+		`User`.ParentId,
+		`User`.BalanceId,
+		R_user_role.Id,
+		R_user_role.UserId,
+		R_user_role.RoleId,
+		Role.Id role_Id,
+		Role.`Name` role_Name,
+		Role.`Code` role_Code,
+		Role.Description
+		Role_Description,
+		Role.CreateUserId role_CreateUserId,
+		Role.CreateDate
+		Role_CreateDate,
+		Role.ModifyUserId role_ModifyUserId,
+		Role.ModifyDate
+		Role_ModifyDate,
+		Role.IsEnable
 		FROM
-		`user`
-		INNER JOIN r_user_role ON
-		r_user_role.UserId = `user`.Id
-		INNER JOIN role ON r_user_role.RoleId =
-		role.Id
-		where user.UserName =#{username}
+		`User`
+		INNER JOIN R_user_role ON
+		R_user_role.UserId = `User`.Id
+		INNER JOIN Role ON R_user_role.RoleId =
+		Role.Id
+		where User.UserName =#{username}
 	</select>
 	<delete id="delete" parameterType="java.util.List">
-		delete from user where Id in
+		delete from User where Id in
 		<foreach collection="list" item="id" open="(" separator=","
 			close=")">
 			#{id}

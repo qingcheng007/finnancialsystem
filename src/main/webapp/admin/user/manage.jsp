@@ -131,6 +131,7 @@
 												str += row.balance[i].frozen+ '<br/>';
 											}
 											return str;
+																	
 										}
 									},
 									{

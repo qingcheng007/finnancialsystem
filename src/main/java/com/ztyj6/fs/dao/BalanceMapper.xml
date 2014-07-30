@@ -12,26 +12,26 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from balance
+    from Balance
     where Id = #{id,jdbcType=INTEGER}
   </select>
   
   <select id="selectByMaxId"  resultType="int">
-  select max(Id) maxId from balance
+  select max(Id) maxId from Balance
   </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from balance
+    delete from Balance
     where Id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.ztyj6.fs.model.Balance">
-    insert into balance (Id, Available, Frozen
+    insert into Balance (Id, Available, Frozen
       )
     values (#{id,jdbcType=INTEGER}, #{available,jdbcType=DECIMAL}, #{frozen,jdbcType=DECIMAL}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.ztyj6.fs.model.Balance">
-    insert into balance
+    insert into Balance
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         Id,
@@ -56,7 +56,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.Balance">
-    update balance
+    update Balance
     <set>
       <if test="available != null">
         Available = #{available,jdbcType=DECIMAL},
@@ -68,7 +68,7 @@
     where Id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.Balance">
-    update balance
+    update Balance
     set Available = #{available,jdbcType=DECIMAL},
       Frozen = #{frozen,jdbcType=DECIMAL}
     where Id = #{id,jdbcType=INTEGER}

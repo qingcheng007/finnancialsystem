@@ -22,20 +22,20 @@
 		parameterType="java.lang.Integer">
 		select
 		<include refid="Base_Column_List" />
-		from role
+		from Role
 		where Id = #{id,jdbcType=INTEGER}
 	</select>
 
 	<select id="selectByPage" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from role
+		from Role
 	</select>
 
 	<select id="selectAll" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from role
+		from Role
 		where IsEnable = 1
 	</select>
 
@@ -44,12 +44,12 @@
 		SELECT
 		RoleId Id
 		FROM
-		r_user_role
-		WHERE r_user_role.UserId = #{userId,jdbcType=INTEGER}
+		R_user_role
+		WHERE R_user_role.UserId = #{userId,jdbcType=INTEGER}
 	</select>
 
 	<delete id="deleteBatch" parameterType="java.util.List">
-		delete from role where Id in
+		delete from Role where Id in
 		<foreach collection="list" item="id" open="(" separator=","
 			close=")">
 			#{id}
@@ -57,7 +57,7 @@
 	</delete>
 
 	<delete id="deleteByResourceIdNotIn">
-		delete from r_role_resource
+		delete from R_role_resource
 		where RoleId = #{roleId} and ResourceId not
 		in
 		<foreach collection="ids" item="String" open="(" separator=","
@@ -66,7 +66,7 @@
 		</foreach>
 	</delete>
 	<insert id="insertRoleResource">
-		insert ignore into r_role_resource (RoleId,ResourceId) values
+		insert ignore into R_role_resource (RoleId,ResourceId) values
 		<foreach collection="ids" item="String" open="(" separator="),("
 			close=")">
 			#{roleId} , #{String}
@@ -74,11 +74,11 @@
 	</insert>
 
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from role
+		delete from Role
 		where Id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.ztyj6.fs.model.Role">
-		insert into role (Id, Name,
+		insert into Role (Id, Name,
 		Code,
 		Description, CreateUserId, CreateDate,
 		ModifyUserId, ModifyDate,
@@ -93,7 +93,7 @@
 		)
 	</insert>
 	<insert id="insertSelective" parameterType="com.ztyj6.fs.model.Role">
-		insert into role
+		insert into Role
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
 				Id,
@@ -154,7 +154,7 @@
 		</trim>
 	</insert>
 	<update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.Role">
-		update role
+		update Role
 		<set>
 			<if test="name != null">
 				Name = #{name,jdbcType=VARCHAR},
@@ -184,7 +184,7 @@
 		where Id = #{id,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.Role">
-		update role
+		update Role
 		set
 		Name = #{name,jdbcType=VARCHAR},
 		Code = #{code,jdbcType=VARCHAR},
