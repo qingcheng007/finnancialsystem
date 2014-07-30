@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* CSS Document */
+* {margin:0;padding:0;}
+body {color:#535353;font-size:12px;font-family:"微软雅黑"; background:#0085c3;}
+
+.bkgd{ width:100%; height:100%;margin:0;padding:0;  }  
+.top{ width:100%; height:30px; background:#f0f1f1; margin:0; padding:0;}
+.top span{ height:30px; line-height:30px; font-family:微软雅黑; font-size:14px; color:#0085c3;}
+.logo{ width:1000px; height:100px; margin:0 auto; text-align:center;}
+.logo span.title_top{ width:1000px; height:100px; line-height:100px; margin:0 auto;  vertical-align:middle;
+                      font-family:微软雅黑; font-size:20px; color:#fff; }
+
+
+.form{ width:360px; margin:0 auto; padding:0; background:#fff; 
+            vertical-align:middle; 
+			border:1px solid #f0f1f1;
+			-webkit-border-radius: 6px 6px 6px 6px;
+			   -moz-border-radius: 6px 6px 6px 6px;
+			        border-radius: 6px 6px 6px 6px;}
+					
+.form .title{ width:360px; height:35px; line-height:35px; margin-top:20px; padding:0; background:#0085c3; 
+               vertical-align:middle; text-align:center; font-family:微软雅黑; font-size:24px; color:#fff; }								
+.form formS{ width:360px; margin:0 auto; padding:0;}
+.form .input_tips_U{ margin-right:15px; font-family:微软雅黑; font-size:18px; color:#666; }
+.form .input_tips_P{ margin-right:17px; font-family:微软雅黑; font-size:18px; color:#666; }
+.form ul{ margin:0 ; padding:0; list-style:none;}
+.form ul li{ width:100%; height:25px; line-height:25px; list-style:none; list-style:none; font-family:微软雅黑; font-size:14px; color:#666; margin-top:20px; margin-left:40px; float:left;}
+.form ul li.reset{ width:60px; height:30px; line-height:30px; list-style:none; list-style:none; font-family:微软雅黑; font-size:16px; color:#fff;                               margin-top:20px; margin-left:130px; float:left; margin-bottom:20px; }
+.form ul li.login{ width:60px; height:30px; line-height:30px; list-style:none; list-style:none; font-family:微软雅黑; font-size:16px; color:#fff;                               margin-top:20px; margin-left:20px; float:left; margin-bottom:20px;}
+.form ul li.login a{ width:60px; height:30px; line-height:30px;  padding:2px 8px;
+                              -webkit-border-radius: 6px 6px 6px 6px;
+			                     -moz-border-radius: 6px 6px 6px 6px;
+			                          border-radius: 6px 6px 6px 6px;
+									  background:#0085c3; text-align: center;}
+.form ul li.reset a{ width:60px; height:30px; line-height:30px; padding:2px 8px;
+                              -webkit-border-radius: 6px 6px 6px 6px;
+			                     -moz-border-radius: 6px 6px 6px 6px;
+			                          border-radius: 6px 6px 6px 6px;
+									  background:#0085c3; text-align: center;}
+.form ul li a{ text-decoration:none; color:#fff;}
+.form ul li a:hover{ text-decoration:none; background:#0FF; color:#F60;}
+.form input{ width: 200px; height:20px;  
+                            -webkit-border-radius: 3px 3px 3px 3px;
+			                   -moz-border-radius: 3px 3px 3px 3px;
+			                        border-radius: 3px 3px 3px 3px; }
+
+
+
+
+
+
+
