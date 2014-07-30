@@ -14,37 +14,37 @@
 		parameterType="java.lang.Integer">
 		select
 		<include refid="Base_Column_List" />
-		from post
+		from Post
 		where Id = #{id,jdbcType=INTEGER}
 	</select>
 
 	<select id="selectByPage" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from post
+		from Post
 	</select>
 	
 	<select id="selectAllPost" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from post
+		from Post
 	</select>
 	
 	<select id="countByPostName" parameterType="java.lang.String"
 		resultType="int">
 		select
 		count(*) c
-		from post where Name =
+		from Post where Name =
 		#{name,jdbcType=VARCHAR}
 	</select> 
 	
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from post
+		delete from Post
 		where Id = #{id,jdbcType=INTEGER}
 	</delete>
 
 	<delete id="deleteBatch" parameterType="java.util.List">
-		delete from post where Id in
+		delete from Post where Id in
 		<foreach collection="list" item="id" open="(" separator=","
 			close=")">
 			#{id}
@@ -52,12 +52,12 @@
 	</delete>
 
 	<insert id="insert" parameterType="com.ztyj6.fs.model.Post">
-		insert into post (Id, Name)
+		insert into Post (Id, Name)
 		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
 	</insert>
 
 	<insert id="insertSelective" parameterType="com.ztyj6.fs.model.Post">
-		insert into post
+		insert into Post
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
 				Id,
@@ -77,7 +77,7 @@
 	</insert>
 
 	<update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.Post">
-		update post
+		update Post
 		<set>
 			<if test="name != null">
 				Name = #{name,jdbcType=VARCHAR},
@@ -87,7 +87,7 @@
 	</update>
 
 	<update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.Post">
-		update post
+		update Post
 		set Name = #{name,jdbcType=VARCHAR}
 		where Id = #{id,jdbcType=INTEGER}
 	</update>
