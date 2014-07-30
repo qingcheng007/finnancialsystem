@@ -22,15 +22,15 @@
 		parameterType="java.lang.Integer">
 		select
 		<include refid="Base_Column_List" />
-		from resource
+		from Resource
 		where Id = #{id,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from resource
+		delete from Resource
 		where Id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.ztyj6.fs.model.Resource">
-		insert into resource (Id, Name, Icon,
+		insert into Resource (Id, Name, Icon,
 		Sequence, Url, Type,
 		Description, ParentId, IsLeaf,
 		IsEnable)
@@ -43,7 +43,7 @@
 	</insert>
 
 	<insert id="insertSelective" parameterType="com.ztyj6.fs.model.Resource">
-		insert into resource
+		insert into Resource
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
 				Id,
@@ -110,7 +110,7 @@
 		</trim>
 	</insert>
 	<update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.Resource">
-		update resource
+		update Resource
 		<set>
 			<if test="name != null">
 				Name = #{name,jdbcType=VARCHAR},
@@ -143,7 +143,7 @@
 		where Id = #{id,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.Resource">
-		update resource
+		update Resource
 		set Name = #{name,jdbcType=VARCHAR},
 		Icon = #{icon,jdbcType=VARCHAR},
 		Sequence = #{sequence,jdbcType=SMALLINT},
@@ -160,7 +160,7 @@
 		resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from resource
+		from Resource
 		where ParentId = #{parentId,jdbcType=INTEGER} AND
 		IsEnable = 1 AND Type = 1 order by Sequence
 	</select>
@@ -169,7 +169,7 @@
 		resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from resource
+		from Resource
 		where ParentId = #{parentId,jdbcType=INTEGER} AND
 		IsEnable = 1 order by Sequence
 	</select>
@@ -179,8 +179,8 @@
 		SELECT
 		ResourceId Id
 		FROM
-		r_role_resource
-		WHERE r_role_resource.RoleId =
+		R_role_resource
+		WHERE R_role_resource.RoleId =
 		#{roleId,jdbcType=INTEGER}
 	</select>
 
@@ -195,18 +195,18 @@
 	</resultMap>
 	<select id="selectAll" resultMap="ExtendResultMap">
 		SELECT
-		resource.Id,
-		resource.`Name`,
-		resource.Url,
-		r_role_resource.Id,
-		r_role_resource.ResourceId,
-		r_role_resource.RoleId,
-		role.Id role_Id,
-		role.`Name` role_Name,
-		role.`Code` role_Code
+		Resource.Id,
+		Resource.`Name`,
+		Resource.Url,
+		R_role_resource.Id,
+		R_role_resource.ResourceId,
+		R_role_resource.RoleId,
+		Role.Id role_Id,
+		Role.`Name` role_Name,
+		Role.`Code` role_Code
 		FROM
-		resource
-		INNER JOIN r_role_resource ON r_role_resource.ResourceId = resource.Id
-		INNER JOIN role ON r_role_resource.RoleId = role.Id
+		Resource
+		INNER JOIN R_role_resource ON R_role_resource.ResourceId = Resource.Id
+		INNER JOIN Role ON R_role_resource.RoleId = role.Id
 	</select>
 </mapper>

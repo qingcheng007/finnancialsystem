@@ -154,11 +154,17 @@ public class UserController extends BaseController {
 		
 		Balance blance = userService.getBalanceById(userid);
 		
-		Long money1 = Long.parseLong(request.getParameter("money"));
+		Double money1 = Double.parseDouble(request.getParameter("money"));
+		
+		System.out.print("钱1"+money1);
 		
 		BigDecimal money2 = BigDecimal.valueOf(money1);
 		
+		System.out.print("钱2"+money2);
+		
 		BigDecimal money3 = money2.add(blance.getAvailable());
+		
+		System.out.print("钱3"+money3);
 		
         blance.setId(balanceid);
         
