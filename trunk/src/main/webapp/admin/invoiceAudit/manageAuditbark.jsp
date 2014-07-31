@@ -16,7 +16,7 @@
 		$('#admin_site_manage_dataGrid')
 		.datagrid(
 				{
-					url : '${pageContext.request.contextPath}/invoiceController/getPageById.do?id='+passid,
+					url : '${pageContext.request.contextPath}/invoiceController/geTPageById.do?id='+passid,
 					//url : '${pageContext.request.contextPath}/invoiceController/getByPage.do',
 					fit : true,
 					autoRowHeight : true,
@@ -198,6 +198,16 @@
 						width : 80,
 						align : 'center',
 						sortable : true
+					},
+					{
+						field : 'action',
+						title : '操作',
+						width : 100,
+						align : 'center',
+						formatter : function(value, row, index) {
+							var btn = '<a onclick="check(\''+row.id+'\')" href="javascript:void(0)">查看详情</a>';
+							return btn;
+						} 
 					}] ],
 					toolbar : '#admin_site_manage_toolbar',
 					onLoadSuccess : function() {
