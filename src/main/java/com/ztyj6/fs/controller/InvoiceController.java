@@ -208,41 +208,47 @@ public class InvoiceController extends BaseController {
 		BigDecimal frozen = null;
 		BigDecimal available = null;
 		int proverid = invoice.getProverid();
-
-		frozen = invoice.getMoney().subtract(calculatePenalty);
+		BigDecimal money = null;
+		money = invoice.getMoney().subtract(calculatePenalty);
+		//frozen = money;
 		balance = iUserService.getBalanceById(proverid);
 		available = balance.getAvailable();
+		frozen = balance.getFrozen();
 		// 审批人审核通过，冻结金额减少，
+		int control = 0;
 		if (invoice.getAuditState().getDearer() == 2
 				|| invoice.getAuditState().getDearer() == 1) {
 			if (invoice.getAuditState().getDearer() == 2) {
-				available = balance.getAvailable().subtract(frozen);
-				frozen = balance.getFrozen().subtract(frozen);
-
-			} else {
-				frozen = balance.getFrozen().subtract(frozen);
-			}
-		} else {
+				available = available.add(money);
+				//frozen = frozen.subtract(money);
+				control = 1;
+			} 
+			//else {
+			//	frozen = frozen.subtract(money);
+			//}
+		} 
+			if(control==0)
 			if (invoice.getAuditState().getAuditor2() == 1) {
 
-				frozen = balance.getFrozen().subtract(frozen);
+				frozen = frozen.subtract(money);
+				//available=available.add(money);
 			}// 如果有一个人审核失败，冻结金额减少，重新加入可用余额中
 			else {
 				if (invoice.getAuditState().getProver() == 2
 						|| invoice.getAuditState().getAuditor1() == 2
 						|| invoice.getAuditState().getAuditor2() == 2) {
-					available = balance.getAvailable().subtract(frozen);
-					frozen = balance.getFrozen().add(frozen);
+					available = available.add(money);
+					frozen = frozen.subtract(money);
 
 				} else {
 					if (invoice.getAuditState().getProver() == 0) {
-						available = balance.getAvailable().subtract(frozen);
-						frozen = balance.getFrozen().add(frozen);
+						//available = available.subtract(money);
+						//frozen = frozen.add(money);
 					}
 				}
 			}
 
-		}
+	
 		balance.setFrozen(frozen);
 		balance.setAvailable(available);
 
