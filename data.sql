@@ -17,13 +17,13 @@ insert into invoicetype(id,name) values(11,"其他费");
 -- Records of balance
 -- ----------------------------
 
-insert into Balance (Id,Available,Frozen) values('3', '4.00', '4.00');
+insert into Balance (Id,Available,Frozen) values('1', '4.00', '4.00');
 
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-insert into User (Id,UserName,Password,RealName,Phone,Email,LastLoginDate,LastLoginIp,CreateIp,CreateDate,IsEnable,ParentId,BalanceId) values('4', 'admin', 'ceb4f32325eda6142bd65215f4c0f371', 'admin', '2333', '473028458@qq.com', '2014-07-18 20:27:02', '本地', '本地', '2014-07-18 18:21:38', 1, '4', '3');
+insert into User (Id,UserName,Password,RealName,Phone,Email,LastLoginDate,LastLoginIp,CreateIp,CreateDate,IsEnable,ParentId,BalanceId) values('1', 'admin', 'ceb4f32325eda6142bd65215f4c0f371', 'admin', '2333', '473028458@qq.com', '2014-07-18 20:27:02', '本地', '本地', '2014-07-18 18:21:38', 1, '4', '1');
 
 
 -- ----------------------------
@@ -43,7 +43,7 @@ insert into Role(Id,Name,Code,Description,CreateUserId,CreateDate,ModifyUserId,M
 -- ----------------------------
 -- Records of r_user_role
 -- ----------------------------
-insert into R_user_role(Id,UserId,RoleId) values('3', '4', '1');
+insert into R_user_role(Id,UserId,RoleId) values('3', '1', '1');
 
 
 
