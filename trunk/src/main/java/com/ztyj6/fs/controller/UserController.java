@@ -146,6 +146,21 @@ public class UserController extends BaseController {
 	}
 
 	@ResponseBody
+	@RequestMapping("/admin/userEdit")
+	public Json userEdit(User user) {
+
+		Json j = new Json();
+		try {
+			userService.update(user);
+			j.setSuccess(true);
+			j.setObj(user);
+			j.setMsg("编辑成功！");
+		} catch (Exception e) {
+			j.setMsg("编辑失败！");
+		}
+		return j;
+	}
+	@ResponseBody
 	@RequestMapping("/admin/transfer")
 	public Json transfer(User user, Balance balance, HttpServletRequest request) {
 		int userid = user.getId();

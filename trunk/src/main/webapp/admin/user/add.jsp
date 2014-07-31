@@ -20,7 +20,9 @@
 										index : 0,
 										row : data.obj
 									});
-							parent.$.modalDialog.handler.dialog('close');
+						parent.$.modalDialog.handler.dialog('close');
+						parent.$('#admin_user_add_form').form(
+										'clear');
 						}
 						parent.$.messager.show({
 							title : '提示',
