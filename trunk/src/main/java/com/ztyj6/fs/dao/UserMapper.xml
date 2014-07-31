@@ -269,7 +269,7 @@
 		</where>
 	</select>
 		<resultMap id="Balance" type="com.ztyj6.fs.model.Balance" >
-			<id property="id" jdbcType="INTEGER" column="invoice_details_id"/>
+			<id property="id" jdbcType="INTEGER" column="Balance_id"/>
 			<result property="available" jdbcType="DECIMAL" column="Balance_available"/>
 			<result property="frozen" jdbcType="DECIMAL" column="Balance_frozen"/>
 	</resultMap>
@@ -288,7 +288,7 @@
 		`User`.IsEnable,
 		`User`.ParentId,
 		`User`.BalanceId,
-		Balance.Id User_id,
+		Balance.Id Balance_id,
 		Balance.Available Balance_available,
 		Balance.Frozen Balance_frozen
 		FROM

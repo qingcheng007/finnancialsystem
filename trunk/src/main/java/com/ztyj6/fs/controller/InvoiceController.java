@@ -131,7 +131,7 @@ public class InvoiceController extends BaseController {
 		
 		
 		String msg = "";
-	//	try {
+		try {
 			iInvoiceService.saveInvoiceAllSelective(invoice);
 			BigDecimal rate = new BigDecimal("0.1");
 			BigDecimal calculatePenalty = iInvoiceService.calculatePenalty(invoice,
@@ -143,7 +143,9 @@ public class InvoiceController extends BaseController {
 			BigDecimal frozen = null;
 			BigDecimal money =null;
 			money = invoice.getMoney();
+			System.out.println(money);
 			balance = iUserService.getBalanceById(proverid);
+			System.out.println(balance.getId()+"--"+balance.getAvailable());
 			available = balance.getAvailable();
 			frozen = balance.getFrozen();
 			
@@ -151,18 +153,22 @@ public class InvoiceController extends BaseController {
 				money = money.subtract(calculatePenalty);
 			}
 			frozen = frozen.add(money.subtract(calculatePenalty));
-			available = available.subtract(frozen);
+			available = available.subtract(money);
+		//	balance.setId(proverid);
 			balance.setAvailable(available);
 			balance.setFrozen(frozen);
+			System.out.println("------------"+balance);
 			iInvoiceService.updateBalance(balance);
+			
+			
 			msg = "添加成功";
 			json.setSuccess(true);
 			json.setObj(invoice);
 			json.setMsg(msg);
-	//	} catch (Exception e) {
-	//		msg = "添加失败";
-	//		json.setMsg(msg);
-	//	}
+		} catch (Exception e) {
+			msg = "添加失败";
+			json.setMsg(msg);
+		}
 		return json;
 	}
 
