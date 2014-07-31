@@ -23,7 +23,7 @@
 			$('#submit').linkbutton('disable');
 			$
 					.ajax({
-						url : '${pageContext.request.contextPath}/userController/admin/edit.do',
+						url : '${pageContext.request.contextPath}/userController/admin/userEdit.do',
 						type : 'POST',
 						data : $('#admin_user_edit_form').serializeObject(),
 						dataType : 'json',
@@ -59,7 +59,7 @@
 						error : function() {
 							parent.$.messager.show({
 								title : '提示',
-								msg : '添加失败！',
+								msg : '编辑失败！',
 								timeout : 2000,
 								showType : 'slide'
 							});
