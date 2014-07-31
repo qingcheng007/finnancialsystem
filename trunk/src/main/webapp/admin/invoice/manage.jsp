@@ -52,7 +52,7 @@
 						align : 'center',
 						sortable : true
 					}, {
-						field : 'content',
+						field : 'money',
 						title : '报销金额',
 						width : 80,
 						align : 'center',
