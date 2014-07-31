@@ -29,7 +29,7 @@
 		OccurDate, Content, Money, Penalty,
 		Description,
 		ProjectName, PhotoUrl,
-		Remark
+		Remark 
 	</sql>
 	<resultMap type="com.ztyj6.fs.model.Invoice" id="invoiceResultMap" extends="BaseResultMap">
 	<association property="invoiceDetails" javaType="com.ztyj6.fs.model.InvoiceDetails">
