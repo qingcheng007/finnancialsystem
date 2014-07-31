@@ -16,7 +16,7 @@
 		$('#admin_site_manage_dataGrid')
 		.datagrid(
 				{
-					url : '${pageContext.request.contextPath}/invoiceController/getPageById.do?id='+passid,
+					url : '${pageContext.request.contextPath}/invoiceController/geTPageById.do?id='+passid,
 					//url : '${pageContext.request.contextPath}/invoiceController/getByPage.do',
 					fit : true,
 					autoRowHeight : true,
@@ -92,7 +92,7 @@
 						width : 180,
 						align : 'center',
 						formatter : function(value, row, index) {
-							var url=row.photourl;
+							var url="${pageContext.request.contextPath}/"+row.photourl;
 							var btn = '<img src="'+ url +'"/>';
 							return btn;
 						} 
