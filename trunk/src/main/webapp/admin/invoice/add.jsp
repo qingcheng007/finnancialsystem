@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%
 	String sessionid = session.getId();
 %>
@@ -8,6 +9,7 @@
 <head>
 
 <title>发票信息添加</title>
+<sec:authentication property="principal" var="authentication" />
 <jsp:include page="../../include/easyui.jsp"></jsp:include>
 <script type="text/javascript" charset="utf-8"
 	src="../../jslib/kindeditor-4.1.10/kindeditor.js"></script>
@@ -18,6 +20,7 @@
 	src="../../jslib/uploadify/jquery.uploadify.min.js"></script>
 <link rel="stylesheet" href="../../jslib/uploadify/uploadify.css"
 	type="text/css">
+
 <script type="text/javascript" charset="utf-8">
 $(function() {
 	$('#photoUrl').uploadify({
@@ -107,7 +110,6 @@ $(function() {
 			switch(invoiceType.id)
 			{
 			case '1':{
-				
 				if (i == 1)
 					invoiceDetails.content1 = document.getElementById(inputName + i).value;
 				if (i == 2)
@@ -212,7 +214,8 @@ $(function() {
 		invoice.money = $('#money').val();
 		invoice.description = $('#description').val();
 		invoice.projectName = $('#projectName').val();
-		invoice.operatorId = $('#operatorId').val();
+		//invoice.operatorId = $('#operatorId').val();
+		invoice.operatorId = ${authentication.id};
 		invoice.proverId = $('#proverId').val();
 		invoice.auditor1Id = $('#auditor1Id').val();
 		invoice.auditor2Id = $('#auditor2Id').val();
@@ -550,11 +553,11 @@ $(function() {
 					name="projectName" type="text" placeholder="所属工程"
 					data-options="required:true" style="width:160px;" /></td>
 			</tr>
-			<tr>
+			<tr  style="display:none">
 				<td>经办人</td>
 				<td><input class="easyui-validatebox" id="operatorId"
 					name="operatorId" type="text" placeholder="经办人"
-					data-options="required:true" style="width:160px;" /></td>
+					 style="width:160px;"/></td>
 			</tr>
 			<tr>
 				<td>证明人</td>
