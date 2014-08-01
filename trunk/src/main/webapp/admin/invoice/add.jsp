@@ -97,6 +97,7 @@ $(function() {
 		var invoiceDetails = new Object();
 		if ($('#invoiceTypeId').val() != null)
 			invoiceType.id = $('#invoiceTypeId').val();
+			invoiceType.name = $("#invoiceTypeId").find('option:selected').text();
 		var inputName = "content" + invoiceType.id;
 		for ( var i = 1; i <= 3; i++) {
 			
