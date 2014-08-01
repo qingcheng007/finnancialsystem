@@ -85,20 +85,19 @@ public class InvoiceController extends BaseController {
 		try {
 			SecurityContext ctx = (SecurityContext) session
 					.getAttribute("SPRING_SECURITY_CONTEXT");
-			System.out
-					.println("----------------------------------------------------------------------------");
+			
 			// System.out.println("--------"+((Invoice)
 			// (ctx.getAuthentication().getPrincipal())).getId());
 			// System.out.println("-------content:"+invoice.getContent());
-			System.out.println("-------content:"
-					+ invoice.getInvoiceDetails().getId()
+			System.out.println("-------content:"+ invoice.getInvoiceDetails().getId()
 					+ invoice.getContent());
 			System.out.println("-------content:" + invoice.getDescription());
 			invoice.setId(((Invoice) (ctx.getAuthentication().getPrincipal()))
 					.getId());
-			invoice.setInvoicedetailsid(((Invoice) (ctx.getAuthentication()
-					.getPrincipal())).getInvoicetypeid());
+			invoice.setInvoicedetailsid(((Invoice) (ctx.getAuthentication().getPrincipal())).getInvoicetypeid());
 			iInvoiceService.save(invoice);
+			//Invoice invoiceReturn = new Invoice();
+			//invoiceReturn = iInvoiceService.getById(invoice.getId());
 			j.setSuccess(true);
 			j.setObj(invoice);
 			j.setMsg("添加成功！");
