@@ -1,4 +1,8 @@
-﻿insert into invoicetype(id,name) values(1,"卡加油费");
+﻿-- ----------------------------
+-- Records of invoicetype
+-- ----------------------------
+
+insert into invoicetype(id,name) values(1,"卡加油费");
 insert into invoicetype(id,name) values(2,"现金加油费");
 insert into invoicetype(id,name) values(3,"住宿费");
 insert into invoicetype(id,name) values(4,"交通费");
@@ -10,8 +14,6 @@ insert into invoicetype(id,name) values(9,"材料费");
 insert into invoicetype(id,name) values(10,"工具费");
 insert into invoicetype(id,name) values(11,"其他费");
 
-
-赵文举的表插入按照以下顺序插入
 
 -- ----------------------------
 -- Records of balance
