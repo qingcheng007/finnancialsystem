@@ -52,7 +52,7 @@
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
-		<welcome-file>login.jsp</welcome-file>
+		<welcome-file>admin/index.jsp</welcome-file>
 	</welcome-file-list>
 	<session-config>
 		<session-timeout>0</session-timeout>
