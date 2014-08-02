@@ -21,7 +21,7 @@ function submit() {
 					
 					},
 					error : function() {
-					alert("登陆失败");
+					alert("登陆失败：密码或用户名错误");
 									}
 				});
 		}
