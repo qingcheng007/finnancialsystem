@@ -12,21 +12,21 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from penaltyrate
+    from PenaltyRate
     where Id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from penaltyrate
+    delete from PenaltyRate
     where Id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.ztyj6.fs.model.PenaltyRate" >
-    insert into penaltyrate (Id, Rate, Date
+    insert into PenaltyRate (Id, Rate, Date
       )
     values (#{id,jdbcType=INTEGER}, #{rate,jdbcType=DECIMAL}, #{date,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.ztyj6.fs.model.PenaltyRate" >
-    insert into penaltyrate
+    insert into PenaltyRate
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         Id,
@@ -51,7 +51,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.PenaltyRate" >
-    update penaltyrate
+    update PenaltyRate
     <set >
       <if test="rate != null" >
         Rate = #{rate,jdbcType=DECIMAL},
@@ -63,7 +63,7 @@
     where Id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.PenaltyRate" >
-    update penaltyrate
+    update PenaltyRate
     set Rate = #{rate,jdbcType=DECIMAL},
       Date = #{date,jdbcType=TIMESTAMP}
     where Id = #{id,jdbcType=INTEGER}

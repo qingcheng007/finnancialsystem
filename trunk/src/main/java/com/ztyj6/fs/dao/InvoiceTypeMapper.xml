@@ -12,10 +12,10 @@
 
 	<select id="getInvoiceType" resultMap="BaseResultMap">
 		SELECT
-		invoicetype.Id,
-		invoicetype.`Name`
+		InvoiceType.Id,
+		InvoiceType.`Name`
 		FROM
-		invoicetype
+		InvoiceType
 	</select>
 
 
@@ -24,19 +24,19 @@
 		resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from invoicetype
+		from InvoiceType
 		where Id = #{id,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from invoicetype
+		delete from InvoiceType
 		where Id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.ztyj6.fs.model.InvoiceType">
-		insert into invoicetype (Id, Name)
+		insert into InvoiceType (Id, Name)
 		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
 	</insert>
 	<insert id="insertSelective" parameterType="com.ztyj6.fs.model.InvoiceType">
-		insert into invoicetype
+		insert into InvoiceType
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
 				Id,
@@ -59,7 +59,7 @@
 		</selectKey>
 	</insert>
 	<update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.InvoiceType">
-		update invoicetype
+		update InvoiceType
 		<set>
 			<if test="name != null">
 				Name = #{name,jdbcType=VARCHAR},
@@ -68,7 +68,7 @@
 		where Id = #{id,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.InvoiceType">
-		update invoicetype
+		update InvoiceType
 		set Name = #{name,jdbcType=VARCHAR}
 		where Id = #{id,jdbcType=INTEGER}
 	</update>
