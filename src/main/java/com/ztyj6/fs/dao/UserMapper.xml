@@ -38,7 +38,7 @@
 
 	</delete>
 	<delete id="deleteByRoleIdNotIn">
-		delete from R_user_role
+		delete from R_User_Role
 		where UserId = #{userId} and RoleId not in
 		<foreach collection="ids" item="String" open="(" separator=","
 			close=")">
@@ -47,7 +47,7 @@
 	</delete>
 
 	<insert id="insertUserRole">
-		insert ignore into R_user_role (UserId,RoleId) values
+		insert ignore into R_User_Role (UserId,RoleId) values
 		<foreach collection="ids" item="String" open="(" separator="),("
 			close=")">
 			#{userId} , #{String}
@@ -359,7 +359,7 @@
 		</where>
 	</select>
 	<insert id="insertRole">
-		insert into R_user_role
+		insert into R_User_Role
 		(UserId,RoleId)
 		value
 		(#{userId} , #{roleId})
@@ -404,9 +404,9 @@
 		`User`.IsEnable,
 		`User`.ParentId,
 		`User`.BalanceId,
-		R_user_role.Id,
-		R_user_role.UserId,
-		R_user_role.RoleId,
+		R_User_Role.Id,
+		R_User_Role.UserId,
+		R_User_Role.RoleId,
 		Role.Id role_Id,
 		Role.`Name` role_Name,
 		Role.`Code` role_Code,
@@ -421,9 +421,9 @@
 		Role.IsEnable
 		FROM
 		`User`
-		INNER JOIN R_user_role ON
-		R_user_role.UserId = `User`.Id
-		INNER JOIN Role ON R_user_role.RoleId =
+		INNER JOIN R_User_Role ON
+		R_User_Role.UserId = `User`.Id
+		INNER JOIN Role ON R_User_Role.RoleId =
 		Role.Id
 		where User.UserName =#{username}
 	</select>

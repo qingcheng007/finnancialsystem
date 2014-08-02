@@ -44,8 +44,8 @@
 		SELECT
 		RoleId Id
 		FROM
-		R_user_role
-		WHERE R_user_role.UserId = #{userId,jdbcType=INTEGER}
+		R_User_Role
+		WHERE R_User_Role.UserId = #{userId,jdbcType=INTEGER}
 	</select>
 
 	<delete id="deleteBatch" parameterType="java.util.List">
@@ -57,7 +57,7 @@
 	</delete>
 
 	<delete id="deleteByResourceIdNotIn">
-		delete from R_role_resource
+		delete from R_Role_Resource
 		where RoleId = #{roleId} and ResourceId not
 		in
 		<foreach collection="ids" item="String" open="(" separator=","
@@ -66,7 +66,7 @@
 		</foreach>
 	</delete>
 	<insert id="insertRoleResource">
-		insert ignore into R_role_resource (RoleId,ResourceId) values
+		insert ignore into R_Role_Resource (RoleId,ResourceId) values
 		<foreach collection="ids" item="String" open="(" separator="),("
 			close=")">
 			#{roleId} , #{String}

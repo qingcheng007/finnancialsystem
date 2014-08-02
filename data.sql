@@ -45,7 +45,7 @@ insert into Role(Id,Name,Code,Description,CreateUserId,CreateDate,ModifyUserId,M
 -- ----------------------------
 -- Records of r_user_role
 -- ----------------------------
-insert into R_user_role(Id,UserId,RoleId) values('3', '1', '1');
+insert into R_User_Role(Id,UserId,RoleId) values('3', '1', '1');
 
 
 
