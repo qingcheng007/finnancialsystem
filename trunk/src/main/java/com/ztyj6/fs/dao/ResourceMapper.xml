@@ -179,8 +179,8 @@
 		SELECT
 		ResourceId Id
 		FROM
-		R_role_resource
-		WHERE R_role_resource.RoleId =
+		R_Role_Resource
+		WHERE R_Role_Resource.RoleId =
 		#{roleId,jdbcType=INTEGER}
 	</select>
 
@@ -198,15 +198,15 @@
 		Resource.Id,
 		Resource.`Name`,
 		Resource.Url,
-		R_role_resource.Id,
-		R_role_resource.ResourceId,
-		R_role_resource.RoleId,
+		R_Role_Resource.Id,
+		R_Role_Resource.ResourceId,
+		R_Role_Resource.RoleId,
 		Role.Id role_Id,
 		Role.`Name` role_Name,
 		Role.`Code` role_Code
 		FROM
 		Resource
-		INNER JOIN R_role_resource ON R_role_resource.ResourceId = Resource.Id
-		INNER JOIN Role ON R_role_resource.RoleId = role.Id
+		INNER JOIN R_Role_Resource ON R_Role_Resource.ResourceId = Resource.Id
+		INNER JOIN Role ON R_Role_Resource.RoleId = role.Id
 	</select>
 </mapper>
