@@ -11,6 +11,7 @@
 	<http security="none" pattern="/register.jsp*" />
 	 <http security="none" pattern="/userController/register.do*" />
 	<http security="none" pattern="/common/**" />
+	<http security="none" pattern="/include/**" />
 	<http security="none" pattern="/**/*.js" />
 	<http security="none" pattern="/**/*.css" />
 	<http security="none" pattern="/**/*.jpg" />
