@@ -207,6 +207,6 @@
 		FROM
 		Resource
 		INNER JOIN R_Role_Resource ON R_Role_Resource.ResourceId = Resource.Id
-		INNER JOIN Role ON R_Role_Resource.RoleId = role.Id
+		INNER JOIN Role ON R_Role_Resource.RoleId = Role.Id
 	</select>
 </mapper>
