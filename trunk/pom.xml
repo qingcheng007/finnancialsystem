@@ -4,7 +4,7 @@
 	<artifactId>financialsystem</artifactId>
 	<packaging>war</packaging>
 	<version>0.5</version>
-	<name>FinancialSystem</name>
+	<name>financialsystem</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<!-- JDBC -->
