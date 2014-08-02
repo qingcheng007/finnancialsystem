@@ -2,17 +2,17 @@
 -- Records of invoicetype
 -- ----------------------------
 
-insert into invoicetype(id,name) values(1,"卡加油费");
-insert into invoicetype(id,name) values(2,"现金加油费");
-insert into invoicetype(id,name) values(3,"住宿费");
-insert into invoicetype(id,name) values(4,"交通费");
-insert into invoicetype(id,name) values(5,"修理费");
-insert into invoicetype(id,name) values(6,"过停费");
-insert into invoicetype(id,name) values(7,"招待费");
-insert into invoicetype(id,name) values(8,"办公费");
-insert into invoicetype(id,name) values(9,"材料费");
-insert into invoicetype(id,name) values(10,"工具费");
-insert into invoicetype(id,name) values(11,"其他费");
+insert into InvoiceType(id,name) values(1,"卡加油费");
+insert into InvoiceType(id,name) values(2,"现金加油费");
+insert into InvoiceType(id,name) values(3,"住宿费");
+insert into InvoiceType(id,name) values(4,"交通费");
+insert into InvoiceType(id,name) values(5,"修理费");
+insert into InvoiceType(id,name) values(6,"过停费");
+insert into InvoiceType(id,name) values(7,"招待费");
+insert into InvoiceType(id,name) values(8,"办公费");
+insert into InvoiceType(id,name) values(9,"材料费");
+insert into InvoiceType(id,name) values(10,"工具费");
+insert into InvoiceTypes(id,name) values(11,"其他费");
 
 
 -- ----------------------------
