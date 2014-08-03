@@ -303,7 +303,7 @@
 									<td><a href="javascript:void(0);"
 										class="easyui-linkbutton"
 										data-options="iconCls:'icon-edit',plain:true"
-										onclick="edit();">编辑</a></td>
+										onclick="edit();">修改个人信息</a></td>
 									<td><div class="datagrid-btn-separator"></div></td>
 							
 								
