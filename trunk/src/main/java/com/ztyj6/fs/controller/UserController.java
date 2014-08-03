@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -170,18 +171,12 @@ public class UserController extends BaseController {
 		Balance blance = userService.getBalanceById(userid);
 		
 		Double money1 = Double.parseDouble(request.getParameter("money"));
-		
-		System.out.print("钱1"+money1);
-		
+				
 		BigDecimal money2 = BigDecimal.valueOf(money1);
-		
-		System.out.print("钱2"+money2);
 		
 		BigDecimal money3 = money2.add(blance.getAvailable());
 		
-		System.out.print("钱3"+money3);
-		
-        blance.setId(balanceid);
+		blance.setId(balanceid);
         
 		blance.setAvailable(money3);
 		
@@ -197,6 +192,19 @@ public class UserController extends BaseController {
 		return j;
 	}
 
+	
+	@RequestMapping(value="/admin/getAll",method = RequestMethod.GET)
+	@ResponseBody
+	public List getAll() {
+		List users;
+		try {
+			users = userService.getAll();
+		} catch (Exception e) {
+			return null;
+		}
+		return users;
+	}
+	
 	
 	
 	@RequestMapping("/admin/grant")

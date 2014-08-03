@@ -41,6 +41,8 @@ public interface UserMapper {
     
     List selectbalanceById(@Param("id") Integer id);
     
+    List selectAll();
+    
     void updateByPrimaryKeySelective(User record);
 
     void updateByPrimaryKey(User record);

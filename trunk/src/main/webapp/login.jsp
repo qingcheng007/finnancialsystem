@@ -18,10 +18,12 @@ function submit() {
 						if (data.success) {
 							window.location.href = data.obj;
 						}
-					
+					else
+							
+							alert("用户名或密码错误");
 					},
 					error : function() {
-					alert("登陆失败：密码或用户名错误");
+					alert("用户名或密码错误");
 									}
 				});
 		}
