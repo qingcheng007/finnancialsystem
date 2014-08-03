@@ -43,6 +43,25 @@
 				});
 		}
 	}
+	
+		$(function() {
+		$('#parentId').combobox({
+		    url:'${pageContext.request.contextPath}/userController/admin/getAll.do',
+		    valueField:'parentId',
+		    textField:'realname',
+		    mode:'remote',
+		    method:'get', 
+		    panelHeight:'auto',
+		    editable:false,
+		    formatter: function(row){
+	            row.realname = row.id
+				+ ' '
+				+ row.realname;
+	    		return row.realname;
+			},
+		});
+			});
+	
 	function reset() {
 		$('#admin_user_add_form').form('clear');
 	}
@@ -75,10 +94,6 @@
 				<td>Email</td>
 				<td><input class="easyui-validatebox" id="email" name="email" type="text" placeholder="请输入电子邮箱（选填）" data-options="validType:'email'" /></td>
 			</tr>
-				<tr>
-				<td>上级ID</td>
-				<td><input class="easyui-validatebox" id="parentId" name="parentId" type="text" placeholder="请输上级ID" /></td>
-			</tr>
 			<tr>
 				<td>可用余额</td>
 				<td><input class="easyui-validatebox" id="available" name="available" type="text" placeholder="请输入可用余額" /></td>
@@ -86,6 +101,11 @@
 			<tr>
 				<td>冻结余额</td>
 				<td><input class="easyui-validatebox" id="frozen" name="frozen" type="text" placeholder="请输入冻结余額" /></td>
+			</tr>
+				<tr>
+				<td>上级ID</td>
+				<td><select id="parentId" name="parentId" class="easyui-combobox" data-options="required:true" style="width:160px;">
+				</select></td>
 			</tr>
              <tr>
 				<td colspan='2' style="text-align: center;"><a href="#" class="easyui-linkbutton" onclick="reset()">重置</a> <a id="submit" href="#" class="easyui-linkbutton" onclick="submit()">提交</a></td>

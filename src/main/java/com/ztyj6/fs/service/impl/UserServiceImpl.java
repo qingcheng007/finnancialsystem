@@ -82,7 +82,7 @@ public class UserServiceImpl implements IUserService {
 
 	public List<User> getAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return userMapper.selectAll();
 	}
 
 	@Override

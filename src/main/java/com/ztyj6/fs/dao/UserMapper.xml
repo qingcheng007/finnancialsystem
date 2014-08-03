@@ -31,7 +31,13 @@
 		from User
 		where Id = #{id,jdbcType=INTEGER}
 	</select>
-
+	
+	<select id="selectAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from User
+	</select>
+	
 	<delete id="deleteByPrimaryKey" parameterType="com.ztyj6.fs.model.User">
 		delete from User
 		where Id = #{id,jdbcType=INTEGER}
