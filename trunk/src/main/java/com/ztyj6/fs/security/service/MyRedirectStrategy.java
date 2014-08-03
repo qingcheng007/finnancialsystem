@@ -51,8 +51,8 @@ public class MyRedirectStrategy implements RedirectStrategy {
 
 		Json j = new Json();
 		j.setSuccess(true);
-		j.setMsg("登陆成功！");
-		j.setObj(redirectUrl);
+		j.setMsg(redirectUrl);
+		j.setObj(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		PrintWriter out = response.getWriter();
 		out.write(JSON.toJSONString(j));
 		out.flush();
