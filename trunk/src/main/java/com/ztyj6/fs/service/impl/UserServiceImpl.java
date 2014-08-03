@@ -174,4 +174,9 @@ public Balance getBanlanceById(int id) {
 		return userMapper.selectBalanceById(id);
 	}
 
+	@Override
+	public List<User> selectAll() {
+		return userMapper.selectAll();
+	}
+
 }
