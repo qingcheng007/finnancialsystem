@@ -2,6 +2,7 @@ package com.ztyj6.fs.controller;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -125,7 +126,7 @@ public class InvoiceController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping("/add")
-	public Json add(@RequestBody Invoice invoice, HttpSession session) {
+	public Json add(@RequestBody Invoice invoice, HttpSession session) throws ParseException {
 		Json json = new Json();
 		// SecurityContext ctx = (SecurityContext)
 		// session.getAttribute("SPRING_SECURITY_CONTEXT");
@@ -135,13 +136,19 @@ public class InvoiceController extends BaseController {
 		// (ctx.getAuthentication().getPrincipal())).getRealname());
 		// System.out.println("------"+invoice.getContent()+invoice.getInvoiceType().getId()+"--date:"+invoice.getCreatedate());
 		// System.out.println("-------content:"+invoice.getPhotourl());
+		java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+		System.out.println(currentDate);
 		AuditState auditState = new AuditState();
 		invoice.setAuditState(auditState);
-		// 需要修改
+		invoice.setCreatedate(currentDate);
+		
 		// invoice.setDearerid(1);
 		invoice.setInvoicedetailsid(invoice.getInvoiceDetails().getId());
 		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
-
+		
+		//Date createdate = new Date();
+		
+		
 		String msg = "";
 		try {
 			iInvoiceService.saveInvoiceAllSelective(invoice);

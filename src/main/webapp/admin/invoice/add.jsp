@@ -23,6 +23,71 @@
 
 <script type="text/javascript" charset="utf-8">
 $(function() {
+	$('#proverId').combobox(
+			{
+				url:'${pageContext.request.contextPath}/userController/admin/getAll.do',
+				valueField : 'id',
+				textField : 'realname',
+				mode : 'remote',
+				method : 'get',
+				panelHeight : 'auto',
+				editable : false,
+				formatter: function(row){
+			            row.realname = row.id
+						+ ' '
+						+ row.realname;
+			    		return row.realname;
+					},
+			});
+	
+	$('#auditor1Id').combobox(
+			{
+				url:'${pageContext.request.contextPath}/userController/admin/getAll.do',
+				valueField : 'id',
+				textField : 'realname',
+				mode : 'remote',
+				method : 'get',
+				panelHeight : 'auto',
+				editable : false,
+				formatter: function(row){
+			            row.realname = row.id
+						+ ' '
+						+ row.realname;
+			    		return row.realname;
+					},
+			});
+	$('#auditor2Id').combobox(
+			{
+				url:'${pageContext.request.contextPath}/userController/admin/getAll.do',
+				valueField : 'id',
+				textField : 'realname',
+				mode : 'remote',
+				method : 'get',
+				panelHeight : 'auto',
+				editable : false,
+				formatter: function(row){
+			            row.realname = row.id
+						+ ' '
+						+ row.realname;
+			    		return row.realname;
+					},
+			});
+	$('#dearerId').combobox(
+			{
+				url:'${pageContext.request.contextPath}/userController/admin/getAll.do',
+				valueField : 'id',
+				textField : 'realname',
+				mode : 'remote',
+				method : 'get',
+				panelHeight : 'auto',
+				editable : false,
+				formatter: function(row){
+			            row.realname = row.id
+						+ ' '
+						+ row.realname;
+			    		return row.realname;
+					},
+			});
 	$('#photoUrl').uploadify({
 		swf : '${pageContext.request.contextPath}/jslib/uploadify/uploadify.swf',
         cancelImg : '${pageContext.request.contextPath}/jslib/uploadify/uploadify-cancel.png',
@@ -209,22 +274,22 @@ $(function() {
 		invoice.invoiceType = invoiceType;
 		invoice.invoiceDetails = invoiceDetails;
 		invoice.createDate = $('#createDate').val();
-		invoice.occurDate = $('#createDate').val();
+		invoice.occurDate = $('#occurDate').val();
 		invoice.content = $('#content').val();
 		invoice.money = $('#money').val();
 		invoice.description = $('#description').val();
 		invoice.projectName = $('#projectName').val();
 		//invoice.operatorId = $('#operatorId').val();
 		invoice.operatorId = ${authentication.id};
-		invoice.proverId = $('#proverId').val();
-		invoice.auditor1Id = $('#auditor1Id').val();
-		invoice.auditor2Id = $('#auditor2Id').val();
+		//invoice.proverId = $('#proverId').val();
+		//invoice.auditor1Id = $('#auditor1Id').val();
+		//invoice.auditor2Id = $('#auditor2Id').val();
 		invoice.remark = $('#remark').val();
 		invoice.Photourl = $('#photoUrl').val();
 		invoice.dearerId = $('#dearerId').val();
-		//	invoice.proverId = $('#proverId').combobox('getValue');
-		//	invoice.auditor1Id = $('#auditor1Id').combobox('getValue');
-		//	invoice.auditor2Id = $('#auditor2Id').combobox('getValue');
+		invoice.proverId = $('#proverId').combobox('getValue');
+		invoice.auditor1Id = $('#auditor1Id').combobox('getValue');
+		invoice.auditor2Id = $('#auditor2Id').combobox('getValue');
 		/*
 			invoice.invoiceDetail = invoiceDetail;
 			
@@ -512,12 +577,12 @@ $(function() {
 					style="width:160px;" /></td>
 			</tr>
 
-			<tr>
+			<tr style="display:none">
 				<td>录入时间</td>
 				<td><input class="easyui-validatebox" id='createDate'
 					name='createDate' value="${csrqstart}"
 					onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" readonly="readonly"
-					data-options="required:true" placeholder="录入时间"
+					placeholder="录入时间"
 					style="width:160px;" /></td>
 			</tr>
 			<tr>
@@ -561,27 +626,32 @@ $(function() {
 			</tr>
 			<tr>
 				<td>证明人</td>
-				<td><input class="easyui-validatebox" id="proverId"
-					name="proverId" type="text" placeholder="证明人"
-					data-options="required:true" style="width:160px;" /></td>
+				<td>
+				<select id="proverId" name="proverId" class="easyui-combobox" data-options="required:true" style="width:160px;" placeholder="证明人">
+				</select>
+				</td>
 			</tr>
 			<tr>
 				<td>审核人</td>
-				<td><input class="easyui-validatebox" id="auditor1Id"
-					name="auditorId1" type="text" placeholder="审核人"
-					data-options="required:true" style="width:160px;" /></td>
+				<td>
+				<select id="auditor1Id" name="auditor1Id" class="easyui-combobox" data-options="required:true" style="width:160px;" placeholder="审核人">
+				</select>
+				</td>
 			</tr>
 			<tr>
 				<td>审批人</td>
-				<td><input class="easyui-validatebox" id="auditor2Id"
-					name="auditorId2" type="text" placeholder="审批人"
-					data-options="required:true" style="width:160px;" /></td>
+				
+				<td>
+				<select id="auditor2Id" name="auditor2Id" class="easyui-combobox" data-options="required:true" style="width:160px;" placeholder="审批人">
+				</select>
+			</td>
 			</tr>
 			<tr>
 				<td>审票人</td>
-				<td><input class="easyui-validatebox" id="dearerId"
-					name="dearerId" type="text" placeholder="审票人"
-					data-options="required:true" style="width:160px;" /></td>
+				<td>
+				<select id="dearerId" name="dearerId" class="easyui-combobox" data-options="required:true" style="width:160px;" placeholder="审票人">
+				</select>
+				</td>
 			</tr>
 			<tr>
 				<td>清单附照片</td>
