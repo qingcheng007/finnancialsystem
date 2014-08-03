@@ -1,6 +1,8 @@
 package com.ztyj6.fs.controller;
 
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -85,19 +87,33 @@ public class InvoiceController extends BaseController {
 		try {
 			SecurityContext ctx = (SecurityContext) session
 					.getAttribute("SPRING_SECURITY_CONTEXT");
-			
+
 			// System.out.println("--------"+((Invoice)
 			// (ctx.getAuthentication().getPrincipal())).getId());
 			// System.out.println("-------content:"+invoice.getContent());
-			System.out.println("-------content:"+ invoice.getInvoiceDetails().getId()
+			System.out.println("-------content:"
+					+ invoice.getInvoiceDetails().getId()
 					+ invoice.getContent());
 			System.out.println("-------content:" + invoice.getDescription());
 			invoice.setId(((Invoice) (ctx.getAuthentication().getPrincipal()))
 					.getId());
-			invoice.setInvoicedetailsid(((Invoice) (ctx.getAuthentication().getPrincipal())).getInvoicetypeid());
+			Date createdate = new Date(0);
+
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			Date now = new Date(0);
+			String nowDate = sdf.format(now).toString();
+			createdate = (Date) sdf.parse(nowDate);
+			System.out.println(createdate);
+
+			
+			
+		//	invoice.setCreatedate(createdate);
+			// invoice.setOccurdate(occurdate);
+			invoice.setInvoicedetailsid(((Invoice) (ctx.getAuthentication()
+					.getPrincipal())).getInvoicetypeid());
 			iInvoiceService.save(invoice);
-			//Invoice invoiceReturn = new Invoice();
-			//invoiceReturn = iInvoiceService.getById(invoice.getId());
+			// Invoice invoiceReturn = new Invoice();
+			// invoiceReturn = iInvoiceService.getById(invoice.getId());
 			j.setSuccess(true);
 			j.setObj(invoice);
 			j.setMsg("添加成功！");
@@ -125,41 +141,37 @@ public class InvoiceController extends BaseController {
 		// invoice.setDearerid(1);
 		invoice.setInvoicedetailsid(invoice.getInvoiceDetails().getId());
 		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
-		
-		
-		
-		
+
 		String msg = "";
 		try {
 			iInvoiceService.saveInvoiceAllSelective(invoice);
 			BigDecimal rate = new BigDecimal("0.1");
-			BigDecimal calculatePenalty = iInvoiceService.calculatePenalty(invoice,
-					rate);
+			BigDecimal calculatePenalty = iInvoiceService.calculatePenalty(
+					invoice, rate);
 			int proverid = invoice.getProverid();
-			System.out.println("prover"+proverid);
+			System.out.println("prover" + proverid);
 			Balance balance = new Balance();
 			BigDecimal available = null;
 			BigDecimal frozen = null;
-			BigDecimal money =null;
+			BigDecimal money = null;
 			money = invoice.getMoney();
 			System.out.println(money);
 			balance = iUserService.getBalanceById(proverid);
-			System.out.println(balance.getId()+"--"+balance.getAvailable());
+			System.out.println(balance.getId() + "--" + balance.getAvailable());
 			available = balance.getAvailable();
 			frozen = balance.getFrozen();
-			
+
 			if (!calculatePenalty.equals(0)) {
 				money = money.subtract(calculatePenalty);
 			}
 			frozen = frozen.add(money.subtract(calculatePenalty));
 			available = available.subtract(money);
-		//	balance.setId(proverid);
+			// balance.setId(proverid);
 			balance.setAvailable(available);
 			balance.setFrozen(frozen);
-			System.out.println("------------"+balance);
+			System.out.println("------------" + balance);
 			iInvoiceService.updateBalance(balance);
-			
-			
+
 			msg = "添加成功";
 			json.setSuccess(true);
 			json.setObj(invoice);
@@ -200,8 +212,8 @@ public class InvoiceController extends BaseController {
 		// 计算罚款金额
 		BigDecimal calculatePenalty = iInvoiceService.calculatePenalty(invoice,
 				rate);
-		//整合到service中
-		
+		// 整合到service中
+
 		Balance balance = new Balance();
 		// balance = role.get();
 		BigDecimal frozen = null;
@@ -209,7 +221,7 @@ public class InvoiceController extends BaseController {
 		int proverid = invoice.getProverid();
 		BigDecimal money = null;
 		money = invoice.getMoney().subtract(calculatePenalty);
-		//frozen = money;
+		// frozen = money;
 		balance = iUserService.getBalanceById(proverid);
 		available = balance.getAvailable();
 		frozen = balance.getFrozen();
@@ -219,18 +231,18 @@ public class InvoiceController extends BaseController {
 				|| invoice.getAuditState().getDearer() == 1) {
 			if (invoice.getAuditState().getDearer() == 2) {
 				available = available.add(money);
-				//frozen = frozen.subtract(money);
+				// frozen = frozen.subtract(money);
 				control = 1;
-			} 
-			//else {
-			//	frozen = frozen.subtract(money);
-			//}
-		} 
-			if(control==0)
+			}
+			// else {
+			// frozen = frozen.subtract(money);
+			// }
+		}
+		if (control == 0)
 			if (invoice.getAuditState().getAuditor2() == 1) {
 
 				frozen = frozen.subtract(money);
-				//available=available.add(money);
+				// available=available.add(money);
 			}// 如果有一个人审核失败，冻结金额减少，重新加入可用余额中
 			else {
 				if (invoice.getAuditState().getProver() == 2
@@ -241,13 +253,12 @@ public class InvoiceController extends BaseController {
 
 				} else {
 					if (invoice.getAuditState().getProver() == 0) {
-						//available = available.subtract(money);
-						//frozen = frozen.add(money);
+						// available = available.subtract(money);
+						// frozen = frozen.add(money);
 					}
 				}
 			}
 
-	
 		balance.setFrozen(frozen);
 		balance.setAvailable(available);
 
@@ -312,6 +323,7 @@ public class InvoiceController extends BaseController {
 			return null;
 		}
 	}
+
 	@ResponseBody
 	@RequestMapping("/doGetPageById")
 	public DataGrid doGetByPageByid(PageFilter pageFilter,
@@ -326,6 +338,7 @@ public class InvoiceController extends BaseController {
 			return null;
 		}
 	}
+
 	@ResponseBody
 	@RequestMapping("/edit")
 	public Json edit(Invoice invoice) {
