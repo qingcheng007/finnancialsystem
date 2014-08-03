@@ -330,6 +330,40 @@
 		</where>
 	</select>
 	
+	<select id="selectByUrl" resultMap="BaseResultMap">
+	SELECT
+	R_Role_Resource.Id,
+	Role.Id,
+	R_User_Role.Id,
+	R_User_Role.UserId,
+	R_User_Role.RoleId,
+	`User`.`Password`,
+	`User`.Id,
+	`User`.UserName,
+	`User`.RealName,
+	Resource.Url,
+	R_Role_Resource.ResourceId,
+	R_Role_Resource.RoleId,
+	`User`.Phone,
+	`User`.Email,
+	`User`.LastLoginDate,
+	`User`.LastLoginIp,
+	`User`.CreateIp,
+	`User`.CreateDate,
+	`User`.IsEnable,
+	`User`.ParentId,
+	`User`.BalanceId
+	FROM
+	resource
+	INNER JOIN R_Role_Resource ON R_Role_Resource.ResourceId = Resource.Id
+	INNER JOIN Role ON R_Role_Resource.RoleId = Role.Id
+	INNER JOIN R_User_Role ON R_User_Role.RoleId = Role.Id
+	INNER JOIN `User` ON R_User_Role.UserId = `User`.Id
+		<where>
+				Resource.Url = #{url,jdbcType=VARCHAR}
+		</where>
+	</select>
+	
 	<select id="selectByIdFilter"  resultMap="ExtendResultMap1">
 		SELECT
 		`User`.Id,
