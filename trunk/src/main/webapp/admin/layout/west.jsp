@@ -15,6 +15,7 @@
 										iconCls : node.iconCls
 									});
 								}
+								$(this).tree('expand',node.target);
 							},
 						});
 	});
