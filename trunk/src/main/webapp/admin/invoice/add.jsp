@@ -33,7 +33,7 @@ $(function() {
 				panelHeight : 'auto',
 				editable : false,
 				formatter: function(row){
-			            row.realname = row.id
+			            row.realname = row.username
 						+ ' '
 						+ row.realname;
 			    		return row.realname;
@@ -50,7 +50,7 @@ $(function() {
 				panelHeight : 'auto',
 				editable : false,
 				formatter: function(row){
-			            row.realname = row.id
+			            row.realname = row.username
 						+ ' '
 						+ row.realname;
 			    		return row.realname;
@@ -66,7 +66,7 @@ $(function() {
 				panelHeight : 'auto',
 				editable : false,
 				formatter: function(row){
-			            row.realname = row.id
+			            row.realname = row.username
 						+ ' '
 						+ row.realname;
 			    		return row.realname;
@@ -82,7 +82,7 @@ $(function() {
 				panelHeight : 'auto',
 				editable : false,
 				formatter: function(row){
-			            row.realname = row.id
+			            row.realname = row.username
 						+ ' '
 						+ row.realname;
 			    		return row.realname;

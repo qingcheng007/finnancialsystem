@@ -46,13 +46,13 @@
 						sortable : true,
 					},
 					{
-						field : 'createdate',
+						field : 'createDate',
 						title : '录入时间',
 						width : 100,
 						align : 'center',
 						sortable : true
 					}, {
-						field : 'occurdate',
+						field : 'occurDate',
 						title : '发生时间',
 						width : 100,
 						align : 'center',
@@ -80,7 +80,7 @@
 						} 
 					},
 					{
-						field : 'projectname',
+						field : 'projectName',
 						title : '工程名字',
 						width : 80,
 						align : 'center',
@@ -92,10 +92,17 @@
 						width : 180,
 						align : 'center',
 						formatter : function(value, row, index) {
-							var url="${pageContext.request.contextPath}/"+row.photourl;
+							var url="${pageContext.request.contextPath}/"+row.photoUrl;
 							var btn = '<img src="'+ url +'"/>';
 							return btn;
 						} 
+					},
+					{
+						field : 'operatorid',
+						title : '经办人',
+						width : 70,
+						align : 'center',
+						sortable : true
 					},
 					{
 						field : 'proverid',
