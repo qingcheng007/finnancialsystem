@@ -43,6 +43,8 @@ public interface UserMapper {
     
     List selectAll();
     
+    List selectPartion();
+    
     User selectByUrl(@Param("url") String url);
     
     void updateByPrimaryKeySelective(User record);
