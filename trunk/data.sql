@@ -39,7 +39,8 @@ insert into Role(Id,Name,Code,Description,CreateUserId,CreateDate,ModifyUserId,M
 insert into Role(Id,Name,Code,Description,CreateUserId,CreateDate,ModifyUserId,ModifyDate,IsEnable) values(6, '会计', 'ROLE_ACCOUNTANT', '会计', null, null, null, null, 1);
 insert into Role(Id,Name,Code,Description,CreateUserId,CreateDate,ModifyUserId,ModifyDate,IsEnable) values(7, '普通员工', 'ROLE_STAFF', '普通员工', null, null, null, null, 1);
 insert into Role(Id,Name,Code,Description,CreateUserId,CreateDate,ModifyUserId,ModifyDate,IsEnable) values(8, '职工', 'ROLE_WORK', '职工', null, null, null, null, 1);
-insert into Role(Id,Name,Code,Description,CreateUserId,CreateDate,ModifyUserId,ModifyDate,IsEnable) values(9, '测试人员', 'ROLE_TEST', '测试人员，权限仅次于管理员', null, null, null, null, 1);
+insert into Role(Id,Name,Code,Description,CreateUserId,CreateDate,ModifyUserId,ModifyDate,IsEnable) values(9, '核票员', 'ROLE_AUDIT', '核票员', null, null, null, null, 1);
+insert into Role(Id,Name,Code,Description,CreateUserId,CreateDate,ModifyUserId,ModifyDate,IsEnable) values(10, '测试人员', 'ROLE_TEST', '测试人员，权限仅次于管理员', null, null, null, null, 1);
 
 
 -- ----------------------------
