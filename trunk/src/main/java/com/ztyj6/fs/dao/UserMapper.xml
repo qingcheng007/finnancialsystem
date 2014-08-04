@@ -23,7 +23,9 @@
 		LastLoginDate,
 		LastLoginIp, CreateIp, CreateDate, IsEnable
 	</sql>
-
+	<sql id="Base_Column_List1">
+		Id,  UserName, RealName,
+	</sql>
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="com.ztyj6.fs.model.User">
 		select
@@ -35,6 +37,12 @@
 	<select id="selectAll" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
+		from User
+	</select>
+	
+	<select id="selectPartion" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List1" />
 		from User
 	</select>
 	
