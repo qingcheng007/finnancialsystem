@@ -84,6 +84,12 @@ public class UserServiceImpl implements IUserService {
 		// TODO Auto-generated method stub
 		return userMapper.selectAll();
 	}
+	
+	public List<User> getPartion() {
+		// TODO Auto-generated method stub
+		return userMapper.selectPartion();
+	}
+	
 
 	@Override
 	public DataGrid getByPage(PageFilter pageFilter) {

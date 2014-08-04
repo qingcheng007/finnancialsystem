@@ -206,6 +206,20 @@ public class UserController extends BaseController {
 	}
 	
 	
+	@RequestMapping(value="/admin/getAllDroplist",method = RequestMethod.GET)
+	@ResponseBody
+	public List getAllDroplist()
+ {
+		List users;
+		try {
+			users = userService.getPartion();
+		} catch (Exception e) {
+			return null;
+		}
+		return users;
+	}
+	
+	
 	
 	@RequestMapping("/admin/grant")
 	@ResponseBody
