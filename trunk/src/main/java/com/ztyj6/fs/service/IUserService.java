@@ -22,6 +22,5 @@ public interface IUserService extends IBaseService<User>{
 	public void grant(Integer userId,String ids);
 	public DataGrid getByIdPage(PageFilter pageFilter, int id1);
 	public Balance getBalanceById(int id);
-	List <User> selectAll();
 	public List<User> getPartion();
 }
