@@ -23,6 +23,8 @@ public interface IBaseService<T> {
 	public T getById(Integer id);
 
 	public List<T> getAll();
+	
+	public List<T> getPartion();
 
 	public DataGrid getByPage(PageFilter pageFilter);
 	
