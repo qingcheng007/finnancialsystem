@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Invoice extends InvoiceKey {
-    private Date createdate;
+    private Date createDate;
 
-    private Date occurdate;
+    private Date occurDate;
 
     private String content;
 
@@ -16,9 +16,9 @@ public class Invoice extends InvoiceKey {
 
     private String description;
 
-    private String projectname;
+    private String projectName;
 
-    private String photourl;
+    private String photoUrl;
 
     private String remark;
     
@@ -55,20 +55,20 @@ public class Invoice extends InvoiceKey {
 
 	
 
-	public Date getCreatedate() {
-        return createdate;
+	public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
-    public Date getOccurdate() {
-        return occurdate;
+    public Date getOccurDate() {
+        return occurDate;
     }
 
-    public void setOccurdate(Date occurdate) {
-        this.occurdate = occurdate;
+    public void setOccurDate(Date occurDate) {
+        this.occurDate = occurDate;
     }
 
     public String getContent() {
@@ -103,20 +103,20 @@ public class Invoice extends InvoiceKey {
         this.description = description == null ? null : description.trim();
     }
 
-    public String getProjectname() {
-        return projectname;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setProjectname(String projectname) {
-        this.projectname = projectname == null ? null : projectname.trim();
+    public void setProjectName(String projectName) {
+        this.projectName = projectName == null ? null : projectName.trim();
     }
 
-    public String getPhotourl() {
-        return photourl;
+    public String getPhotoUrl() {
+        return photoUrl;
     }
 
-    public void setPhotourl(String photourl) {
-        this.photourl = photourl == null ? null : photourl.trim();
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl == null ? null : photoUrl.trim();
     }
 
     public String getRemark() {
