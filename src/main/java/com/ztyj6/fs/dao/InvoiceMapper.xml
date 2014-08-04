@@ -475,11 +475,11 @@
 	<update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.Invoice">
 		update Invoice
 		<set>
-			<if test="createdate != null">
-				CreateDate = #{createdate,jdbcType=TIMESTAMP},
+			<if test="createDate != null">
+				CreateDate = #{createDate,jdbcType=TIMESTAMP},
 			</if>
-			<if test="occurdate != null">
-				OccurDate = #{occurdate,jdbcType=TIMESTAMP},
+			<if test="occurDate != null">
+				OccurDate = #{occurDate,jdbcType=TIMESTAMP},
 			</if>
 			<if test="content != null">
 				Content = #{content,jdbcType=VARCHAR},
@@ -493,11 +493,11 @@
 			<if test="description != null">
 				Description = #{description,jdbcType=VARCHAR},
 			</if>
-			<if test="projectname != null">
-				ProjectName = #{projectname,jdbcType=VARCHAR},
+			<if test="projectName != null">
+				ProjectName = #{projectName,jdbcType=VARCHAR},
 			</if>
-			<if test="photourl != null">
-				PhotoUrl = #{photourl,jdbcType=VARCHAR},
+			<if test="photoUrl != null">
+				PhotoUrl = #{photoUrl,jdbcType=VARCHAR},
 			</if>
 			<if test="remark != null">
 				Remark = #{remark,jdbcType=VARCHAR},
@@ -523,9 +523,9 @@
 	<update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.Invoice">
 		update Invoice
 		set
-		CreateDate = #{createdate,jdbcType=TIMESTAMP},
+		CreateDate = #{createDate,jdbcType=TIMESTAMP},
 		OccurDate =
-		#{occurdate,jdbcType=TIMESTAMP},
+		#{occurDate,jdbcType=TIMESTAMP},
 		Content = #{content,jdbcType=VARCHAR},
 		Money = #{money,jdbcType=DECIMAL},
 		Penalty =
@@ -533,9 +533,9 @@
 		Description =
 		#{description,jdbcType=VARCHAR},
 		ProjectName =
-		#{projectname,jdbcType=VARCHAR},
+		#{projectName,jdbcType=VARCHAR},
 		PhotoUrl =
-		#{photourl,jdbcType=VARCHAR},
+		#{photoUrl,jdbcType=VARCHAR},
 		Remark = #{remark,jdbcType=VARCHAR}
 		where
 		AuditStateId = #{auditstateid,jdbcType=INTEGER}

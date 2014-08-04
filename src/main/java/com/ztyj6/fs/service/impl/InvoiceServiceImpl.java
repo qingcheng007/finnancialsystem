@@ -244,7 +244,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	public DataGrid getByPage(PageFilter pageFilter) {
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();
-		PageList roles = (PageList) invoiceMapper.selectByPage(pageBounds);
+		PageList roles = (PageList) invoiceMapper.selectByPage(pageFilter,pageBounds);
 		dg.setRows(roles);
 		dg.setTotal(roles.getPaginator().getTotalCount());
 		return dg;

@@ -164,7 +164,7 @@ public class testInvoice {
 				e.printStackTrace();
 			}
 		
-		invoice.setCreatedate(m);
+		invoice.setCreateDate(m);
 		invoice.setDearerid(1);
 		invoice.setDescription("1");
 		InvoiceType invoiceType = new InvoiceType();
@@ -174,11 +174,11 @@ public class testInvoice {
 		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
 		BigDecimal b = new BigDecimal("100.1");
 		invoice.setMoney(b);
-		invoice.setOccurdate(m);
+		invoice.setOccurDate(m);
 		invoice.setOperatorid(1);
 		invoice.setPenalty(b);
-		invoice.setPhotourl("11");
-		invoice.setProjectname("121");
+		invoice.setPhotoUrl("11");
+		invoice.setProjectName("121");
 		invoice.setProverid(1);
 		invoice.setRemark("test");
 		invoice.setAuditState(auditState);
