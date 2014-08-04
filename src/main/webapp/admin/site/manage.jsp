@@ -328,7 +328,7 @@
 			<table>
 				<tr>
 				                <sec:authorize url="/siteController/admin/getByPage.do">
-								<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="checkALLSite();"></a>查看全部站点</td>
+								<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true" onclick="checkALLSite();">查看全部站点</a></td>
 								<td><div class="datagrid-btn-separator"></div></td>
 								</sec:authorize>
 					            <sec:authorize url="/siteController/admin/add.do">
