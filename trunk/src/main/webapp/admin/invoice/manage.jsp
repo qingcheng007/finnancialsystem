@@ -366,8 +366,8 @@
 								<tr>
 									<td style="font-size:14px;">可按发票类型查找</td>
 									<td>
-									<input name="keyword" placeholder="输入关键词" />
-									<!-- <select id="keyword" name="keyword" style="width:166px;">
+									<!-- <input name="keyword" placeholder="输入关键词" /> -->
+									<select id="keyword" name="keyword" style="width:166px;">
 						<option value="1">卡加油费</option>
 						<option value="2">现金加油费</option>
 						<option value="3">住宿费</option>
@@ -379,7 +379,7 @@
 						<option value="9">材料费</option>
 						<option value="10">工具费</option>
 						<option value="11">其他费</option>
-				</select> --></td>
+				</select> </td>
 									<td style="font-size:14px;">创建时间</td>
 									<td><input class="Wdate" name="startTime"
 										placeholder="点击选择时间"
