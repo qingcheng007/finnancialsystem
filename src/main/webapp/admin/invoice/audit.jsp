@@ -122,8 +122,8 @@
 		auditState.auditor1 = $('#audit1State').combobox('getValue');
 		auditState.auditor2 = $('#audit2State').combobox('getValue');
 		auditState.dearer = $('#dearerState').combobox('getValue');
-		invoice.occurDate =cls.occurdate;
-		invoice.createDate=cls.createdate;
+		invoice.occurDate =cls.occurDate;
+		invoice.createDate=cls.createDate;
 		invoice.id = cls.id;
 		console.info(invoice.id);
 		invoice.proverId = $('#proverId').val();

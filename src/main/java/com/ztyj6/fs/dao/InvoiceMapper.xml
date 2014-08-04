@@ -11,14 +11,14 @@
 		<id column="InvoiceTypeId" jdbcType="INTEGER" property="invoicetypeid" />
 		<id column="OperatorId" jdbcType="INTEGER" property="operatorid" />
 		<id column="ProverId" jdbcType="INTEGER" property="proverid" />
-		<result column="CreateDate" jdbcType="TIMESTAMP" property="createdate" />
-		<result column="OccurDate" jdbcType="TIMESTAMP" property="occurdate" />
+		<result column="CreateDate" jdbcType="TIMESTAMP" property="createDate" />
+		<result column="OccurDate" jdbcType="TIMESTAMP" property="occurDate" />
 		<result column="Content" jdbcType="VARCHAR" property="content" />
 		<result column="Money" jdbcType="DECIMAL" property="money" />
 		<result column="Penalty" jdbcType="DECIMAL" property="penalty" />
 		<result column="Description" jdbcType="VARCHAR" property="description" />
-		<result column="ProjectName" jdbcType="VARCHAR" property="projectname" />
-		<result column="PhotoUrl" jdbcType="VARCHAR" property="photourl" />
+		<result column="ProjectName" jdbcType="VARCHAR" property="projectName" />
+		<result column="PhotoUrl" jdbcType="VARCHAR" property="photoUrl" />
 		<result column="Remark" jdbcType="VARCHAR" property="remark" />
 	</resultMap>
 	<sql id="Base_Column_List">
@@ -345,12 +345,12 @@
 		#{id,jdbcType=INTEGER}, #{invoicedetailsid,jdbcType=INTEGER},
 		#{invoicetypeid,jdbcType=INTEGER}, #{operatorid,jdbcType=INTEGER},
 		#{proverid,jdbcType=INTEGER},
-		#{createdate,jdbcType=TIMESTAMP},
-		#{occurdate,jdbcType=TIMESTAMP}, #{content,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{occurDate,jdbcType=TIMESTAMP}, #{content,jdbcType=VARCHAR},
 		#{money,jdbcType=DECIMAL}, #{penalty,jdbcType=DECIMAL},
 		#{description,jdbcType=VARCHAR},
-		#{projectname,jdbcType=VARCHAR},
-		#{photourl,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+		#{projectName,jdbcType=VARCHAR},
+		#{photoUrl,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
 		)
 	</insert>
 	<insert id="insertSelective" parameterType="com.ztyj6.fs.model.Invoice">
@@ -383,10 +383,10 @@
 			<if test="proverid != null">
 				ProverId,
 			</if>
-			<if test="createdate != null">
+			<if test="createDate != null">
 				CreateDate,
 			</if>
-			<if test="occurdate != null">
+			<if test="occurDate != null">
 				OccurDate,
 			</if>
 			<if test="content != null">
@@ -401,10 +401,10 @@
 			<if test="description != null">
 				Description,
 			</if>
-			<if test="projectname != null">
+			<if test="projectName != null">
 				ProjectName,
 			</if>
-			<if test="photourl != null">
+			<if test="photoUrl != null">
 				PhotoUrl,
 			</if>
 			<if test="remark != null">
@@ -439,11 +439,11 @@
 			<if test="proverid != null">
 				#{proverid,jdbcType=INTEGER},
 			</if>
-			<if test="createdate != null">
-				#{createdate,jdbcType=TIMESTAMP},
+			<if test="createDate != null">
+				#{createDate,jdbcType=TIMESTAMP},
 			</if>
-			<if test="occurdate != null">
-				#{occurdate,jdbcType=TIMESTAMP},
+			<if test="occurDate != null">
+				#{occurDate,jdbcType=TIMESTAMP},
 			</if>
 			<if test="content != null">
 				#{content,jdbcType=VARCHAR},
@@ -457,11 +457,11 @@
 			<if test="description != null">
 				#{description,jdbcType=VARCHAR},
 			</if>
-			<if test="projectname != null">
-				#{projectname,jdbcType=VARCHAR},
+			<if test="projectName != null">
+				#{projectName,jdbcType=VARCHAR},
 			</if>
-			<if test="photourl != null">
-				#{photourl,jdbcType=VARCHAR},
+			<if test="photoUrl != null">
+				#{photoUrl,jdbcType=VARCHAR},
 			</if>
 			<if test="remark != null">
 				#{remark,jdbcType=VARCHAR},
