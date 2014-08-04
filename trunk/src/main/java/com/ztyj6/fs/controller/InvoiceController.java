@@ -140,7 +140,7 @@ public class InvoiceController extends BaseController {
 		System.out.println(currentDate);
 		AuditState auditState = new AuditState();
 		invoice.setAuditState(auditState);
-		invoice.setCreatedate(currentDate);
+		invoice.setCreateDate(currentDate);
 		
 		// invoice.setDearerid(1);
 		invoice.setInvoicedetailsid(invoice.getInvoiceDetails().getId());

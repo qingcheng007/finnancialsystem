@@ -237,7 +237,7 @@
 			parent.$.modalDialog({
 				title : '审批发票',
 				width : 380,
-				//height : 260,
+				height : 260,
 				url : '${pageContext.request.contextPath}/admin/invoice/audit.jsp?id='+passid
 			});
 			parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');

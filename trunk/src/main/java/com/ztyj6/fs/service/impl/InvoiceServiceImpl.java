@@ -282,8 +282,8 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		//BigDecimal rate = new BigDecimal("0.1");
 		
 
-		long to = invoice.getCreatedate().getTime();
-		long from = invoice.getOccurdate().getTime();
+		long to = invoice.getCreateDate().getTime();
+		long from = invoice.getOccurDate().getTime();
 		long bg;
 
 		if (from > to)
