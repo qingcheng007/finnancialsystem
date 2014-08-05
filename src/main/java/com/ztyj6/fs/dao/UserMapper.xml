@@ -277,7 +277,7 @@
 				or User.RealName like #{pageFilter.keyword,jdbcType=VARCHAR}
 			</if>
 			<if test="pageFilter.startTime != null and pageFilter.endTime != null">
-				and Create_Time between
+				and CreateDate between
 				#{pageFilter.startTime,jdbcType=TIMESTAMP} and
 				#{pageFilter.endTime,jdbcType=TIMESTAMP}
 			</if>
