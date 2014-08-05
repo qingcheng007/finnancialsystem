@@ -366,20 +366,21 @@
 								<tr>
 									<td style="font-size:14px;">可按发票类型查找</td>
 									<td>
-									<!-- <input name="keyword" placeholder="输入关键词" /> -->
-									<select id="keyword" name="keyword" style="width:166px;">
-						<option value="1">卡加油费</option>
-						<option value="2">现金加油费</option>
-						<option value="3">住宿费</option>
-						<option value="4">交通费</option>
-						<option value="5">修理费</option>
-						<option value="6">过停费</option>
-						<option value="7">招待费</option>
-						<option value="8">办公费</option>
-						<option value="9">材料费</option>
-						<option value="10">工具费</option>
-						<option value="11">其他费</option>
-				</select> </td>
+										<!-- <input name="keyword" placeholder="输入关键词" /> --> <select
+										id="keyword" name="keyword" style="width:166px;">
+											<option value="1">卡加油费</option>
+											<option value="2">现金加油费</option>
+											<option value="3">住宿费</option>
+											<option value="4">交通费</option>
+											<option value="5">修理费</option>
+											<option value="6">过停费</option>
+											<option value="7">招待费</option>
+											<option value="8">办公费</option>
+											<option value="9">材料费</option>
+											<option value="10">工具费</option>
+											<option value="11">其他费</option>
+									</select>
+									</td>
 									<td style="font-size:14px;">创建时间</td>
 									<td><input class="Wdate" name="startTime"
 										placeholder="点击选择时间"
@@ -388,6 +389,8 @@
 										placeholder="点击选择时间"
 										onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})"
 										readonly="readonly" /></td>
+										<td>按照项目内容查找</td><td><input name="content" placeholder="输入项目内容" /></td>
+										<td>按照项目名称查找</td><td><input name="projectname" placeholder="输入项目名称" /></td>
 									<td><a href="javascript:void(0);"
 										class="easyui-linkbutton"
 										data-options="iconCls:'icon-search',plain:true"

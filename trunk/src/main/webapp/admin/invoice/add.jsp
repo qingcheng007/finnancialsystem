@@ -644,26 +644,26 @@ $(function() {
 				<td>审批人</td>
 				
 				<td>
-				<select id="auditor2Id" name="auditor2Id" class="easyui-combobox" data-options="required:true" style="width:160px;" placeholder="审批人">
+				<select id="auditor2Id" name="auditor2Id" class="easyui-combobox" data-options="required:true" style="width:160px;">
 				</select>
 			</td>
 			</tr>
 			<tr>
 				<td>审票人</td>
 				<td>
-				<select id="dearerId" name="dearerId" class="easyui-combobox" data-options="required:true" style="width:160px;" placeholder="审票人">
+				<select id="dearerId" name="dearerId" class="easyui-combobox" data-options="required:true" style="width:160px;">
 				</select>
 				</td>
-			</tr>
-			<tr>
-				<td>清单附照片</td>
-				<td><input type="file" name="photoUrl" id="photoUrl" /></td>
 			</tr>
 			<tr>
 				<td>备注</td>
 				<td><input class="easyui-validatebox" id="remark" name="remark"
 					type="text" placeholder="备注" data-options="required:true"
 					style="width:160px;" /></td>
+			</tr>
+				<tr>
+				<td>清单附照片</td>
+				<td><input type="file" name="photoUrl" id="photoUrl" /></td>
 			</tr>
 			<tr>
 				<td colspan='2' style="text-align: center;"><a href="#"
