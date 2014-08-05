@@ -37,6 +37,15 @@ public void TestInsertUser(){
 	userService.save(user);
 }
 @Test
+public void TestInsertUser1(){
+userService.getPartion();
+System.out.println("卡卡"+userService.getPartion());
+}
+@Test
+public void TestInsertUser2(){
+  userService.getAll();
+}
+@Test
 public void TestSelectBalanceById()
 { 
 	Balance b = userService.getBalanceById(1);
