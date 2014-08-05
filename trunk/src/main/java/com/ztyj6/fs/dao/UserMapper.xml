@@ -23,9 +23,7 @@
 		LastLoginDate,
 		LastLoginIp, CreateIp, CreateDate, IsEnable
 	</sql>
-	<sql id="Base_Column_List1">
-		Id,  UserName, RealName,
-	</sql>
+		
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="com.ztyj6.fs.model.User">
 		select
@@ -41,9 +39,12 @@
 	</select>
 	
 	<select id="selectPartion" resultMap="BaseResultMap">
-		select
-		<include refid="Base_Column_List1" />
-		from User
+	SELECT
+	`User`.Id,
+	`User`.UserName,
+	`User`.RealName
+	FROM
+	`User`
 	</select>
 	
 	<delete id="deleteByPrimaryKey" parameterType="com.ztyj6.fs.model.User">
