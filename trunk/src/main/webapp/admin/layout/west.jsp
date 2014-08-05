@@ -15,7 +15,11 @@
 										iconCls : node.iconCls
 									});
 								}
-								$(this).tree('expand',node.target);
+								if(node.state=='closed')
+								{$(this).tree('expand',node.target);}
+								else{  
+                    $(this).tree('collapse',node.target);//点击文字关闭菜单  
+                }  
 							},
 						});
 	});

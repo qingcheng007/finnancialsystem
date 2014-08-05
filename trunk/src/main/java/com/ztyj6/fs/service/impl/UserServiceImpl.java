@@ -119,7 +119,6 @@ public Balance getBanlanceById(int id) {
 	}
 
 	public void update(User o) {
-		@SuppressWarnings("deprecation")
 		String encodedPassword = passwordEncoder.encodePassword(o.getPassword(), o.getUsername());
 		o.setPassword(encodedPassword);
 		userMapper.updateByPrimaryKeySelective(o);
