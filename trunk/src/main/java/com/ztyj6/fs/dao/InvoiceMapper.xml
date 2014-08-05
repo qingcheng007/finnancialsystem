@@ -144,11 +144,11 @@
 			</if>
 			<if test="pageFilter.content != null">
 				and Invoice.Content like
-				#{pageFilter.content,jdbcType=TIMESTAMP} 
+				#{pageFilter.content,jdbcType=VARCHAR} 
 			</if>
 				<if test="pageFilter.projectname != null">
 				and Invoice.ProjectName like
-				#{pageFilter.projectname,jdbcType=TIMESTAMP}
+				#{pageFilter.projectname,jdbcType=VARCHAR}
 			</if>
 		</where>
 		

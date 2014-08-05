@@ -5,13 +5,31 @@ import java.util.Date;
 import com.ztyj6.fs.utils.SqlUtil;
 
 public class PageFilter {
-	private int page;// 当前�?
-	private int rows;// 每页显示记录�?
+	private int page;// 当前�?
+	private int rows;// 每页显示记录�?
 	private String sort;// 排序字段
 	private String order = "asc";// asc/desc
 	private String keyword;
+	private String content;
+	private String projectname;
 	private Date startTime;
 	private Date endTime;
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getProjectname() {
+		return projectname;
+	}
+
+	public void setProjectname(String projectname) {
+		this.projectname = projectname;
+	}
 
 	public String getKeyword() {
 		return keyword;

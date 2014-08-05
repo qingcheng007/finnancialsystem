@@ -73,6 +73,13 @@
 										sortable : true
 									},
 									{
+										field : 'content',
+										title : '费用内容',
+										width : 80,
+										align : 'center',
+										sortable : true
+									},
+									{
 										field : 'invoicetype',
 										title : '发票类型',
 										width : 80,
