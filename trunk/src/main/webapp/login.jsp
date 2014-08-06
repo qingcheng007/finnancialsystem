@@ -35,11 +35,11 @@
 	<div class="bkgd">
 		<div class="top">
 			<marquee direction=left>
-				<span>欢迎登录中国通信建设第一工程局第六分公司电子报账系统！</span>
+				<span>欢迎登录手机报账系统！</span>
 			</marquee>
 		</div>
 		<div class="logo">
-			<strong><span class="title_top">中国通信建设第一工程局第六分公司电子报账系统</span></strong>
+			<strong><span class="title_top">手机报账系统</span></strong>
 		</div>
 
 		<div class="form">
