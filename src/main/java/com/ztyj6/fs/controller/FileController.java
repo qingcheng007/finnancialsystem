@@ -37,7 +37,7 @@ import com.alibaba.fastjson.JSONObject;
 public class FileController extends BaseController {
 
 	private static final String TYPE_QUESTION = "question";
-	private static final String TYPE_ADD_STUDENT_EXCEL = "addStudentExcel";
+	private static final String TYPE_ADD_INVOICE = "invoice";
 
 	private static final String UPLOAD_DIR = "upload";
 	private static final String TEMP_DIR = "temp";
@@ -78,7 +78,7 @@ public class FileController extends BaseController {
 			if (type.equals(TYPE_QUESTION)) {
 				savePath.append(application.getRealPath("/")).append(UPLOAD_DIR).append("/");
 				saveUrl.append(request.getContextPath()).append("/").append(UPLOAD_DIR).append("/");
-			} else if (type.equals(TYPE_ADD_STUDENT_EXCEL)) {
+			} else if (type.equals(TYPE_ADD_INVOICE)) {
 				savePath.append(application.getRealPath("/")).append(TEMP_DIR).append("/");
 				saveUrl.append(request.getContextPath()).append("/").append(TEMP_DIR).append("/");
 				//photoUrl.append("../../").append(TEMP_DIR).append("/");
@@ -137,7 +137,7 @@ public class FileController extends BaseController {
 					savePath.append(ymd).append("/");
 					saveUrl.append(ymd).append("/");
 
-				} else if (type.equals(TYPE_ADD_STUDENT_EXCEL)) {
+				} else if (type.equals(TYPE_ADD_INVOICE)) {
 					savePath.append(dirName).append("/");
 					saveUrl.append(dirName).append("/");
 					photoUrl.append(dirName).append("/");
@@ -168,7 +168,7 @@ public class FileController extends BaseController {
 				System.out.println(savePath);
 				System.out.println(saveUrl);
 				System.out.println(photoUrl);
-				if (type.equals(TYPE_ADD_STUDENT_EXCEL))
+				if (type.equals(TYPE_ADD_INVOICE))
 				{
 					obj.put("url", photoUrl + newFileName);
 				}

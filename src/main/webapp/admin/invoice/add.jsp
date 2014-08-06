@@ -91,7 +91,7 @@ $(function() {
 	$('#photoUrl').uploadify({
 		swf : '${pageContext.request.contextPath}/jslib/uploadify/uploadify.swf',
         cancelImg : '${pageContext.request.contextPath}/jslib/uploadify/uploadify-cancel.png',
-        uploader : '${pageContext.request.contextPath}/fileController/upload.do;jsessionid=<%=sessionid%>?type=addStudentExcel',
+        uploader : '${pageContext.request.contextPath}/fileController/upload.do;jsessionid=<%=sessionid%>?type=invoice',
 							multi : false,
 							queueSizeLimit : 1,
 							fileSizeLimit : '10MB',
