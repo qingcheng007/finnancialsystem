@@ -69,7 +69,14 @@
 						width : 80,
 						align : 'center',
 						sortable : true
-					},{
+					}, {
+						field : 'conent',
+						title : '费用内容',
+						width : 80,
+						align : 'center',
+						sortable : true
+					}
+					,{
 						field : 'invoicetype',
 						title : '发票类型',
 						width : 80,
@@ -98,14 +105,14 @@
 						} 
 					},
 					{
-						field : 'operatorid',
+						field : 'operatorId',
 						title : '经办人',
 						width : 70,
 						align : 'center',
 						sortable : true
 					},
 					{
-						field : 'proverid',
+						field : 'proverId',
 						title : '证明人',
 						width : 70,
 						align : 'center',
@@ -129,7 +136,7 @@
 						} 
 					},
 					{
-						field : 'auditor1id',
+						field : 'auditor1Id',
 						title : '审核人',
 						width : 70,
 						align : 'center',
@@ -152,7 +159,7 @@
 							return state;
 						} 
 					},{
-						field : 'auditor2id',
+						field : 'auditor2Id',
 						title : '审批人',
 						width : 70,
 						align : 'center',
@@ -173,10 +180,10 @@
 							case 2: state="审核不通过";break;
 							}
 							return state;
-						} 
+						}
 					},
 					{
-						field : 'dearerid',
+						field : 'dearerId',
 						title : '审票人',
 						width : 70,
 						align : 'center',
