@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ztyj6.fs.dao.InvoiceMapper">
 	<resultMap id="BaseResultMap" type="com.ztyj6.fs.model.Invoice">
-		<id column="AuditStateId" jdbcType="INTEGER" property="auditstateid" />
-		<id column="Auditor1Id" jdbcType="INTEGER" property="auditor1id" />
-		<id column="Auditor2Id" jdbcType="INTEGER" property="auditor2id" />
-		<id column="DearerId" jdbcType="INTEGER" property="dearerid" />
+		<id column="AuditStateId" jdbcType="INTEGER" property="auditstateId" />
+		<id column="Auditor1Id" jdbcType="INTEGER" property="auditor1Id" />
+		<id column="Auditor2Id" jdbcType="INTEGER" property="auditor2Id" />
+		<id column="DearerId" jdbcType="INTEGER" property="dearerId" />
 		<id column="Id" jdbcType="INTEGER" property="id" />
-		<id column="InvoiceDetailsId" jdbcType="INTEGER" property="invoicedetailsid" />
-		<id column="InvoiceTypeId" jdbcType="INTEGER" property="invoicetypeid" />
-		<id column="OperatorId" jdbcType="INTEGER" property="operatorid" />
-		<id column="ProverId" jdbcType="INTEGER" property="proverid" />
+		<id column="InvoiceDetailsId" jdbcType="INTEGER" property="invoicedetailsId" />
+		<id column="InvoiceTypeId" jdbcType="INTEGER" property="invoicetypeId" />
+		<id column="OperatorId" jdbcType="INTEGER" property="operatorId" />
+		<id column="ProverId" jdbcType="INTEGER" property="proverId" />
 		<result column="CreateDate" jdbcType="TIMESTAMP" property="createDate" />
 		<result column="OccurDate" jdbcType="TIMESTAMP" property="occurDate" />
 		<result column="Content" jdbcType="VARCHAR" property="content" />
@@ -300,22 +300,22 @@
 		select
 		<include refid="Base_Column_List" />
 		from Invoice
-		where AuditStateId = #{auditstateid,jdbcType=INTEGER}
+		where AuditStateId = #{auditstateId,jdbcType=INTEGER}
 		and
-		Auditor1Id = #{auditor1id,jdbcType=INTEGER}
+		Auditor1Id = #{auditor1Id,jdbcType=INTEGER}
 		and Auditor2Id =
-		#{auditor2id,jdbcType=INTEGER}
+		#{auditor2Id,jdbcType=INTEGER}
 		and DearerId =
-		#{dearerid,jdbcType=INTEGER}
+		#{dearerId,jdbcType=INTEGER}
 		and Id = #{id,jdbcType=INTEGER}
 		and
-		InvoiceDetailsId = #{invoicedetailsid,jdbcType=INTEGER}
+		InvoiceDetailsId = #{invoiceDetailsId,jdbcType=INTEGER}
 		and
-		InvoiceTypeId = #{invoicetypeid,jdbcType=INTEGER}
+		InvoiceTypeId = #{invoiceTypeId,jdbcType=INTEGER}
 		and OperatorId =
-		#{operatorid,jdbcType=INTEGER}
+		#{operatorId,jdbcType=INTEGER}
 		and ProverId =
-		#{proverid,jdbcType=INTEGER}
+		#{proverId,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteBatch" parameterType="java.util.List">
 		delete from Invoice where Id in
@@ -327,22 +327,22 @@
 	<delete id="deleteByPrimaryKey" parameterType="com.ztyj6.fs.model.InvoiceKey">
 		delete from
 		Invoice
-		where AuditStateId = #{auditstateid,jdbcType=INTEGER}
+		where AuditStateId = #{auditstateId,jdbcType=INTEGER}
 		and
-		Auditor1Id = #{auditor1id,jdbcType=INTEGER}
+		Auditor1Id = #{auditor1Id,jdbcType=INTEGER}
 		and Auditor2Id =
-		#{auditor2id,jdbcType=INTEGER}
+		#{auditor2Id,jdbcType=INTEGER}
 		and DearerId =
-		#{dearerid,jdbcType=INTEGER}
+		#{dearerId,jdbcType=INTEGER}
 		and Id = #{id,jdbcType=INTEGER}
 		and
-		InvoiceDetailsId = #{invoicedetailsid,jdbcType=INTEGER}
+		InvoiceDetailsId = #{invoiceDetailsId,jdbcType=INTEGER}
 		and
-		InvoiceTypeId = #{invoicetypeid,jdbcType=INTEGER}
+		InvoiceTypeId = #{invoiceTypeId,jdbcType=INTEGER}
 		and OperatorId =
-		#{operatorid,jdbcType=INTEGER}
+		#{operatorId,jdbcType=INTEGER}
 		and ProverId =
-		#{proverid,jdbcType=INTEGER}
+		#{proverId,jdbcType=INTEGER}
 	</delete>
 	<delete id="deleteByPrimaryID" parameterType="com.ztyj6.fs.model.InvoiceKey">
 		delete from
@@ -359,12 +359,12 @@
 		ProjectName, PhotoUrl, Remark
 		)
 		values
-		(#{auditstateid,jdbcType=INTEGER}, #{auditor1id,jdbcType=INTEGER},
-		#{auditor2id,jdbcType=INTEGER},
-		#{dearerid,jdbcType=INTEGER},
-		#{id,jdbcType=INTEGER}, #{invoicedetailsid,jdbcType=INTEGER},
-		#{invoicetypeid,jdbcType=INTEGER}, #{operatorid,jdbcType=INTEGER},
-		#{proverid,jdbcType=INTEGER},
+		(#{auditstateId,jdbcType=INTEGER}, #{auditor1Id,jdbcType=INTEGER},
+		#{auditor2Id,jdbcType=INTEGER},
+		#{dearerId,jdbcType=INTEGER},
+		#{id,jdbcType=INTEGER}, #{invoiceDetailsId,jdbcType=INTEGER},
+		#{invoiceTypeId,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER},
+		#{proverId,jdbcType=INTEGER},
 		#{createDate,jdbcType=TIMESTAMP},
 		#{occurDate,jdbcType=TIMESTAMP}, #{content,jdbcType=VARCHAR},
 		#{money,jdbcType=DECIMAL}, #{penalty,jdbcType=DECIMAL},
@@ -376,31 +376,31 @@
 	<insert id="insertSelective" parameterType="com.ztyj6.fs.model.Invoice">
 		insert into Invoice
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="auditstateid != null">
+			<if test="auditstateId != null">
 				AuditStateId,
 			</if>
-			<if test="auditor1id != null">
+			<if test="auditor1Id != null">
 				Auditor1Id,
 			</if>
-			<if test="auditor2id != null">
+			<if test="auditor2Id != null">
 				Auditor2Id,
 			</if>
-			<if test="dearerid != null">
+			<if test="dearerId != null">
 				DearerId,
 			</if>
 			<if test="id != null">
 				Id,
 			</if>
-			<if test="invoicedetailsid != null">
+			<if test="invoiceDetailsId != null">
 				InvoiceDetailsId,
 			</if>
-			<if test="invoicetypeid != null">
+			<if test="invoicetypeId != null">
 				InvoiceTypeId,
 			</if>
-			<if test="operatorid != null">
+			<if test="operatorId != null">
 				OperatorId,
 			</if>
-			<if test="proverid != null">
+			<if test="proverId != null">
 				ProverId,
 			</if>
 			<if test="createDate != null">
@@ -432,32 +432,32 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="auditstateid != null">
-				#{auditstateid,jdbcType=INTEGER},
+			<if test="auditstateId != null">
+				#{auditstateId,jdbcType=INTEGER},
 			</if>
-			<if test="auditor1id != null">
-				#{auditor1id,jdbcType=INTEGER},
+			<if test="auditor1Id != null">
+				#{auditor1Id,jdbcType=INTEGER},
 			</if>
-			<if test="auditor2id != null">
-				#{auditor2id,jdbcType=INTEGER},
+			<if test="auditor2Id != null">
+				#{auditor2Id,jdbcType=INTEGER},
 			</if>
-			<if test="dearerid != null">
-				#{dearerid,jdbcType=INTEGER},
+			<if test="dearerId != null">
+				#{dearerId,jdbcType=INTEGER},
 			</if>
 			<if test="id != null">
 				#{id,jdbcType=INTEGER},
 			</if>
-			<if test="invoicedetailsid != null">
-				#{invoicedetailsid,jdbcType=INTEGER},
+			<if test="invoicedetailsId != null">
+				#{invoicedetailsId,jdbcType=INTEGER},
 			</if>
-			<if test="invoicetypeid != null">
-				#{invoicetypeid,jdbcType=INTEGER},
+			<if test="invoicetypeId != null">
+				#{invoicetypeId,jdbcType=INTEGER},
 			</if>
-			<if test="operatorid != null">
-				#{operatorid,jdbcType=INTEGER},
+			<if test="operatorId != null">
+				#{operatorId,jdbcType=INTEGER},
 			</if>
-			<if test="proverid != null">
-				#{proverid,jdbcType=INTEGER},
+			<if test="proverId != null">
+				#{proverId,jdbcType=INTEGER},
 			</if>
 			<if test="createDate != null">
 				#{createDate,jdbcType=TIMESTAMP},
@@ -523,22 +523,22 @@
 				Remark = #{remark,jdbcType=VARCHAR},
 			</if>
 		</set>
-		where AuditStateId = #{auditstateid,jdbcType=INTEGER}
+		where AuditStateId = #{auditstateId,jdbcType=INTEGER}
 		and Auditor1Id =
-		#{auditor1id,jdbcType=INTEGER}
+		#{auditor1Id,jdbcType=INTEGER}
 		and Auditor2Id =
-		#{auditor2id,jdbcType=INTEGER}
+		#{auditor2Id,jdbcType=INTEGER}
 		and DearerId =
-		#{dearerid,jdbcType=INTEGER}
+		#{dearerId,jdbcType=INTEGER}
 		and Id = #{id,jdbcType=INTEGER}
 		and
-		InvoiceDetailsId = #{invoicedetailsid,jdbcType=INTEGER}
+		InvoiceDetailsId = #{invoiceDetailsId,jdbcType=INTEGER}
 		and
-		InvoiceTypeId = #{invoicetypeid,jdbcType=INTEGER}
+		InvoiceTypeId = #{invoiceTypeId,jdbcType=INTEGER}
 		and OperatorId =
-		#{operatorid,jdbcType=INTEGER}
+		#{operatorId,jdbcType=INTEGER}
 		and ProverId =
-		#{proverid,jdbcType=INTEGER}
+		#{proverId,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.ztyj6.fs.model.Invoice">
 		update Invoice
@@ -558,22 +558,22 @@
 		#{photoUrl,jdbcType=VARCHAR},
 		Remark = #{remark,jdbcType=VARCHAR}
 		where
-		AuditStateId = #{auditstateid,jdbcType=INTEGER}
+		AuditStateId = #{auditstateId,jdbcType=INTEGER}
 		and Auditor1Id =
-		#{auditor1id,jdbcType=INTEGER}
+		#{auditor1Id,jdbcType=INTEGER}
 		and Auditor2Id =
-		#{auditor2id,jdbcType=INTEGER}
+		#{auditor2Id,jdbcType=INTEGER}
 		and DearerId =
-		#{dearerid,jdbcType=INTEGER}
+		#{dearerId,jdbcType=INTEGER}
 		and Id = #{id,jdbcType=INTEGER}
 		and
-		InvoiceDetailsId = #{invoicedetailsid,jdbcType=INTEGER}
+		InvoiceDetailsId = #{invoiceDetailsId,jdbcType=INTEGER}
 		and
-		InvoiceTypeId = #{invoicetypeid,jdbcType=INTEGER}
+		InvoiceTypeId = #{invoiceTypeId,jdbcType=INTEGER}
 		and OperatorId =
-		#{operatorid,jdbcType=INTEGER}
+		#{operatorId,jdbcType=INTEGER}
 		and ProverId =
-		#{proverid,jdbcType=INTEGER}
+		#{proverId,jdbcType=INTEGER}
 	</update>
 	
 </mapper>

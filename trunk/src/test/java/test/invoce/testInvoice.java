@@ -149,8 +149,8 @@ public class testInvoice {
 		invoiceDetails.setContent2("2");
 		invoiceDetails.setContent3("3");
 		invoice.setInvoiceDetails(invoiceDetails);
-		invoice.setAuditor1id(1);
-		invoice.setAuditor2id(1);
+		invoice.setAuditor1Id(1);
+		invoice.setAuditor2Id(1);
 		invoice.setContent("1");
 		Date m=new Date();
 		
@@ -165,21 +165,21 @@ public class testInvoice {
 			}
 		
 		invoice.setCreateDate(m);
-		invoice.setDearerid(1);
+		invoice.setDearerId(1);
 		invoice.setDescription("1");
 		InvoiceType invoiceType = new InvoiceType();
 		invoiceType.setId(1);
 		invoice.setInvoiceType(invoiceType);
 		System.out.println(invoice.getInvoiceType().getId());
-		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
+		invoice.setInvoiceTypeId(invoice.getInvoiceType().getId());
 		BigDecimal b = new BigDecimal("100.1");
 		invoice.setMoney(b);
 		invoice.setOccurDate(m);
-		invoice.setOperatorid(1);
+		invoice.setOperatorId(1);
 		invoice.setPenalty(b);
 		invoice.setPhotoUrl("11");
 		invoice.setProjectName("121");
-		invoice.setProverid(1);
+		invoice.setProverId(1);
 		invoice.setRemark("test");
 		invoice.setAuditState(auditState);
 		//iInvoiceService.saveAuditStateInitialise(invoice.getAuditState());

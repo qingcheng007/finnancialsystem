@@ -1,54 +1,54 @@
 package com.ztyj6.fs.model;
 
 public class InvoiceKey {
-    private Integer auditstateid;
+    private Integer auditstateId;
 
-    private Integer auditor1id;
+    private Integer auditor1Id;
 
-    private Integer auditor2id;
+    private Integer auditor2Id;
 
-    private Integer dearerid;
+    private Integer dearerId;
 
     private Integer id;
 
-    private Integer invoicedetailsid;
+    private Integer invoiceDetailsId;
 
-    private Integer invoicetypeid;
+    private Integer invoiceTypeId;
 
-    private Integer operatorid;
+    private Integer operatorId;
 
-    private Integer proverid;
+    private Integer proverId;
 
-    public Integer getAuditstateid() {
-        return auditstateid;
+    public Integer getAuditstateId() {
+        return auditstateId;
     }
 
-    public void setAuditstateid(Integer auditstateid) {
-        this.auditstateid = auditstateid;
+    public void setAuditstateId(Integer auditstateId) {
+        this.auditstateId = auditstateId;
     }
 
-    public Integer getAuditor1id() {
-        return auditor1id;
+    public Integer getAuditor1Id() {
+        return auditor1Id;
     }
 
-    public void setAuditor1id(Integer auditor1id) {
-        this.auditor1id = auditor1id;
+    public void setAuditor1Id(Integer auditor1Id) {
+        this.auditor1Id = auditor1Id;
     }
 
-    public Integer getAuditor2id() {
-        return auditor2id;
+    public Integer getAuditor2Id() {
+        return auditor2Id;
     }
 
-    public void setAuditor2id(Integer auditor2id) {
-        this.auditor2id = auditor2id;
+    public void setAuditor2Id(Integer auditor2Id) {
+        this.auditor2Id = auditor2Id;
     }
 
-    public Integer getDearerid() {
-        return dearerid;
+    public Integer getDearerId() {
+        return dearerId;
     }
 
-    public void setDearerid(Integer dearerid) {
-        this.dearerid = dearerid;
+    public void setDearerId(Integer dearerId) {
+        this.dearerId = dearerId;
     }
 
     public Integer getId() {
@@ -59,35 +59,35 @@ public class InvoiceKey {
         this.id = id;
     }
 
-    public Integer getInvoicedetailsid() {
-        return invoicedetailsid;
+    public Integer getInvoiceDetailsId() {
+        return invoiceDetailsId;
     }
 
-    public void setInvoicedetailsid(Integer invoicedetailsid) {
-        this.invoicedetailsid = invoicedetailsid;
+    public void setInvoiceDetailsId(Integer invoiceDetailsId) {
+        this.invoiceDetailsId = invoiceDetailsId;
     }
 
-    public Integer getInvoicetypeid() {
-        return invoicetypeid;
+    public Integer getInvoiceTypeId() {
+        return invoiceTypeId;
     }
 
-    public void setInvoicetypeid(Integer invoicetypeid) {
-        this.invoicetypeid = invoicetypeid;
+    public void setInvoiceTypeId(Integer invoiceTypeId) {
+        this.invoiceTypeId = invoiceTypeId;
     }
 
-    public Integer getOperatorid() {
-        return operatorid;
+    public Integer getOperatorId() {
+        return operatorId;
     }
 
-    public void setOperatorid(Integer operatorid) {
-        this.operatorid = operatorid;
+    public void setOperatorId(Integer operatorId) {
+        this.operatorId = operatorId;
     }
 
-    public Integer getProverid() {
-        return proverid;
+    public Integer getProverId() {
+        return proverId;
     }
 
-    public void setProverid(Integer proverid) {
-        this.proverid = proverid;
+    public void setProverId(Integer proverId) {
+        this.proverId = proverId;
     }
 }
