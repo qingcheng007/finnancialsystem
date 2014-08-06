@@ -109,7 +109,7 @@
 										}
 									},
 									{
-										field : 'proverid',
+										field : 'proverId',
 										title : '证明人',
 										width : 70,
 										align : 'center',
@@ -139,7 +139,7 @@
 										}
 									},
 									{
-										field : 'auditor1id',
+										field : 'auditor1Id',
 										title : '审核人',
 										width : 70,
 										align : 'center',
@@ -168,7 +168,7 @@
 										}
 									},
 									{
-										field : 'auditor2id',
+										field : 'auditor2Id',
 										title : '审批人',
 										width : 70,
 										align : 'center',
@@ -197,7 +197,7 @@
 										}
 									},
 									{
-										field : 'dearerid',
+										field : 'dearerId',
 										title : '审票人',
 										width : 70,
 										align : 'center',

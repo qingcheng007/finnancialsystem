@@ -20,10 +20,10 @@
 	var cls = parent.$.modalDialog.row;
 	$(function() {
 		$('#id').attr('value', cls.id);
-		$('#proverId').attr('value', cls.proverid);
-		$('#audit1Id').attr('value', cls.auditor1id);
-		$('#audit2Id').attr('value', cls.auditor2id);
-		$('#dearerId').attr('value', cls.dearerid);
+		$('#proverId').attr('value', cls.proverId);
+		$('#audit1Id').attr('value', cls.auditor1Id);
+		$('#audit2Id').attr('value', cls.auditor2Id);
+		$('#dearerId').attr('value', cls.dearerId);
 		console.info(cls);
 		
 		$('select').prop({'disabled':true});
@@ -117,7 +117,7 @@
 		invoiceDetails = cls.invoiceDetails;
 		invoice.invoiceType = invoiceType;
 		invoice.invoiceDetails = invoiceDetails;
-		auditState.id = cls.auditstateid;
+		auditState.id = cls.auditStateId;
 		auditState.prover = $('#proverauditState').combobox('getValue');
 		auditState.auditor1 = $('#audit1State').combobox('getValue');
 		auditState.auditor2 = $('#audit2State').combobox('getValue');
@@ -132,8 +132,8 @@
 		invoice.dearerId = $('#dearerId').val();
 		console.info(cls);
 		invoice.money = cls.money;
-		invoice.auditStateId = cls.auditstateid;
-		console.info(cls.auditstateid);
+		invoice.auditStateId = cls.auditStateId;
+		console.info(cls.auditStateId);
 
 		invoice.auditState = auditState;
 

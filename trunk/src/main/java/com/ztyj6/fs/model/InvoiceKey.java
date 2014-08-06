@@ -1,7 +1,7 @@
 package com.ztyj6.fs.model;
 
 public class InvoiceKey {
-    private Integer auditstateId;
+    private Integer auditStateId;
 
     private Integer auditor1Id;
 
@@ -19,12 +19,12 @@ public class InvoiceKey {
 
     private Integer proverId;
 
-    public Integer getAuditstateId() {
-        return auditstateId;
+    public Integer getAuditStateId() {
+        return auditStateId;
     }
 
-    public void setAuditstateId(Integer auditstateId) {
-        this.auditstateId = auditstateId;
+    public void setAuditstateId(Integer auditStateId) {
+        this.auditStateId = auditStateId;
     }
 
     public Integer getAuditor1Id() {
