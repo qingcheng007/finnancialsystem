@@ -105,8 +105,7 @@
 											var url = "${pageContext.request.contextPath}/"
 													+ row.photoUrl;
 											var btn = '<img src="'+ url +'"/>';
-											var urlphoto='<a href=\"javascript:void(0);\" class=\"easyui-linkbutton\"data-options=\"iconCls:\'icon-add\',plain:true\" onclick=\"showPhoto(\"'+url+'\");\">查看图片</a>';
-											return urlphoto;
+											return btn;
 										}
 									},
 									{
@@ -248,16 +247,6 @@
 		});
 		parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');
 	}
-	function showPhoto(url) {
-		console.info(url);
-		parent.$.modalDialog({
-			title : '添加报帐目发票信息',
-		//	width : 1024,
-		//	height : 460,
-			url : '${pageContext.request.contextPath}/admin/invoice/showPhoto.jsp?url='+url
-		});
-		parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');
-	}
 	function check(id) {
 		console.info(id);
 		parent.$
@@ -319,7 +308,8 @@
 									for ( var i = 0; i < rows.length; i++)
 										ids.push(rows[i].id);
 
-									$.ajax({
+									$
+											.ajax({
 												url : '${pageContext.request.contextPath}/invoiceController/delete.do',
 												type : 'POST',
 												data : {
