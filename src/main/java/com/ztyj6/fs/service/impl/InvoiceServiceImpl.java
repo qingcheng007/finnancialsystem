@@ -147,10 +147,10 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		// this.saveInvoiceTypeSelective(invoice.getInvoiceType());
 		this.saveInvoiceDetailsSelective(invoice.getInvoiceDetails());
 		System.out.println("-----------------detailsID:"+invoice.getInvoiceDetails().getId());
-		invoice.setInvoicedetailsid(invoice.getInvoiceDetails().getId());
+		invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
 		this.saveAuditStateInitialise(invoice.getAuditState());
 		System.out.println("-----------------"+invoice.getAuditState().getId());
-		invoice.setAuditstateid(invoice.getAuditState().getId());
+		invoice.setAuditstateId(invoice.getAuditState().getId());
 		invoiceMapper.insertSelective(invoice);
 		return 0;
 	}

@@ -110,8 +110,8 @@ public class InvoiceController extends BaseController {
 			
 		//	invoice.setCreatedate(createdate);
 			// invoice.setOccurdate(occurdate);
-			invoice.setInvoicedetailsid(((Invoice) (ctx.getAuthentication()
-					.getPrincipal())).getInvoicetypeid());
+			invoice.setInvoiceDetailsId(((Invoice) (ctx.getAuthentication()
+					.getPrincipal())).getInvoiceTypeId());
 			iInvoiceService.save(invoice);
 			// Invoice invoiceReturn = new Invoice();
 			// invoiceReturn = iInvoiceService.getById(invoice.getId());
@@ -143,8 +143,8 @@ public class InvoiceController extends BaseController {
 		invoice.setCreateDate(currentDate);
 		
 		// invoice.setDearerid(1);
-		invoice.setInvoicedetailsid(invoice.getInvoiceDetails().getId());
-		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
+		invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
+		invoice.setInvoiceTypeId(invoice.getInvoiceType().getId());
 		
 		//Date createdate = new Date();
 		
@@ -155,7 +155,7 @@ public class InvoiceController extends BaseController {
 			BigDecimal rate = new BigDecimal("0.1");
 			BigDecimal calculatePenalty = iInvoiceService.calculatePenalty(
 					invoice, rate);
-			int proverid = invoice.getProverid();
+			int proverid = invoice.getProverId();
 			System.out.println("prover" + proverid);
 			Balance balance = new Balance();
 			BigDecimal available = null;
@@ -209,8 +209,8 @@ public class InvoiceController extends BaseController {
 		iInvoiceService.updateAuditStateOnly(auditState);
 		// 需要修改
 		// invoice.setDearerid(1);
-		invoice.setInvoicedetailsid(invoice.getInvoiceDetails().getId());
-		invoice.setInvoicetypeid(invoice.getInvoiceType().getId());
+		invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
+		invoice.setInvoiceTypeId(invoice.getInvoiceType().getId());
 
 		//
 		// BigeDecimal rate = iInvoiceService.getRate();
@@ -225,7 +225,7 @@ public class InvoiceController extends BaseController {
 		// balance = role.get();
 		BigDecimal frozen = null;
 		BigDecimal available = null;
-		int proverid = invoice.getProverid();
+		int proverid = invoice.getProverId();
 		BigDecimal money = null;
 		money = invoice.getMoney().subtract(calculatePenalty);
 		// frozen = money;
