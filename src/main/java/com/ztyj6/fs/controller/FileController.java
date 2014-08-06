@@ -79,19 +79,16 @@ public class FileController extends BaseController {
 				savePath.append(application.getRealPath("/")).append(UPLOAD_DIR).append("/");
 				saveUrl.append(request.getContextPath()).append("/").append(UPLOAD_DIR).append("/");
 			} else if (type.equals(TYPE_ADD_STUDENT_EXCEL)) {
-				//savePath.append(application.getRealPath("/")).append(TEMP_DIR).append("/");
-				savePath.append(application.getRealPath("/")).append(UPLOAD_DIR).append("/");
+				savePath.append(application.getRealPath("/")).append(TEMP_DIR).append("/");
 				saveUrl.append(request.getContextPath()).append("/").append(TEMP_DIR).append("/");
 				//photoUrl.append("../../").append(TEMP_DIR).append("/");
-				//photoUrl.append(TEMP_DIR).append("/");
-				photoUrl.append(UPLOAD_DIR).append("/");
+				photoUrl.append(TEMP_DIR).append("/");
 			}
 		} else
 			return getError("类型不能为空。");
 
 		// 检查目录
-		//File uploadDir = new File(savePath.toString());
-		File uploadDir = new File(photoUrl.toString());
+		File uploadDir = new File(savePath.toString());
 		if (!uploadDir.isDirectory()) {
 			if (!uploadDir.exists()) {
 				uploadDir.mkdirs();
@@ -159,8 +156,6 @@ public class FileController extends BaseController {
 				SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
 				String newFileName = df.format(new Date()) + "_" + new Random().nextInt(1000) + "." + fileExt;
 				try {
-					//File uploadedFile = new File(savePath.toString(), newFileName);
-					
 					File uploadedFile = new File(savePath.toString(), newFileName);
 					item.write(uploadedFile);
 				} catch (Exception e) {

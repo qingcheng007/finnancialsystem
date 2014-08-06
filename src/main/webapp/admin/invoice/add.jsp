@@ -285,7 +285,7 @@ $(function() {
 		//invoice.auditor1Id = $('#auditor1Id').val();
 		//invoice.auditor2Id = $('#auditor2Id').val();
 		invoice.remark = $('#remark').val();
-		invoice.Photourl = $('#photoUrl').val();
+		invoice.photoUrl = $('#photoUrl').val();
 		//invoice.dearerId = $('#dearerId').val();
 		invoice.dearerId = $('#dearerId').combobox('getValue');
 		invoice.proverId = $('#proverId').combobox('getValue');
