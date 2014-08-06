@@ -14,15 +14,16 @@
 										title : node.text,
 										iconCls : node.iconCls
 									});
+									
 								}
-								if(node.state=='closed')
-								{$(this).tree('expand',node.target);}
-								else{  
-                    $(this).tree('collapse',node.target);//点击文字关闭菜单  
-                }  
+								$(this).tree('expand',node.target);
+								
 							},
 						});
+						
 	});
+
+
 	var mainTab = $('#admin_index_center_tabs');
 	function addTab(params) {
 		if (mainTab.tabs('exists', params.title)) {
