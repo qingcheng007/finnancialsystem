@@ -107,14 +107,15 @@ $(function() {
 	});
 	function submit() {
 		//if($('#invoice_add_form input[name=photoUrl]').val()==null)
-		if (document.getElementById("photoUrl").value == null) {
-			$.messager.show({
-				title : '提示',
-				msg : '图片信息为空',
-				timeout : 2000,
-				showType : 'slide'
-			});
-		} else if ($('#invoice_add_form').form('validate')) {
+	//	if (document.getElementById("photoUrl").value == null) {
+		//	$.messager.show({
+		//		title : '提示',
+		//		msg : '图片信息为空',
+		//		timeout : 2000,
+		//		showType : 'slide'
+		//	});
+	//	} else
+	 if ($('#invoice_add_form').form('validate')) {
 			$('#submit').linkbutton('disable');
 			var data = toJson();
 			$
