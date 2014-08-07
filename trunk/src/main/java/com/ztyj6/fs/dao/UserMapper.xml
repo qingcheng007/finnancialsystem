@@ -38,6 +38,7 @@
 		from User
 	</select>
 	
+	
 	<select id="selectPartion" resultMap="BaseResultMap">
 	SELECT
 	`User`.Id,
@@ -45,6 +46,14 @@
 	`User`.RealName
 	FROM
 	`User`
+	</select>
+	
+	<select id="selectByUserId" resultMap="BaseResultMap">
+	SELECT
+	`User`.UserName,
+	FROM
+	`User`
+	where Id = #{id,jdbcType=INTEGER}
 	</select>
 	
 	<delete id="deleteByPrimaryKey" parameterType="com.ztyj6.fs.model.User">
