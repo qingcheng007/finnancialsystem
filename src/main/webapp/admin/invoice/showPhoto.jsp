@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
   String showphoto = "<img src=\""+ url +"\"/>";
   out.println(showphoto);
-  out.println(url); %>
+  %>
     
   </body>
 </html>
