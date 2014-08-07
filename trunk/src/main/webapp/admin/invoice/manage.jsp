@@ -105,7 +105,8 @@
 											var url = "${pageContext.request.contextPath}/"
 													+ row.photoUrl;
 											var btn = '<img src="'+ url +'"/>';
-											var urlphoto='<a href=\"javascript:void(0);\" class=\"easyui-linkbutton\"data-options=\"iconCls:\'icon-add\',plain:true\" onclick=\"showPhoto(\"'+url+'\");\">查看图片</a>';
+											var urlphoto='<a href=\"javascript:void(0);\" class=\"easyui-linkbutton\" data-options=\"iconCls:\'icon-add\',plain:true\" onclick=\"showPhoto(\''+url+'\');\">查看图片</a>';
+											console.info(urlphoto);
 											return urlphoto;
 										}
 									},
@@ -250,13 +251,26 @@
 	}
 	function showPhoto(url) {
 		console.info(url);
+		var urltest = "${pageContext.request.contextPath}/";
+		if(urltest==url)
+		{
+		$.messager.show({
+				title : '提示',
+				msg : '发票没有加入图片',
+				timeout : 2000,
+				showType : 'slide'
+			});
+		
+		}else
+		{
 		parent.$.modalDialog({
-			title : '添加报帐目发票信息',
-		//	width : 1024,
-		//	height : 460,
+			title : '图片详细信息',
+			width : 1024,
+			height : 460,
 			url : '${pageContext.request.contextPath}/admin/invoice/showPhoto.jsp?url='+url
 		});
 		parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');
+		}
 	}
 	function check(id) {
 		console.info(id);
