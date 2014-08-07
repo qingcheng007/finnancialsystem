@@ -51,4 +51,10 @@ public void TestSelectBalanceById()
 	Balance b = userService.getBalanceById(1);
 	System.out.println(b.getAvailable()+"-"+b.getFrozen());
 }
+@Test
+public void TestSelectRealNameById()
+{
+	String	RealName = userService.getRealNameById(4);
+	System.out.println(RealName);
+}
 }
