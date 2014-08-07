@@ -23,7 +23,7 @@
 		LastLoginDate,
 		LastLoginIp, CreateIp, CreateDate, IsEnable
 	</sql>
-		
+
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="com.ztyj6.fs.model.User">
 		select
@@ -31,31 +31,34 @@
 		from User
 		where Id = #{id,jdbcType=INTEGER}
 	</select>
-	
+
 	<select id="selectAll" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
 		from User
 	</select>
-	
-	
+
+	<select id="selectRealNameById" resultType="java.lang.String">
+		SELECT RealName FROM User WHERE Id = #{id,jdbcType=INTEGER}
+	</select>
+
 	<select id="selectPartion" resultMap="BaseResultMap">
-	SELECT
-	`User`.Id,
-	`User`.UserName,
-	`User`.RealName
-	FROM
-	`User`
+		SELECT
+		`User`.Id,
+		`User`.UserName,
+		`User`.RealName
+		FROM
+		`User`
 	</select>
-	
+
 	<select id="selectByUserId" resultMap="BaseResultMap">
-	SELECT
-	`User`.UserName,
-	FROM
-	`User`
-	where User.Id = #{id,jdbcType=VARCHAR}
+		SELECT
+		`User`.UserName,
+		FROM
+		`User`
+		where User.Id = #{id,jdbcType=VARCHAR}
 	</select>
-	
+
 	<delete id="deleteByPrimaryKey" parameterType="com.ztyj6.fs.model.User">
 		delete from User
 		where Id = #{id,jdbcType=INTEGER}
@@ -253,7 +256,8 @@
 
 	<resultMap id="ExtendResultMap1" type="com.ztyj6.fs.model.User"
 		extends="BaseResultMap">
-		<collection property="balance" javaType="list" ofType="com.ztyj6.fs.model.Balance">
+		<collection property="balance" javaType="list"
+			ofType="com.ztyj6.fs.model.Balance">
 			<id property="id" column="balance_id" />
 			<result column="Available" property="available" />
 			<result column="Frozen" property="frozen" />
@@ -279,7 +283,8 @@
 		Balance.Frozen
 		FROM
 		`User`
-		INNER JOIN Balance ON `User`.BalanceId = Balance.Id
+		INNER JOIN Balance ON `User`.BalanceId =
+		Balance.Id
 		<where>
 			<if test="pageFilter.keyword != null">
 				User.UserName like #{pageFilter.keyword,jdbcType=VARCHAR}
@@ -292,12 +297,13 @@
 			</if>
 		</where>
 	</select>
-		<resultMap id="Balance" type="com.ztyj6.fs.model.Balance" >
-			<id property="id" jdbcType="INTEGER" column="Balance_id"/>
-			<result property="available" jdbcType="DECIMAL" column="Balance_available"/>
-			<result property="frozen" jdbcType="DECIMAL" column="Balance_frozen"/>
+	<resultMap id="Balance" type="com.ztyj6.fs.model.Balance">
+		<id property="id" jdbcType="INTEGER" column="Balance_id" />
+		<result property="available" jdbcType="DECIMAL" column="Balance_available" />
+		<result property="frozen" jdbcType="DECIMAL" column="Balance_frozen" />
 	</resultMap>
-		<select id="selectBalanceById"  parameterType="java.lang.Integer" resultMap="Balance">
+	<select id="selectBalanceById" parameterType="java.lang.Integer"
+		resultMap="Balance">
 		SELECT
 		`User`.Id,
 		`User`.UserName,
@@ -313,16 +319,18 @@
 		`User`.ParentId,
 		`User`.BalanceId,
 		Balance.Id Balance_id,
-		Balance.Available Balance_available,
+		Balance.Available
+		Balance_available,
 		Balance.Frozen Balance_frozen
 		FROM
 		`User`
-		INNER JOIN Balance ON `User`.BalanceId = Balance.Id
+		INNER JOIN
+		Balance ON `User`.BalanceId = Balance.Id
 		<where>
-				User.Id = #{id,jdbcType=VARCHAR}
+			User.Id = #{id,jdbcType=VARCHAR}
 		</where>
 	</select>
-		<select id="selectbalanceById" resultMap="ExtendResultMap1">
+	<select id="selectbalanceById" resultMap="ExtendResultMap1">
 		SELECT
 		`User`.Id,
 		`User`.UserName,
@@ -338,51 +346,56 @@
 		`User`.ParentId,
 		`User`.BalanceId,
 		Balance.Id User_id,
-		Balance.Available Balance_available,
+		Balance.Available
+		Balance_available,
 		Balance.Frozen Balance_frozen
 		FROM
 		`User`
-		INNER JOIN Balance ON `User`.BalanceId = Balance.Id
+		INNER JOIN
+		Balance ON `User`.BalanceId = Balance.Id
 		<where>
-				User.Id = #{id,jdbcType=VARCHAR}
+			User.Id = #{id,jdbcType=VARCHAR}
 		</where>
 	</select>
-	
+
 	<select id="selectByUrl" resultMap="BaseResultMap">
-	SELECT
-	R_Role_Resource.Id,
-	Role.Id,
-	R_User_Role.Id,
-	R_User_Role.UserId,
-	R_User_Role.RoleId,
-	`User`.`Password`,
-	`User`.Id,
-	`User`.UserName,
-	`User`.RealName,
-	Resource.Url,
-	R_Role_Resource.ResourceId,
-	R_Role_Resource.RoleId,
-	`User`.Phone,
-	`User`.Email,
-	`User`.LastLoginDate,
-	`User`.LastLoginIp,
-	`User`.CreateIp,
-	`User`.CreateDate,
-	`User`.IsEnable,
-	`User`.ParentId,
-	`User`.BalanceId
-	FROM
-	resource
-	INNER JOIN R_Role_Resource ON R_Role_Resource.ResourceId = Resource.Id
-	INNER JOIN Role ON R_Role_Resource.RoleId = Role.Id
-	INNER JOIN R_User_Role ON R_User_Role.RoleId = Role.Id
-	INNER JOIN `User` ON R_User_Role.UserId = `User`.Id
+		SELECT
+		R_Role_Resource.Id,
+		Role.Id,
+		R_User_Role.Id,
+		R_User_Role.UserId,
+		R_User_Role.RoleId,
+		`User`.`Password`,
+		`User`.Id,
+		`User`.UserName,
+		`User`.RealName,
+		Resource.Url,
+		R_Role_Resource.ResourceId,
+		R_Role_Resource.RoleId,
+		`User`.Phone,
+		`User`.Email,
+		`User`.LastLoginDate,
+		`User`.LastLoginIp,
+		`User`.CreateIp,
+		`User`.CreateDate,
+		`User`.IsEnable,
+		`User`.ParentId,
+		`User`.BalanceId
+		FROM
+		resource
+		INNER JOIN R_Role_Resource ON R_Role_Resource.ResourceId =
+		Resource.Id
+		INNER JOIN Role ON R_Role_Resource.RoleId = Role.Id
+		INNER
+		JOIN R_User_Role ON R_User_Role.RoleId = Role.Id
+		INNER JOIN `User` ON
+		R_User_Role.UserId = `User`.Id
 		<where>
-				Resource.Url = #{url,jdbcType=VARCHAR}
+			Resource.Url = #{url,jdbcType=VARCHAR}
 		</where>
 	</select>
-	
-	<select id="selectByIdFilter"  resultMap="ExtendResultMap1">
+
+	<select id="selectByIdFilter" resultMap="ExtendResultMap1">
 		SELECT
 		`User`.Id,
 		`User`.UserName,
@@ -402,9 +415,10 @@
 		Balance.Frozen
 		FROM
 		`User`
-		INNER JOIN Balance ON `User`.BalanceId = Balance.Id
+		INNER JOIN Balance ON `User`.BalanceId =
+		Balance.Id
 		WHERE `User`.Id= #{id,jdbcType=INTEGER}
-			<where>
+		<where>
 			<if test="pageFilter.keyword != null">
 				User.UserName like #{pageFilter.keyword,jdbcType=VARCHAR}
 				or User.RealName like #{pageFilter.keyword,jdbcType=VARCHAR}

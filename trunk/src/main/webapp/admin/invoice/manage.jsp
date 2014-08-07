@@ -245,7 +245,7 @@
 			title : '添加报帐目发票信息',
 		//	width : 1024,
 			height : 460,
-			url : '${pageContext.request.contextPath}/admin/invoice/addRank.jsp'
+			url : '${pageContext.request.contextPath}/admin/invoice/add.jsp'
 		});
 		parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');
 	}

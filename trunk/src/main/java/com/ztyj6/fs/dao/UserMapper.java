@@ -60,4 +60,6 @@ public interface UserMapper {
     int countByUsername(String username);
     
     Balance selectBalanceById(int id);
+    
+    String selectRealNameById(int id);
 }

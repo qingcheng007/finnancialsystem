@@ -182,6 +182,11 @@ public Balance getBanlanceById(int id) {
 		return userMapper.selectBalanceById(id);
 	}
 
+	@Override
+	public String getRealNameById(Integer id) {
+		return userMapper.selectRealNameById(id);
+	}
+
 
 
 }
