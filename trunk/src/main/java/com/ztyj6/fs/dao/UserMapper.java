@@ -45,7 +45,7 @@ public interface UserMapper {
     
     List selectPartion();
     
-    List selectByUserId();
+    List selectByUserId(@Param("id") Integer id);
     
     User selectByUrl(@Param("url") String url);
     

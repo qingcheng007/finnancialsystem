@@ -53,7 +53,7 @@
 	`User`.UserName,
 	FROM
 	`User`
-	where Id = #{id,jdbcType=INTEGER}
+	where User.Id = #{id,jdbcType=VARCHAR}
 	</select>
 	
 	<delete id="deleteByPrimaryKey" parameterType="com.ztyj6.fs.model.User">
