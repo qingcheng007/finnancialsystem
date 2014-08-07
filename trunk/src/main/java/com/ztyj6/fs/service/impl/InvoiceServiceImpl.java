@@ -15,6 +15,7 @@ import com.ztyj6.fs.dao.BalanceMapper;
 import com.ztyj6.fs.dao.InvoiceDetailsMapper;
 import com.ztyj6.fs.dao.InvoiceMapper;
 import com.ztyj6.fs.dao.InvoiceTypeMapper;
+import com.ztyj6.fs.dao.UserMapper;
 import com.ztyj6.fs.model.AuditState;
 import com.ztyj6.fs.model.Balance;
 import com.ztyj6.fs.model.Invoice;
@@ -36,12 +37,24 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	InvoiceTypeMapper invoiceTypeMapper;
 
 	AuditStateMapper auditStateMapper;
-	
+
 	BalanceMapper balanceMapper;
+
+	public UserMapper getUserMapper() {
+		return userMapper;
+	}
+
+	@Autowired
+	public void setUserMapper(UserMapper userMapper) {
+		this.userMapper = userMapper;
+	}
+
+	UserMapper userMapper;
 
 	public BalanceMapper getBalanceMapper() {
 		return balanceMapper;
 	}
+
 	@Autowired
 	public void setBalanceMapper(BalanceMapper balanceMapper) {
 		this.balanceMapper = balanceMapper;
@@ -117,22 +130,24 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		return invoiceDetailsMapper.selectMaxID();
 	}
 
-/*	@Override
-	public int insertInvoiceTypeSelective(InvoiceType invoiceType) {
-
-		return invoiceTypeMapper.insertSelective(invoiceType);
-
-	}*/
+	/*
+	 * @Override public int insertInvoiceTypeSelective(InvoiceType invoiceType)
+	 * {
+	 * 
+	 * return invoiceTypeMapper.insertSelective(invoiceType);
+	 * 
+	 * }
+	 */
 
 	@Override
 	public int saveInvoiceTypeSelective(InvoiceType invoiceType) {
 		return invoiceTypeMapper.insertSelective(invoiceType);
 	}
 
-/*	@Override
-	public int insertInvoiceTypeAll(InvoiceType invoiceType) {
-		return invoiceTypeMapper.insert(invoiceType);
-	}*/
+	/*
+	 * @Override public int insertInvoiceTypeAll(InvoiceType invoiceType) {
+	 * return invoiceTypeMapper.insert(invoiceType); }
+	 */
 
 	@Override
 	public int saveInvoiceDetailsSelective(InvoiceDetails invoiceDetails) {
@@ -146,10 +161,12 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	public int saveInvoiceAllSelective(Invoice invoice) {
 		// this.saveInvoiceTypeSelective(invoice.getInvoiceType());
 		this.saveInvoiceDetailsSelective(invoice.getInvoiceDetails());
-		System.out.println("-----------------detailsID:"+invoice.getInvoiceDetails().getId());
+		System.out.println("-----------------detailsID:"
+				+ invoice.getInvoiceDetails().getId());
 		invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
 		this.saveAuditStateInitialise(invoice.getAuditState());
-		System.out.println("-----------------"+invoice.getAuditState().getId());
+		System.out.println("-----------------"
+				+ invoice.getAuditState().getId());
 		invoice.setAuditstateId(invoice.getAuditState().getId());
 		invoiceMapper.insertSelective(invoice);
 		return 0;
@@ -191,7 +208,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 				.getAuditState());
 
 	}
-	
+
 	@Override
 	public int updateAuditStateOnly(AuditState auditState) {
 		return auditStateMapper.updateByPrimaryKeySelective(auditState);
@@ -213,7 +230,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 
 		List<String> arrays = Arrays.asList(ids.split(","));
 		invoiceMapper.deleteBatch(arrays);
-//		invoiceMapper.deleteByPrimaryID(Integer.parseInt(ids));
+		// invoiceMapper.deleteByPrimaryID(Integer.parseInt(ids));
 
 	}
 
@@ -244,20 +261,64 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	public DataGrid getByPage(PageFilter pageFilter) {
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();
-		PageList roles = (PageList) invoiceMapper.selectByPage(pageFilter,pageBounds);
+		PageList roles = (PageList) invoiceMapper.selectByPage(pageFilter,
+				pageBounds);
+		for (int i = 0; i < roles.size(); i++) {
+			Invoice invoiceAddName = (Invoice) roles.get(i);
+			for (int j = 1; j <= 5; j++) {
+				int id = 0;
+				String realName = "";
+				switch (j) {
+				case 1: {
+					id = invoiceAddName.getProverId();
+					realName = userMapper.selectRealNameById(id);
+					invoiceAddName.setProverName(realName);
+				}
+					break;
+				case 2: {
+					id = invoiceAddName.getOperatorId();
+					realName = userMapper.selectRealNameById(id);
+					invoiceAddName.setOperatorName(realName);
+				}
+					break;
+				case 3: {
+					id = invoiceAddName.getAuditor1Id();
+					realName = userMapper.selectRealNameById(id);
+					invoiceAddName.setAuditor1Name(realName);
+				}
+					break;
+				case 4: {
+					id = invoiceAddName.getAuditor2Id();
+					realName = userMapper.selectRealNameById(id);
+					invoiceAddName.setAuditor2Name(realName);
+				}
+					break;
+				case 5: {
+					id = invoiceAddName.getDearerId();
+					realName = userMapper.selectRealNameById(id);
+					invoiceAddName.setDearerName(realName);
+				}
+					break;
+				}
+			}
+			roles.set(i, invoiceAddName);
+			////
+		}
 		dg.setRows(roles);
 		dg.setTotal(roles.getPaginator().getTotalCount());
 		return dg;
 	}
+
 	@Override
 	public DataGrid getPageById(PageFilter pageFilter, int id) {
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();
-		PageList roles = (PageList) invoiceMapper.selectPageById(pageBounds,id);
+		PageList roles = (PageList) invoiceMapper
+				.selectPageById(pageBounds, id);
 		dg.setRows(roles);
 		dg.setTotal(roles.getPaginator().getTotalCount());
 		return dg;
-		
+
 	}
 
 	@Override
@@ -265,7 +326,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	// 查询发票主表的总数
 	@Override
 	public Long count() {
@@ -278,9 +339,8 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	}
 
 	@Override
-	public BigDecimal calculatePenalty(Invoice invoice,BigDecimal rate) {
-		//BigDecimal rate = new BigDecimal("0.1");
-		
+	public BigDecimal calculatePenalty(Invoice invoice, BigDecimal rate) {
+		// BigDecimal rate = new BigDecimal("0.1");
 
 		long to = invoice.getCreateDate().getTime();
 		long from = invoice.getOccurDate().getTime();
@@ -299,15 +359,12 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	@Override
 	public int saveBalance(Balance balance) {
 		return balanceMapper.insertSelective(balance);
-		
+
 	}
+
 	@Override
 	public int updateBalance(Balance balance) {
 		return balanceMapper.updateByPrimaryKeySelective(balance);
 	}
-
-
-
-
 
 }
