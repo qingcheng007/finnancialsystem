@@ -54,7 +54,7 @@ public void TestSelectBalanceById()
 @Test
 public void TestSelectRealNameById()
 {
-	String	RealName = userService.getRealNameById(4);
+	String	RealName = userService.getRealNameById(1);
 	System.out.println(RealName);
 }
 }
