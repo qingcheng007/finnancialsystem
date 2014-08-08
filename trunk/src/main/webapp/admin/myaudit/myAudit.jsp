@@ -64,15 +64,21 @@
 						} 
 					},
 					{
-						field : 'projectname',
+						field : 'projectName',
 						title : '工程名字',
 						width : 80,
+						align : 'center',
+						sortable : true
+					},{
+						field : 'operatorName',
+						title : '经办人',
+						width : 70,
 						align : 'center',
 						sortable : true
 					},
 					
 					{
-						field : 'proverid',
+						field : 'proverName',
 						title : '证明人',
 						width : 70,
 						align : 'center',
@@ -96,7 +102,7 @@
 						} 
 					},
 					{
-						field : 'auditor1id',
+						field : 'auditor1Name',
 						title : '审核人',
 						width : 70,
 						align : 'center',
@@ -119,7 +125,7 @@
 							return state;
 						} 
 					},{
-						field : 'auditor2id',
+						field : 'auditor2Name',
 						title : '审批人',
 						width : 70,
 						align : 'center',
@@ -143,7 +149,7 @@
 						} 
 					},
 					{
-						field : 'dearerid',
+						field : 'dearerName',
 						title : '审票人',
 						width : 70,
 						align : 'center',
