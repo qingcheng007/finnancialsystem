@@ -323,8 +323,7 @@ public class InvoiceController extends BaseController {
 		String id = request.getParameter("id");
 		System.out.println(id);
 		try {
-			return iInvoiceService
-					.getPageById(pageFilter, Integer.parseInt(id));
+			return iInvoiceService.getPageById(pageFilter, Integer.parseInt(id));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

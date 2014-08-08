@@ -313,8 +313,48 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	public DataGrid getPageById(PageFilter pageFilter, int id) {
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();
-		PageList roles = (PageList) invoiceMapper
-				.selectPageById(pageBounds, id);
+		PageList roles = (PageList) invoiceMapper.selectPageById(pageBounds, id);
+		for (int i = 0; i < roles.size(); i++) {
+			Invoice invoiceAddName = (Invoice) roles.get(i);
+			for (int j = 1; j <= 5; j++) {
+				int idRealName = 0;
+				String realName = "";
+				switch (j) {
+				case 1: {
+					idRealName = invoiceAddName.getProverId();
+					realName = userMapper.selectRealNameById(idRealName);
+					invoiceAddName.setProverName(realName);
+				}
+					break;
+				case 2: {
+					idRealName = invoiceAddName.getOperatorId();
+					realName = userMapper.selectRealNameById(idRealName);
+					invoiceAddName.setOperatorName(realName);
+				}
+					break;
+				case 3: {
+					idRealName = invoiceAddName.getAuditor1Id();
+					realName = userMapper.selectRealNameById(idRealName);
+					invoiceAddName.setAuditor1Name(realName);
+				}
+					break;
+				case 4: {
+					idRealName = invoiceAddName.getAuditor2Id();
+					realName = userMapper.selectRealNameById(idRealName);
+					invoiceAddName.setAuditor2Name(realName);
+				}
+					break;
+				case 5: {
+					idRealName = invoiceAddName.getDearerId();
+					realName = userMapper.selectRealNameById(idRealName);
+					invoiceAddName.setDearerName(realName);
+				}
+					break;
+				}
+			}
+			roles.set(i, invoiceAddName);
+			////
+		}
 		dg.setRows(roles);
 		dg.setTotal(roles.getPaginator().getTotalCount());
 		return dg;
