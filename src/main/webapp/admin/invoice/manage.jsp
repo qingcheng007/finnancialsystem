@@ -98,15 +98,15 @@
 									},
 									{
 										field : 'photourl',
-										title : '图片URL',
-										width : 180,
+										title : '图片',
+										width : 80,
 										align : 'center',
 										formatter : function(value, row, index) {
 											var url = "${pageContext.request.contextPath}/"
 													+ row.photoUrl;
 											var btn = '<img src="'+ url +'"/>';
 											var urlphoto='<a href=\"javascript:void(0);\" class=\"easyui-linkbutton\" data-options=\"iconCls:\'icon-add\',plain:true\" onclick=\"showPhoto(\''+url+'\');\">查看图片</a>';
-											console.info(urlphoto);
+											//console.info(urlphoto);
 											return urlphoto;
 										}
 									},
@@ -232,7 +232,17 @@
 										width : 80,
 										align : 'center',
 										sortable : true
-									} ] ],
+									} ,{
+										field : 'information',
+										title : '查看',
+										width : 100,
+										align : 'center',
+										formatter : function(value, row, index) {
+										var btn = '<a onclick="invoiceCheck()" href="javascript:void(0)">查看发票详情</a>';
+										return btn;
+						} 
+					},
+									] ],
 							toolbar : '#admin_invoice_manage_toolbar',
 							onLoadSuccess : function() {
 
@@ -243,7 +253,7 @@
 	function add() {
 		parent.$.modalDialog({
 			title : '添加报帐目发票信息',
-		//	width : 1024,
+			width : 380,
 			height : 460,
 			url : '${pageContext.request.contextPath}/admin/invoice/add.jsp'
 		});
@@ -274,15 +284,42 @@
 	}
 	function check(id) {
 		console.info(id);
-		parent.$
-				.modalDialog({
+		parent.$.modalDialog({
 					title : '查看详细信息',
 					width : 800,
 					height : 550,
-					url : '${pageContext.request.contextPath}/admin/invoice/check.jsp?id='
-							+ id
+					url : '${pageContext.request.contextPath}/admin/invoice/check.jsp?id='+ id
 				});
 		parent.$.modalDialog.DataGrid = $('#admin_question_manage_dataGrid');
+	}
+	function invoiceCheck(){
+		var rows = $('#admin_invoice_manage_dataGrid').datagrid('getChecked');
+		if (rows.length == 1) {
+			parent.$.modalDialog({
+				title : '发票详细信息',
+				width : 600,
+				height : 600,
+				url : '${pageContext.request.contextPath}/admin/invoice/check.jsp'
+			});
+			parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');
+			parent.$.modalDialog.row = rows[0];
+		} else {
+			if (rows.length == 0) {
+				parent.$.messager.show({
+					title : '提示',
+					msg : '请勾选要查看的发票记录！',
+					timeout : 2000,
+					showType : 'slide'
+				});
+			} else {
+				parent.$.messager.show({
+					title : '提示',
+					msg : '每次只能查看一个记录，请勾选一个记录！',
+					timeout : 2000,
+					showType : 'slide'
+				});
+			}
+		}
 	}
 	function addStudent() {
 
