@@ -13,7 +13,7 @@
 	var passid=${authentication.id};
 //	var passid=1;
 	
-		$('#admin_site_manage_dataGrid')
+		$('#admin_invoice_manage_dataGrid')
 		.datagrid(
 				{
 					url : '${pageContext.request.contextPath}/invoiceController/geTPageById.do?id='+passid,
@@ -70,7 +70,7 @@
 						align : 'center',
 						sortable : true
 					}, {
-						field : 'conent',
+						field : 'content',
 						title : '费用内容',
 						width : 80,
 						align : 'center',
@@ -95,24 +95,25 @@
 					},
 					{
 						field : 'photourl',
-						title : '图片URL',
-						width : 180,
+						title : '图片',
+						width : 80,
 						align : 'center',
 						formatter : function(value, row, index) {
-							var url="${pageContext.request.contextPath}/"+row.photoUrl;
-							var btn = '<img src="'+ url +'"/>';
-							return btn;
-						} 
-					},
+						var url = "${pageContext.request.contextPath}/"+ row.photoUrl;
+						var btn = '<img src="'+ url +'"/>';
+						var urlphoto='<a href=\"javascript:void(0);\" class=\"easyui-linkbutton\" data-options=\"iconCls:\'icon-add\',plain:true\" onclick=\"showPhoto(\''+url+'\');\">查看图片</a>';
+						return urlphoto;
+						}
+						},
 					{
-						field : 'operatorId',
+						field : 'operatorName',
 						title : '经办人',
 						width : 70,
 						align : 'center',
 						sortable : true
 					},
 					{
-						field : 'proverId',
+						field : 'proverName',
 						title : '证明人',
 						width : 70,
 						align : 'center',
@@ -136,7 +137,7 @@
 						} 
 					},
 					{
-						field : 'auditor1Id',
+						field : 'auditor1Name',
 						title : '审核人',
 						width : 70,
 						align : 'center',
@@ -159,7 +160,7 @@
 							return state;
 						} 
 					},{
-						field : 'auditor2Id',
+						field : 'auditor2Name',
 						title : '审批人',
 						width : 70,
 						align : 'center',
@@ -183,7 +184,7 @@
 						}
 					},
 					{
-						field : 'dearerId',
+						field : 'dearerName',
 						title : '审票人',
 						width : 70,
 						align : 'center',
@@ -213,7 +214,7 @@
 						align : 'center',
 						sortable : true
 					}] ],
-					toolbar : '#admin_site_manage_toolbar',
+					toolbar : '#admin_invoiceAudti_manage_toolbar',
 					onLoadSuccess : function() {
 						
 					},
@@ -228,7 +229,7 @@
 			height : 260,
 			url:'${pageContext.request.contextPath}/admin/invoice/add.jsp?'
 		});
-		parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');
+		parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');
 	}
 		function check(id){
 		console.info(id);
@@ -240,13 +241,33 @@
 		});
 		parent.$.modalDialog.DataGrid = $('#admin_question_manage_dataGrid');
 	}
-	function addStudent(){
+	function showPhoto(url) {
+		console.info(url);
+		var urltest = "${pageContext.request.contextPath}/";
+		if(urltest==url)
+		{
+		$.messager.show({
+				title : '提示',
+				msg : '发票没有加入图片',
+				timeout : 2000,
+				showType : 'slide'
+			});
 		
+		}else
+		{
+		parent.$.modalDialog({
+			title : '图片详细信息',
+			width : 1024,
+			height : 460,
+			url : '${pageContext.request.contextPath}/admin/invoice/showPhoto.jsp?url='+url
+		});
+		parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');
+		}
 	}
 	
 	function audit() {
 		var passid=2;
-		var rows = $('#admin_site_manage_dataGrid').datagrid('getChecked');
+		var rows = $('#admin_invoice_manage_dataGrid').datagrid('getChecked');
 		if (rows.length == 1) {
 			parent.$.modalDialog({
 				title : '审批发票',
@@ -254,7 +275,7 @@
 				//height : 260,
 				url : '${pageContext.request.contextPath}/admin/invoice/audit.jsp?id='+passid
 			});
-			parent.$.modalDialog.DataGrid = $('#admin_site_manage_dataGrid');
+			parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');
 			parent.$.modalDialog.row = rows[0];
 		} else {
 			if (rows.length == 0) {
@@ -304,7 +325,7 @@
 		}
 	}
 	function deleteBatch(){
-		var rows = $('#admin_site_manage_dataGrid').datagrid('getChecked');
+		var rows = $('#admin_invoice_manage_dataGrid').datagrid('getChecked');
 		if(rows.length > 0){
 			parent.$.messager.confirm('询问', '您确定要删除此记录？', function(r) {
 				if (r) {
@@ -327,7 +348,7 @@
 						           timeout:2000,
 						           showType:'slide'
 						    });
-							$('#admin_site_manage_dataGrid').datagrid('load');
+							$('#admin_invoice_manage_dataGrid').datagrid('load');
 				      	},
 				      	error: function(){
 							parent.$.messager.show({
@@ -351,14 +372,14 @@
 	}
 	
 	function refresh() {
-		$('#admin_site_manage_dataGrid').datagrid('reload');
+		$('#admin_invoice_manage_dataGrid').datagrid('reload');
 	}
 </script>
 
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit : true,border : false">
-		<div id="admin_site_manage_toolbar">
+		<div id="admin_invoiceAudti_manage_toolbar">
 			<table>
 				<tr>
 				<%-- 	<sec:authorize url="/invoiceController/add.do">
@@ -382,7 +403,7 @@
 			</table>
 		</div>
 		<div data-options="region:'center',border:false">
-			<table id="admin_site_manage_dataGrid"></table>
+			<table id="admin_invoice_manage_dataGrid"></table>
 		</div>
 	</div>
 </body>

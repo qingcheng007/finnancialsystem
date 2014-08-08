@@ -115,7 +115,7 @@
 </head>
 <body>
 	<form id="admin_invoice_check_form">
-		<table>
+		<table border="1px">
 
 
 
