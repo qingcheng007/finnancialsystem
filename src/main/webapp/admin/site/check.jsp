@@ -16,7 +16,7 @@ var cls = parent.$.modalDialog.row;
 	});
 	
 	function closeDialog() {
-		$.modalDialog.handler.dialog('close');
+		parent.$.modalDialog.handler.dialog('close');
 	}
 </script>
 </head>
@@ -50,6 +50,9 @@ var cls = parent.$.modalDialog.row;
 			<tr>
 				<td>工程名</td>
 				<td><input id="projectName" name="projectName" type="text" style="width:300px;height:80px" readOnly/></td>
+			</tr>
+			<tr>
+			  <td colspan='2' style="text-align: center;"><a href="#" class="easyui-linkbutton" onclick="closeDialog()">关闭</a>
 			</tr>
 		</table>
 	</form>
