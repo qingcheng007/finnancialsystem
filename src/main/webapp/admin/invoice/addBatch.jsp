@@ -7,9 +7,10 @@
 <html>
 <head>
 <jsp:include page="../../include/easyui.jsp"></jsp:include>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/style/css/dialog.css" type="text/css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/jslib/uploadify/jquery.uploadify.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/jslib/uploadify/uploadify.css" type="text/css">
+<link rel="stylesheet" href="../../style/css/dialog.css" type="text/css">
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/jslib/uploadify/jquery.uploadify.min.js"></script> --%>
+<script type="text/javascript" src="../../jslib/uploadify/jquery.uploadify.min.js"></script>
+<link rel="stylesheet" href="../../jslib/uploadify/uploadify.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
 $(function() {
 	$('#class').combobox({

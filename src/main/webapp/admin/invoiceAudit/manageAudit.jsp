@@ -274,7 +274,35 @@
 			}
 		}
 	}
-	
+		function invoiceCheck(){
+		var rows = $('#admin_invoice_manage_dataGrid').datagrid('getChecked');
+		if (rows.length == 1) {
+			parent.$.modalDialog({
+				title : '发票详细信息',
+				width : 600,
+				height : 600,
+				url : '${pageContext.request.contextPath}/admin/invoice/checkAudit.jsp'
+			});
+			parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');
+			parent.$.modalDialog.row = rows[0];
+		} else {
+			if (rows.length == 0) {
+				parent.$.messager.show({
+					title : '提示',
+					msg : '请勾选要查看的发票记录！',
+					timeout : 2000,
+					showType : 'slide'
+				});
+			} else {
+				parent.$.messager.show({
+					title : '提示',
+					msg : '每次只能查看一个记录，请勾选一个记录！',
+					timeout : 2000,
+					showType : 'slide'
+				});
+			}
+		}
+	}
 	function deleteBatch(){
 		var rows = $('#admin_site_manage_dataGrid').datagrid('getChecked');
 		if(rows.length > 0){
@@ -339,6 +367,10 @@
 					</sec:authorize> --%>
 					<sec:authorize url="/invoiceController/edit.do">
 					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="audit();">审批</a></td>
+					<td><div class="datagrid-btn-separator"></div></td>
+					</sec:authorize>
+					<sec:authorize url="/invoiceController/add.do">
+					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="invoiceCheck();">查看发票详情</a></td>
 					<td><div class="datagrid-btn-separator"></div></td>
 					</sec:authorize>
 					<sec:authorize url="/invoiceController/delete.do">

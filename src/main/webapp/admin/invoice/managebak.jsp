@@ -232,7 +232,16 @@
 										width : 80,
 										align : 'center',
 										sortable : true
-									} 
+									} ,{
+										field : 'information',
+										title : '查看',
+										width : 100,
+										align : 'center',
+										formatter : function(value, row, index) {
+										var btn = '<a onclick="invoiceCheck()" href="javascript:void(0)">查看发票详情</a>';
+										return btn;
+						} 
+					},
 									] ],
 							toolbar : '#admin_invoice_manage_toolbar',
 							onLoadSuccess : function() {
