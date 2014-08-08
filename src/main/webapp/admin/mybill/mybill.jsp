@@ -42,13 +42,13 @@
 						sortable : true,
 					},
 					{
-						field : 'createdate',
+						field : 'createDate',
 						title : '录入时间',
 						width : 100,
 						align : 'center',
 						sortable : true
 					}, {
-						field : 'occurdate',
+						field : 'occurDate',
 						title : '发生时间',
 						width : 100,
 						align : 'center',
@@ -76,7 +76,7 @@
 						} 
 					},
 					{
-						field : 'projectname',
+						field : 'projectName',
 						title : '工程名字',
 						width : 80,
 						align : 'center',
