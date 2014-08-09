@@ -98,7 +98,6 @@ public class UserController extends BaseController {
 		}
 	}
 	
-
 	
 
 	@ResponseBody
