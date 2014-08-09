@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.734" errors="1" skipped="0" tests="3" name="test.post.PostTest">
+<testsuite failures="0" time="0.762" errors="1" skipped="0" tests="3" name="test.post.PostTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="D:\Program Files\Java\jdk1.7.0_45\jre\bin"/>
@@ -26,7 +26,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
-    <property name="classworlds.conf" value="F:\myclipse\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf4292528855833635526.tmp"/>
+    <property name="classworlds.conf" value="F:\myclipse\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf7804848095024508105.tmp"/>
     <property name="sun.jnu.encoding" value="GBK"/>
     <property name="java.library.path" value="D:\Program Files\Java\jdk1.7.0_45\jre\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;D:/MyEclipse Professional/binary/com.sun.java.jdk.win32.x86_1.6.0.u43/jre/bin/client;D:/MyEclipse Professional/binary/com.sun.java.jdk.win32.x86_1.6.0.u43/jre/bin;D:/MyEclipse Professional/binary/com.sun.java.jdk.win32.x86_1.6.0.u43/jre/lib/i386;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Windows Live\Shared;D:\Program Files\TortoiseSVN\bin;D:\Program Files\Java\jdk1.7.0_45\bin;D:\Program Files\Java\jdk1.7.0_45\jre\bin;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -60,7 +60,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase time="0.203" classname="test.post.PostTest" name="addTset">
+  <testcase time="0.23" classname="test.post.PostTest" name="addTset">
     <error message="
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;100&apos; for key 1
 ### The error may involve com.ztyj6.fs.dao.PostMapper.insert-Inline
@@ -183,160 +183,160 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:358)
 	... 57 more
 </error>
-    <system-out>2014-08-09 10:31:12 DEBUG org.springframework.test.context.support.DirtiesContextTestExecutionListener  - After test class: context [DefaultTestContext@1a32fd1 testClass = UserTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@1032d84 testClass = UserTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], dirtiesContext [false].
-DEBUG [main] - After test class: context [DefaultTestContext@1a32fd1 testClass = UserTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@1032d84 testClass = UserTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], dirtiesContext [false].
-2014-08-09 10:31:12 DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner  - SpringJUnit4ClassRunner constructor called with [class test.post.PostTest].
+    <system-out>2014-08-09 17:35:21 DEBUG org.springframework.test.context.support.DirtiesContextTestExecutionListener  - After test class: context [DefaultTestContext@1c7e176 testClass = UserTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@98746b testClass = UserTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], dirtiesContext [false].
+DEBUG [main] - After test class: context [DefaultTestContext@1c7e176 testClass = UserTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@98746b testClass = UserTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], dirtiesContext [false].
+2014-08-09 17:35:21 DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner  - SpringJUnit4ClassRunner constructor called with [class test.post.PostTest].
 DEBUG [main] - SpringJUnit4ClassRunner constructor called with [class test.post.PostTest].
-2014-08-09 10:31:12 DEBUG org.springframework.test.context.support.AbstractDelegatingSmartContextLoader  - Delegating to GenericXmlContextLoader to process context configuration [ContextConfigurationAttributes@94b1d4 declaringClass = &apos;test.post.PostTest&apos;, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, inheritLocations = true, initializers = &apos;{}&apos;, inheritInitializers = true, name = [null], contextLoaderClass = &apos;org.springframework.test.context.ContextLoader&apos;].
-DEBUG [main] - Delegating to GenericXmlContextLoader to process context configuration [ContextConfigurationAttributes@94b1d4 declaringClass = &apos;test.post.PostTest&apos;, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, inheritLocations = true, initializers = &apos;{}&apos;, inheritInitializers = true, name = [null], contextLoaderClass = &apos;org.springframework.test.context.ContextLoader&apos;].
-2014-08-09 10:31:12 DEBUG org.springframework.test.context.ContextLoaderUtils  - Could not find an &apos;annotation declaring class&apos; for annotation type [org.springframework.test.context.ActiveProfiles] and class [test.post.PostTest]
+2014-08-09 17:35:21 DEBUG org.springframework.test.context.support.AbstractDelegatingSmartContextLoader  - Delegating to GenericXmlContextLoader to process context configuration [ContextConfigurationAttributes@1ffb8d1 declaringClass = &apos;test.post.PostTest&apos;, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, inheritLocations = true, initializers = &apos;{}&apos;, inheritInitializers = true, name = [null], contextLoaderClass = &apos;org.springframework.test.context.ContextLoader&apos;].
+DEBUG [main] - Delegating to GenericXmlContextLoader to process context configuration [ContextConfigurationAttributes@1ffb8d1 declaringClass = &apos;test.post.PostTest&apos;, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, inheritLocations = true, initializers = &apos;{}&apos;, inheritInitializers = true, name = [null], contextLoaderClass = &apos;org.springframework.test.context.ContextLoader&apos;].
+2014-08-09 17:35:21 DEBUG org.springframework.test.context.ContextLoaderUtils  - Could not find an &apos;annotation declaring class&apos; for annotation type [org.springframework.test.context.ActiveProfiles] and class [test.post.PostTest]
 DEBUG [main] - Could not find an &apos;annotation declaring class&apos; for annotation type [org.springframework.test.context.ActiveProfiles] and class [test.post.PostTest]
-2014-08-09 10:31:12 DEBUG org.springframework.test.context.TestContextManager  - @TestExecutionListeners is not present for class [class test.post.PostTest]: using defaults.
+2014-08-09 17:35:21 DEBUG org.springframework.test.context.TestContextManager  - @TestExecutionListeners is not present for class [class test.post.PostTest]: using defaults.
 DEBUG [main] - @TestExecutionListeners is not present for class [class test.post.PostTest]: using defaults.
-2014-08-09 10:31:12 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.post.PostTest]
+2014-08-09 17:35:21 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.post.PostTest]
 DEBUG [main] - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.post.PostTest]
-2014-08-09 10:31:12 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.post.PostTest]
+2014-08-09 17:35:21 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.post.PostTest]
 DEBUG [main] - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.post.PostTest]
-2014-08-09 10:31:12 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.post.PostTest]
+2014-08-09 17:35:21 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.post.PostTest]
 DEBUG [main] - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.post.PostTest]
-2014-08-09 10:31:12 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.post.PostTest]
+2014-08-09 17:35:21 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.post.PostTest]
 DEBUG [main] - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.post.PostTest]
-2014-08-09 10:31:12 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.post.PostTest]
+2014-08-09 17:35:21 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.post.PostTest]
 DEBUG [main] - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.post.PostTest]
-2014-08-09 10:31:12 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.post.PostTest]
+2014-08-09 17:35:21 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.post.PostTest]
 DEBUG [main] - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.post.PostTest]
-2014-08-09 10:31:12 DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener  - Performing dependency injection for test context [[DefaultTestContext@26ec29 testClass = PostTest, testInstance = test.post.PostTest@15aa3ef, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@1c0aadc testClass = PostTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
-DEBUG [main] - Performing dependency injection for test context [[DefaultTestContext@26ec29 testClass = PostTest, testInstance = test.post.PostTest@15aa3ef, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@1c0aadc testClass = PostTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
-2014-08-09 10:31:12 DEBUG org.springframework.test.context.CacheAwareContextLoaderDelegate  - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@1c0aadc testClass = PostTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
-DEBUG [main] - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@1c0aadc testClass = PostTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.annotation.InjectionMetadata  - Processing injected method of bean &apos;test.post.PostTest&apos;: AutowiredMethodElement for public void test.post.PostTest.setPostService(com.ztyj6.fs.service.IPostService)
+2014-08-09 17:35:21 DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener  - Performing dependency injection for test context [[DefaultTestContext@1bea571 testClass = PostTest, testInstance = test.post.PostTest@15fb113, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@1625a2d testClass = PostTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
+DEBUG [main] - Performing dependency injection for test context [[DefaultTestContext@1bea571 testClass = PostTest, testInstance = test.post.PostTest@15fb113, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@1625a2d testClass = PostTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
+2014-08-09 17:35:21 DEBUG org.springframework.test.context.CacheAwareContextLoaderDelegate  - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@1625a2d testClass = PostTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
+DEBUG [main] - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@1625a2d testClass = PostTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.annotation.InjectionMetadata  - Processing injected method of bean &apos;test.post.PostTest&apos;: AutowiredMethodElement for public void test.post.PostTest.setPostService(com.ztyj6.fs.service.IPostService)
 DEBUG [main] - Processing injected method of bean &apos;test.post.PostTest&apos;: AutowiredMethodElement for public void test.post.PostTest.setPostService(com.ztyj6.fs.service.IPostService)
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;postService&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;postService&apos;
 DEBUG [main] - Returning cached instance of singleton bean &apos;postService&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor  - Autowiring by type from bean name &apos;test.post.PostTest&apos; to bean named &apos;postService&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor  - Autowiring by type from bean name &apos;test.post.PostTest&apos; to bean named &apos;postService&apos;
 DEBUG [main] - Autowiring by type from bean name &apos;test.post.PostTest&apos; to bean named &apos;postService&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0&apos;
 DEBUG [main] - Returning cached instance of singleton bean &apos;org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0&apos;
 DEBUG [main] - Returning cached instance of singleton bean &apos;org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Creating new transaction with name [com.ztyj6.fs.service.impl.PostServiceImpl.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2014-08-09 17:35:21 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Creating new transaction with name [com.ztyj6.fs.service.impl.PostServiceImpl.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
 DEBUG [main] - Creating new transaction with name [com.ztyj6.fs.service.impl.PostServiceImpl.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
-2014-08-09 10:31:12 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] for JDBC transaction
-DEBUG [main] - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] for JDBC transaction
-2014-08-09 10:31:12 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] to manual commit
-DEBUG [main] - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] to manual commit
-2014-08-09 10:31:12 DEBUG org.mybatis.spring.SqlSessionUtils  - Creating a new SqlSession
+2014-08-09 17:35:21 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] for JDBC transaction
+DEBUG [main] - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] for JDBC transaction
+2014-08-09 17:35:21 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] to manual commit
+DEBUG [main] - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] to manual commit
+2014-08-09 17:35:21 DEBUG org.mybatis.spring.SqlSessionUtils  - Creating a new SqlSession
 DEBUG [main] - Creating a new SqlSession
-2014-08-09 10:31:12 DEBUG org.mybatis.spring.SqlSessionUtils  - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b09153]
-DEBUG [main] - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b09153]
-2014-08-09 10:31:12 DEBUG org.mybatis.spring.transaction.SpringManagedTransaction  - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] will be managed by Spring
-DEBUG [main] - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] will be managed by Spring
-2014-08-09 10:31:12 DEBUG com.ztyj6.fs.dao.PostMapper.insert  - ==&gt;  Preparing: insert into Post (Id, Name) values (?, ?) 
+2014-08-09 17:35:21 DEBUG org.mybatis.spring.SqlSessionUtils  - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@bd33ec]
+DEBUG [main] - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@bd33ec]
+2014-08-09 17:35:21 DEBUG org.mybatis.spring.transaction.SpringManagedTransaction  - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] will be managed by Spring
+DEBUG [main] - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] will be managed by Spring
+2014-08-09 17:35:21 DEBUG com.ztyj6.fs.dao.PostMapper.insert  - ==&gt;  Preparing: insert into Post (Id, Name) values (?, ?) 
 DEBUG [main] - ==&gt;  Preparing: insert into Post (Id, Name) values (?, ?) 
-2014-08-09 10:31:12 DEBUG com.ztyj6.fs.dao.PostMapper.insert  - ==&gt; Parameters: 100(Integer), ��ͨԱ��(String)
+2014-08-09 17:35:21 DEBUG com.ztyj6.fs.dao.PostMapper.insert  - ==&gt; Parameters: 100(Integer), ��ͨԱ��(String)
 DEBUG [main] - ==&gt; Parameters: 100(Integer), ��ͨԱ��(String)
-2014-08-09 10:31:12 DEBUG com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20006} enter cache
+2014-08-09 17:35:21 DEBUG com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20006} enter cache
 DEBUG [main] - {conn-10001, pstmt-20006} enter cache
-2014-08-09 10:31:12 DEBUG org.mybatis.spring.SqlSessionUtils  - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b09153]
-DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b09153]
-2014-08-09 10:31:12 DEBUG org.springframework.core.env.StandardEnvironment  - Adding [systemProperties] PropertySource with lowest search precedence
+2014-08-09 17:35:21 DEBUG org.mybatis.spring.SqlSessionUtils  - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@bd33ec]
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@bd33ec]
+2014-08-09 17:35:21 DEBUG org.springframework.core.env.StandardEnvironment  - Adding [systemProperties] PropertySource with lowest search precedence
 DEBUG [main] - Adding [systemProperties] PropertySource with lowest search precedence
-2014-08-09 10:31:12 DEBUG org.springframework.core.env.StandardEnvironment  - Adding [systemEnvironment] PropertySource with lowest search precedence
+2014-08-09 17:35:21 DEBUG org.springframework.core.env.StandardEnvironment  - Adding [systemEnvironment] PropertySource with lowest search precedence
 DEBUG [main] - Adding [systemEnvironment] PropertySource with lowest search precedence
-2014-08-09 10:31:12 DEBUG org.springframework.core.env.StandardEnvironment  - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+2014-08-09 17:35:21 DEBUG org.springframework.core.env.StandardEnvironment  - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
 DEBUG [main] - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
-2014-08-09 10:31:12 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader  - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2014-08-09 17:35:21 INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader  - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
  INFO [main] - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.xml.DefaultDocumentLoader  - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.xml.DefaultDocumentLoader  - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
 DEBUG [main] - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.xml.BeansDtdResolver  - Found beans DTD [http://www.springframework.org/dtd/spring-beans-2.0.dtd] in classpath: spring-beans-2.0.dtd
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.xml.BeansDtdResolver  - Found beans DTD [http://www.springframework.org/dtd/spring-beans-2.0.dtd] in classpath: spring-beans-2.0.dtd
 DEBUG [main] - Found beans DTD [http://www.springframework.org/dtd/spring-beans-2.0.dtd] in classpath: spring-beans-2.0.dtd
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader  - Loading bean definitions
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader  - Loading bean definitions
 DEBUG [main] - Loading bean definitions
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;DB2&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;DB2&apos;
 DEBUG [main] - Creating shared instance of singleton bean &apos;DB2&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;DB2&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;DB2&apos;
 DEBUG [main] - Creating instance of bean &apos;DB2&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;DB2&apos; to allow for resolving potential circular references
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;DB2&apos; to allow for resolving potential circular references
 DEBUG [main] - Eagerly caching bean &apos;DB2&apos; to allow for resolving potential circular references
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;DB2&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;DB2&apos;
 DEBUG [main] - Finished creating instance of bean &apos;DB2&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;Derby&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;Derby&apos;
 DEBUG [main] - Creating shared instance of singleton bean &apos;Derby&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;Derby&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;Derby&apos;
 DEBUG [main] - Creating instance of bean &apos;Derby&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;Derby&apos; to allow for resolving potential circular references
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;Derby&apos; to allow for resolving potential circular references
 DEBUG [main] - Eagerly caching bean &apos;Derby&apos; to allow for resolving potential circular references
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;Derby&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;Derby&apos;
 DEBUG [main] - Finished creating instance of bean &apos;Derby&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;H2&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;H2&apos;
 DEBUG [main] - Creating shared instance of singleton bean &apos;H2&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;H2&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;H2&apos;
 DEBUG [main] - Creating instance of bean &apos;H2&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;H2&apos; to allow for resolving potential circular references
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;H2&apos; to allow for resolving potential circular references
 DEBUG [main] - Eagerly caching bean &apos;H2&apos; to allow for resolving potential circular references
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;H2&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;H2&apos;
 DEBUG [main] - Finished creating instance of bean &apos;H2&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;HSQL&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;HSQL&apos;
 DEBUG [main] - Creating shared instance of singleton bean &apos;HSQL&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;HSQL&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;HSQL&apos;
 DEBUG [main] - Creating instance of bean &apos;HSQL&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;HSQL&apos; to allow for resolving potential circular references
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;HSQL&apos; to allow for resolving potential circular references
 DEBUG [main] - Eagerly caching bean &apos;HSQL&apos; to allow for resolving potential circular references
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;HSQL&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;HSQL&apos;
 DEBUG [main] - Finished creating instance of bean &apos;HSQL&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;Informix&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;Informix&apos;
 DEBUG [main] - Creating shared instance of singleton bean &apos;Informix&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;Informix&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;Informix&apos;
 DEBUG [main] - Creating instance of bean &apos;Informix&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;Informix&apos; to allow for resolving potential circular references
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;Informix&apos; to allow for resolving potential circular references
 DEBUG [main] - Eagerly caching bean &apos;Informix&apos; to allow for resolving potential circular references
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;Informix&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;Informix&apos;
 DEBUG [main] - Finished creating instance of bean &apos;Informix&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;MS-SQL&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;MS-SQL&apos;
 DEBUG [main] - Creating shared instance of singleton bean &apos;MS-SQL&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;MS-SQL&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;MS-SQL&apos;
 DEBUG [main] - Creating instance of bean &apos;MS-SQL&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;MS-SQL&apos; to allow for resolving potential circular references
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;MS-SQL&apos; to allow for resolving potential circular references
 DEBUG [main] - Eagerly caching bean &apos;MS-SQL&apos; to allow for resolving potential circular references
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;MS-SQL&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;MS-SQL&apos;
 DEBUG [main] - Finished creating instance of bean &apos;MS-SQL&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;MySQL&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;MySQL&apos;
 DEBUG [main] - Creating shared instance of singleton bean &apos;MySQL&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;MySQL&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;MySQL&apos;
 DEBUG [main] - Creating instance of bean &apos;MySQL&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;MySQL&apos; to allow for resolving potential circular references
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;MySQL&apos; to allow for resolving potential circular references
 DEBUG [main] - Eagerly caching bean &apos;MySQL&apos; to allow for resolving potential circular references
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;MySQL&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;MySQL&apos;
 DEBUG [main] - Finished creating instance of bean &apos;MySQL&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;Oracle&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;Oracle&apos;
 DEBUG [main] - Creating shared instance of singleton bean &apos;Oracle&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;Oracle&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;Oracle&apos;
 DEBUG [main] - Creating instance of bean &apos;Oracle&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;Oracle&apos; to allow for resolving potential circular references
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;Oracle&apos; to allow for resolving potential circular references
 DEBUG [main] - Eagerly caching bean &apos;Oracle&apos; to allow for resolving potential circular references
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;Oracle&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;Oracle&apos;
 DEBUG [main] - Finished creating instance of bean &apos;Oracle&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;PostgreSQL&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;PostgreSQL&apos;
 DEBUG [main] - Creating shared instance of singleton bean &apos;PostgreSQL&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;PostgreSQL&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;PostgreSQL&apos;
 DEBUG [main] - Creating instance of bean &apos;PostgreSQL&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;PostgreSQL&apos; to allow for resolving potential circular references
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;PostgreSQL&apos; to allow for resolving potential circular references
 DEBUG [main] - Eagerly caching bean &apos;PostgreSQL&apos; to allow for resolving potential circular references
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;PostgreSQL&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;PostgreSQL&apos;
 DEBUG [main] - Finished creating instance of bean &apos;PostgreSQL&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;Sybase&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating shared instance of singleton bean &apos;Sybase&apos;
 DEBUG [main] - Creating shared instance of singleton bean &apos;Sybase&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;Sybase&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Creating instance of bean &apos;Sybase&apos;
 DEBUG [main] - Creating instance of bean &apos;Sybase&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;Sybase&apos; to allow for resolving potential circular references
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Eagerly caching bean &apos;Sybase&apos; to allow for resolving potential circular references
 DEBUG [main] - Eagerly caching bean &apos;Sybase&apos; to allow for resolving potential circular references
-2014-08-09 10:31:12 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;Sybase&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Finished creating instance of bean &apos;Sybase&apos;
 DEBUG [main] - Finished creating instance of bean &apos;Sybase&apos;
-2014-08-09 10:31:12 INFO  org.springframework.jdbc.support.SQLErrorCodesFactory  - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+2014-08-09 17:35:21 INFO  org.springframework.jdbc.support.SQLErrorCodesFactory  - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
  INFO [main] - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
-2014-08-09 10:31:12 DEBUG org.springframework.jdbc.support.SQLErrorCodesFactory  - Looking up default SQLErrorCodes for DataSource [{
-	CreateTime:&quot;2014-08-09 10:31:08&quot;,
+2014-08-09 17:35:21 DEBUG org.springframework.jdbc.support.SQLErrorCodesFactory  - Looking up default SQLErrorCodes for DataSource [{
+	CreateTime:&quot;2014-08-09 17:35:17&quot;,
 	ActiveCount:1,
 	PoolingCount:0,
 	CreateCount:0,
@@ -350,7 +350,7 @@ DEBUG [main] - Finished creating instance of bean &apos;Sybase&apos;
 [
 ]]
 DEBUG [main] - Looking up default SQLErrorCodes for DataSource [{
-	CreateTime:&quot;2014-08-09 10:31:08&quot;,
+	CreateTime:&quot;2014-08-09 17:35:17&quot;,
 	ActiveCount:1,
 	PoolingCount:0,
 	CreateCount:0,
@@ -363,11 +363,11 @@ DEBUG [main] - Looking up default SQLErrorCodes for DataSource [{
 
 [
 ]]
-2014-08-09 10:31:12 DEBUG org.springframework.jdbc.support.SQLErrorCodesFactory  - Database product name cached for DataSource [com.alibaba.druid.pool.DruidDataSource@1a14f1a]: name is &apos;MySQL&apos;
-DEBUG [main] - Database product name cached for DataSource [com.alibaba.druid.pool.DruidDataSource@1a14f1a]: name is &apos;MySQL&apos;
-2014-08-09 10:31:12 DEBUG org.springframework.jdbc.support.SQLErrorCodesFactory  - SQL error codes for &apos;MySQL&apos; found
+2014-08-09 17:35:21 DEBUG org.springframework.jdbc.support.SQLErrorCodesFactory  - Database product name cached for DataSource [com.alibaba.druid.pool.DruidDataSource@629814]: name is &apos;MySQL&apos;
+DEBUG [main] - Database product name cached for DataSource [com.alibaba.druid.pool.DruidDataSource@629814]: name is &apos;MySQL&apos;
+2014-08-09 17:35:21 DEBUG org.springframework.jdbc.support.SQLErrorCodesFactory  - SQL error codes for &apos;MySQL&apos; found
 DEBUG [main] - SQL error codes for &apos;MySQL&apos; found
-2014-08-09 10:31:12 DEBUG org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator  - Translating SQLException with SQL state &apos;23000&apos;, error code &apos;1062&apos;, message [Duplicate entry &apos;100&apos; for key 1]; SQL was [] for task [
+2014-08-09 17:35:21 DEBUG org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator  - Translating SQLException with SQL state &apos;23000&apos;, error code &apos;1062&apos;, message [Duplicate entry &apos;100&apos; for key 1]; SQL was [] for task [
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;100&apos; for key 1
 ### The error may involve com.ztyj6.fs.dao.PostMapper.insert-Inline
 ### The error occurred while setting parameters
@@ -381,34 +381,34 @@ DEBUG [main] - Translating SQLException with SQL state &apos;23000&apos;, error 
 ### SQL: insert into Post (Id, Name)   values (?, ?)
 ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;100&apos; for key 1
 ]
-2014-08-09 10:31:12 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b09153]
-DEBUG [main] - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b09153]
-2014-08-09 10:31:12 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b09153]
-DEBUG [main] - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b09153]
-2014-08-09 10:31:12 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Initiating transaction rollback
+2014-08-09 17:35:21 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@bd33ec]
+DEBUG [main] - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@bd33ec]
+2014-08-09 17:35:21 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@bd33ec]
+DEBUG [main] - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@bd33ec]
+2014-08-09 17:35:21 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Initiating transaction rollback
 DEBUG [main] - Initiating transaction rollback
-2014-08-09 10:31:12 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873]
-DEBUG [main] - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873]
-2014-08-09 10:31:12 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] after transaction
-DEBUG [main] - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] after transaction
-2014-08-09 10:31:12 DEBUG org.springframework.jdbc.datasource.DataSourceUtils  - Returning JDBC Connection to DataSource
+2014-08-09 17:35:21 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2]
+DEBUG [main] - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2]
+2014-08-09 17:35:21 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] after transaction
+DEBUG [main] - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] after transaction
+2014-08-09 17:35:21 DEBUG org.springframework.jdbc.datasource.DataSourceUtils  - Returning JDBC Connection to DataSource
 DEBUG [main] - Returning JDBC Connection to DataSource
-2014-08-09 10:31:12 DEBUG org.springframework.test.context.support.DirtiesContextTestExecutionListener  - After test method: context [DefaultTestContext@26ec29 testClass = PostTest, testInstance = test.post.PostTest@15aa3ef, testMethod = addTset@PostTest, testException = org.springframework.dao.DuplicateKeyException: 
+2014-08-09 17:35:21 DEBUG org.springframework.test.context.support.DirtiesContextTestExecutionListener  - After test method: context [DefaultTestContext@1bea571 testClass = PostTest, testInstance = test.post.PostTest@15fb113, testMethod = addTset@PostTest, testException = org.springframework.dao.DuplicateKeyException: 
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;100&apos; for key 1
 ### The error may involve com.ztyj6.fs.dao.PostMapper.insert-Inline
 ### The error occurred while setting parameters
 ### SQL: insert into Post (Id, Name)   values (?, ?)
 ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;100&apos; for key 1
-; SQL []; Duplicate entry &apos;100&apos; for key 1; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;100&apos; for key 1, mergedContextConfiguration = [MergedContextConfiguration@1c0aadc testClass = PostTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
-DEBUG [main] - After test method: context [DefaultTestContext@26ec29 testClass = PostTest, testInstance = test.post.PostTest@15aa3ef, testMethod = addTset@PostTest, testException = org.springframework.dao.DuplicateKeyException: 
+; SQL []; Duplicate entry &apos;100&apos; for key 1; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;100&apos; for key 1, mergedContextConfiguration = [MergedContextConfiguration@1625a2d testClass = PostTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
+DEBUG [main] - After test method: context [DefaultTestContext@1bea571 testClass = PostTest, testInstance = test.post.PostTest@15fb113, testMethod = addTset@PostTest, testException = org.springframework.dao.DuplicateKeyException: 
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;100&apos; for key 1
 ### The error may involve com.ztyj6.fs.dao.PostMapper.insert-Inline
 ### The error occurred while setting parameters
 ### SQL: insert into Post (Id, Name)   values (?, ?)
 ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;100&apos; for key 1
-; SQL []; Duplicate entry &apos;100&apos; for key 1; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;100&apos; for key 1, mergedContextConfiguration = [MergedContextConfiguration@1c0aadc testClass = PostTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
+; SQL []; Duplicate entry &apos;100&apos; for key 1; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;100&apos; for key 1, mergedContextConfiguration = [MergedContextConfiguration@1625a2d testClass = PostTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
 </system-out>
   </testcase>
-  <testcase time="0.343" classname="test.post.PostTest" name="testGetAllPost"/>
-  <testcase time="0.188" classname="test.post.PostTest" name="testIsExist"/>
+  <testcase time="0.357" classname="test.post.PostTest" name="testGetAllPost"/>
+  <testcase time="0.173" classname="test.post.PostTest" name="testIsExist"/>
 </testsuite>

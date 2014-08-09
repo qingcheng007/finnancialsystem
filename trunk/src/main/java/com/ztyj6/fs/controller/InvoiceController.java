@@ -178,10 +178,11 @@ public class InvoiceController extends BaseController {
 			balance.setFrozen(frozen);
 			System.out.println("------------" + balance);
 			iInvoiceService.updateBalance(balance);
-
+			
+			
 			msg = "添加成功";
 			json.setSuccess(true);
-			json.setObj(invoice);
+			json.setObj(iInvoiceService.addInvoiceAllContent(invoice));
 			json.setMsg(msg);
 		} catch (Exception e) {
 			msg = "添加失败";
@@ -317,8 +318,8 @@ public class InvoiceController extends BaseController {
 	}
 	@ResponseBody
 	@RequestMapping("/getByPageByCurrentId")
-	public DataGrid getByPageByCurrentId(PageFilter pageFilter,
-		HttpServletRequest request) {
+	public DataGrid getByPageByCurrentId(PageFilter pageFilter,	HttpServletRequest request) {
+		
 		String id = request.getParameter("id");
 		try {
 			return iInvoiceService.getByPageCurrentID(pageFilter, Integer.parseInt(id));

@@ -138,11 +138,14 @@
 
 		FROM
 		Invoice
-		JOIN InvoiceType ON Invoice.InvoiceTypeId = InvoiceType.Id
+		JOIN InvoiceType ON
+		Invoice.InvoiceTypeId = InvoiceType.Id
 		JOIN
-		InvoiceDetails ON Invoice.InvoiceDetailsId = InvoiceDetails.Id
+		InvoiceDetails ON
+		Invoice.InvoiceDetailsId = InvoiceDetails.Id
 		JOIN
-		AuditState ON Invoice.AuditStateId = AuditState.Id
+		AuditState ON
+		Invoice.AuditStateId = AuditState.Id
 		<where>
 
 			<if test="pageFilter.keyword != null">
@@ -176,7 +179,7 @@
 
 	</select>
 
-	<select id="selectByPage" resultMap="invoiceResultMap">
+	<select id="selectByPage" parameterType="java.lang.Integer" resultMap="invoiceResultMap">
 		SELECT
 		Invoice.Id,
 		Invoice.CreateDate,
@@ -215,11 +218,14 @@
 
 		FROM
 		Invoice
-		JOIN InvoiceType ON Invoice.InvoiceTypeId = InvoiceType.Id
+		JOIN InvoiceType ON
+		Invoice.InvoiceTypeId = InvoiceType.Id
 		JOIN
-		InvoiceDetails ON Invoice.InvoiceDetailsId = InvoiceDetails.Id
+		InvoiceDetails ON
+		Invoice.InvoiceDetailsId = InvoiceDetails.Id
 		JOIN
-		AuditState ON Invoice.AuditStateId = AuditState.Id
+		AuditState ON
+		Invoice.AuditStateId = AuditState.Id
 		<where>
 
 			Invoice.OperatorId=#{id,jdbcType=INTEGER}
@@ -254,57 +260,32 @@
 		</where>
 
 	</select>
-	<select id="selectPageById" resultMap="invoiceResultMap">
-		SELECT
-		Invoice.Id,
-		Invoice.CreateDate,
-		Invoice.OccurDate,
-		Invoice.Content,
-		Invoice.Money,
-		Invoice.Penalty,
-		Invoice.Description,
-		Invoice.InvoiceDetailsId,
-		Invoice.InvoiceTypeId,
-		Invoice.ProjectName,
-		Invoice.OperatorId,
-		Invoice.ProverId,
-		Invoice.Auditor1Id,
-		Invoice.Auditor2Id,
-		Invoice.AuditStateId,
-		Invoice.PhotoUrl,
-		Invoice.Remark,
-		Invoice.DearerId,
-		InvoiceType.Id invoice_type_id,
-		InvoiceType.`Name` invoice_type_name,
-		InvoiceDetails.Id
-		invoice_details_id,
-		InvoiceDetails.Content1 invoice_details_content1,
+	
+	<select id="selectPageById" parameterType="java.lang.Integer" resultMap="invoiceResultMap">
+		SELECT Invoice.Id, Invoice.CreateDate, Invoice.OccurDate,
+		Invoice.Content, Invoice.Money, Invoice.Penalty, Invoice.Description,
+		Invoice.InvoiceDetailsId, Invoice.InvoiceTypeId, Invoice.ProjectName,
+		Invoice.OperatorId, Invoice.ProverId, Invoice.Auditor1Id,
+		Invoice.Auditor2Id, Invoice.AuditStateId, Invoice.PhotoUrl,
+		Invoice.Remark, Invoice.DearerId, InvoiceType.Id invoice_type_id,
+		InvoiceType.`Name` invoice_type_name, InvoiceDetails.Id
+		invoice_details_id, InvoiceDetails.Content1 invoice_details_content1,
 		InvoiceDetails.Content2 invoice_details_content2,
 		InvoiceDetails.Content3 invoice_details_content3,
-		InvoiceDetails.Content4 invoice_details_content4,
-		AuditState.Id
-		audit_state_id,
-		AuditState.Operator audti_state_operator,
-		AuditState.Prover audti_state_prover,
-		AuditState.Auditor1
-		audti_state_auditor1,
-		AuditState.Auditor2 audti_state_auditor2,
-		AuditState.Dearer audti_state_dearer
-		FROM
-		Invoice
-		JOIN InvoiceType ON
-		Invoice.InvoiceTypeId = InvoiceType.Id
-		JOIN InvoiceDetails ON
-		Invoice.InvoiceDetailsId = InvoiceDetails.Id
-		JOIN AuditState ON
+		InvoiceDetails.Content4 invoice_details_content4, AuditState.Id
+		audit_state_id, AuditState.Operator audti_state_operator,
+		AuditState.Prover audti_state_prover, AuditState.Auditor1
+		audti_state_auditor1, AuditState.Auditor2 audti_state_auditor2,
+		AuditState.Dearer audti_state_dearer FROM Invoice JOIN InvoiceType ON
+		Invoice.InvoiceTypeId = InvoiceType.Id JOIN InvoiceDetails ON
+		Invoice.InvoiceDetailsId = InvoiceDetails.Id JOIN AuditState ON
 		Invoice.AuditStateId = AuditState.Id
-		<where>
-			ProverId=#{id,jdbcType=INTEGER}
-			OR
-			Auditor1Id=#{id,jdbcType=INTEGER}
-			OR Auditor2Id=#{id,jdbcType=INTEGER}
-			OR DearerId=#{id,jdbcType=INTEGER}
+		<where> Invoice.ProverId=#{id,jdbcType=INTEGER} OR
+			Invoice.Auditor1Id=#{id,jdbcType=INTEGER} OR
+			Invoice.Auditor2Id=#{id,jdbcType=INTEGER} OR 
+			Invoice.DearerId=#{id,jdbcType=INTEGER}
 		</where>
+
 	</select>
 
 	<select id="selectInvoiceCount" parameterType="java.lang.Integer"
@@ -414,7 +395,8 @@
 		Invoice.InvoiceDetailsId = InvoiceDetails.Id
 		JOIN AuditState ON
 		Invoice.AuditStateId = AuditState.Id
-		where Invoice.Id = #{id,jdbcType=INTEGER}
+		where Invoice.Id =
+		#{id,jdbcType=INTEGER}
 	</select>
 
 	<select id="selectByPrimaryKey" parameterType="com.ztyj6.fs.model.Invoice"

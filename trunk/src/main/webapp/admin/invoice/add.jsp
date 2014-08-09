@@ -118,8 +118,7 @@ $(function() {
 	 if ($('#invoice_add_form').form('validate')) {
 			$('#submit').linkbutton('disable');
 			var data = toJson();
-			$
-					.ajax({
+			$.ajax({
 						url : '${pageContext.request.contextPath}/invoiceController/add.do',
 						type : 'POST',
 						//data : $('#admin_class_add_form').serializeObject(),

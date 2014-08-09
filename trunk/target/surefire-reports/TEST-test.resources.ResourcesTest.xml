@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.234" errors="1" skipped="0" tests="1" name="test.resources.ResourcesTest">
+<testsuite failures="0" time="0.219" errors="1" skipped="0" tests="1" name="test.resources.ResourcesTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="D:\Program Files\Java\jdk1.7.0_45\jre\bin"/>
@@ -26,7 +26,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
-    <property name="classworlds.conf" value="F:\myclipse\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf4292528855833635526.tmp"/>
+    <property name="classworlds.conf" value="F:\myclipse\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf7804848095024508105.tmp"/>
     <property name="sun.jnu.encoding" value="GBK"/>
     <property name="java.library.path" value="D:\Program Files\Java\jdk1.7.0_45\jre\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;D:/MyEclipse Professional/binary/com.sun.java.jdk.win32.x86_1.6.0.u43/jre/bin/client;D:/MyEclipse Professional/binary/com.sun.java.jdk.win32.x86_1.6.0.u43/jre/bin;D:/MyEclipse Professional/binary/com.sun.java.jdk.win32.x86_1.6.0.u43/jre/lib/i386;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Windows Live\Shared;D:\Program Files\TortoiseSVN\bin;D:\Program Files\Java\jdk1.7.0_45\bin;D:\Program Files\Java\jdk1.7.0_45\jre\bin;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -60,7 +60,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase time="0.234" classname="test.resources.ResourcesTest" name="insertTest">
+  <testcase time="0.214" classname="test.resources.ResourcesTest" name="insertTest">
     <error message="
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;15&apos; for key 1
 ### The error may involve com.ztyj6.fs.dao.ResourceMapper.insertSelective-Inline
@@ -183,64 +183,64 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:358)
 	... 57 more
 </error>
-    <system-out>2014-08-09 10:31:13 DEBUG org.springframework.test.context.support.DirtiesContextTestExecutionListener  - After test class: context [DefaultTestContext@26ec29 testClass = PostTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@1c0aadc testClass = PostTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], dirtiesContext [false].
-DEBUG [main] - After test class: context [DefaultTestContext@26ec29 testClass = PostTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@1c0aadc testClass = PostTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], dirtiesContext [false].
-2014-08-09 10:31:13 DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner  - SpringJUnit4ClassRunner constructor called with [class test.resources.ResourcesTest].
+    <system-out>2014-08-09 17:35:22 DEBUG org.springframework.test.context.support.DirtiesContextTestExecutionListener  - After test class: context [DefaultTestContext@1bea571 testClass = PostTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@1625a2d testClass = PostTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], dirtiesContext [false].
+DEBUG [main] - After test class: context [DefaultTestContext@1bea571 testClass = PostTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@1625a2d testClass = PostTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], dirtiesContext [false].
+2014-08-09 17:35:22 DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner  - SpringJUnit4ClassRunner constructor called with [class test.resources.ResourcesTest].
 DEBUG [main] - SpringJUnit4ClassRunner constructor called with [class test.resources.ResourcesTest].
-2014-08-09 10:31:13 DEBUG org.springframework.test.context.support.AbstractDelegatingSmartContextLoader  - Delegating to GenericXmlContextLoader to process context configuration [ContextConfigurationAttributes@1fb5b8d declaringClass = &apos;test.resources.ResourcesTest&apos;, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, inheritLocations = true, initializers = &apos;{}&apos;, inheritInitializers = true, name = [null], contextLoaderClass = &apos;org.springframework.test.context.ContextLoader&apos;].
-DEBUG [main] - Delegating to GenericXmlContextLoader to process context configuration [ContextConfigurationAttributes@1fb5b8d declaringClass = &apos;test.resources.ResourcesTest&apos;, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, inheritLocations = true, initializers = &apos;{}&apos;, inheritInitializers = true, name = [null], contextLoaderClass = &apos;org.springframework.test.context.ContextLoader&apos;].
-2014-08-09 10:31:13 DEBUG org.springframework.test.context.ContextLoaderUtils  - Could not find an &apos;annotation declaring class&apos; for annotation type [org.springframework.test.context.ActiveProfiles] and class [test.resources.ResourcesTest]
+2014-08-09 17:35:22 DEBUG org.springframework.test.context.support.AbstractDelegatingSmartContextLoader  - Delegating to GenericXmlContextLoader to process context configuration [ContextConfigurationAttributes@1f80a46 declaringClass = &apos;test.resources.ResourcesTest&apos;, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, inheritLocations = true, initializers = &apos;{}&apos;, inheritInitializers = true, name = [null], contextLoaderClass = &apos;org.springframework.test.context.ContextLoader&apos;].
+DEBUG [main] - Delegating to GenericXmlContextLoader to process context configuration [ContextConfigurationAttributes@1f80a46 declaringClass = &apos;test.resources.ResourcesTest&apos;, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, inheritLocations = true, initializers = &apos;{}&apos;, inheritInitializers = true, name = [null], contextLoaderClass = &apos;org.springframework.test.context.ContextLoader&apos;].
+2014-08-09 17:35:22 DEBUG org.springframework.test.context.ContextLoaderUtils  - Could not find an &apos;annotation declaring class&apos; for annotation type [org.springframework.test.context.ActiveProfiles] and class [test.resources.ResourcesTest]
 DEBUG [main] - Could not find an &apos;annotation declaring class&apos; for annotation type [org.springframework.test.context.ActiveProfiles] and class [test.resources.ResourcesTest]
-2014-08-09 10:31:13 DEBUG org.springframework.test.context.TestContextManager  - @TestExecutionListeners is not present for class [class test.resources.ResourcesTest]: using defaults.
+2014-08-09 17:35:22 DEBUG org.springframework.test.context.TestContextManager  - @TestExecutionListeners is not present for class [class test.resources.ResourcesTest]: using defaults.
 DEBUG [main] - @TestExecutionListeners is not present for class [class test.resources.ResourcesTest]: using defaults.
-2014-08-09 10:31:13 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.resources.ResourcesTest]
+2014-08-09 17:35:22 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.resources.ResourcesTest]
 DEBUG [main] - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.resources.ResourcesTest]
-2014-08-09 10:31:13 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.resources.ResourcesTest]
+2014-08-09 17:35:22 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.resources.ResourcesTest]
 DEBUG [main] - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.resources.ResourcesTest]
-2014-08-09 10:31:13 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.resources.ResourcesTest]
+2014-08-09 17:35:22 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.resources.ResourcesTest]
 DEBUG [main] - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.resources.ResourcesTest]
-2014-08-09 10:31:13 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.resources.ResourcesTest]
+2014-08-09 17:35:22 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.resources.ResourcesTest]
 DEBUG [main] - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.resources.ResourcesTest]
-2014-08-09 10:31:13 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.resources.ResourcesTest]
+2014-08-09 17:35:22 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.resources.ResourcesTest]
 DEBUG [main] - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.resources.ResourcesTest]
-2014-08-09 10:31:13 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.resources.ResourcesTest]
+2014-08-09 17:35:22 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.resources.ResourcesTest]
 DEBUG [main] - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.resources.ResourcesTest]
-2014-08-09 10:31:13 DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener  - Performing dependency injection for test context [[DefaultTestContext@137ba49 testClass = ResourcesTest, testInstance = test.resources.ResourcesTest@1a73c61, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@6d3242 testClass = ResourcesTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
-DEBUG [main] - Performing dependency injection for test context [[DefaultTestContext@137ba49 testClass = ResourcesTest, testInstance = test.resources.ResourcesTest@1a73c61, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@6d3242 testClass = ResourcesTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
-2014-08-09 10:31:13 DEBUG org.springframework.test.context.CacheAwareContextLoaderDelegate  - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@6d3242 testClass = ResourcesTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
-DEBUG [main] - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@6d3242 testClass = ResourcesTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
-2014-08-09 10:31:13 DEBUG org.springframework.beans.factory.annotation.InjectionMetadata  - Processing injected method of bean &apos;test.resources.ResourcesTest&apos;: AutowiredMethodElement for public void test.resources.ResourcesTest.setResourceService(com.ztyj6.fs.service.IResourceService)
+2014-08-09 17:35:22 DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener  - Performing dependency injection for test context [[DefaultTestContext@1f92811 testClass = ResourcesTest, testInstance = test.resources.ResourcesTest@b57b41, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@af1a01 testClass = ResourcesTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
+DEBUG [main] - Performing dependency injection for test context [[DefaultTestContext@1f92811 testClass = ResourcesTest, testInstance = test.resources.ResourcesTest@b57b41, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@af1a01 testClass = ResourcesTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
+2014-08-09 17:35:22 DEBUG org.springframework.test.context.CacheAwareContextLoaderDelegate  - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@af1a01 testClass = ResourcesTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
+DEBUG [main] - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@af1a01 testClass = ResourcesTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
+2014-08-09 17:35:22 DEBUG org.springframework.beans.factory.annotation.InjectionMetadata  - Processing injected method of bean &apos;test.resources.ResourcesTest&apos;: AutowiredMethodElement for public void test.resources.ResourcesTest.setResourceService(com.ztyj6.fs.service.IResourceService)
 DEBUG [main] - Processing injected method of bean &apos;test.resources.ResourcesTest&apos;: AutowiredMethodElement for public void test.resources.ResourcesTest.setResourceService(com.ztyj6.fs.service.IResourceService)
-2014-08-09 10:31:13 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;resourceService&apos;
+2014-08-09 17:35:22 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;resourceService&apos;
 DEBUG [main] - Returning cached instance of singleton bean &apos;resourceService&apos;
-2014-08-09 10:31:13 DEBUG org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor  - Autowiring by type from bean name &apos;test.resources.ResourcesTest&apos; to bean named &apos;resourceService&apos;
+2014-08-09 17:35:22 DEBUG org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor  - Autowiring by type from bean name &apos;test.resources.ResourcesTest&apos; to bean named &apos;resourceService&apos;
 DEBUG [main] - Autowiring by type from bean name &apos;test.resources.ResourcesTest&apos; to bean named &apos;resourceService&apos;
-2014-08-09 10:31:13 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0&apos;
+2014-08-09 17:35:22 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0&apos;
 DEBUG [main] - Returning cached instance of singleton bean &apos;org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0&apos;
-2014-08-09 10:31:13 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0&apos;
+2014-08-09 17:35:22 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0&apos;
 DEBUG [main] - Returning cached instance of singleton bean &apos;org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0&apos;
-2014-08-09 10:31:13 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Creating new transaction with name [com.ztyj6.fs.service.impl.ResourceServiceImpl.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Creating new transaction with name [com.ztyj6.fs.service.impl.ResourceServiceImpl.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
 DEBUG [main] - Creating new transaction with name [com.ztyj6.fs.service.impl.ResourceServiceImpl.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
-2014-08-09 10:31:13 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] for JDBC transaction
-DEBUG [main] - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] for JDBC transaction
-2014-08-09 10:31:13 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] to manual commit
-DEBUG [main] - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] to manual commit
-2014-08-09 10:31:13 DEBUG org.mybatis.spring.SqlSessionUtils  - Creating a new SqlSession
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] for JDBC transaction
+DEBUG [main] - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] for JDBC transaction
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] to manual commit
+DEBUG [main] - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] to manual commit
+2014-08-09 17:35:22 DEBUG org.mybatis.spring.SqlSessionUtils  - Creating a new SqlSession
 DEBUG [main] - Creating a new SqlSession
-2014-08-09 10:31:13 DEBUG org.mybatis.spring.SqlSessionUtils  - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16aaae3]
-DEBUG [main] - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16aaae3]
-2014-08-09 10:31:13 DEBUG org.mybatis.spring.transaction.SpringManagedTransaction  - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] will be managed by Spring
-DEBUG [main] - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] will be managed by Spring
-2014-08-09 10:31:13 DEBUG com.ztyj6.fs.dao.ResourceMapper.insertSelective  - ==&gt;  Preparing: insert into Resource ( Id, Name, Sequence, Type, Description, ParentId, IsLeaf ) values ( ?, ?, ?, ?, ?, ?, ? ) 
+2014-08-09 17:35:22 DEBUG org.mybatis.spring.SqlSessionUtils  - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3b079b]
+DEBUG [main] - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3b079b]
+2014-08-09 17:35:22 DEBUG org.mybatis.spring.transaction.SpringManagedTransaction  - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] will be managed by Spring
+DEBUG [main] - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] will be managed by Spring
+2014-08-09 17:35:22 DEBUG com.ztyj6.fs.dao.ResourceMapper.insertSelective  - ==&gt;  Preparing: insert into Resource ( Id, Name, Sequence, Type, Description, ParentId, IsLeaf ) values ( ?, ?, ?, ?, ?, ?, ? ) 
 DEBUG [main] - ==&gt;  Preparing: insert into Resource ( Id, Name, Sequence, Type, Description, ParentId, IsLeaf ) values ( ?, ?, ?, ?, ?, ?, ? ) 
-2014-08-09 10:31:13 DEBUG com.ztyj6.fs.dao.ResourceMapper.insertSelective  - ==&gt; Parameters: 15(Integer), �ͻ�����(String), 1(Short), 1(Short), �ͻ�����(String), 1(Integer), false(Boolean)
+2014-08-09 17:35:22 DEBUG com.ztyj6.fs.dao.ResourceMapper.insertSelective  - ==&gt; Parameters: 15(Integer), �ͻ�����(String), 1(Short), 1(Short), �ͻ�����(String), 1(Integer), false(Boolean)
 DEBUG [main] - ==&gt; Parameters: 15(Integer), �ͻ�����(String), 1(Short), 1(Short), �ͻ�����(String), 1(Integer), false(Boolean)
-2014-08-09 10:31:13 DEBUG com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20009} enter cache
+2014-08-09 17:35:22 DEBUG com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20009} enter cache
 DEBUG [main] - {conn-10001, pstmt-20009} enter cache
-2014-08-09 10:31:13 DEBUG org.mybatis.spring.SqlSessionUtils  - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16aaae3]
-DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16aaae3]
-2014-08-09 10:31:13 DEBUG org.springframework.jdbc.support.SQLErrorCodesFactory  - Looking up default SQLErrorCodes for DataSource [{
-	CreateTime:&quot;2014-08-09 10:31:08&quot;,
+2014-08-09 17:35:22 DEBUG org.mybatis.spring.SqlSessionUtils  - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3b079b]
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3b079b]
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.support.SQLErrorCodesFactory  - Looking up default SQLErrorCodes for DataSource [{
+	CreateTime:&quot;2014-08-09 17:35:17&quot;,
 	ActiveCount:1,
 	PoolingCount:0,
 	CreateCount:0,
@@ -254,7 +254,7 @@ DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.def
 [
 ]]
 DEBUG [main] - Looking up default SQLErrorCodes for DataSource [{
-	CreateTime:&quot;2014-08-09 10:31:08&quot;,
+	CreateTime:&quot;2014-08-09 17:35:17&quot;,
 	ActiveCount:1,
 	PoolingCount:0,
 	CreateCount:0,
@@ -267,9 +267,9 @@ DEBUG [main] - Looking up default SQLErrorCodes for DataSource [{
 
 [
 ]]
-2014-08-09 10:31:13 DEBUG org.springframework.jdbc.support.SQLErrorCodesFactory  - SQLErrorCodes found in cache for DataSource [com.alibaba.druid.pool.DruidDataSource@1a14f1a]
-DEBUG [main] - SQLErrorCodes found in cache for DataSource [com.alibaba.druid.pool.DruidDataSource@1a14f1a]
-2014-08-09 10:31:13 DEBUG org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator  - Translating SQLException with SQL state &apos;23000&apos;, error code &apos;1062&apos;, message [Duplicate entry &apos;15&apos; for key 1]; SQL was [] for task [
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.support.SQLErrorCodesFactory  - SQLErrorCodes found in cache for DataSource [com.alibaba.druid.pool.DruidDataSource@629814]
+DEBUG [main] - SQLErrorCodes found in cache for DataSource [com.alibaba.druid.pool.DruidDataSource@629814]
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator  - Translating SQLException with SQL state &apos;23000&apos;, error code &apos;1062&apos;, message [Duplicate entry &apos;15&apos; for key 1]; SQL was [] for task [
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;15&apos; for key 1
 ### The error may involve com.ztyj6.fs.dao.ResourceMapper.insertSelective-Inline
 ### The error occurred while setting parameters
@@ -283,32 +283,32 @@ DEBUG [main] - Translating SQLException with SQL state &apos;23000&apos;, error 
 ### SQL: insert into Resource    ( Id,             Name,                 Sequence,                 Type,             Description,             ParentId,             IsLeaf )     values ( ?,             ?,                 ?,                 ?,             ?,             ?,             ? )
 ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;15&apos; for key 1
 ]
-2014-08-09 10:31:13 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16aaae3]
-DEBUG [main] - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16aaae3]
-2014-08-09 10:31:13 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16aaae3]
-DEBUG [main] - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16aaae3]
-2014-08-09 10:31:13 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Initiating transaction rollback
+2014-08-09 17:35:22 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3b079b]
+DEBUG [main] - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3b079b]
+2014-08-09 17:35:22 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3b079b]
+DEBUG [main] - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3b079b]
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Initiating transaction rollback
 DEBUG [main] - Initiating transaction rollback
-2014-08-09 10:31:13 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873]
-DEBUG [main] - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873]
-2014-08-09 10:31:13 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] after transaction
-DEBUG [main] - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] after transaction
-2014-08-09 10:31:13 DEBUG org.springframework.jdbc.datasource.DataSourceUtils  - Returning JDBC Connection to DataSource
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2]
+DEBUG [main] - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2]
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] after transaction
+DEBUG [main] - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] after transaction
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.datasource.DataSourceUtils  - Returning JDBC Connection to DataSource
 DEBUG [main] - Returning JDBC Connection to DataSource
-2014-08-09 10:31:13 DEBUG org.springframework.test.context.support.DirtiesContextTestExecutionListener  - After test method: context [DefaultTestContext@137ba49 testClass = ResourcesTest, testInstance = test.resources.ResourcesTest@1a73c61, testMethod = insertTest@ResourcesTest, testException = org.springframework.dao.DuplicateKeyException: 
+2014-08-09 17:35:22 DEBUG org.springframework.test.context.support.DirtiesContextTestExecutionListener  - After test method: context [DefaultTestContext@1f92811 testClass = ResourcesTest, testInstance = test.resources.ResourcesTest@b57b41, testMethod = insertTest@ResourcesTest, testException = org.springframework.dao.DuplicateKeyException: 
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;15&apos; for key 1
 ### The error may involve com.ztyj6.fs.dao.ResourceMapper.insertSelective-Inline
 ### The error occurred while setting parameters
 ### SQL: insert into Resource    ( Id,             Name,                 Sequence,                 Type,             Description,             ParentId,             IsLeaf )     values ( ?,             ?,                 ?,                 ?,             ?,             ?,             ? )
 ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;15&apos; for key 1
-; SQL []; Duplicate entry &apos;15&apos; for key 1; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;15&apos; for key 1, mergedContextConfiguration = [MergedContextConfiguration@6d3242 testClass = ResourcesTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
-DEBUG [main] - After test method: context [DefaultTestContext@137ba49 testClass = ResourcesTest, testInstance = test.resources.ResourcesTest@1a73c61, testMethod = insertTest@ResourcesTest, testException = org.springframework.dao.DuplicateKeyException: 
+; SQL []; Duplicate entry &apos;15&apos; for key 1; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;15&apos; for key 1, mergedContextConfiguration = [MergedContextConfiguration@af1a01 testClass = ResourcesTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
+DEBUG [main] - After test method: context [DefaultTestContext@1f92811 testClass = ResourcesTest, testInstance = test.resources.ResourcesTest@b57b41, testMethod = insertTest@ResourcesTest, testException = org.springframework.dao.DuplicateKeyException: 
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;15&apos; for key 1
 ### The error may involve com.ztyj6.fs.dao.ResourceMapper.insertSelective-Inline
 ### The error occurred while setting parameters
 ### SQL: insert into Resource    ( Id,             Name,                 Sequence,                 Type,             Description,             ParentId,             IsLeaf )     values ( ?,             ?,                 ?,                 ?,             ?,             ?,             ? )
 ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;15&apos; for key 1
-; SQL []; Duplicate entry &apos;15&apos; for key 1; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;15&apos; for key 1, mergedContextConfiguration = [MergedContextConfiguration@6d3242 testClass = ResourcesTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
+; SQL []; Duplicate entry &apos;15&apos; for key 1; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;15&apos; for key 1, mergedContextConfiguration = [MergedContextConfiguration@af1a01 testClass = ResourcesTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
 </system-out>
   </testcase>
 </testsuite>

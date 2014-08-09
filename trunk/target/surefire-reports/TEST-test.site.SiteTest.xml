@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="1.521" errors="3" skipped="0" tests="9" name="test.site.SiteTest">
+<testsuite failures="0" time="1.454" errors="3" skipped="0" tests="9" name="test.site.SiteTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="D:\Program Files\Java\jdk1.7.0_45\jre\bin"/>
@@ -26,7 +26,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
-    <property name="classworlds.conf" value="F:\myclipse\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf4292528855833635526.tmp"/>
+    <property name="classworlds.conf" value="F:\myclipse\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf7804848095024508105.tmp"/>
     <property name="sun.jnu.encoding" value="GBK"/>
     <property name="java.library.path" value="D:\Program Files\Java\jdk1.7.0_45\jre\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;D:/MyEclipse Professional/binary/com.sun.java.jdk.win32.x86_1.6.0.u43/jre/bin/client;D:/MyEclipse Professional/binary/com.sun.java.jdk.win32.x86_1.6.0.u43/jre/bin;D:/MyEclipse Professional/binary/com.sun.java.jdk.win32.x86_1.6.0.u43/jre/lib/i386;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Windows Live\Shared;D:\Program Files\TortoiseSVN\bin;D:\Program Files\Java\jdk1.7.0_45\bin;D:\Program Files\Java\jdk1.7.0_45\jre\bin;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -60,9 +60,9 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase time="0.198" classname="test.site.SiteTest" name="testDeleteBatch"/>
-  <testcase time="0.006" classname="test.site.SiteTest" name="testGetUserInformationOfOneSite"/>
-  <testcase time="0.239" classname="test.site.SiteTest" name="testAdd">
+  <testcase time="0.189" classname="test.site.SiteTest" name="testDeleteBatch"/>
+  <testcase time="0" classname="test.site.SiteTest" name="testGetUserInformationOfOneSite"/>
+  <testcase time="0.177" classname="test.site.SiteTest" name="testAdd">
     <error message="
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;7-1&apos; for key 1
 ### The error may involve com.ztyj6.fs.dao.SiteMapper.insert-Inline
@@ -185,40 +185,40 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:358)
 	... 57 more
 </error>
-    <system-out>2014-08-09 10:31:13 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.site.SiteTest]
+    <system-out>2014-08-09 17:35:22 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.site.SiteTest]
 DEBUG [main] - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.site.SiteTest]
-2014-08-09 10:31:13 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.site.SiteTest]
+2014-08-09 17:35:22 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.site.SiteTest]
 DEBUG [main] - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.site.SiteTest]
-2014-08-09 10:31:13 DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener  - Performing dependency injection for test context [[DefaultTestContext@1fca7dd testClass = SiteTest, testInstance = test.site.SiteTest@13cb2b3, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
-DEBUG [main] - Performing dependency injection for test context [[DefaultTestContext@1fca7dd testClass = SiteTest, testInstance = test.site.SiteTest@13cb2b3, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
-2014-08-09 10:31:13 DEBUG org.springframework.test.context.CacheAwareContextLoaderDelegate  - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
-DEBUG [main] - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
-2014-08-09 10:31:13 DEBUG org.springframework.beans.factory.annotation.InjectionMetadata  - Processing injected method of bean &apos;test.site.SiteTest&apos;: AutowiredMethodElement for public void test.site.SiteTest.setSiteService(com.ztyj6.fs.service.ISiteService)
+2014-08-09 17:35:22 DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener  - Performing dependency injection for test context [[DefaultTestContext@c7519c testClass = SiteTest, testInstance = test.site.SiteTest@175982a, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
+DEBUG [main] - Performing dependency injection for test context [[DefaultTestContext@c7519c testClass = SiteTest, testInstance = test.site.SiteTest@175982a, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
+2014-08-09 17:35:22 DEBUG org.springframework.test.context.CacheAwareContextLoaderDelegate  - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
+DEBUG [main] - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
+2014-08-09 17:35:22 DEBUG org.springframework.beans.factory.annotation.InjectionMetadata  - Processing injected method of bean &apos;test.site.SiteTest&apos;: AutowiredMethodElement for public void test.site.SiteTest.setSiteService(com.ztyj6.fs.service.ISiteService)
 DEBUG [main] - Processing injected method of bean &apos;test.site.SiteTest&apos;: AutowiredMethodElement for public void test.site.SiteTest.setSiteService(com.ztyj6.fs.service.ISiteService)
-2014-08-09 10:31:13 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;siteService&apos;
+2014-08-09 17:35:22 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;siteService&apos;
 DEBUG [main] - Returning cached instance of singleton bean &apos;siteService&apos;
-2014-08-09 10:31:13 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Creating new transaction with name [com.ztyj6.fs.service.impl.SiteServiceImpl.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Creating new transaction with name [com.ztyj6.fs.service.impl.SiteServiceImpl.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
 DEBUG [main] - Creating new transaction with name [com.ztyj6.fs.service.impl.SiteServiceImpl.save]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
-2014-08-09 10:31:13 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] for JDBC transaction
-DEBUG [main] - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] for JDBC transaction
-2014-08-09 10:31:13 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] to manual commit
-DEBUG [main] - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] to manual commit
-2014-08-09 10:31:13 DEBUG org.mybatis.spring.SqlSessionUtils  - Creating a new SqlSession
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] for JDBC transaction
+DEBUG [main] - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] for JDBC transaction
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] to manual commit
+DEBUG [main] - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] to manual commit
+2014-08-09 17:35:22 DEBUG org.mybatis.spring.SqlSessionUtils  - Creating a new SqlSession
 DEBUG [main] - Creating a new SqlSession
-2014-08-09 10:31:13 DEBUG org.mybatis.spring.SqlSessionUtils  - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@aa0950]
-DEBUG [main] - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@aa0950]
-2014-08-09 10:31:13 DEBUG org.mybatis.spring.transaction.SpringManagedTransaction  - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] will be managed by Spring
-DEBUG [main] - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] will be managed by Spring
-2014-08-09 10:31:13 DEBUG com.ztyj6.fs.dao.SiteMapper.insert  - ==&gt;  Preparing: insert into Site (Id, Name, Address, CreateDate, UserId, CreatePurpose, ProjectName) values (?, ?, ?, ?, ?, ?, ?) 
+2014-08-09 17:35:22 DEBUG org.mybatis.spring.SqlSessionUtils  - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14d33af]
+DEBUG [main] - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14d33af]
+2014-08-09 17:35:22 DEBUG org.mybatis.spring.transaction.SpringManagedTransaction  - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] will be managed by Spring
+DEBUG [main] - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] will be managed by Spring
+2014-08-09 17:35:22 DEBUG com.ztyj6.fs.dao.SiteMapper.insert  - ==&gt;  Preparing: insert into Site (Id, Name, Address, CreateDate, UserId, CreatePurpose, ProjectName) values (?, ?, ?, ?, ?, ?, ?) 
 DEBUG [main] - ==&gt;  Preparing: insert into Site (Id, Name, Address, CreateDate, UserId, CreatePurpose, ProjectName) values (?, ?, ?, ?, ?, ?, ?) 
-2014-08-09 10:31:14 DEBUG com.ztyj6.fs.dao.SiteMapper.insert  - ==&gt; Parameters: 7(Integer), 44(String), 44(String), 2014-08-09 10:31:13.938(Timestamp), 1(Integer), 44(String), 44(String)
-DEBUG [main] - ==&gt; Parameters: 7(Integer), 44(String), 44(String), 2014-08-09 10:31:13.938(Timestamp), 1(Integer), 44(String), 44(String)
-2014-08-09 10:31:14 DEBUG com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20013} enter cache
+2014-08-09 17:35:22 DEBUG com.ztyj6.fs.dao.SiteMapper.insert  - ==&gt; Parameters: 7(Integer), 44(String), 44(String), 2014-08-09 17:35:22.888(Timestamp), 1(Integer), 44(String), 44(String)
+DEBUG [main] - ==&gt; Parameters: 7(Integer), 44(String), 44(String), 2014-08-09 17:35:22.888(Timestamp), 1(Integer), 44(String), 44(String)
+2014-08-09 17:35:22 DEBUG com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20013} enter cache
 DEBUG [main] - {conn-10001, pstmt-20013} enter cache
-2014-08-09 10:31:14 DEBUG org.mybatis.spring.SqlSessionUtils  - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@aa0950]
-DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@aa0950]
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.support.SQLErrorCodesFactory  - Looking up default SQLErrorCodes for DataSource [{
-	CreateTime:&quot;2014-08-09 10:31:08&quot;,
+2014-08-09 17:35:22 DEBUG org.mybatis.spring.SqlSessionUtils  - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14d33af]
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14d33af]
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.support.SQLErrorCodesFactory  - Looking up default SQLErrorCodes for DataSource [{
+	CreateTime:&quot;2014-08-09 17:35:17&quot;,
 	ActiveCount:1,
 	PoolingCount:0,
 	CreateCount:0,
@@ -232,7 +232,7 @@ DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.def
 [
 ]]
 DEBUG [main] - Looking up default SQLErrorCodes for DataSource [{
-	CreateTime:&quot;2014-08-09 10:31:08&quot;,
+	CreateTime:&quot;2014-08-09 17:35:17&quot;,
 	ActiveCount:1,
 	PoolingCount:0,
 	CreateCount:0,
@@ -245,9 +245,9 @@ DEBUG [main] - Looking up default SQLErrorCodes for DataSource [{
 
 [
 ]]
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.support.SQLErrorCodesFactory  - SQLErrorCodes found in cache for DataSource [com.alibaba.druid.pool.DruidDataSource@1a14f1a]
-DEBUG [main] - SQLErrorCodes found in cache for DataSource [com.alibaba.druid.pool.DruidDataSource@1a14f1a]
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator  - Translating SQLException with SQL state &apos;23000&apos;, error code &apos;1062&apos;, message [Duplicate entry &apos;7-1&apos; for key 1]; SQL was [] for task [
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.support.SQLErrorCodesFactory  - SQLErrorCodes found in cache for DataSource [com.alibaba.druid.pool.DruidDataSource@629814]
+DEBUG [main] - SQLErrorCodes found in cache for DataSource [com.alibaba.druid.pool.DruidDataSource@629814]
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator  - Translating SQLException with SQL state &apos;23000&apos;, error code &apos;1062&apos;, message [Duplicate entry &apos;7-1&apos; for key 1]; SQL was [] for task [
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;7-1&apos; for key 1
 ### The error may involve com.ztyj6.fs.dao.SiteMapper.insert-Inline
 ### The error occurred while setting parameters
@@ -261,36 +261,36 @@ DEBUG [main] - Translating SQLException with SQL state &apos;23000&apos;, error 
 ### SQL: insert into Site (Id, Name,   Address,   CreateDate, UserId, CreatePurpose,   ProjectName)   values   (?, ?,   ?,   ?,   ?, ?,   ?)
 ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;7-1&apos; for key 1
 ]
-2014-08-09 10:31:14 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@aa0950]
-DEBUG [main] - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@aa0950]
-2014-08-09 10:31:14 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@aa0950]
-DEBUG [main] - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@aa0950]
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Initiating transaction rollback
+2014-08-09 17:35:22 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14d33af]
+DEBUG [main] - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14d33af]
+2014-08-09 17:35:22 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14d33af]
+DEBUG [main] - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14d33af]
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Initiating transaction rollback
 DEBUG [main] - Initiating transaction rollback
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873]
-DEBUG [main] - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873]
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] after transaction
-DEBUG [main] - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] after transaction
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceUtils  - Returning JDBC Connection to DataSource
+2014-08-09 17:35:22 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2]
+DEBUG [main] - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2]
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] after transaction
+DEBUG [main] - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] after transaction
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.datasource.DataSourceUtils  - Returning JDBC Connection to DataSource
 DEBUG [main] - Returning JDBC Connection to DataSource
-2014-08-09 10:31:14 DEBUG org.springframework.test.context.support.DirtiesContextTestExecutionListener  - After test method: context [DefaultTestContext@1fca7dd testClass = SiteTest, testInstance = test.site.SiteTest@13cb2b3, testMethod = testAdd@SiteTest, testException = org.springframework.dao.DuplicateKeyException: 
+2014-08-09 17:35:23 DEBUG org.springframework.test.context.support.DirtiesContextTestExecutionListener  - After test method: context [DefaultTestContext@c7519c testClass = SiteTest, testInstance = test.site.SiteTest@175982a, testMethod = testAdd@SiteTest, testException = org.springframework.dao.DuplicateKeyException: 
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;7-1&apos; for key 1
 ### The error may involve com.ztyj6.fs.dao.SiteMapper.insert-Inline
 ### The error occurred while setting parameters
 ### SQL: insert into Site (Id, Name,   Address,   CreateDate, UserId, CreatePurpose,   ProjectName)   values   (?, ?,   ?,   ?,   ?, ?,   ?)
 ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;7-1&apos; for key 1
-; SQL []; Duplicate entry &apos;7-1&apos; for key 1; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;7-1&apos; for key 1, mergedContextConfiguration = [MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
-DEBUG [main] - After test method: context [DefaultTestContext@1fca7dd testClass = SiteTest, testInstance = test.site.SiteTest@13cb2b3, testMethod = testAdd@SiteTest, testException = org.springframework.dao.DuplicateKeyException: 
+; SQL []; Duplicate entry &apos;7-1&apos; for key 1; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;7-1&apos; for key 1, mergedContextConfiguration = [MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
+DEBUG [main] - After test method: context [DefaultTestContext@c7519c testClass = SiteTest, testInstance = test.site.SiteTest@175982a, testMethod = testAdd@SiteTest, testException = org.springframework.dao.DuplicateKeyException: 
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;7-1&apos; for key 1
 ### The error may involve com.ztyj6.fs.dao.SiteMapper.insert-Inline
 ### The error occurred while setting parameters
 ### SQL: insert into Site (Id, Name,   Address,   CreateDate, UserId, CreatePurpose,   ProjectName)   values   (?, ?,   ?,   ?,   ?, ?,   ?)
 ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;7-1&apos; for key 1
-; SQL []; Duplicate entry &apos;7-1&apos; for key 1; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;7-1&apos; for key 1, mergedContextConfiguration = [MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
+; SQL []; Duplicate entry &apos;7-1&apos; for key 1; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry &apos;7-1&apos; for key 1, mergedContextConfiguration = [MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
 </system-out>
   </testcase>
-  <testcase time="0.184" classname="test.site.SiteTest" name="testIsExistSite"/>
-  <testcase time="0.222" classname="test.site.SiteTest" name="testsaveUserSite">
+  <testcase time="0.174" classname="test.site.SiteTest" name="testIsExistSite"/>
+  <testcase time="0.185" classname="test.site.SiteTest" name="testsaveUserSite">
     <error message="
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)
 ### The error may involve defaultParameterMap
@@ -411,40 +411,40 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:358)
 	... 56 more
 </error>
-    <system-out>2014-08-09 10:31:14 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.site.SiteTest]
+    <system-out>2014-08-09 17:35:23 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.site.SiteTest]
 DEBUG [main] - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.site.SiteTest]
-2014-08-09 10:31:14 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.site.SiteTest]
+2014-08-09 17:35:23 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.site.SiteTest]
 DEBUG [main] - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.site.SiteTest]
-2014-08-09 10:31:14 DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener  - Performing dependency injection for test context [[DefaultTestContext@1fca7dd testClass = SiteTest, testInstance = test.site.SiteTest@1226771, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
-DEBUG [main] - Performing dependency injection for test context [[DefaultTestContext@1fca7dd testClass = SiteTest, testInstance = test.site.SiteTest@1226771, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
-2014-08-09 10:31:14 DEBUG org.springframework.test.context.CacheAwareContextLoaderDelegate  - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
-DEBUG [main] - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
-2014-08-09 10:31:14 DEBUG org.springframework.beans.factory.annotation.InjectionMetadata  - Processing injected method of bean &apos;test.site.SiteTest&apos;: AutowiredMethodElement for public void test.site.SiteTest.setSiteService(com.ztyj6.fs.service.ISiteService)
+2014-08-09 17:35:23 DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener  - Performing dependency injection for test context [[DefaultTestContext@c7519c testClass = SiteTest, testInstance = test.site.SiteTest@1fa02d, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
+DEBUG [main] - Performing dependency injection for test context [[DefaultTestContext@c7519c testClass = SiteTest, testInstance = test.site.SiteTest@1fa02d, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
+2014-08-09 17:35:23 DEBUG org.springframework.test.context.CacheAwareContextLoaderDelegate  - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
+DEBUG [main] - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
+2014-08-09 17:35:23 DEBUG org.springframework.beans.factory.annotation.InjectionMetadata  - Processing injected method of bean &apos;test.site.SiteTest&apos;: AutowiredMethodElement for public void test.site.SiteTest.setSiteService(com.ztyj6.fs.service.ISiteService)
 DEBUG [main] - Processing injected method of bean &apos;test.site.SiteTest&apos;: AutowiredMethodElement for public void test.site.SiteTest.setSiteService(com.ztyj6.fs.service.ISiteService)
-2014-08-09 10:31:14 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;siteService&apos;
+2014-08-09 17:35:23 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;siteService&apos;
 DEBUG [main] - Returning cached instance of singleton bean &apos;siteService&apos;
 
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Creating new transaction with name [com.ztyj6.fs.service.impl.SiteServiceImpl.saveUserSite]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Creating new transaction with name [com.ztyj6.fs.service.impl.SiteServiceImpl.saveUserSite]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
 DEBUG [main] - Creating new transaction with name [com.ztyj6.fs.service.impl.SiteServiceImpl.saveUserSite]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] for JDBC transaction
-DEBUG [main] - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] for JDBC transaction
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] to manual commit
-DEBUG [main] - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] to manual commit
-2014-08-09 10:31:14 DEBUG org.mybatis.spring.SqlSessionUtils  - Creating a new SqlSession
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] for JDBC transaction
+DEBUG [main] - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] for JDBC transaction
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] to manual commit
+DEBUG [main] - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] to manual commit
+2014-08-09 17:35:23 DEBUG org.mybatis.spring.SqlSessionUtils  - Creating a new SqlSession
 DEBUG [main] - Creating a new SqlSession
-2014-08-09 10:31:14 DEBUG org.mybatis.spring.SqlSessionUtils  - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77c4b7]
-DEBUG [main] - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77c4b7]
-2014-08-09 10:31:14 DEBUG org.mybatis.spring.transaction.SpringManagedTransaction  - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] will be managed by Spring
-DEBUG [main] - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] will be managed by Spring
-2014-08-09 10:31:14 DEBUG com.ztyj6.fs.dao.SiteMapper.insertUserSite  - ==&gt;  Preparing: insert into R_Site_User (SiteId, UserId, PostId) values ( ?, ?, ? ) 
+2014-08-09 17:35:23 DEBUG org.mybatis.spring.SqlSessionUtils  - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1392847]
+DEBUG [main] - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1392847]
+2014-08-09 17:35:23 DEBUG org.mybatis.spring.transaction.SpringManagedTransaction  - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] will be managed by Spring
+DEBUG [main] - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] will be managed by Spring
+2014-08-09 17:35:23 DEBUG com.ztyj6.fs.dao.SiteMapper.insertUserSite  - ==&gt;  Preparing: insert into R_Site_User (SiteId, UserId, PostId) values ( ?, ?, ? ) 
 DEBUG [main] - ==&gt;  Preparing: insert into R_Site_User (SiteId, UserId, PostId) values ( ?, ?, ? ) 
-2014-08-09 10:31:14 DEBUG com.ztyj6.fs.dao.SiteMapper.insertUserSite  - ==&gt; Parameters: 1(Integer), 2(Integer), 1(Integer)
+2014-08-09 17:35:23 DEBUG com.ztyj6.fs.dao.SiteMapper.insertUserSite  - ==&gt; Parameters: 1(Integer), 2(Integer), 1(Integer)
 DEBUG [main] - ==&gt; Parameters: 1(Integer), 2(Integer), 1(Integer)
-2014-08-09 10:31:14 DEBUG com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20015} enter cache
+2014-08-09 17:35:23 DEBUG com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20015} enter cache
 DEBUG [main] - {conn-10001, pstmt-20015} enter cache
-2014-08-09 10:31:14 DEBUG org.mybatis.spring.SqlSessionUtils  - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77c4b7]
-DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77c4b7]
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator  - Translating SQLException with SQL state &apos;23000&apos;, error code &apos;1452&apos;, message [Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)]; SQL was [] for task [
+2014-08-09 17:35:23 DEBUG org.mybatis.spring.SqlSessionUtils  - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1392847]
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1392847]
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator  - Translating SQLException with SQL state &apos;23000&apos;, error code &apos;1452&apos;, message [Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)]; SQL was [] for task [
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)
 ### The error may involve defaultParameterMap
 ### The error occurred while setting parameters
@@ -458,35 +458,35 @@ DEBUG [main] - Translating SQLException with SQL state &apos;23000&apos;, error 
 ### SQL: insert into R_Site_User (SiteId, UserId,   PostId)   values (   ?,   ?,   ?   )
 ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)
 ]
-2014-08-09 10:31:14 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77c4b7]
-DEBUG [main] - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77c4b7]
-2014-08-09 10:31:14 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77c4b7]
-DEBUG [main] - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77c4b7]
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Initiating transaction rollback
+2014-08-09 17:35:23 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1392847]
+DEBUG [main] - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1392847]
+2014-08-09 17:35:23 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1392847]
+DEBUG [main] - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1392847]
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Initiating transaction rollback
 DEBUG [main] - Initiating transaction rollback
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873]
-DEBUG [main] - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873]
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] after transaction
-DEBUG [main] - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] after transaction
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceUtils  - Returning JDBC Connection to DataSource
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2]
+DEBUG [main] - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2]
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] after transaction
+DEBUG [main] - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] after transaction
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.datasource.DataSourceUtils  - Returning JDBC Connection to DataSource
 DEBUG [main] - Returning JDBC Connection to DataSource
-2014-08-09 10:31:14 DEBUG org.springframework.test.context.support.DirtiesContextTestExecutionListener  - After test method: context [DefaultTestContext@1fca7dd testClass = SiteTest, testInstance = test.site.SiteTest@1226771, testMethod = testsaveUserSite@SiteTest, testException = org.springframework.dao.DataIntegrityViolationException: 
+2014-08-09 17:35:23 DEBUG org.springframework.test.context.support.DirtiesContextTestExecutionListener  - After test method: context [DefaultTestContext@c7519c testClass = SiteTest, testInstance = test.site.SiteTest@1fa02d, testMethod = testsaveUserSite@SiteTest, testException = org.springframework.dao.DataIntegrityViolationException: 
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)
 ### The error may involve defaultParameterMap
 ### The error occurred while setting parameters
 ### SQL: insert into R_Site_User (SiteId, UserId,   PostId)   values (   ?,   ?,   ?   )
 ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)
-; SQL []; Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION); nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION), mergedContextConfiguration = [MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
-DEBUG [main] - After test method: context [DefaultTestContext@1fca7dd testClass = SiteTest, testInstance = test.site.SiteTest@1226771, testMethod = testsaveUserSite@SiteTest, testException = org.springframework.dao.DataIntegrityViolationException: 
+; SQL []; Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION); nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION), mergedContextConfiguration = [MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
+DEBUG [main] - After test method: context [DefaultTestContext@c7519c testClass = SiteTest, testInstance = test.site.SiteTest@1fa02d, testMethod = testsaveUserSite@SiteTest, testException = org.springframework.dao.DataIntegrityViolationException: 
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)
 ### The error may involve defaultParameterMap
 ### The error occurred while setting parameters
 ### SQL: insert into R_Site_User (SiteId, UserId,   PostId)   values (   ?,   ?,   ?   )
 ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)
-; SQL []; Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION); nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION), mergedContextConfiguration = [MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
+; SQL []; Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION); nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION), mergedContextConfiguration = [MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
 </system-out>
   </testcase>
-  <testcase time="0.162" classname="test.site.SiteTest" name="testSaveUserSite">
+  <testcase time="0.174" classname="test.site.SiteTest" name="testSaveUserSite">
     <error message="
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)
 ### The error may involve defaultParameterMap
@@ -607,37 +607,37 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:358)
 	... 56 more
 </error>
-    <system-out>2014-08-09 10:31:14 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.site.SiteTest]
+    <system-out>2014-08-09 17:35:23 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.site.SiteTest]
 DEBUG [main] - Retrieved @ProfileValueSourceConfiguration [null] for test class [test.site.SiteTest]
-2014-08-09 10:31:14 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.site.SiteTest]
+2014-08-09 17:35:23 DEBUG org.springframework.test.annotation.ProfileValueUtils  - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.site.SiteTest]
 DEBUG [main] - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [test.site.SiteTest]
-2014-08-09 10:31:14 DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener  - Performing dependency injection for test context [[DefaultTestContext@1fca7dd testClass = SiteTest, testInstance = test.site.SiteTest@1837c1b, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
-DEBUG [main] - Performing dependency injection for test context [[DefaultTestContext@1fca7dd testClass = SiteTest, testInstance = test.site.SiteTest@1837c1b, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
-2014-08-09 10:31:14 DEBUG org.springframework.test.context.CacheAwareContextLoaderDelegate  - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
-DEBUG [main] - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
-2014-08-09 10:31:14 DEBUG org.springframework.beans.factory.annotation.InjectionMetadata  - Processing injected method of bean &apos;test.site.SiteTest&apos;: AutowiredMethodElement for public void test.site.SiteTest.setSiteService(com.ztyj6.fs.service.ISiteService)
+2014-08-09 17:35:23 DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener  - Performing dependency injection for test context [[DefaultTestContext@c7519c testClass = SiteTest, testInstance = test.site.SiteTest@9117e3, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
+DEBUG [main] - Performing dependency injection for test context [[DefaultTestContext@c7519c testClass = SiteTest, testInstance = test.site.SiteTest@9117e3, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]]].
+2014-08-09 17:35:23 DEBUG org.springframework.test.context.CacheAwareContextLoaderDelegate  - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
+DEBUG [main] - Retrieved ApplicationContext from cache with key [[MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]].
+2014-08-09 17:35:23 DEBUG org.springframework.beans.factory.annotation.InjectionMetadata  - Processing injected method of bean &apos;test.site.SiteTest&apos;: AutowiredMethodElement for public void test.site.SiteTest.setSiteService(com.ztyj6.fs.service.ISiteService)
 DEBUG [main] - Processing injected method of bean &apos;test.site.SiteTest&apos;: AutowiredMethodElement for public void test.site.SiteTest.setSiteService(com.ztyj6.fs.service.ISiteService)
-2014-08-09 10:31:14 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;siteService&apos;
+2014-08-09 17:35:23 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory  - Returning cached instance of singleton bean &apos;siteService&apos;
 DEBUG [main] - Returning cached instance of singleton bean &apos;siteService&apos;
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Creating new transaction with name [com.ztyj6.fs.service.impl.SiteServiceImpl.saveUserSite]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Creating new transaction with name [com.ztyj6.fs.service.impl.SiteServiceImpl.saveUserSite]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
 DEBUG [main] - Creating new transaction with name [com.ztyj6.fs.service.impl.SiteServiceImpl.saveUserSite]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] for JDBC transaction
-DEBUG [main] - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] for JDBC transaction
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] to manual commit
-DEBUG [main] - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] to manual commit
-2014-08-09 10:31:14 DEBUG org.mybatis.spring.SqlSessionUtils  - Creating a new SqlSession
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] for JDBC transaction
+DEBUG [main] - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] for JDBC transaction
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] to manual commit
+DEBUG [main] - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] to manual commit
+2014-08-09 17:35:23 DEBUG org.mybatis.spring.SqlSessionUtils  - Creating a new SqlSession
 DEBUG [main] - Creating a new SqlSession
-2014-08-09 10:31:14 DEBUG org.mybatis.spring.SqlSessionUtils  - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14ddd64]
-DEBUG [main] - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14ddd64]
-2014-08-09 10:31:14 DEBUG org.mybatis.spring.transaction.SpringManagedTransaction  - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] will be managed by Spring
-DEBUG [main] - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] will be managed by Spring
-2014-08-09 10:31:14 DEBUG com.ztyj6.fs.dao.SiteMapper.insertUserSite  - ==&gt;  Preparing: insert into R_Site_User (SiteId, UserId, PostId) values ( ?, ?, ? ) 
+2014-08-09 17:35:23 DEBUG org.mybatis.spring.SqlSessionUtils  - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@924119]
+DEBUG [main] - Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@924119]
+2014-08-09 17:35:23 DEBUG org.mybatis.spring.transaction.SpringManagedTransaction  - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] will be managed by Spring
+DEBUG [main] - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] will be managed by Spring
+2014-08-09 17:35:23 DEBUG com.ztyj6.fs.dao.SiteMapper.insertUserSite  - ==&gt;  Preparing: insert into R_Site_User (SiteId, UserId, PostId) values ( ?, ?, ? ) 
 DEBUG [main] - ==&gt;  Preparing: insert into R_Site_User (SiteId, UserId, PostId) values ( ?, ?, ? ) 
-2014-08-09 10:31:14 DEBUG com.ztyj6.fs.dao.SiteMapper.insertUserSite  - ==&gt; Parameters: 1(Integer), 1(Integer), 1(Integer)
+2014-08-09 17:35:23 DEBUG com.ztyj6.fs.dao.SiteMapper.insertUserSite  - ==&gt; Parameters: 1(Integer), 1(Integer), 1(Integer)
 DEBUG [main] - ==&gt; Parameters: 1(Integer), 1(Integer), 1(Integer)
-2014-08-09 10:31:14 DEBUG org.mybatis.spring.SqlSessionUtils  - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14ddd64]
-DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14ddd64]
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator  - Translating SQLException with SQL state &apos;23000&apos;, error code &apos;1452&apos;, message [Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)]; SQL was [] for task [
+2014-08-09 17:35:23 DEBUG org.mybatis.spring.SqlSessionUtils  - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@924119]
+DEBUG [main] - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@924119]
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator  - Translating SQLException with SQL state &apos;23000&apos;, error code &apos;1452&apos;, message [Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)]; SQL was [] for task [
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)
 ### The error may involve defaultParameterMap
 ### The error occurred while setting parameters
@@ -651,35 +651,35 @@ DEBUG [main] - Translating SQLException with SQL state &apos;23000&apos;, error 
 ### SQL: insert into R_Site_User (SiteId, UserId,   PostId)   values (   ?,   ?,   ?   )
 ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)
 ]
-2014-08-09 10:31:14 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14ddd64]
-DEBUG [main] - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14ddd64]
-2014-08-09 10:31:14 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14ddd64]
-DEBUG [main] - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@14ddd64]
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Initiating transaction rollback
+2014-08-09 17:35:23 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@924119]
+DEBUG [main] - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@924119]
+2014-08-09 17:35:23 DEBUG org.mybatis.spring.SqlSessionUtils  - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@924119]
+DEBUG [main] - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@924119]
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Initiating transaction rollback
 DEBUG [main] - Initiating transaction rollback
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873]
-DEBUG [main] - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873]
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] after transaction
-DEBUG [main] - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@aa3873] after transaction
-2014-08-09 10:31:14 DEBUG org.springframework.jdbc.datasource.DataSourceUtils  - Returning JDBC Connection to DataSource
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2]
+DEBUG [main] - Rolling back JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2]
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.datasource.DataSourceTransactionManager  - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] after transaction
+DEBUG [main] - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4da4c2] after transaction
+2014-08-09 17:35:23 DEBUG org.springframework.jdbc.datasource.DataSourceUtils  - Returning JDBC Connection to DataSource
 DEBUG [main] - Returning JDBC Connection to DataSource
-2014-08-09 10:31:14 DEBUG org.springframework.test.context.support.DirtiesContextTestExecutionListener  - After test method: context [DefaultTestContext@1fca7dd testClass = SiteTest, testInstance = test.site.SiteTest@1837c1b, testMethod = testSaveUserSite@SiteTest, testException = org.springframework.dao.DataIntegrityViolationException: 
+2014-08-09 17:35:23 DEBUG org.springframework.test.context.support.DirtiesContextTestExecutionListener  - After test method: context [DefaultTestContext@c7519c testClass = SiteTest, testInstance = test.site.SiteTest@9117e3, testMethod = testSaveUserSite@SiteTest, testException = org.springframework.dao.DataIntegrityViolationException: 
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)
 ### The error may involve defaultParameterMap
 ### The error occurred while setting parameters
 ### SQL: insert into R_Site_User (SiteId, UserId,   PostId)   values (   ?,   ?,   ?   )
 ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)
-; SQL []; Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION); nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION), mergedContextConfiguration = [MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
-DEBUG [main] - After test method: context [DefaultTestContext@1fca7dd testClass = SiteTest, testInstance = test.site.SiteTest@1837c1b, testMethod = testSaveUserSite@SiteTest, testException = org.springframework.dao.DataIntegrityViolationException: 
+; SQL []; Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION); nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION), mergedContextConfiguration = [MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
+DEBUG [main] - After test method: context [DefaultTestContext@c7519c testClass = SiteTest, testInstance = test.site.SiteTest@9117e3, testMethod = testSaveUserSite@SiteTest, testException = org.springframework.dao.DataIntegrityViolationException: 
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)
 ### The error may involve defaultParameterMap
 ### The error occurred while setting parameters
 ### SQL: insert into R_Site_User (SiteId, UserId,   PostId)   values (   ?,   ?,   ?   )
 ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)
-; SQL []; Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION); nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION), mergedContextConfiguration = [MergedContextConfiguration@132f0f5 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
+; SQL []; Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION); nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION), mergedContextConfiguration = [MergedContextConfiguration@10183f1 testClass = SiteTest, locations = &apos;{classpath:spring-security.xml, classpath:spring.xml, classpath:spring-ehcache.xml, classpath:spring-mybatis.xml}&apos;, classes = &apos;{}&apos;, contextInitializerClasses = &apos;[]&apos;, activeProfiles = &apos;{}&apos;, contextLoader = &apos;org.springframework.test.context.support.DelegatingSmartContextLoader&apos;, parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
 </system-out>
   </testcase>
-  <testcase time="0.205" classname="test.site.SiteTest" name="testDeleteUserSite"/>
-  <testcase time="0.149" classname="test.site.SiteTest" name="deleteBatchUserSite"/>
-  <testcase time="0.152" classname="test.site.SiteTest" name="testIsExistUserInSite"/>
+  <testcase time="0.192" classname="test.site.SiteTest" name="testDeleteUserSite"/>
+  <testcase time="0.178" classname="test.site.SiteTest" name="deleteBatchUserSite"/>
+  <testcase time="0.178" classname="test.site.SiteTest" name="testIsExistUserInSite"/>
 </testsuite>

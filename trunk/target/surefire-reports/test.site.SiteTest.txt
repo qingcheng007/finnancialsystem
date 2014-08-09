@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: test.site.SiteTest
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 1.521 sec <<< FAILURE!
-testAdd(test.site.SiteTest)  Time elapsed: 0.239 sec  <<< ERROR!
+Tests run: 9, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 1.454 sec <<< FAILURE!
+testAdd(test.site.SiteTest)  Time elapsed: 0.177 sec  <<< ERROR!
 org.springframework.dao.DuplicateKeyException: 
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '7-1' for key 1
 ### The error may involve com.ztyj6.fs.dao.SiteMapper.insert-Inline
@@ -118,7 +118,7 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 	at java.lang.reflect.Method.invoke(Method.java:606)
 	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:358)
 	... 57 more
-testsaveUserSite(test.site.SiteTest)  Time elapsed: 0.222 sec  <<< ERROR!
+testsaveUserSite(test.site.SiteTest)  Time elapsed: 0.185 sec  <<< ERROR!
 org.springframework.dao.DataIntegrityViolationException: 
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)
 ### The error may involve defaultParameterMap
@@ -232,7 +232,7 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 	at java.lang.reflect.Method.invoke(Method.java:606)
 	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:358)
 	... 56 more
-testSaveUserSite(test.site.SiteTest)  Time elapsed: 0.162 sec  <<< ERROR!
+testSaveUserSite(test.site.SiteTest)  Time elapsed: 0.174 sec  <<< ERROR!
 org.springframework.dao.DataIntegrityViolationException: 
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`sq_ztyjsystem/R_Site_User`, CONSTRAINT `fk_Site_has_User_Site` FOREIGN KEY (`SiteId`) REFERENCES `Site` (`Id`) ON DELETE CASCADE ON UPDATE NO ACTION)
 ### The error may involve defaultParameterMap

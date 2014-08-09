@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: test.resources.ResourcesTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.234 sec <<< FAILURE!
-insertTest(test.resources.ResourcesTest)  Time elapsed: 0.234 sec  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.219 sec <<< FAILURE!
+insertTest(test.resources.ResourcesTest)  Time elapsed: 0.214 sec  <<< ERROR!
 org.springframework.dao.DuplicateKeyException: 
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '15' for key 1
 ### The error may involve com.ztyj6.fs.dao.ResourceMapper.insertSelective-Inline
