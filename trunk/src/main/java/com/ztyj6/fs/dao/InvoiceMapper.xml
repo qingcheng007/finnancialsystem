@@ -29,28 +29,29 @@
 		OccurDate, Content, Money, Penalty,
 		Description,
 		ProjectName, PhotoUrl,
-		Remark 
+		Remark
 	</sql>
-	<resultMap type="com.ztyj6.fs.model.Invoice" id="invoiceResultMap" extends="BaseResultMap">
-	<association property="invoiceDetails" javaType="com.ztyj6.fs.model.InvoiceDetails">
-	<id property="id" column="invoice_details_id"/>
-	<result property="content1" column="invoice_details_content1"/>
-	<result property="content2" column="invoice_details_content2"/>
-	<result property="content3" column="invoice_details_content3"/>
-	<result property="content4" column="invoice_details_content4"/>
-	</association>
-	<association property="invoiceType" javaType="com.ztyj6.fs.model.InvoiceType">
-	<id property="id" column="invoice_type_id"/>
-	<result property="name" column="invoice_type_name"/>
-	</association>
-	<association property="auditState" javaType="com.ztyj6.fs.model.AuditState">
-	<id property="id" column="audit_state_id"/>
-	<result property="operator" column="audti_state_operator"/>
-	<result property="prover" column="audti_state_prover"/>
-	<result property="auditor1" column="audti_state_auditor1"/>
-	<result property="auditor2" column="audti_state_auditor2"/>
-	<result property="dearer" column="audti_state_dearer"/>
-	</association>
+	<resultMap type="com.ztyj6.fs.model.Invoice" id="invoiceResultMap"
+		extends="BaseResultMap">
+		<association property="invoiceDetails" javaType="com.ztyj6.fs.model.InvoiceDetails">
+			<id property="id" column="invoice_details_id" />
+			<result property="content1" column="invoice_details_content1" />
+			<result property="content2" column="invoice_details_content2" />
+			<result property="content3" column="invoice_details_content3" />
+			<result property="content4" column="invoice_details_content4" />
+		</association>
+		<association property="invoiceType" javaType="com.ztyj6.fs.model.InvoiceType">
+			<id property="id" column="invoice_type_id" />
+			<result property="name" column="invoice_type_name" />
+		</association>
+		<association property="auditState" javaType="com.ztyj6.fs.model.AuditState">
+			<id property="id" column="audit_state_id" />
+			<result property="operator" column="audti_state_operator" />
+			<result property="prover" column="audti_state_prover" />
+			<result property="auditor1" column="audti_state_auditor1" />
+			<result property="auditor2" column="audti_state_auditor2" />
+			<result property="dearer" column="audti_state_dearer" />
+		</association>
 	</resultMap>
 	<select id="getInvoiceAll" resultMap="invoiceResultMap">
 		SELECT
@@ -73,26 +74,108 @@
 		Invoice.Remark,
 		Invoice.DearerId,
 		InvoiceType.Id invoice_type_id,
-		InvoiceType.`Name` invoice_type_name,
+		InvoiceType.`Name`
+		invoice_type_name,
 		InvoiceDetails.Id invoice_details_id,
 		InvoiceDetails.Content1 invoice_details_content1,
 		InvoiceDetails.Content2 invoice_details_content2,
 		InvoiceDetails.Content3 invoice_details_content3,
 		InvoiceDetails.Content4 invoice_details_content4,
-		AuditState.Id audit_state_id,
+		AuditState.Id
+		audit_state_id,
 		AuditState.Operator audti_state_operator,
 		AuditState.Prover audti_state_prover,
-		AuditState.Auditor1 audti_state_auditor1,
+		AuditState.Auditor1
+		audti_state_auditor1,
 		AuditState.Auditor2 audti_state_auditor2,
 		AuditState.Dearer audti_state_dearer
 		FROM
 		Invoice
-		JOIN InvoiceType ON Invoice.InvoiceTypeId = InvoiceType.Id
-		JOIN InvoiceDetails ON Invoice.InvoiceDetailsId = InvoiceDetails.Id
-		JOIN AuditState ON Invoice.AuditStateId = AuditState.Id
+		JOIN InvoiceType ON
+		Invoice.InvoiceTypeId = InvoiceType.Id
+		JOIN InvoiceDetails ON
+		Invoice.InvoiceDetailsId = InvoiceDetails.Id
+		JOIN AuditState ON
+		Invoice.AuditStateId = AuditState.Id
 
 	</select>
-	
+	<select id="selectAllInvoice" resultMap="invoiceResultMap">
+		SELECT
+		Invoice.Id,
+		Invoice.CreateDate,
+		Invoice.OccurDate,
+		Invoice.Content,
+		Invoice.Money,
+		Invoice.Penalty,
+		Invoice.Description,
+		Invoice.InvoiceDetailsId,
+		Invoice.InvoiceTypeId,
+		Invoice.ProjectName,
+		Invoice.OperatorId,
+		Invoice.ProverId,
+		Invoice.Auditor1Id,
+		Invoice.Auditor2Id,
+		Invoice.AuditStateId,
+		Invoice.PhotoUrl,
+		Invoice.Remark,
+		Invoice.DearerId,
+		InvoiceType.Id invoice_type_id,
+		InvoiceType.`Name` invoice_type_name,
+		InvoiceDetails.Id
+		invoice_details_id,
+		InvoiceDetails.Content1 invoice_details_content1,
+		InvoiceDetails.Content2 invoice_details_content2,
+		InvoiceDetails.Content3 invoice_details_content3,
+		InvoiceDetails.Content4 invoice_details_content4,
+		AuditState.Id
+		audit_state_id,
+		AuditState.Operator audti_state_operator,
+		AuditState.Prover audti_state_prover,
+		AuditState.Auditor1
+		audti_state_auditor1,
+		AuditState.Auditor2 audti_state_auditor2,
+		AuditState.Dearer audti_state_dearer
+
+		FROM
+		Invoice
+		JOIN InvoiceType ON Invoice.InvoiceTypeId = InvoiceType.Id
+		JOIN
+		InvoiceDetails ON Invoice.InvoiceDetailsId = InvoiceDetails.Id
+		JOIN
+		AuditState ON Invoice.AuditStateId = AuditState.Id
+		<where>
+
+			<if test="pageFilter.keyword != null">
+				Invoice.InvoiceTypeId like
+				#{pageFilter.keyword,jdbcType=VARCHAR}
+			</if>
+			<if test="pageFilter.startTime != null and pageFilter.endTime != null">
+				and Invoice.CreateDate between
+				#{pageFilter.startTime,jdbcType=TIMESTAMP} and
+				#{pageFilter.endTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="pageFilter.content != null">
+				and Invoice.Content like
+				#{pageFilter.content,jdbcType=VARCHAR}
+			</if>
+			<if test="pageFilter.projectName != null">
+				and Invoice.ProjectName like
+				#{pageFilter.projectName,jdbcType=VARCHAR}
+			</if>
+
+			<if test="pageFilter.auditor2State != null">
+				and AuditState.Auditor2 =
+				#{pageFilter.auditor2State,jdbcType=INTEGER}
+			</if>
+
+			<if test="pageFilter.DearerState != null">
+				and AuditState.Dearer =
+				#{pageFilter.dearerState,jdbcType=INTEGER}
+			</if>
+		</where>
+
+	</select>
+
 	<select id="selectByPage" resultMap="invoiceResultMap">
 		SELECT
 		Invoice.Id,
@@ -115,27 +198,35 @@
 		Invoice.DearerId,
 		InvoiceType.Id invoice_type_id,
 		InvoiceType.`Name` invoice_type_name,
-		InvoiceDetails.Id invoice_details_id,
+		InvoiceDetails.Id
+		invoice_details_id,
 		InvoiceDetails.Content1 invoice_details_content1,
 		InvoiceDetails.Content2 invoice_details_content2,
 		InvoiceDetails.Content3 invoice_details_content3,
 		InvoiceDetails.Content4 invoice_details_content4,
-		AuditState.Id audit_state_id,
+		AuditState.Id
+		audit_state_id,
 		AuditState.Operator audti_state_operator,
 		AuditState.Prover audti_state_prover,
-		AuditState.Auditor1 audti_state_auditor1,
+		AuditState.Auditor1
+		audti_state_auditor1,
 		AuditState.Auditor2 audti_state_auditor2,
 		AuditState.Dearer audti_state_dearer
-		
+
 		FROM
 		Invoice
 		JOIN InvoiceType ON Invoice.InvoiceTypeId = InvoiceType.Id
-		JOIN InvoiceDetails ON Invoice.InvoiceDetailsId = InvoiceDetails.Id
-		JOIN AuditState ON Invoice.AuditStateId = AuditState.Id
-			<where>
-			
+		JOIN
+		InvoiceDetails ON Invoice.InvoiceDetailsId = InvoiceDetails.Id
+		JOIN
+		AuditState ON Invoice.AuditStateId = AuditState.Id
+		<where>
+
+			Invoice.OperatorId=#{id,jdbcType=INTEGER}
+
 			<if test="pageFilter.keyword != null">
-				Invoice.InvoiceTypeId like #{pageFilter.keyword,jdbcType=VARCHAR}
+				and Invoice.InvoiceTypeId like
+				#{pageFilter.keyword,jdbcType=VARCHAR}
 			</if>
 			<if test="pageFilter.startTime != null and pageFilter.endTime != null">
 				and Invoice.CreateDate between
@@ -144,14 +235,24 @@
 			</if>
 			<if test="pageFilter.content != null">
 				and Invoice.Content like
-				#{pageFilter.content,jdbcType=VARCHAR} 
+				#{pageFilter.content,jdbcType=VARCHAR}
 			</if>
-				<if test="pageFilter.projectname != null">
+			<if test="pageFilter.projectName != null">
 				and Invoice.ProjectName like
-				#{pageFilter.projectname,jdbcType=VARCHAR}
+				#{pageFilter.projectName,jdbcType=VARCHAR}
+			</if>
+
+			<if test="pageFilter.auditor2State != null">
+				and AuditState.Auditor2 =
+				#{pageFilter.auditor2State,jdbcType=INTEGER}
+			</if>
+
+			<if test="pageFilter.DearerState != null">
+				and AuditState.Dearer =
+				#{pageFilter.dearerState,jdbcType=INTEGER}
 			</if>
 		</where>
-		
+
 	</select>
 	<select id="selectPageById" resultMap="invoiceResultMap">
 		SELECT
@@ -175,34 +276,42 @@
 		Invoice.DearerId,
 		InvoiceType.Id invoice_type_id,
 		InvoiceType.`Name` invoice_type_name,
-		InvoiceDetails.Id invoice_details_id,
+		InvoiceDetails.Id
+		invoice_details_id,
 		InvoiceDetails.Content1 invoice_details_content1,
 		InvoiceDetails.Content2 invoice_details_content2,
 		InvoiceDetails.Content3 invoice_details_content3,
 		InvoiceDetails.Content4 invoice_details_content4,
-		AuditState.Id audit_state_id,
+		AuditState.Id
+		audit_state_id,
 		AuditState.Operator audti_state_operator,
 		AuditState.Prover audti_state_prover,
-		AuditState.Auditor1 audti_state_auditor1,
+		AuditState.Auditor1
+		audti_state_auditor1,
 		AuditState.Auditor2 audti_state_auditor2,
 		AuditState.Dearer audti_state_dearer
 		FROM
 		Invoice
-		JOIN InvoiceType ON Invoice.InvoiceTypeId = InvoiceType.Id
-		JOIN InvoiceDetails ON Invoice.InvoiceDetailsId = InvoiceDetails.Id
-		JOIN AuditState ON Invoice.AuditStateId = AuditState.Id
+		JOIN InvoiceType ON
+		Invoice.InvoiceTypeId = InvoiceType.Id
+		JOIN InvoiceDetails ON
+		Invoice.InvoiceDetailsId = InvoiceDetails.Id
+		JOIN AuditState ON
+		Invoice.AuditStateId = AuditState.Id
 		<where>
 			ProverId=#{id,jdbcType=INTEGER}
-			OR Auditor1Id=#{id,jdbcType=INTEGER}
+			OR
+			Auditor1Id=#{id,jdbcType=INTEGER}
 			OR Auditor2Id=#{id,jdbcType=INTEGER}
 			OR DearerId=#{id,jdbcType=INTEGER}
 		</where>
 	</select>
-	
-<select id="selectInvoiceCount" parameterType="java.lang.Integer" resultType="INTEGER">
-  select count(*) from invoice
- </select>
- <select id="selectByFilter" resultMap="invoiceResultMap">
+
+	<select id="selectInvoiceCount" parameterType="java.lang.Integer"
+		resultType="INTEGER">
+		select count(*) from invoice
+	</select>
+	<select id="selectByFilter" resultMap="invoiceResultMap">
 		SELECT
 		Invoice.Id,
 		Invoice.CreateDate,
@@ -224,26 +333,33 @@
 		Invoice.DearerId,
 		InvoiceType.Id invoice_type_id,
 		InvoiceType.`Name` invoice_type_name,
-		InvoiceDetails.Id invoice_details_id,
+		InvoiceDetails.Id
+		invoice_details_id,
 		InvoiceDetails.Content1 invoice_details_content1,
 		InvoiceDetails.Content2 invoice_details_content2,
 		InvoiceDetails.Content3 invoice_details_content3,
 		InvoiceDetails.Content4 invoice_details_content4,
-		AuditState.Id audit_state_id,
+		AuditState.Id
+		audit_state_id,
 		AuditState.Operator audti_state_operator,
 		AuditState.Prover audti_state_prover,
-		AuditState.Auditor1 audti_state_auditor1,
+		AuditState.Auditor1
+		audti_state_auditor1,
 		AuditState.Auditor2 audti_state_auditor2,
 		AuditState.Dearer audti_state_dearer
 		FROM
 		Invoice
-		JOIN InvoiceType ON Invoice.InvoiceTypeId = InvoiceType.Id
-		JOIN InvoiceDetails ON Invoice.InvoiceDetailsId = InvoiceDetails.Id
-		JOIN AuditState ON Invoice.AuditStateId = AuditState.Id  
+		JOIN InvoiceType ON
+		Invoice.InvoiceTypeId = InvoiceType.Id
+		JOIN InvoiceDetails ON
+		Invoice.InvoiceDetailsId = InvoiceDetails.Id
+		JOIN AuditState ON
+		Invoice.AuditStateId = AuditState.Id
 		<where>
-			
+
 			<if test="pageFilter.keyword != null">
-				Invoice.InvoiceTypeId = #{pageFilter.keyword,jdbcType=VARCHAR}
+				Invoice.InvoiceTypeId =
+				#{pageFilter.keyword,jdbcType=VARCHAR}
 			</if>
 			<if test="pageFilter.startTime != null and pageFilter.endTime != null">
 				and Invoice.CreateDate between
@@ -252,8 +368,8 @@
 			</if>
 		</where>
 	</select>
- 
- <select id="selectByPrimaryID" parameterType="com.ztyj6.fs.model.InvoiceKey"
+
+	<select id="selectByPrimaryID" parameterType="com.ztyj6.fs.model.Invoice"
 		resultMap="invoiceResultMap">
 		SELECT
 		Invoice.Id,
@@ -276,26 +392,32 @@
 		Invoice.DearerId,
 		InvoiceType.Id invoice_type_id,
 		InvoiceType.`Name` invoice_type_name,
-		InvoiceDetails.Id invoice_details_id,
+		InvoiceDetails.Id
+		invoice_details_id,
 		InvoiceDetails.Content1 invoice_details_content1,
 		InvoiceDetails.Content2 invoice_details_content2,
 		InvoiceDetails.Content3 invoice_details_content3,
 		InvoiceDetails.Content4 invoice_details_content4,
-		AuditState.Id audit_state_id,
+		AuditState.Id
+		audit_state_id,
 		AuditState.Operator audti_state_operator,
 		AuditState.Prover audti_state_prover,
-		AuditState.Auditor1 audti_state_auditor1,
+		AuditState.Auditor1
+		audti_state_auditor1,
 		AuditState.Auditor2 audti_state_auditor2,
 		AuditState.Dearer audti_state_dearer
 		FROM
 		Invoice
-		JOIN InvoiceType ON Invoice.InvoiceTypeId = InvoiceType.Id
-		JOIN InvoiceDetails ON Invoice.InvoiceDetailsId = InvoiceDetails.Id
-		JOIN AuditState ON Invoice.AuditStateId = AuditState.Id 
+		JOIN InvoiceType ON
+		Invoice.InvoiceTypeId = InvoiceType.Id
+		JOIN InvoiceDetails ON
+		Invoice.InvoiceDetailsId = InvoiceDetails.Id
+		JOIN AuditState ON
+		Invoice.AuditStateId = AuditState.Id
 		where Invoice.Id = #{id,jdbcType=INTEGER}
 	</select>
- 
-	<select id="selectByPrimaryKey" parameterType="com.ztyj6.fs.model.InvoiceKey"
+
+	<select id="selectByPrimaryKey" parameterType="com.ztyj6.fs.model.Invoice"
 		resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
@@ -324,7 +446,7 @@
 			#{id}
 		</foreach>
 	</delete>
-	<delete id="deleteByPrimaryKey" parameterType="com.ztyj6.fs.model.InvoiceKey">
+	<delete id="deleteByPrimaryKey" parameterType="com.ztyj6.fs.model.Invoice">
 		delete from
 		Invoice
 		where AuditStateId = #{auditStateId,jdbcType=INTEGER}
@@ -344,7 +466,7 @@
 		and ProverId =
 		#{proverId,jdbcType=INTEGER}
 	</delete>
-	<delete id="deleteByPrimaryID" parameterType="com.ztyj6.fs.model.InvoiceKey">
+	<delete id="deleteByPrimaryID" parameterType="com.ztyj6.fs.model.Invoice">
 		delete from
 		Invoice
 		where Id = #{id,jdbcType=INTEGER}
@@ -487,10 +609,11 @@
 				#{remark,jdbcType=VARCHAR},
 			</if>
 		</trim>
-	<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+		<selectKey resultType="java.lang.Integer" order="AFTER"
+			keyProperty="id">
 			SELECT LAST_INSERT_ID()
-	</selectKey>
-		
+		</selectKey>
+
 	</insert>
 	<update id="updateByPrimaryKeySelective" parameterType="com.ztyj6.fs.model.Invoice">
 		update Invoice
@@ -575,5 +698,5 @@
 		and ProverId =
 		#{proverId,jdbcType=INTEGER}
 	</update>
-	
+
 </mapper>

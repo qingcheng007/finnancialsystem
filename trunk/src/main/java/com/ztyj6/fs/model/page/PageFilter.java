@@ -11,9 +11,28 @@ public class PageFilter {
 	private String order = "asc";// asc/desc
 	private String keyword;
 	private String content;
-	private String projectname;
+	private String projectName;
+	private String auditor2State;
+	private String dearerState;
 	private Date startTime;
 	private Date endTime;
+	public String getAuditor2State() {
+		return auditor2State;
+	}
+
+	public void setAuditor2State(String auditor2State) {
+		this.auditor2State = auditor2State;
+	}
+
+	public String getDearerState() {
+		return dearerState;
+	}
+
+	public void setDearerState(String dearerState) {
+		this.dearerState = dearerState;
+	}
+
+
 
 	public String getContent() {
 		return content;
@@ -23,12 +42,12 @@ public class PageFilter {
 		this.content = content;
 	}
 
-	public String getProjectname() {
-		return projectname;
+	public String getProjectName() {
+		return projectName;
 	}
 
-	public void setProjectname(String projectname) {
-		this.projectname = projectname;
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
 	}
 
 	public String getKeyword() {

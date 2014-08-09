@@ -423,20 +423,10 @@
 						<form id="admin_invoice_manage_searchForm">
 							<table>
 								<tr>
-									<td>发票类型</td><td>时间</td><td>项目内容</td><td>项目名称</td><td>审批人审核状态</td><td>审票人审核状态</td>
-									<td rowspan="2"><a href="javascript:void(0);"
-										class="easyui-linkbutton"
-										data-options="iconCls:'icon-search',plain:true"
-										onclick="searchFun();">查找</a></td>
-									<td rowspan="2"><a href="javascript:void(0);"
-										class="easyui-linkbutton"
-										data-options="iconCls:'icon-undo',plain:true"
-										onclick="resetSearch();">重置</a></td></tr>
-									<tr>
+									<td>发票类型</td>
 									<td>
 										<!-- <input name="keyword" placeholder="输入关键词" /> --> 
 										<select id="keyword" name="keyword" style="width:166px;">
-											<option></option>
 											<option value="1">卡加油费</option>
 											<option value="2">现金加油费</option>
 											<option value="3">住宿费</option>
@@ -450,7 +440,7 @@
 											<option value="11">其他费</option>
 									</select>
 									</td>
-									
+									<td>时间</td>
 									<td><input class="Wdate" name="startTime"
 										placeholder="点击选择时间"
 										onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})"
@@ -458,24 +448,16 @@
 										placeholder="点击选择时间"
 										onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})"
 										readonly="readonly" /></td>
-										<td><input name="content" placeholder="输入项目内容" /></td>
-										<td><input name="projectName" placeholder="输入项目名称" /></td>
-										<td>
-										<select id="auditor2State" name="auditor2State" style="width:166px;">
-											<option></option>
-											<option value="0">未审核</option>
-											<option value="1">审核通过</option>
-											<option value="2">审核不通过</option>
-										</select>
-										</td>
-										<td>
-										<select id="dearerState" name="dearerState" style="width:166px;">
-											<option></option>
-											<option value="0">未审核</option>
-											<option value="1">审核通过</option>
-											<option value="2">审核不通过</option>
-										</select>
-										</td>
+										<td>项目内容</td><td><input name="content" placeholder="输入项目内容" /></td>
+										<td>项目名称</td><td><input name="projectname" placeholder="输入项目名称" /></td>
+									<td><a href="javascript:void(0);"
+										class="easyui-linkbutton"
+										data-options="iconCls:'icon-search',plain:true"
+										onclick="searchFun();">查找</a></td>
+									<td><a href="javascript:void(0);"
+										class="easyui-linkbutton"
+										data-options="iconCls:'icon-undo',plain:true"
+										onclick="resetSearch();">重置</a></td>
 								</tr>
 							</table>
 						</form>

@@ -53,7 +53,15 @@
 						width : 100,
 						align : 'center',
 						sortable : true
-					}, {
+					}, 
+					 {
+						field : 'operatorName',
+						title : '经办人',
+						width : 100,
+						align : 'center',
+						sortable : true
+					}, 
+					{
 						field : 'content',
 						title : '报销金额',
 						width : 80,
