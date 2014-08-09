@@ -27,7 +27,7 @@
 		$('#admin_user_manage_dataGrid')
 				.datagrid(
 						{
-							url : '${pageContext.request.contextPath}/userController/admin/geetById.do?id='+u_id,
+							url : '${pageContext.request.contextPath}/userController/admin/userGetById.do?id='+u_id,
 							fit : true,
 							autoRowHeight : false,
 							striped : true,

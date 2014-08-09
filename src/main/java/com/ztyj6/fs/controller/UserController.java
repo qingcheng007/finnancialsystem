@@ -88,11 +88,10 @@ public class UserController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping("/admin/userGetById")
-	public DataGrid userGetById(PageFilter pageFilter, Integer id,
-			HttpServletRequest request) {
-		int myId = Integer.parseInt(request.getParameter("id"));
+	public DataGrid userGetById(PageFilter pageFilter, @RequestParam("id") Integer id,
+			HttpServletRequest request) {	
 		try {
-			return userService.getByIdPage(pageFilter, myId);
+			return userService.getByIdPage(pageFilter, id);
 		} catch (Exception e) {
 			return null;
 		}
