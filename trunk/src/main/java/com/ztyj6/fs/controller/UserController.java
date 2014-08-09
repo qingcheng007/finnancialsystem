@@ -19,11 +19,11 @@ import com.ztyj6.fs.model.User;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.Json;
 import com.ztyj6.fs.model.page.PageFilter;
-import com.ztyj6.fs.security.service.IChangePassword;
+
 import com.ztyj6.fs.service.IBalanceService;
 import com.ztyj6.fs.service.IUserService;
 import com.ztyj6.fs.utils.IPUtil;
-import com.ztyj6.fs.security.service.IChangePassword;;
+
 
 @Controller
 @RequestMapping("/userController")
@@ -33,7 +33,7 @@ public class UserController extends BaseController {
 	private IBalanceService balanceService;
 	
 
-	private IChangePassword iChangePasswordDao;
+	
 
 
 	public IBalanceService getBalanceService() {
@@ -215,39 +215,7 @@ public class UserController extends BaseController {
 		return users;
 	}
 	
-	@RequestMapping(value = "/admin/changePassword", method = RequestMethod.GET)
-	@ResponseBody
-	
 
-	public Json changePassword(
-			User user, HttpServletRequest request) {
-		Object principal = SecurityContextHolder.getContext()
-				.getAuthentication().getPrincipal();
-		String newpassword=request.getParameter("password");
-		String username = principal.toString();
-
-		if (principal instanceof UserDetails) {
-			username = ((UserDetails) principal).getUsername();
-		}
-
-		// if(((UserDetails)principal).getPassword().equals(oldpassword))
-		// { 
-		iChangePasswordDao.changePassword(username, newpassword);
-		// }
-		Json j = new Json();
-		try {
-			userService.update(user);
-			j.setSuccess(true);
-			j.setObj(user);
-			j.setMsg("编辑成功！");
-		} catch (Exception e) {
-			j.setMsg("编辑失败！");
-		}
-		return j;
-
-	
-
-	}
 	
 	
 	@RequestMapping(value="/admin/getAllDroplist",method = RequestMethod.GET)
