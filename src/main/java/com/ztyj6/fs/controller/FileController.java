@@ -40,7 +40,7 @@ public class FileController extends BaseController {
 	private static final String TYPE_ADD_INVOICE = "invoice";
 
 	private static final String UPLOAD_DIR = "upload";
-	private static final String TEMP_DIR = "temp";
+	//private static final String TEMP_DIR = "temp";
 
 	private static final int MAXSIZE = 1000000;
 
@@ -79,10 +79,10 @@ public class FileController extends BaseController {
 				savePath.append(application.getRealPath("/")).append(UPLOAD_DIR).append("/");
 				saveUrl.append(request.getContextPath()).append("/").append(UPLOAD_DIR).append("/");
 			} else if (type.equals(TYPE_ADD_INVOICE)) {
-				savePath.append(application.getRealPath("/")).append(TEMP_DIR).append("/");
-				saveUrl.append(request.getContextPath()).append("/").append(TEMP_DIR).append("/");
-				//photoUrl.append("../../").append(TEMP_DIR).append("/");
-				photoUrl.append(TEMP_DIR).append("/");
+				savePath.append(application.getRealPath("/")).append(UPLOAD_DIR).append("/");
+				saveUrl.append(request.getContextPath()).append("/").append(UPLOAD_DIR).append("/");
+				//photoUrl.append("../../").append(UPLOAD_DIR).append("/");
+				photoUrl.append(UPLOAD_DIR).append("/");
 			}
 		} else
 			return getError("类型不能为空。");

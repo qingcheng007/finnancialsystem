@@ -330,7 +330,7 @@
 					name="projectName" type="text" placeholder="所属工程"
 					data-options="required:true" style="width:160px;" /></td>
 			</tr>
-			<tr style="display:none">
+			<tr>
 				<td>经办人</td>
 				<td><input class="easyui-validatebox" id="operatorName"
 					name="operatorName" type="text" placeholder="经办人"

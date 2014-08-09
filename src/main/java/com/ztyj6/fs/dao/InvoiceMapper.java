@@ -35,9 +35,9 @@ public interface InvoiceMapper {
     
     List selectByFilter(@Param("pageFilter")PageFilter pageFilter,PageBounds pageBounds);
     
-    List selectByPage(@Param("pageFilter")PageFilter pageFilter,PageBounds pageBounds, int id);
+    List selectByPage(@Param("pageFilter")PageFilter pageFilter,PageBounds pageBounds,@Param("id")int Id);
 
-    List selectPageById(@Param("pageFilter")PageFilter pageFilter,PageBounds pageBounds, int id);
+    List selectPageById(@Param("pageFilter")PageFilter pageFilter,PageBounds pageBounds,@Param("id")int Id);
     
     List selectAllInvoice(@Param("pageFilter")PageFilter pageFilter,PageBounds pageBounds);
     

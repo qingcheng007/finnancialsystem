@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: test.post.PostTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.734 sec <<< FAILURE!
-addTset(test.post.PostTest)  Time elapsed: 0.203 sec  <<< ERROR!
+Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.762 sec <<< FAILURE!
+addTset(test.post.PostTest)  Time elapsed: 0.23 sec  <<< ERROR!
 org.springframework.dao.DuplicateKeyException: 
 ### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '100' for key 1
 ### The error may involve com.ztyj6.fs.dao.PostMapper.insert-Inline

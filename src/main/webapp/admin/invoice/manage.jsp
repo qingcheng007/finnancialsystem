@@ -10,13 +10,15 @@
 <script type="text/javascript"
 	src="../../jslib/My97DatePicker4.8b3/My97DatePicker/WdatePicker.js"
 	charset="utf-8"></script>
+<sec:authentication property="principal" var="authentication" />
 <script type="text/javascript" charset="utf-8">
 	$(function() {
-
+		//var passid=${authentication.id};
 		$('#admin_invoice_manage_dataGrid')
 				.datagrid(
 						{
 							url : '${pageContext.request.contextPath}/invoiceController/getByPage.do',
+							//url : '${pageContext.request.contextPath}/invoiceController/getByPageByCurrentId.do?id='+passid,
 							fit : true,
 							autoRowHeight : true,
 							striped : true,
@@ -105,10 +107,18 @@
 											var url = "${pageContext.request.contextPath}/"
 													+ row.photoUrl;
 											var btn = '<img src="'+ url +'"/>';
-											var urlphoto='<a href=\"javascript:void(0);\" class=\"easyui-linkbutton\" data-options=\"iconCls:\'icon-add\',plain:true\" onclick=\"showPhoto(\''+url+'\');\">查看图片</a>';
+											var urlphoto = '<a href=\"javascript:void(0);\" class=\"easyui-linkbutton\" data-options=\"iconCls:\'icon-add\',plain:true\" onclick=\"showPhoto(\''
+													+ url + '\');\">查看图片</a>';
 											//console.info(urlphoto);
 											return urlphoto;
 										}
+									},
+									{
+										field : 'operatorName',
+										title : '经办人',
+										width : 70,
+										align : 'center',
+										sortable : true
 									},
 									{
 										field : 'proverName',
@@ -232,8 +242,7 @@
 										width : 80,
 										align : 'center',
 										sortable : true
-									} 
-									] ],
+									} ] ],
 							toolbar : '#admin_invoice_manage_toolbar',
 							onLoadSuccess : function() {
 
@@ -253,45 +262,48 @@
 	function showPhoto(url) {
 		console.info(url);
 		var urltest = "${pageContext.request.contextPath}/";
-		if(urltest==url)
-		{
-		$.messager.show({
+		if (urltest == url) {
+			$.messager.show({
 				title : '提示',
 				msg : '发票没有加入图片',
 				timeout : 2000,
 				showType : 'slide'
 			});
-		
-		}else
-		{
-		parent.$.modalDialog({
-			title : '图片详细信息',
-			width : 1024,
-			height : 460,
-			url : '${pageContext.request.contextPath}/admin/invoice/showPhoto.jsp?url='+url
-		});
-		parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');
+
+		} else {
+			parent.$
+					.modalDialog({
+						title : '图片详细信息',
+						width : 1024,
+						height : 460,
+						url : '${pageContext.request.contextPath}/admin/invoice/showPhoto.jsp?url='
+								+ url
+					});
+			parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');
 		}
 	}
 	function check(id) {
 		console.info(id);
-		parent.$.modalDialog({
+		parent.$
+				.modalDialog({
 					title : '查看详细信息',
 					width : 800,
 					height : 550,
-					url : '${pageContext.request.contextPath}/admin/invoice/check.jsp?id='+ id
+					url : '${pageContext.request.contextPath}/admin/invoice/check.jsp?id='
+							+ id
 				});
 		parent.$.modalDialog.DataGrid = $('#admin_question_manage_dataGrid');
 	}
-	function invoiceCheck(){
+	function invoiceCheck() {
 		var rows = $('#admin_invoice_manage_dataGrid').datagrid('getChecked');
 		if (rows.length == 1) {
-			parent.$.modalDialog({
-				title : '发票详细信息',
-				width : 600,
-				height : 600,
-				url : '${pageContext.request.contextPath}/admin/invoice/check.jsp'
-			});
+			parent.$
+					.modalDialog({
+						title : '发票详细信息',
+						width : 600,
+						height : 600,
+						url : '${pageContext.request.contextPath}/admin/invoice/check.jsp'
+					});
 			parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');
 			parent.$.modalDialog.row = rows[0];
 		} else {
@@ -361,7 +373,8 @@
 									for ( var i = 0; i < rows.length; i++)
 										ids.push(rows[i].id);
 
-									$.ajax({
+									$
+											.ajax({
 												url : '${pageContext.request.contextPath}/invoiceController/delete.do',
 												type : 'POST',
 												data : {
@@ -423,7 +436,12 @@
 						<form id="admin_invoice_manage_searchForm">
 							<table>
 								<tr>
-									<td>发票类型</td><td>时间</td><td>项目内容</td><td>项目名称</td><td>审批人审核状态</td><td>审票人审核状态</td>
+									<td>发票类型</td>
+									<td>时间</td>
+									<td>费用内容</td>
+									<td>工程名字</td>
+									<td>审批人审核状态</td>
+									<td>审票人审核状态</td>
 									<td rowspan="2"><a href="javascript:void(0);"
 										class="easyui-linkbutton"
 										data-options="iconCls:'icon-search',plain:true"
@@ -431,11 +449,12 @@
 									<td rowspan="2"><a href="javascript:void(0);"
 										class="easyui-linkbutton"
 										data-options="iconCls:'icon-undo',plain:true"
-										onclick="resetSearch();">重置</a></td></tr>
-									<tr>
+										onclick="resetSearch();">重置</a></td>
+								</tr>
+								<tr>
 									<td>
-										<!-- <input name="keyword" placeholder="输入关键词" /> --> 
-										<select id="keyword" name="keyword" style="width:166px;">
+										<!-- <input name="keyword" placeholder="输入关键词" /> --> <select
+										id="keyword" name="keyword" style="width:166px;">
 											<option></option>
 											<option value="1">卡加油费</option>
 											<option value="2">现金加油费</option>
@@ -450,7 +469,7 @@
 											<option value="11">其他费</option>
 									</select>
 									</td>
-									
+
 									<td><input class="Wdate" name="startTime"
 										placeholder="点击选择时间"
 										onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})"
@@ -458,24 +477,22 @@
 										placeholder="点击选择时间"
 										onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})"
 										readonly="readonly" /></td>
-										<td><input name="content" placeholder="输入项目内容" /></td>
-										<td><input name="projectName" placeholder="输入项目名称" /></td>
-										<td>
-										<select id="auditor2State" name="auditor2State" style="width:166px;">
+									<td><input name="content" placeholder="输入费用内容" /></td>
+									<td><input name="projectName" placeholder="输入工程名字" /></td>
+									<td><select id="auditor2State" name="auditor2State"
+										style="width:166px;">
 											<option></option>
 											<option value="0">未审核</option>
 											<option value="1">审核通过</option>
 											<option value="2">审核不通过</option>
-										</select>
-										</td>
-										<td>
-										<select id="dearerState" name="dearerState" style="width:166px;">
+									</select></td>
+									<td><select id="dearerState" name="dearerState"
+										style="width:166px;">
 											<option></option>
 											<option value="0">未审核</option>
 											<option value="1">审核通过</option>
 											<option value="2">审核不通过</option>
-										</select>
-										</td>
+									</select></td>
 								</tr>
 							</table>
 						</form>
@@ -491,11 +508,14 @@
 										data-options="iconCls:'icon-add',plain:true" onclick="add();">添加</a></td>
 									<td><div class="datagrid-btn-separator"></div></td>
 								</sec:authorize>
-								
+
 								<sec:authorize url="/invoiceController/add.do">
-					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="invoiceCheck();">查看发票详情</a></td>
-					<td><div class="datagrid-btn-separator"></div></td>
-					</sec:authorize>
+									<td><a href="javascript:void(0);"
+										class="easyui-linkbutton"
+										data-options="iconCls:'icon-edit',plain:true"
+										onclick="invoiceCheck();">查看发票详情</a></td>
+									<td><div class="datagrid-btn-separator"></div></td>
+								</sec:authorize>
 								<sec:authorize url="/invoiceController/delete.do">
 									<td><a href="javascript:void(0);"
 										class="easyui-linkbutton"
