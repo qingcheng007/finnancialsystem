@@ -21,5 +21,7 @@ public interface IBalanceService extends IBaseService<Balance> {
 	public int add(Balance balance);
 	
 	public int updatebalance(Balance balance);
+	
+	public Balance getBalanceById(int id);
 
 }

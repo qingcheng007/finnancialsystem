@@ -16,4 +16,6 @@ public interface BalanceMapper {
     int updateByPrimaryKeySelective(Balance record);
 
     int updateByPrimaryKey(Balance record);
+    
+    Balance selectBalanceById(int id);
 }
