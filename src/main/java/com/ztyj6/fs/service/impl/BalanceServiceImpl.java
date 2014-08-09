@@ -105,4 +105,10 @@ public class BalanceServiceImpl implements IBalanceService {
 		
 	}
 
+	@Override
+	public Balance getBalanceById(int id) {
+		// TODO Auto-generated method stub
+		return balanceMapper.selectBalanceById(id);
+	}
+
 }

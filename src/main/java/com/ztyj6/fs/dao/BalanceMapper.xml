@@ -20,6 +20,36 @@
   select max(Id) maxId from Balance
   </select>
   
+  <select id="selectBalanceById" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		SELECT
+		`User`.Id,
+		`User`.UserName,
+		`User`.`Password`,
+		`User`.RealName,
+		`User`.Phone,
+		`User`.Email,
+		`User`.LastLoginDate,
+		`User`.LastLoginIp,
+		`User`.CreateIp,
+		`User`.CreateDate,
+		`User`.IsEnable,
+		`User`.ParentId,
+		`User`.BalanceId,
+		Balance.Id Balance_id,
+		Balance.Available
+		Balance_available,
+		Balance.Frozen Balance_frozen
+		FROM
+		`User`
+		INNER JOIN
+		Balance ON `User`.BalanceId = Balance.Id
+		<where>
+			User.Id = #{id,jdbcType=VARCHAR}
+		</where>
+	</select>
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from Balance
     where Id = #{id,jdbcType=INTEGER}

@@ -98,17 +98,7 @@ public class UserController extends BaseController {
 		}
 	}
 	
-	@ResponseBody
-	@RequestMapping("/admin/getById")
-	public Balance getById( Integer id,
-			HttpServletRequest request) {
-		int myId = Integer.parseInt(request.getParameter("id"));
-		try {
-			return userService.getBalanceById(myId);
-		} catch (Exception e) {
-			return null;
-		}
-	}
+
 	
 
 	@ResponseBody
