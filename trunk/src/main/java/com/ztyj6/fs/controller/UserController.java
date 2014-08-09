@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,9 +19,11 @@ import com.ztyj6.fs.model.User;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.Json;
 import com.ztyj6.fs.model.page.PageFilter;
+import com.ztyj6.fs.security.service.IChangePassword;
 import com.ztyj6.fs.service.IBalanceService;
 import com.ztyj6.fs.service.IUserService;
 import com.ztyj6.fs.utils.IPUtil;
+import com.ztyj6.fs.security.service.IChangePassword;;
 
 @Controller
 @RequestMapping("/userController")
@@ -27,6 +31,10 @@ public class UserController extends BaseController {
 	private IUserService userService;
 
 	private IBalanceService balanceService;
+	
+
+	private IChangePassword iChangePasswordDao;
+
 
 	public IBalanceService getBalanceService() {
 		return balanceService;
@@ -79,8 +87,8 @@ public class UserController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/admin/geetById")
-	public DataGrid geetById(PageFilter pageFilter, Integer id,
+	@RequestMapping("/admin/userGetById")
+	public DataGrid userGetById(PageFilter pageFilter, Integer id,
 			HttpServletRequest request) {
 		int myId = Integer.parseInt(request.getParameter("id"));
 		try {
@@ -89,6 +97,19 @@ public class UserController extends BaseController {
 			return null;
 		}
 	}
+	
+	@ResponseBody
+	@RequestMapping("/admin/getById")
+	public Balance getById( Integer id,
+			HttpServletRequest request) {
+		int myId = Integer.parseInt(request.getParameter("id"));
+		try {
+			return userService.getBalanceById(myId);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
 
 	@ResponseBody
 	@RequestMapping("/admin/add")
@@ -203,6 +224,40 @@ public class UserController extends BaseController {
 			return null;
 		}
 		return users;
+	}
+	
+	@RequestMapping(value = "/admin/changePassword", method = RequestMethod.GET)
+	@ResponseBody
+	
+
+	public Json changePassword(
+			User user, HttpServletRequest request) {
+		Object principal = SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
+		String newpassword=request.getParameter("password");
+		String username = principal.toString();
+
+		if (principal instanceof UserDetails) {
+			username = ((UserDetails) principal).getUsername();
+		}
+
+		// if(((UserDetails)principal).getPassword().equals(oldpassword))
+		// { 
+		iChangePasswordDao.changePassword(username, newpassword);
+		// }
+		Json j = new Json();
+		try {
+			userService.update(user);
+			j.setSuccess(true);
+			j.setObj(user);
+			j.setMsg("编辑成功！");
+		} catch (Exception e) {
+			j.setMsg("编辑失败！");
+		}
+		return j;
+
+	
+
 	}
 	
 	
