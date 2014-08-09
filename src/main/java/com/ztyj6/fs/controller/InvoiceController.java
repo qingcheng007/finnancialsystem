@@ -315,6 +315,18 @@ public class InvoiceController extends BaseController {
 			return null;
 		}
 	}
+	@ResponseBody
+	@RequestMapping("/getByPageByCurrentId")
+	public DataGrid getByPageByCurrentId(PageFilter pageFilter,
+		HttpServletRequest request) {
+		String id = request.getParameter("id");
+		try {
+			return iInvoiceService.getByPageCurrentID(pageFilter, Integer.parseInt(id));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	@ResponseBody
 	@RequestMapping("/geTPageById")

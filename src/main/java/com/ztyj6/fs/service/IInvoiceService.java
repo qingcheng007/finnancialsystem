@@ -43,6 +43,8 @@ public interface IInvoiceService extends IBaseService<Invoice> {
 	
 	public DataGrid getPageById(PageFilter pageFilter,int id);
 	
+	public DataGrid getByPageCurrentID(PageFilter pageFilter,int id);
+	
 	BigDecimal calculatePenalty(Invoice invoice,BigDecimal rate);
 	
 	int saveBalance(Balance balance);
