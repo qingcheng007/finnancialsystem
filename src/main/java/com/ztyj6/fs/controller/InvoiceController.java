@@ -330,7 +330,7 @@ public class InvoiceController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/geTPageById")
+	@RequestMapping("/AuditGetPageById")
 	public DataGrid geTByPageByid(PageFilter pageFilter,
 			HttpServletRequest request) {
 		String id = request.getParameter("id");

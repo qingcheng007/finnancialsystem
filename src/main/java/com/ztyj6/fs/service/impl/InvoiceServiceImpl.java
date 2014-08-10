@@ -160,6 +160,13 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	@Override
 	public int saveInvoiceAllSelective(Invoice invoice) {
 		// this.saveInvoiceTypeSelective(invoice.getInvoiceType());
+		System.out.println(invoice.getInvoiceDetails());
+		if(invoice.getInvoiceDetails().getContent1()==null)
+		{
+			InvoiceDetails invoiceDetails=new InvoiceDetails();
+			invoiceDetails.setContent1("0");
+			invoice.setInvoiceDetails(invoiceDetails);
+		}
 		this.saveInvoiceDetailsSelective(invoice.getInvoiceDetails());
 		System.out.println("-----------------detailsID:"
 				+ invoice.getInvoiceDetails().getId());

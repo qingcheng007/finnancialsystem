@@ -12,10 +12,40 @@ public class PageFilter {
 	private String keyword;
 	private String content;
 	private String projectName;
+	private String proverState;
+	private String auditor1State;
 	private String auditor2State;
 	private String dearerState;
+	private int invoiceType;
 	private Date startTime;
 	private Date endTime;
+	
+	public String getProverState() {
+		return proverState;
+	}
+
+	public void setProverState(String proverState) {
+		this.proverState = proverState;
+	}
+
+	public String getAuditor1State() {
+		return auditor1State;
+	}
+
+	public void setAuditor1State(String auditor1State) {
+		this.auditor1State = auditor1State;
+	}
+
+
+	public int getInvoiceType() {
+		return invoiceType;
+	}
+
+	public void setInvoiceType(int invoiceType) {
+		this.invoiceType = invoiceType;
+	}
+
+
 	public String getAuditor2State() {
 		return auditor2State;
 	}

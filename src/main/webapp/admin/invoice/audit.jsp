@@ -141,7 +141,7 @@
 
 		//var question = new Object();
 		//alert('fuck');
-		var invoiceTyp = new Object();
+		var invoiceType = new Object();
 		var invoiceDetails = new Object();
 		var auditState = new Object();
 		invoiceType = cls.invoiceType;
