@@ -8,16 +8,24 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ztyj6.fs.model.Balance;
 import com.ztyj6.fs.model.User;
+import com.ztyj6.fs.service.IBalanceService;
 import com.ztyj6.fs.service.IUserService;
-import com.ztyj6.fs.service.impl.InvoiceServiceImpl;
-import com.ztyj6.fs.service.impl.UserServiceImpl;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-security.xml", "classpath:spring.xml", "classpath:spring-ehcache.xml", "classpath:spring-mybatis.xml" })
 public class UserTest {
  private IUserService userService;
+ 
+ private IBalanceService blanService;
 
+public IBalanceService getBlanService() {
+	return blanService;
+}
+@Autowired
+public void setBlanService(IBalanceService blanService) {
+	this.blanService = blanService;
+}
 public IUserService getUserService() {
 	return userService;
 }
@@ -48,8 +56,8 @@ public void TestInsertUser2(){
 @Test
 public void TestSelectBalanceById()
 { 
-	Balance b = userService.getBalanceById(1);
-	System.out.println(b.getAvailable()+"-"+b.getFrozen());
+	Balance b = userService.getBalanceById(43);
+	System.out.println(b.getAvailable()+"法"+b.getFrozen());
 }
 @Test
 public void TestSelectRealNameById()
@@ -57,4 +65,11 @@ public void TestSelectRealNameById()
 	String	RealName = userService.getRealNameById(1);
 	System.out.println(RealName);
 }
+@Test
+public void TestGetBalanceById(){
+	Balance a=blanService.getBalanceById(4);
+	System.out.println("kaka"+a.getAvailable()+"-"+a.getFrozen());
+}
+
+
 }
