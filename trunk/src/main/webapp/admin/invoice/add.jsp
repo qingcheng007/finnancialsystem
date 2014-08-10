@@ -658,7 +658,7 @@ $(function() {
 			<tr>
 				<td>备注</td>
 				<td><input class="easyui-validatebox" id="remark" name="remark"
-					type="text" placeholder="备注" data-options="required:true"
+					type="text" placeholder="备注"
 					style="width:160px;" /></td>
 			</tr>
 				<tr>

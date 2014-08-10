@@ -272,7 +272,7 @@
 			parent.$.modalDialog({
 				title : '审批发票',
 				width : 380,
-				//height : 260,
+				height : 380,
 				url : '${pageContext.request.contextPath}/admin/invoice/audit.jsp?id='+passid
 			});
 			parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');
@@ -400,6 +400,8 @@
 									<td>时间</td>
 									<td>费用内容</td>
 									<td>工程名字</td>
+									<td>证明人审核状态</td>
+									<td>审核人审核状态</td>
 									<td>审批人审核状态</td>
 									<td>审票人审核状态</td>
 									<td rowspan="2"><a href="javascript:void(0);"
@@ -414,7 +416,7 @@
 								<tr>
 									<td>
 										<!-- <input name="keyword" placeholder="输入关键词" /> --> <select
-										id="keyword" name="keyword" style="width:166px;">
+										id="invoiceType" name="invoiceType" style="width:166px;">
 											<option></option>
 											<option value="1">卡加油费</option>
 											<option value="2">现金加油费</option>
@@ -439,6 +441,20 @@
 										readonly="readonly" /></td>
 									<td><input name="content" placeholder="输入费用内容" /></td>
 									<td><input name="projectName" placeholder="输入工程名字" /></td>
+									<td><select id="proverState" name="proverState"
+										style="width:166px;">
+											<option></option>
+											<option value="0">未审核</option>
+											<option value="1">审核通过</option>
+											<option value="2">审核不通过</option>
+									</select></td>
+										<td><select id="auditor1State" name="auditor1State"
+										style="width:166px;">
+											<option></option>
+											<option value="0">未审核</option>
+											<option value="1">审核通过</option>
+											<option value="2">审核不通过</option>
+									</select></td>
 									<td><select id="auditor2State" name="auditor2State"
 										style="width:166px;">
 											<option></option>
