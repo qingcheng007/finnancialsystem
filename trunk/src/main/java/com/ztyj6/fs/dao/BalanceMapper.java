@@ -1,5 +1,7 @@
 package com.ztyj6.fs.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.ztyj6.fs.model.Balance;
 
 public interface BalanceMapper {
@@ -17,5 +19,5 @@ public interface BalanceMapper {
 
     int updateByPrimaryKey(Balance record);
     
-    Balance selectBalanceById(int id);
+    Balance selectBalanceByUserId(@Param("id") Integer id);
 }
