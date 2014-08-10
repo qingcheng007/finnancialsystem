@@ -193,7 +193,7 @@
 		parent.$.modalDialog.DataGrid = $('#admin_user_manage_dataGrid');
 	}
 
-	function deleteBatch() {
+function deleteBatch() {
 		var rows = $('#admin_user_manage_dataGrid').datagrid('getChecked');
 		if (rows.length > 0) {
 			parent.$.messager
@@ -259,7 +259,6 @@
 			});
 		}
 	}
-
 	function edit() {
 		var rows = $('#admin_user_manage_dataGrid').datagrid('getChecked');
 		if (rows.length == 1) {
