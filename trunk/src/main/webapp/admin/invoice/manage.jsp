@@ -187,7 +187,7 @@
 										sortable : true
 									},
 									{
-										field : 'auditor1State',
+										field : 'auditor2State',
 										title : '审批人审核状态',
 										width : 100,
 										align : 'center',

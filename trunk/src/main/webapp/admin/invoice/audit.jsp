@@ -108,10 +108,7 @@
 										.datagrid(
 												'updateRow',
 												{
-													index : parent.$.modalDialog.DataGrid
-															.datagrid(
-																	'getRowIndex',
-																	cls),
+													index : parent.$.modalDialog.DataGrid.datagrid('getRowIndex', cls),
 													row : data.obj
 												});
 								parent.$.modalDialog.handler.dialog('close');
@@ -141,30 +138,30 @@
 
 		//var question = new Object();
 		//alert('fuck');
-		var invoiceType = new Object();
-		var invoiceDetails = new Object();
+		//var invoiceType = new Object();
+	//	var invoiceDetails = new Object();
 		var auditState = new Object();
-		invoiceType = cls.invoiceType;
-		invoiceDetails = cls.invoiceDetails;
-		invoice.invoiceType = invoiceType;
-		invoice.invoiceDetails = invoiceDetails;
+		//invoiceType = cls.invoiceType;
+		//invoiceDetails = cls.invoiceDetails;
+	//	invoice.invoiceType = invoiceType;
+		//invoice.invoiceDetails = invoiceDetails;
 		auditState.id = cls.auditStateId;
 		auditState.prover = $('#proverauditState').combobox('getValue');
 		auditState.auditor1 = $('#audit1State').combobox('getValue');
 		auditState.auditor2 = $('#audit2State').combobox('getValue');
 		auditState.dearer = $('#dearerState').combobox('getValue');
-		invoice.occurDate = cls.occurDate;
-		invoice.createDate = cls.createDate;
+		//invoice.occurDate = cls.occurDate;
+		//invoice.createDate = cls.createDate;
 		invoice.id = cls.id;
-		console.info(invoice.id);
-		invoice.proverId = cls.proverId;
-		invoice.auditor1Id = cls.auditor1Id;
-		invoice.auditor2Id = cls.auditor2Id;
-		invoice.dearerId = cls.dearerId;
-		console.info(cls);
-		invoice.money = cls.money;
-		invoice.auditStateId = cls.auditStateId;
-		console.info(cls.auditStateId);
+		//console.info(invoice.id);
+		//invoice.proverId = cls.proverId;
+		//invoice.auditor1Id = cls.auditor1Id;
+		//invoice.auditor2Id = cls.auditor2Id;
+		//invoice.dearerId = cls.dearerId;
+		//console.info(cls);
+		//invoice.money = cls.money;
+		//invoice.auditStateId = cls.auditStateId;
+		//console.info(cls.auditStateId);
 
 		invoice.auditState = auditState;
 
