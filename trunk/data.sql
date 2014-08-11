@@ -90,7 +90,7 @@ insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,
 insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(35, '管理站点用户', null, '6', '/siteController/admin/getUserByPage*.do', '2', '管理站点用户', '29', 1, 1);
 insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(36, '我的信息', null, '1', '/admin/userinfo/manage.jsp', '1', '查看个人信息', '5', 1, 1);
 insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(37, '我的审核信息', null, '2', '/admin/myaudit/manage.jsp', '1', '查看个人审核信息', '5', 1, 1);
-insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(38, '我的报账信息', null, '3', '/admin/mybill/manage.jsp', '1', '查看个人报账信息', '5', 1, 1);
+insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(38, '我的报账信息', null, '3', '/admin/myinvoice/manage.jsp', '1', '查看个人报账信息', '5', 1, 1);
 insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(39, '会计转账', null, '6', '/userController/admin/transfer*.do', '2', '转账给用户', '6', 1, 1);
 -- ----------------------------
 -- Records of R_Role_Resource
