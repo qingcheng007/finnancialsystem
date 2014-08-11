@@ -17,7 +17,7 @@
 		.datagrid(
 				{
 				//	url : '${pageContext.request.contextPath}/invoiceController/geTPageById.do?id='+passid,
-					url : '${pageContext.request.contextPath}/invoiceController/getByPage.do',
+					url : '${pageContext.request.contextPath}/invoiceController/audit/getAuditAll.do',
 					fit : true,
 					autoRowHeight : true,
 					striped : true,

@@ -17,7 +17,7 @@
 		$('#admin_invoice_manage_dataGrid')
 				.datagrid(
 						{
-							url : '${pageContext.request.contextPath}/invoiceController/getByPage.do',
+							url : '${pageContext.request.contextPath}/invoiceController/invoice/getInvoiceAll.do',
 							//url : '${pageContext.request.contextPath}/invoiceController/getByPageByCurrentId.do?id='+passid,
 							fit : true,
 							autoRowHeight : true,

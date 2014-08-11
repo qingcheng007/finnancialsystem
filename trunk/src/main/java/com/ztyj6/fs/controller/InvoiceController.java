@@ -21,6 +21,7 @@ import com.ztyj6.fs.model.Balance;
 import com.ztyj6.fs.model.Invoice;
 import com.ztyj6.fs.model.InvoiceType;
 import com.ztyj6.fs.model.PenaltyRate;
+import com.ztyj6.fs.model.User;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.Json;
 import com.ztyj6.fs.model.page.PageFilter;
@@ -86,18 +87,14 @@ public class InvoiceController extends BaseController {
 	public Json addtest(@RequestBody Invoice invoice, HttpSession session) {
 		Json j = new Json();
 		try {
-			SecurityContext ctx = (SecurityContext) session
-					.getAttribute("SPRING_SECURITY_CONTEXT");
+			SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
 
 			// System.out.println("--------"+((Invoice)
 			// (ctx.getAuthentication().getPrincipal())).getId());
 			// System.out.println("-------content:"+invoice.getContent());
-			System.out.println("-------content:"
-					+ invoice.getInvoiceDetails().getId()
-					+ invoice.getContent());
+			System.out.println("-------content:"+ invoice.getInvoiceDetails().getId()+ invoice.getContent());
 			System.out.println("-------content:" + invoice.getDescription());
-			invoice.setId(((Invoice) (ctx.getAuthentication().getPrincipal()))
-					.getId());
+			invoice.setId(((Invoice) (ctx.getAuthentication().getPrincipal())).getId());
 			Date createdate = new Date(0);
 
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -304,11 +301,11 @@ public class InvoiceController extends BaseController {
 		}
 		return json;
 	}
-
+	
 	@ResponseBody
-	@RequestMapping("/getByPage")
-	public DataGrid getByPage(PageFilter pageFilter) {
-
+	@RequestMapping("invoice/getInvoiceAll")
+	public DataGrid getByPage(PageFilter pageFilter,HttpSession session) {
+	
 		try {
 			return iInvoiceService.getByPage(pageFilter);
 		} catch (Exception e) {
@@ -317,12 +314,25 @@ public class InvoiceController extends BaseController {
 		}
 	}
 	@ResponseBody
-	@RequestMapping("/getByPageByCurrentId")
-	public DataGrid getByPageByCurrentId(PageFilter pageFilter,	HttpServletRequest request) {
-		
-		String id = request.getParameter("id");
+	@RequestMapping("/audit/getAuditAll")
+	public DataGrid getAuditAll(PageFilter pageFilter,HttpSession session) {
+	
 		try {
-			return iInvoiceService.getByPageCurrentID(pageFilter, Integer.parseInt(id));
+			return iInvoiceService.getByPage(pageFilter);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	@ResponseBody
+	@RequestMapping("/myAudit/getMyAudit")
+	public DataGrid getByPageByCurrentId(PageFilter pageFilter,	HttpServletRequest request,HttpSession session) {
+		SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
+		Integer id = ((User) (ctx.getAuthentication().getPrincipal())).getId();
+		//String id = request.getParameter("id");
+		try {
+		//	return iInvoiceService.getByPageCurrentID(pageFilter, Integer.parseInt(id));
+			return iInvoiceService.getByPageCurrentID(pageFilter, id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -330,13 +340,13 @@ public class InvoiceController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/AuditGetPageById")
-	public DataGrid geTByPageByid(PageFilter pageFilter,
-			HttpServletRequest request) {
-		String id = request.getParameter("id");
+	@RequestMapping("/myInvoice/getMyaudit")
+	public DataGrid geTByPageByid(PageFilter pageFilter,HttpServletRequest request,HttpSession session) {
+		SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
+		Integer id = ((User) (ctx.getAuthentication().getPrincipal())).getId();
 		System.out.println(id);
 		try {
-			return iInvoiceService.getPageById(pageFilter, Integer.parseInt(id));
+			return iInvoiceService.getPageById(pageFilter, id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
