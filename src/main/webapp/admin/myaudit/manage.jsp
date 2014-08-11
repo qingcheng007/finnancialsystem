@@ -167,7 +167,7 @@
 						sortable : true
 					},
 					{
-						field : 'auditor1State',
+						field : 'auditor2State',
 						title : '审批人审核状态',
 						width : 100,
 						align : 'center',
@@ -479,7 +479,7 @@
 					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="add();">添加</a></td>
 					<td><div class="datagrid-btn-separator"></div></td>
 					</sec:authorize> --%>
-					<sec:authorize url="/invoiceController/edit.do">
+					<sec:authorize url="/invoiceController/audit.do">
 					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="audit();">审批</a></td>
 					<td><div class="datagrid-btn-separator"></div></td>
 					</sec:authorize>

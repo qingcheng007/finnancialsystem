@@ -201,22 +201,26 @@ public class InvoiceController extends BaseController {
 		// (ctx.getAuthentication().getPrincipal())).getRealname());
 		// System.out.println("------"+invoice.getContent()+invoice.getInvoiceType().getId()+"--date:"+invoice.getCreatedate());
 		// System.out.println("-------content:"+invoice.getPhotourl());
+		
 		AuditState auditState = invoice.getAuditState();
+		invoice=iInvoiceService.getById(invoice.getId());
 		System.out.println(auditState.getId());
 		Invoice invoiceNew = new Invoice();
+		invoice.setAuditState(auditState);
 		iInvoiceService.updateAuditStateOnly(auditState);
 		// 需要修改
 		// invoice.setDearerid(1);
-		invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
-		invoice.setInvoiceTypeId(invoice.getInvoiceType().getId());
+		
+		
+		//invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
+		//invoice.setInvoiceTypeId(invoice.getInvoiceType().getId());
 
 		//
 		// BigeDecimal rate = iInvoiceService.getRate();
 		BigDecimal rate = new BigDecimal("0.1");
 
 		// 计算罚款金额
-		BigDecimal calculatePenalty = iInvoiceService.calculatePenalty(invoice,
-				rate);
+		BigDecimal calculatePenalty = iInvoiceService.calculatePenalty(invoice,	rate);
 		// 整合到service中
 
 		Balance balance = new Balance();
