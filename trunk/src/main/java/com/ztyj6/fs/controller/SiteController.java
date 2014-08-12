@@ -62,7 +62,6 @@ public class SiteController extends BaseController {
 			flag = siteService.isExistSite(site.getName());
 			if(flag==0){
 				site.setCreateDate(new Date());
-				System.out.println("234");
 				siteService.save(site);
 				json.setSuccess(true);
 				json.setObj(site);
