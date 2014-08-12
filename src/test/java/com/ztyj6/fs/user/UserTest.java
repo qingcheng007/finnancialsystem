@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.ztyj6.fs.dao.UserMapper;
 import com.ztyj6.fs.model.Balance;
 import com.ztyj6.fs.model.User;
 import com.ztyj6.fs.service.IBalanceService;
@@ -16,8 +17,15 @@ import com.ztyj6.fs.service.IUserService;
 @ContextConfiguration(locations = { "classpath:spring-security.xml", "classpath:spring.xml", "classpath:spring-ehcache.xml", "classpath:spring-mybatis.xml" })
 public class UserTest {
  private IUserService userService;
- 
- private IBalanceService blanService;
+ private UserMapper userMapper;
+ public UserMapper getUserMapper() {
+	return userMapper;
+}
+ @Autowired
+public void setUserMapper(UserMapper userMapper) {
+	this.userMapper = userMapper;
+}
+private IBalanceService blanService;
 
 public IBalanceService getBlanService() {
 	return blanService;
@@ -69,6 +77,12 @@ public void TestSelectRealNameById()
 public void TestGetBalanceById(){
 	Balance a=blanService.getBalanceById(4);
 	System.out.println("kaka"+a.getAvailable()+"-"+a.getFrozen());
+}
+@Test
+public void TestPassword(){
+	//User user = userMapper.selectPasswordById(4);
+	//System.out.println(user.getUsername()+"dddd"+user.getPassword());
+	userService.updatePasswordById(4, "admin", "user");
 }
 
 

@@ -65,5 +65,5 @@ public interface UserMapper {
     
     String selectRealNameById(int id);
     
-    String selectPasswordById(int id);
+    User selectPasswordById(int id);
 }

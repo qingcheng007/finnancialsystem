@@ -26,17 +26,6 @@ import com.ztyj6.fs.utils.IPUtil;
 public class UserController extends BaseController {
 	private IUserService userService;
 
-	private IBalanceService balanceService;
-
-	public IBalanceService getBalanceService() {
-		return balanceService;
-	}
-
-	@Autowired
-	public void setBalanceService(IBalanceService balanceService) {
-		this.balanceService = balanceService;
-	}
-
 	public IUserService getUserService() {
 		return userService;
 	}
@@ -92,8 +81,8 @@ public class UserController extends BaseController {
 	@ResponseBody
 	@RequestMapping("/admin/add")
 	public Json add(User user, Balance balance, HttpServletRequest request) {
-		balanceService.save(balance);
-		int Id = balanceService.getByMaxId();
+		userService.saveBalnce(balance);
+		int Id = userService.getByMaxId();
 		user.setBalanceId(Id);
 		Json j = new Json();
 		user.setCreateIp(IPUtil.getIp(request));
@@ -159,34 +148,26 @@ public class UserController extends BaseController {
 		}
 		return j;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/admin/passwordEdit")
-	public Json passwordEdit(User user, @RequestParam("id") Integer id,
-			@RequestParam("oldPassword") String oldPassword
-		) {
-		String password = userService.getPasswordById(id);
+	public Json passwordEdit( @RequestParam("id") Integer id,
+			@RequestParam("oldPassword") String oldPassword,@RequestParam("newPassword") String newPassword) {
 		Json j = new Json();
-		if (oldPassword == password) {
-			try {
-				userService.update(user);
-				j.setSuccess(true);
-				j.setMsg("编辑成功！");
-			} catch (Exception e) {
-				j.setMsg("编辑失败！");
-			}
-
-		} else {
-			j.setSuccess(false);
+		try {
+			userService.updatePasswordById(id,oldPassword,newPassword);
+			j.setSuccess(true);
+			j.setMsg("编辑成功！");
+		} catch (Exception e) {
 			j.setMsg("编辑失败！");
-
 		}
 		return j;
 	}
 
 	@ResponseBody
 	@RequestMapping("/admin/transfer")
-	public Json transfer(User user, Balance balance, @RequestParam("money") String money) {
+	public Json transfer(User user, Balance balance,
+			@RequestParam("money") String money) {
 		int userid = user.getId();
 
 		int balanceid = user.getBalanceId();
@@ -205,7 +186,7 @@ public class UserController extends BaseController {
 
 		Json j = new Json();
 		try {
-			balanceService.updatebalance(blance);
+			userService.updateBalance(blance);
 			j.setSuccess(true);
 			j.setObj(user);
 			j.setMsg("转账成功！");
