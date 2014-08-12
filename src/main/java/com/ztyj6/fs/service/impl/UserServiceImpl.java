@@ -185,4 +185,16 @@ public class UserServiceImpl implements IUserService {
 		return userMapper.selectRealNameById(id);
 	}
 
+	@Override
+	public String getPasswordById(Integer id) {
+		// TODO Auto-generated method stub
+		return userMapper.selectPasswordById(id);
+	}
+
+	@Override
+	public void updatePasswordById(int id, String password) {
+		// TODO Auto-generated method stub
+		userMapper.updatePasswordByPrimaryKey(id, password);
+	}
+
 }

@@ -55,6 +55,8 @@ public interface UserMapper {
     
     void updateStateByPrimaryKey(@Param("param")Map param, @Param("id")Integer id);
     
+    void updatePasswordByPrimaryKey(@Param("id")Integer id,@Param("password")String password);
+    
     void count();
     
     int countByUsername(String username);
@@ -62,4 +64,6 @@ public interface UserMapper {
     Balance selectBalanceById(int id);
     
     String selectRealNameById(int id);
+    
+    String selectPasswordById(int id);
 }

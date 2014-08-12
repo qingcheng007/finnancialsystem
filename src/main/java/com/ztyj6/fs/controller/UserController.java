@@ -6,8 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,7 +17,6 @@ import com.ztyj6.fs.model.User;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.Json;
 import com.ztyj6.fs.model.page.PageFilter;
-
 import com.ztyj6.fs.service.IBalanceService;
 import com.ztyj6.fs.service.IUserService;
 import com.ztyj6.fs.utils.IPUtil;
@@ -165,16 +162,24 @@ public class UserController extends BaseController {
 	
 	@ResponseBody
 	@RequestMapping("/admin/passwordEdit")
-	public Json passwordEdit(User user) {
-
+	public Json passwordEdit(User user, @RequestParam("id") Integer id,
+			@RequestParam("oldPassword") String oldPassword
+		) {
+		String password = userService.getPasswordById(id);
 		Json j = new Json();
-		try {
-			userService.update(user);
-			j.setSuccess(true);
-			j.setObj(user);
-			j.setMsg("编辑成功！");
-		} catch (Exception e) {
+		if (oldPassword == password) {
+			try {
+				userService.update(user);
+				j.setSuccess(true);
+				j.setMsg("编辑成功！");
+			} catch (Exception e) {
+				j.setMsg("编辑失败！");
+			}
+
+		} else {
+			j.setSuccess(false);
 			j.setMsg("编辑失败！");
+
 		}
 		return j;
 	}
