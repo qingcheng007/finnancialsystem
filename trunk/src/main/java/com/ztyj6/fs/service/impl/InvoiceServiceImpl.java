@@ -25,6 +25,7 @@ import com.ztyj6.fs.model.PenaltyRate;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.PageFilter;
 import com.ztyj6.fs.service.IInvoiceService;
+import com.ztyj6.fs.service.IUserService;
 import com.ztyj6.fs.utils.PageFilterUtil;
 
 @Service("invoiceService")
@@ -39,6 +40,16 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	AuditStateMapper auditStateMapper;
 
 	BalanceMapper balanceMapper;
+	
+	IUserService iUserService;
+
+	public IUserService getiUserService() {
+		return iUserService;
+	}
+	@Autowired
+	public void setiUserService(IUserService iUserService) {
+		this.iUserService = iUserService;
+	}
 
 	public UserMapper getUserMapper() {
 		return userMapper;
@@ -441,6 +452,125 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		dg.setRows(roles);
 		dg.setTotal(roles.getPaginator().getTotalCount());
 		return dg;
+	}
+
+	
+	@Override
+	public Invoice auditInvoice(Invoice invoice) {
+		
+		AuditState auditState = invoice.getAuditState();
+		invoice=this.getById(invoice.getId());
+		System.out.println(auditState.getId());
+		invoice.setAuditState(auditState);
+		this.updateAuditStateOnly(auditState);
+		// 需要修改
+		// invoice.setDearerid(1);
+		
+		
+		//invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
+		//invoice.setInvoiceTypeId(invoice.getInvoiceType().getId());
+
+		//
+		// BigeDecimal rate = iInvoiceService.getRate();
+		BigDecimal rate = new BigDecimal("0.1");
+
+		// 计算罚款金额
+		BigDecimal calculatePenalty = this.calculatePenalty(invoice,rate);
+		// 整合到service中
+
+		Balance balance = new Balance();
+		// balance = role.get();
+		BigDecimal frozen = null;
+		BigDecimal available = null;
+		int proverid = invoice.getProverId();
+		BigDecimal money = null;
+		money = invoice.getMoney().subtract(calculatePenalty);
+		// frozen = money;
+		
+		balance = iUserService.getBalanceById(proverid);
+		available = balance.getAvailable();
+		frozen = balance.getFrozen();
+		// 审批人审核通过，冻结金额减少，
+		int control = 0;
+		if (invoice.getAuditState().getDearer() == 2
+				|| invoice.getAuditState().getDearer() == 1) {
+			if (invoice.getAuditState().getDearer() == 2) {
+				available = available.add(money);
+				// frozen = frozen.subtract(money);
+				control = 1;
+			}
+			// else {
+			// frozen = frozen.subtract(money);
+			// }
+		}
+		if (control == 0)
+			if (invoice.getAuditState().getAuditor2() == 1) {
+
+				frozen = frozen.subtract(money);
+				// available=available.add(money);
+			}// 如果有一个人审核失败，冻结金额减少，重新加入可用余额中
+			else {
+				if (invoice.getAuditState().getProver() == 2
+						|| invoice.getAuditState().getAuditor1() == 2
+						|| invoice.getAuditState().getAuditor2() == 2) {
+					available = available.add(money);
+					frozen = frozen.subtract(money);
+
+				} else {
+					if (invoice.getAuditState().getProver() == 0) {
+						// available = available.subtract(money);
+						// frozen = frozen.add(money);
+					}
+				}
+			}
+
+		balance.setFrozen(frozen);
+		balance.setAvailable(available);
+
+		this.updateBalance(balance);
+		return invoice;
+	}
+	@Override
+	public Invoice addInvoiceAndCalMoney(Invoice invoice) {
+		
+		java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+		System.out.println(currentDate);
+		AuditState auditState = new AuditState();
+		invoice.setAuditState(auditState);
+		invoice.setCreateDate(currentDate);
+		
+		// invoice.setDearerid(1);
+		invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
+		invoice.setInvoiceTypeId(invoice.getInvoiceType().getId());
+		this.saveInvoiceAllSelective(invoice);
+		BigDecimal rate = new BigDecimal("0.1");
+		BigDecimal calculatePenalty = this.calculatePenalty(
+				invoice, rate);
+		int proverid = invoice.getProverId();
+		System.out.println("prover" + proverid);
+		Balance balance = new Balance();
+		BigDecimal available = null;
+		BigDecimal frozen = null;
+		BigDecimal money = null;
+		money = invoice.getMoney();
+		System.out.println(money);
+		balance = iUserService.getBalanceById(proverid);
+		System.out.println(balance.getId() + "--" + balance.getAvailable());
+		available = balance.getAvailable();
+		frozen = balance.getFrozen();
+
+		if (!calculatePenalty.equals(0)) {
+			money = money.subtract(calculatePenalty);
+		}
+		frozen = frozen.add(money.subtract(calculatePenalty));
+		available = available.subtract(money);
+		// balance.setId(proverid);
+		balance.setAvailable(available);
+		balance.setFrozen(frozen);
+		System.out.println("------------" + balance);
+		this.updateBalance(balance);
+		
+		return invoice;
 	}
 
 
