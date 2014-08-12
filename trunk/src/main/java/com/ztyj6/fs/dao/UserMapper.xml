@@ -32,6 +32,14 @@
 		where Id = #{id,jdbcType=INTEGER}
 	</select>
 
+	<select id="selectPasswordById" resultMap="BaseResultMap"
+		parameterType="com.ztyj6.fs.model.User">
+		select
+		password
+		from User
+		where Id = #{id,jdbcType=INTEGER}
+	</select>
+
 	<select id="selectAll" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
@@ -243,6 +251,12 @@
 		#{balanceId,jdbcType=INTEGER}
 		where Id = #{id,jdbcType=INTEGER}
 	</update>
+	<update id="updatePasswordByPrimaryKey" parameterType="com.ztyj6.fs.model.User">
+		update User
+		set
+		Password=#{password,jdbcType=VARCHAR},
+		where Id = #{id,jdbcType=INTEGER}
+		</update>
 	<update id="updateStateByPrimaryKey">
 		update User
 		set
