@@ -193,23 +193,20 @@ public class UserServiceImpl implements IUserService {
 	public int updatePasswordById(int id, String oldPassword, String newPassword) {
 		// TODO Auto-generated method stub
 		User user = userMapper.selectPasswordById(id);
+
 		String Password = user.getPassword();
-		
-		System.out.println("p1"+Password);
-		
+
 		String encodedPassword1 = passwordEncoder.encodePassword(
-				oldPassword, user.getUsername());
-		
-		System.out.println("p2"+encodedPassword1);
-		
+
+		oldPassword, user.getUsername());
+
 		if (Password.equals(encodedPassword1)) {
+
 			String encodedPassword = passwordEncoder.encodePassword(
 					newPassword, user.getUsername());
-			System.out.println("p3"+encodedPassword);
 			user.setPassword(encodedPassword);
 			userMapper.updateByPrimaryKeySelective(user);
-		} 
-		else
+		} else
 			return 0;
 		return 0;
 	}
