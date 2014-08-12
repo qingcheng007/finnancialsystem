@@ -162,6 +162,22 @@ public class UserController extends BaseController {
 		}
 		return j;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/admin/passwordEdit")
+	public Json passwordEdit(User user) {
+
+		Json j = new Json();
+		try {
+			userService.update(user);
+			j.setSuccess(true);
+			j.setObj(user);
+			j.setMsg("编辑成功！");
+		} catch (Exception e) {
+			j.setMsg("编辑失败！");
+		}
+		return j;
+	}
 
 	@ResponseBody
 	@RequestMapping("/admin/transfer")
