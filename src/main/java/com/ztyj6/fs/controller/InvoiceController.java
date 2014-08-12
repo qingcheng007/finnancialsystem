@@ -82,7 +82,7 @@ public class InvoiceController extends BaseController {
 		return invoiceType;
 	}
 
-	@ResponseBody
+/*	@ResponseBody
 	@RequestMapping("/admin/add")
 	public Json addtest(@RequestBody Invoice invoice, HttpSession session) {
 		Json j = new Json();
@@ -119,7 +119,7 @@ public class InvoiceController extends BaseController {
 			j.setMsg("添加失败！");
 		}
 		return j;
-	}
+	}*/
 
 	@ResponseBody
 	@RequestMapping("/add")

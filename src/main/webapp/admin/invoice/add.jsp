@@ -413,7 +413,7 @@ $(function() {
 				<td><select onchange="switchHide(this.value)"
 					id="invoiceTypeId" name="invoiceTypeId" style="width:166px;">
 						<option value="1">卡加油费</option>
-						<option value="0">单位付款费用</option>
+						<option value="12">单位付款费用</option>
 						<option value="2">现金加油费</option>
 						<option value="3">住宿费</option>
 						<option value="4">交通费</option>
