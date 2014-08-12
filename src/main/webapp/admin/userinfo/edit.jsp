@@ -30,7 +30,7 @@
 						data : {
 						    id : $('#id').val(),
 							username : $('#username').val(),
-							password : $('#password').val(),
+							password : $('#rePassword').val(),
 							realname : $('#realname').val(),
 							phone : $('#phone').val(),
 							email : $('#email').val(),
@@ -93,10 +93,18 @@
 				<td><input id="username" readonly="readonly"></input></td>
 			</tr>
 			<tr>
-				<td>密码</td>
+				<td>旧密码</td>
 				<td><input class="easyui-validatebox" id="password"
 					name="password" type="password" placeholder="请输入密码"
 					data-options="required:true"></input></td>
+			</tr>
+					<tr>
+				<td>新密码</td>
+				<td><input class="easyui-validatebox" id="newPassword" type="password" maxlength="16" placeholder="请再次输入密码" data-options="required:true" /></td>
+			</tr>
+							<tr>
+				<td>确认密码</td>
+				<td><input class="easyui-validatebox" id="rePassword" type="password" maxlength="16" placeholder="请再次输入密码" data-options="required:true,validType:'eqPwd[\'#admin_user_edit_form input[id=newPassword]\']'" /></td>
 			</tr>
 			<tr>
 				<td>真实姓名</td>
