@@ -40,9 +40,11 @@ public class FileController extends BaseController {
 	private static final String TYPE_ADD_INVOICE = "invoice";
 
 	private static final String UPLOAD_DIR = "upload";
+	
+	private static final String FILE_DIR = "file";
 	//private static final String TEMP_DIR = "temp";
 
-	private static final int MAXSIZE = 1000000;
+	private static final int MAXSIZE = 10000000;
 
 	private static HashMap<String, String> extMap;
 	static {
@@ -63,7 +65,14 @@ public class FileController extends BaseController {
 		}
 
 		ServletContext application = request.getSession().getServletContext();
-
+		
+		//获取整个工程所在的地址
+		String outWorkSpaceUrl = application.getRealPath("/");
+		String [] splite =outWorkSpaceUrl.split("\\\\");
+		outWorkSpaceUrl = outWorkSpaceUrl.substring(0, outWorkSpaceUrl.indexOf(splite[splite.length-1]));
+		System.out.println(outWorkSpaceUrl);
+		
+		//
 		String dirName = request.getParameter("dir");
 		String type = request.getParameter("type");
 		System.out.println(dirName);
@@ -79,10 +88,10 @@ public class FileController extends BaseController {
 				savePath.append(application.getRealPath("/")).append(UPLOAD_DIR).append("/");
 				saveUrl.append(request.getContextPath()).append("/").append(UPLOAD_DIR).append("/");
 			} else if (type.equals(TYPE_ADD_INVOICE)) {
-				savePath.append(application.getRealPath("/")).append(UPLOAD_DIR).append("/");
-				saveUrl.append(request.getContextPath()).append("/").append(UPLOAD_DIR).append("/");
+				savePath.append(outWorkSpaceUrl).append(FILE_DIR).append("/").append(UPLOAD_DIR).append("/");
+				saveUrl.append("/").append(UPLOAD_DIR).append("/");
 				//photoUrl.append("../../").append(UPLOAD_DIR).append("/");
-				photoUrl.append(UPLOAD_DIR).append("/");
+				photoUrl.append(FILE_DIR).append("/").append(UPLOAD_DIR).append("/");
 			}
 		} else
 			return getError("类型不能为空。");
