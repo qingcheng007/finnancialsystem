@@ -24,17 +24,12 @@ import com.ztyj6.fs.service.IBalanceService;
 import com.ztyj6.fs.service.IUserService;
 import com.ztyj6.fs.utils.IPUtil;
 
-
 @Controller
 @RequestMapping("/userController")
 public class UserController extends BaseController {
 	private IUserService userService;
 
 	private IBalanceService balanceService;
-	
-
-	
-
 
 	public IBalanceService getBalanceService() {
 		return balanceService;
@@ -88,21 +83,19 @@ public class UserController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping("/admin/userGetById")
-	public DataGrid userGetById(PageFilter pageFilter, @RequestParam("id") Integer id,
-			HttpServletRequest request) {	
+	public DataGrid userGetById(PageFilter pageFilter,
+			@RequestParam("id") Integer id, HttpServletRequest request) {
 		try {
 			return userService.getByIdPage(pageFilter, id);
 		} catch (Exception e) {
 			return null;
 		}
 	}
-	
-	
 
 	@ResponseBody
 	@RequestMapping("/admin/add")
 	public Json add(User user, Balance balance, HttpServletRequest request) {
-		balanceService.add(balance);
+		balanceService.save(balance);
 		int Id = balanceService.getByMaxId();
 		user.setBalanceId(Id);
 		Json j = new Json();
@@ -142,7 +135,6 @@ public class UserController extends BaseController {
 	@ResponseBody
 	@RequestMapping("/admin/edit")
 	public Json edit(User user) {
-
 		Json j = new Json();
 		try {
 			userService.update(user);
@@ -170,25 +162,26 @@ public class UserController extends BaseController {
 		}
 		return j;
 	}
+
 	@ResponseBody
 	@RequestMapping("/admin/transfer")
-	public Json transfer(User user, Balance balance, HttpServletRequest request) {
+	public Json transfer(User user, Balance balance, @RequestParam("money") String money) {
 		int userid = user.getId();
-		
-		int balanceid=user.getBalanceId();
-		
+
+		int balanceid = user.getBalanceId();
+
 		Balance blance = userService.getBalanceById(userid);
-		
-		Double money1 = Double.parseDouble(request.getParameter("money"));
-				
+
+		Double money1 = Double.parseDouble(money);
+
 		BigDecimal money2 = BigDecimal.valueOf(money1);
-		
+
 		BigDecimal money3 = money2.add(blance.getAvailable());
-		
+
 		blance.setId(balanceid);
-        
+
 		blance.setAvailable(money3);
-		
+
 		Json j = new Json();
 		try {
 			balanceService.updatebalance(blance);
@@ -201,8 +194,7 @@ public class UserController extends BaseController {
 		return j;
 	}
 
-	
-	@RequestMapping(value="/admin/getAll",method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/getAll", method = RequestMethod.GET)
 	@ResponseBody
 	public List getAll() {
 		List users;
@@ -213,14 +205,10 @@ public class UserController extends BaseController {
 		}
 		return users;
 	}
-	
 
-	
-	
-	@RequestMapping(value="/admin/getAllDroplist",method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/getAllDroplist", method = RequestMethod.GET)
 	@ResponseBody
-	public List getAllDroplist()
- {
+	public List getAllDroplist() {
 		List users;
 		try {
 			users = userService.getPartion();
@@ -229,9 +217,7 @@ public class UserController extends BaseController {
 		}
 		return users;
 	}
-	
-	
-	
+
 	@RequestMapping("/admin/grant")
 	@ResponseBody
 	public Json grant(@RequestParam("userId") Integer userId,
@@ -246,6 +232,5 @@ public class UserController extends BaseController {
 		}
 		return j;
 	}
-	
 
 }

@@ -70,7 +70,7 @@
 									{
 										field : 'phone',
 										title : '电话',
-										width : 120,
+										width : 100,
 										align : 'center'
 									},
 									{
@@ -107,8 +107,8 @@
 									},
 									{
 										field : 'available',
-										title : '可用余额',
-										width : 55,
+										title : '可用余额(元)',
+										width : 75,
 										align : 'center',
 										formatter : function(value, row, index) {
 											var str = '';
@@ -121,8 +121,8 @@
 									},
 									{
 										field : 'frozen',
-										title : '冻结余额',
-										width : 55,
+										title : '冻结余额(元)',
+										width : 75,
 										align : 'center',
 										formatter : function(value, row, index) {
 											var str = '';

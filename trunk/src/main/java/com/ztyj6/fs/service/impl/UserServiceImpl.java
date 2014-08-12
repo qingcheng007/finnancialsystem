@@ -48,7 +48,8 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Autowired
-	public void setMySecurityMetadataSource(MySecurityMetadataSource mySecurityMetadataSource) {
+	public void setMySecurityMetadataSource(
+			MySecurityMetadataSource mySecurityMetadataSource) {
 		this.mySecurityMetadataSource = mySecurityMetadataSource;
 	}
 
@@ -73,7 +74,8 @@ public class UserServiceImpl implements IUserService {
 	public Serializable save(User o) {
 		if (userMapper.countByUsername(o.getUsername()) > 0)
 			return 0;
-		String encodedPassword = passwordEncoder.encodePassword(o.getPassword(), o.getUsername());
+		String encodedPassword = passwordEncoder.encodePassword(
+				o.getPassword(), o.getUsername());
 		o.setPassword(encodedPassword);
 		o.setCreateDate(new Date());
 		o.setIsEnable(true);
@@ -84,12 +86,11 @@ public class UserServiceImpl implements IUserService {
 		// TODO Auto-generated method stub
 		return userMapper.selectAll();
 	}
-	
+
 	public List<User> getPartion() {
 		// TODO Auto-generated method stub
 		return userMapper.selectPartion();
 	}
-	
 
 	@Override
 	public DataGrid getByPage(PageFilter pageFilter) {
@@ -100,26 +101,20 @@ public class UserServiceImpl implements IUserService {
 	public DataGrid getByPageFilter(PageFilter pageFilter) {
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();
-		PageList users = (PageList) userMapper.selectByFilter(pageFilter, pageBounds);			
+		PageList users = (PageList) userMapper.selectByFilter(pageFilter,
+				pageBounds);
 		dg.setRows(users);
 		dg.setTotal(users.getPaginator().getTotalCount());
 		return dg;
 	}
-public Balance getBanlanceById(int id) {
-		//PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
-	//	DataGrid dg = new DataGrid();
-	Balance userBalance =  userMapper.selectBalanceById(id);			
-		
-		return userBalance;
-	}
-
 
 	public void delete(User o) {
 
 	}
 
 	public void update(User o) {
-		String encodedPassword = passwordEncoder.encodePassword(o.getPassword(), o.getUsername());
+		String encodedPassword = passwordEncoder.encodePassword(
+				o.getPassword(), o.getUsername());
 		o.setPassword(encodedPassword);
 		userMapper.updateByPrimaryKeySelective(o);
 	}
@@ -151,11 +146,13 @@ public Balance getBanlanceById(int id) {
 	}
 
 	@Override
-	public void updateLogin(HttpServletRequest request, Authentication authentication) {
+	public void updateLogin(HttpServletRequest request,
+			Authentication authentication) {
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("lastLoginDate", new Date());
 		param.put("lastLoginIp", IPUtil.getIp(request));
-		userMapper.updateStateByPrimaryKey(param, ((User) authentication.getPrincipal()).getId());
+		userMapper.updateStateByPrimaryKey(param,
+				((User) authentication.getPrincipal()).getId());
 	}
 
 	@Override
@@ -171,7 +168,8 @@ public Balance getBanlanceById(int id) {
 		// TODO Auto-generated method stub
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();
-		PageList users = (PageList) userMapper.selectByIdFilter(pageFilter, pageBounds,id);			
+		PageList users = (PageList) userMapper.selectByIdFilter(pageFilter,
+				pageBounds, id);
 		dg.setRows(users);
 		dg.setTotal(users.getPaginator().getTotalCount());
 		return dg;
@@ -186,7 +184,5 @@ public Balance getBanlanceById(int id) {
 	public String getRealNameById(Integer id) {
 		return userMapper.selectRealNameById(id);
 	}
-
-
 
 }

@@ -16,9 +16,9 @@ import com.ztyj6.fs.model.User;
 @Controller
 @RequestMapping("/balanceController")
 public class BalanceController extends BaseController {
-	
+
 	private IBalanceService balanceService;
-	
+
 	public IBalanceService getBalanceService() {
 		return balanceService;
 	}
@@ -27,13 +27,15 @@ public class BalanceController extends BaseController {
 	public void setBalanceService(IBalanceService balanceService) {
 		this.balanceService = balanceService;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/admin/getById")
-	public Balance getById(Integer id,	HttpSession session) {
-		SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
+	public Balance getById(Integer id, HttpSession session) {
+		SecurityContext ctx = (SecurityContext) session
+				.getAttribute("SPRING_SECURITY_CONTEXT");
 		try {
-			return  balanceService.getBalanceById(((User) (ctx.getAuthentication().getPrincipal())).getId());
+			return balanceService.getBalanceById(((User) (ctx
+					.getAuthentication().getPrincipal())).getId());
 		} catch (Exception e) {
 			return null;
 		}
