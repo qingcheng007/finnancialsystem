@@ -59,16 +59,18 @@ public class FileController extends BaseController {
 	@RequestMapping(value = "/upload", method = { RequestMethod.POST, RequestMethod.GET })
 	@ResponseBody
 	public JSONObject upload(HttpServletRequest request) throws ServletException, IOException, FileUploadException {
-
+		JSONObject obj = new JSONObject();
 		if (!ServletFileUpload.isMultipartContent(request)) {
 			return getError("请选择文件。");
 		}
-
+		
 		ServletContext application = request.getSession().getServletContext();
 		
 		//获取整个工程所在的地址
 		String outWorkSpaceUrl = application.getRealPath("/");
-		String [] splite =outWorkSpaceUrl.split("\\\\");
+		String [] splite = outWorkSpaceUrl.split("\\\\");
+		if(splite.length==1)
+			splite = outWorkSpaceUrl.split("/");
 		outWorkSpaceUrl = outWorkSpaceUrl.substring(0, outWorkSpaceUrl.indexOf(splite[splite.length-1]));
 		System.out.println(outWorkSpaceUrl);
 		
@@ -170,7 +172,7 @@ public class FileController extends BaseController {
 				} catch (Exception e) {
 					return getError("上传文件失败。");
 				}
-				JSONObject obj = new JSONObject();
+				
 				obj.put("error",0);
 				System.out.println(newFileName);
 				System.out.println(savePath);

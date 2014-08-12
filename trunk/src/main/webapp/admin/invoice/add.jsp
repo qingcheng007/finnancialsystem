@@ -277,7 +277,7 @@ $(function() {
 		invoice.occurDate = $('#occurDate').val();
 		invoice.content = $('#content').val();
 		invoice.money = $('#money').val();
-		invoice.description = $('#description').val();
+		invoice.description = $("#description").find('option:selected').text();
 		invoice.projectName = $('#projectName').val();
 		//invoice.operatorId = $('#operatorId').val();
 		invoice.operatorId = ${authentication.id};
@@ -409,10 +409,11 @@ $(function() {
 
 		<table>
 			<tr>
-				<td>票据类型</td>
+				<td>费用类型</td>
 				<td><select onchange="switchHide(this.value)"
 					id="invoiceTypeId" name="invoiceTypeId" style="width:166px;">
 						<option value="1">卡加油费</option>
+						<option value="0">单位付款费用</option>
 						<option value="2">现金加油费</option>
 						<option value="3">住宿费</option>
 						<option value="4">交通费</option>
@@ -608,10 +609,15 @@ $(function() {
 					style="width:160px;" /></td>
 			</tr>
 			<tr>
-				<td>费用说明</td>
-				<td><input class="easyui-validatebox" id="description"
+				<td>票据类型</td>
+				<td><!-- <input class="easyui-validatebox" id="description"
 					name="description" type="text" placeholder="费用说明"
-					data-options="required:true" style="width:160px;" /></td>
+					data-options="required:true" style="width:160px;" /> -->
+					<select	id="description" name="description" style="width:166px;">
+						<option value="1">发票</option>
+						<option value="2">白条</option>
+						<option value="3">收据</option>
+				</select></td>
 			</tr>
 
 			<tr>

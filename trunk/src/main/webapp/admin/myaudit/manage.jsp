@@ -99,7 +99,7 @@
 						width : 80,
 						align : 'center',
 						formatter : function(value, row, index) {
-						var url = "http://"+"${pageContext.request.serverName}"+":8080/"+ row.photoUrl;
+						var url = "http://"+"${pageContext.request.serverName}"+"/"+ row.photoUrl;
 						var btn = '<img src="'+ url +'"/>';
 						var urlphoto='<a href=\"javascript:void(0);\" class=\"easyui-linkbutton\" data-options=\"iconCls:\'icon-add\',plain:true\" onclick=\"showPhoto(\''+url+'\');\">查看图片</a>';
 						return urlphoto;
@@ -243,7 +243,7 @@
 	}
 	function showPhoto(url) {
 		console.info(url);
-		var urltest = "http://"+"${pageContext.request.serverName}"+":8080/";
+		var urltest = "http://"+"${pageContext.request.serverName}"+"/";
 		if(urltest==url)
 		{
 		$.messager.show({

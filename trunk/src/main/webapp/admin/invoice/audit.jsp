@@ -26,34 +26,50 @@
 		$('#dearerName').attr('value', cls.dearerName);
 		console.info(cls.operatorId + "_" + cls.proverId + "_" + cls.auditor1Id
 				+ "_" + cls.auditor2Id + "_" + cls.dearerId);
-
+		var showWarn = 0;
 		if (cls.operatorId == cls.proverId) {
 
 			if (cls.auditState.prover == 0) {
 				document.getElementById('provertr').style.display = '';
 				document.getElementById('provertrState').style.display = '';
+				showWarn++;
 			}
 		}
-		if (cls.operatorId == cls.auditor1Id) {
+		if (cls.operatorId == cls.auditor1Id&&(cls.auditState.prover == 1)) {
 			console.info(2);
 			if (cls.auditState.auditor1 == 0) {
 				document.getElementById('audit1tr').style.display = '';
 				document.getElementById('audit1trState').style.display = '';
+				showWarn++;
 			}
 		}
-		if (cls.operatorId == cls.auditor2Id) {
+		if (cls.operatorId == cls.auditor2Id&&(cls.auditState.auditor1 == 1)) {
 
 			if (cls.auditState.auditor2 == 0) {
 				document.getElementById('audit2tr').style.display = '';
 				document.getElementById('audit2trState').style.display = '';
+				showWarn++;
 			}
 		}
-		if (cls.operatorId == cls.dearerId) {
+		if (cls.operatorId == cls.dearerId&&(cls.auditState.auditor2 == 1)) {
 
 			if (cls.auditState.dearer == 0) {
 				document.getElementById('dearertr').style.display = '';
 				document.getElementById('dearertrState').style.display = '';
+				showWarn++;
 			}
+		}
+		if(showWarn == 0)
+		{
+		
+		parent.$.messager.show({
+								title : '提示',
+								msg : "当前发票没有到您审核的状态",
+								timeout : 2000,
+								showType : 'slide'
+							});
+		parent.$.modalDialog.handler.dialog('close');
+		
 		}
 
 		$('select').prop({

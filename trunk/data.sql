@@ -1,7 +1,7 @@
 ﻿-- ----------------------------
 -- Records of invoicetype
 -- ----------------------------
-
+insert into InvoiceType(id,name) values(0,"单位付款费用");
 insert into InvoiceType(id,name) values(1,"卡加油费");
 insert into InvoiceType(id,name) values(2,"现金加油费");
 insert into InvoiceType(id,name) values(3,"住宿费");
