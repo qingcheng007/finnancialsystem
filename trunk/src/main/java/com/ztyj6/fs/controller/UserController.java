@@ -164,8 +164,8 @@ public class UserController extends BaseController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/admin/passwordEdit")
-	public Json passwordEdit(User user) {
+	@RequestMapping("/admin/passWordEdit")
+	public Json passWordEdit(User user) {
 
 		Json j = new Json();
 		try {
