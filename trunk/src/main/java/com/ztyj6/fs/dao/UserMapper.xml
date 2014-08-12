@@ -34,9 +34,12 @@
 
 	<select id="selectPasswordById" resultMap="BaseResultMap"
 		parameterType="com.ztyj6.fs.model.User">
-		select
-		password
-		from User
+		SELECT
+		`User`.Id,
+		`User`.UserName,
+		`User`.Password
+		FROM
+		`User`
 		where Id = #{id,jdbcType=INTEGER}
 	</select>
 

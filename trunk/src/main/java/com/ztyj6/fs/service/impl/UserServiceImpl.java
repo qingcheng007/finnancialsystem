@@ -1,7 +1,6 @@
 package com.ztyj6.fs.service.impl;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -9,26 +8,20 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import com.github.miemiedev.mybatis.paginator.domain.Order;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
-
+import com.ztyj6.fs.dao.BalanceMapper;
 import com.ztyj6.fs.dao.UserMapper;
 import com.ztyj6.fs.model.Balance;
 import com.ztyj6.fs.model.User;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.PageFilter;
-import com.ztyj6.fs.model.page.Tree;
-import com.ztyj6.fs.model.page.UserPage;
 import com.ztyj6.fs.security.service.MySecurityMetadataSource;
 import com.ztyj6.fs.service.IUserService;
 import com.ztyj6.fs.utils.IPUtil;
@@ -38,6 +31,17 @@ import com.ztyj6.fs.utils.PageFilterUtil;
 public class UserServiceImpl implements IUserService {
 
 	private UserMapper userMapper;
+
+	private BalanceMapper balanceMapper;
+
+	public BalanceMapper getBalnceMapper() {
+		return balanceMapper;
+	}
+
+	@Autowired
+	public void setBalnceMapper(BalanceMapper balnceMapper) {
+		this.balanceMapper = balnceMapper;
+	}
 
 	private PasswordEncoder passwordEncoder;
 
@@ -186,15 +190,42 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public String getPasswordById(Integer id) {
+	public int updatePasswordById(int id, String oldPassword, String newPassword) {
 		// TODO Auto-generated method stub
-		return userMapper.selectPasswordById(id);
+		User user = userMapper.selectPasswordById(id);
+		String Password = user.getPassword();
+		
+		System.out.println("p1"+Password);
+		
+		String encodedPassword1 = passwordEncoder.encodePassword(
+				oldPassword, user.getUsername());
+		
+		System.out.println("p2"+encodedPassword1);
+		
+		if (Password.equals(encodedPassword1)) {
+			String encodedPassword = passwordEncoder.encodePassword(
+					newPassword, user.getUsername());
+			System.out.println("p3"+encodedPassword);
+			user.setPassword(encodedPassword);
+			userMapper.updateByPrimaryKeySelective(user);
+		} 
+		else
+			return 0;
+		return 0;
 	}
 
 	@Override
-	public void updatePasswordById(int id, String password) {
-		// TODO Auto-generated method stub
-		userMapper.updatePasswordByPrimaryKey(id, password);
+	public Serializable saveBalnce(Balance o) {
+		return balanceMapper.insert(o);
 	}
 
+	@Override
+	public int getByMaxId() {
+		return balanceMapper.selectByMaxId();
+	}
+
+	@Override
+	public int updateBalance(Balance o) {
+		return balanceMapper.updateByPrimaryKeySelective(o);
+	}
 }

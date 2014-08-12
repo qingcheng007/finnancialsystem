@@ -1,6 +1,7 @@
 package com.ztyj6.fs.service;
 
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +25,8 @@ public interface IUserService extends IBaseService<User>{
 	public Balance getBalanceById(int id);
 	public List<User> getPartion();
 	public String getRealNameById(Integer id);
-	public String getPasswordById(Integer id);
-	public void updatePasswordById(int id,String password);
+	public int updatePasswordById(int id, String oldPassword,String newPassword);
+	public Serializable saveBalnce(Balance o);
+	public int getByMaxId();
+	public int updateBalance(Balance o);
 }
