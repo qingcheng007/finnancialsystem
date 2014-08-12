@@ -53,4 +53,7 @@ public interface IInvoiceService extends IBaseService<Invoice> {
 	
 	public Invoice addInvoiceAllContent(Invoice invoice);
 	
+	public Invoice auditInvoice(Invoice invoice);
+	
+	public Invoice addInvoiceAndCalMoney(Invoice invoice);
 }
