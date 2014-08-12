@@ -1,26 +1,17 @@
 package com.ztyj6.fs.controller;
 
-import java.math.BigDecimal;
-import java.sql.Date;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.ztyj6.fs.model.AuditState;
-import com.ztyj6.fs.model.Balance;
 import com.ztyj6.fs.model.Invoice;
 import com.ztyj6.fs.model.InvoiceType;
-import com.ztyj6.fs.model.PenaltyRate;
 import com.ztyj6.fs.model.User;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.Json;
@@ -140,8 +131,6 @@ public class InvoiceController extends BaseController {
 		
 		String msg = "";
 		try {
-			
-			
 			msg = "添加成功";
 			json.setSuccess(true);
 			json.setObj(iInvoiceService.addInvoiceAllContent(invoice));
