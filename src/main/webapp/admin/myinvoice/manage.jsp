@@ -21,7 +21,7 @@
 							//url : '${pageContext.request.contextPath}/invoiceController/getByPage.do',
 							//url : '${pageContext.request.contextPath}/invoiceController/getByPageByCurrentId.do?id='+ passid,
 							
-							url : '${pageContext.request.contextPath}/invoiceController/myAudit/getMyAudit.do',
+							url : '${pageContext.request.contextPath}/invoiceController/myInvoice/getMyInvoice.do',
 							fit : true,
 							autoRowHeight : true,
 							striped : true,
