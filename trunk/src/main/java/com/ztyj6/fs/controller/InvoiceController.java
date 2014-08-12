@@ -344,7 +344,7 @@ public class InvoiceController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/myAudit/getMyaudit")
+	@RequestMapping("/myAudit/getMyAudit")
 	public DataGrid geTByPageByid(PageFilter pageFilter,HttpServletRequest request,HttpSession session) {
 		SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
 		Integer id = ((User) (ctx.getAuthentication().getPrincipal())).getId();
