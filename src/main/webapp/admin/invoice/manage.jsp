@@ -69,7 +69,7 @@
 									},
 									{
 										field : 'description',
-										title : '费用说明',
+										title : '票据类型',
 										width : 80,
 										align : 'center',
 										sortable : true
@@ -83,7 +83,7 @@
 									},
 									{
 										field : 'invoicetype',
-										title : '发票类型',
+										title : '票据类型',
 										width : 80,
 										align : 'center',
 										formatter : function(value, row, index) {
@@ -104,7 +104,7 @@
 										width : 80,
 										align : 'center',
 										formatter : function(value, row, index) {
-											var url = "http://"+"${pageContext.request.serverName}"+":8080/"
+											var url = "http://"+"${pageContext.request.serverName}"+"/"
 													+ row.photoUrl;
 											var btn = '<img src="'+ url +'"/>';
 											var urlphoto = '<a href=\"javascript:void(0);\" class=\"easyui-linkbutton\" data-options=\"iconCls:\'icon-add\',plain:true\" onclick=\"showPhoto(\''
@@ -261,7 +261,7 @@
 	}
 	function showPhoto(url) {
 		console.info(url);
-		var urltest = "http://"+"${pageContext.request.serverName}"+":8080/";
+		var urltest = "http://"+"${pageContext.request.serverName}"+"/";
 		//String test = request.getRealPath("/");
 		
 		//${pageContext.request.serverName}
