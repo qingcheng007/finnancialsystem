@@ -329,7 +329,7 @@ public class InvoiceController extends BaseController {
 		}
 	}
 	@ResponseBody
-	@RequestMapping("/myAudit/getMyAudit")
+	@RequestMapping("/myInvoice/getMyInvoice")
 	public DataGrid getByPageByCurrentId(PageFilter pageFilter,	HttpServletRequest request,HttpSession session) {
 		SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
 		Integer id = ((User) (ctx.getAuthentication().getPrincipal())).getId();
@@ -344,7 +344,7 @@ public class InvoiceController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/myInvoice/getMyaudit")
+	@RequestMapping("/myAudit/getMyaudit")
 	public DataGrid geTByPageByid(PageFilter pageFilter,HttpServletRequest request,HttpSession session) {
 		SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
 		Integer id = ((User) (ctx.getAuthentication().getPrincipal())).getId();
