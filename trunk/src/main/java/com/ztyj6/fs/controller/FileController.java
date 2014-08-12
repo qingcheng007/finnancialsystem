@@ -170,9 +170,8 @@ public class FileController extends BaseController {
 				} catch (Exception e) {
 					return getError("上传文件失败。");
 				}
-
 				JSONObject obj = new JSONObject();
-				obj.put("error", 0);
+				obj.put("error",0);
 				System.out.println(newFileName);
 				System.out.println(savePath);
 				System.out.println(saveUrl);

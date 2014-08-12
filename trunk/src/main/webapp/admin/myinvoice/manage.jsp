@@ -439,27 +439,9 @@
 						<form id="admin_invoice_manage_searchForm">
 							<table>
 								<tr>
-									<td>发票类型</td>
-									<td>时间</td>
-									<td>费用内容</td>
-									<td>工程名字</td>
-									<td>证明人审核状态</td>
-									<td>审核人审核状态</td>
-									<td>审批人审核状态</td>
-									<td>审票人审核状态</td>
-									<td rowspan="2"><a href="javascript:void(0);"
-										class="easyui-linkbutton"
-										data-options="iconCls:'icon-search',plain:true"
-										onclick="searchFun();">查找</a></td>
-									<td rowspan="2"><a href="javascript:void(0);"
-										class="easyui-linkbutton"
-										data-options="iconCls:'icon-undo',plain:true"
-										onclick="resetSearch();">重置</a></td>
-								</tr>
-								<tr>
-									<td>
+									<td>发票类型</td><td>
 										<!-- <input name="keyword" placeholder="输入关键词" /> --> <select
-										id="invoiceType" name="invoiceType" style="width:166px;">
+										id="invoiceType" name="invoiceType" style="width:140px;">
 											<option></option>
 											<option value="1">卡加油费</option>
 											<option value="2">现金加油费</option>
@@ -475,44 +457,64 @@
 									</select>
 									</td>
 
+									<td>时间</td>
 									<td><input class="Wdate" name="startTime"
 										placeholder="点击选择时间"
 										onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})"
-										readonly="readonly" />-<input class="Wdate" name="endTime"
+										style="width:133px;"readonly="readonly" />-<input class="Wdate" name="endTime"
 										placeholder="点击选择时间"
 										onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})"
-										readonly="readonly" /></td>
-									<td><input name="content" placeholder="输入费用内容" /></td>
-									<td><input name="projectName" placeholder="输入工程名字" /></td>
-									<td><select id="proverState" name="proverState"
-										style="width:166px;">
-											<option></option>
-											<option value="0">未审核</option>
-											<option value="1">审核通过</option>
-											<option value="2">审核不通过</option>
-									</select></td>
-										<td><select id="auditor1State" name="auditor1State"
-										style="width:166px;">
-											<option></option>
-											<option value="0">未审核</option>
-											<option value="1">审核通过</option>
-											<option value="2">审核不通过</option>
-									</select></td>
-									<td><select id="auditor2State" name="auditor2State"
-										style="width:166px;">
-											<option></option>
-											<option value="0">未审核</option>
-											<option value="1">审核通过</option>
-											<option value="2">审核不通过</option>
-									</select></td>
-									<td><select id="dearerState" name="dearerState"
-										style="width:166px;">
-											<option></option>
-											<option value="0">未审核</option>
-											<option value="1">审核通过</option>
-											<option value="2">审核不通过</option>
-									</select></td>
+										style="width:133px;" readonly="readonly" /></td>
+								
+									<td>费用内容</td>	<td><input name="content" placeholder="输入费用内容" style="width:133px;" /></td>
+								
+									<td>工程名字</td>	<td><input name="projectName" placeholder="输入工程名字" style="width:133px;" /></td>
+								
+									
+									<td rowspan="2"><a href="javascript:void(0);"
+										class="easyui-linkbutton"
+										data-options="iconCls:'icon-undo',plain:true"
+										onclick="resetSearch();">重置</a></td>
 								</tr>
+								<tr>
+									
+								</tr>
+								<tr>
+									<td>证明人审核状态</td>
+										<td><select id="proverState" name="proverState"
+										style="width:140px;">
+											<option></option>
+											<option value="0">未审核</option>
+											<option value="1">审核通过</option>
+											<option value="2">审核不通过</option>
+									</select></td>
+										
+									
+									<td>审核人审核状态</td><td><select id="auditor1State" name="auditor1State"
+										style="width:140px;">
+											<option></option>
+											<option value="0">未审核</option>
+											<option value="1">审核通过</option>
+											<option value="2">审核不通过</option>
+									</select></td>
+									
+									<td>审批人审核状态</td><td><select id="auditor2State" name="auditor2State"
+										style="width:140px;">
+											<option></option>
+											<option value="0">未审核</option>
+											<option value="1">审核通过</option>
+											<option value="2">审核不通过</option>
+									</select></td>
+									<td>审票人审核状态</td><td><select id="dearerState" name="dearerState"
+										style="width:140px;">
+											<option></option>
+											<option value="0">未审核</option>
+											<option value="1">审核通过</option>
+											<option value="2">审核不通过</option>
+									</select></td><td rowspan="2"><a href="javascript:void(0);"
+										class="easyui-linkbutton"
+										data-options="iconCls:'icon-search',plain:true"
+										onclick="searchFun();">查找</a></td></tr>
 							</table>
 						</form>
 					</td>
