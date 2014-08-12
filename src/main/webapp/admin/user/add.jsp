@@ -87,6 +87,11 @@
 				<td><input class="easyui-validatebox" id="realname" name="realname" type="text" placeholder="请输入真实姓名" data-options="required:true" /></td>
 			</tr>
 			<tr>
+				<td>上级ID</td>
+				<td><select id="parentId" name="parentId" class="easyui-combobox" data-options="required:true" style="width:160px;">
+				</select></td>
+			</tr>
+			<tr>
 				<td>电话</td>
 				<td><input class="easyui-validatebox" id="phone" name="phone" type="text" placeholder="请输入手机号码（选填）" /></td>
 			</tr>
@@ -102,11 +107,7 @@
 				<td>冻结余额</td>
 				<td><input class="easyui-validatebox" id="frozen" name="frozen" type="text" placeholder="请输入冻结余額" /></td>
 			</tr>
-				<tr>
-				<td>上级ID</td>
-				<td><select id="parentId" name="parentId" class="easyui-combobox" data-options="required:true" style="width:160px;">
-				</select></td>
-			</tr>
+				
              <tr>
 				<td colspan='2' style="text-align: center;"><a href="#" class="easyui-linkbutton" onclick="reset()">重置</a> <a id="submit" href="#" class="easyui-linkbutton" onclick="submit()">提交</a></td>
 			</tr>

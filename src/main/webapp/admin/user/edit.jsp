@@ -25,7 +25,16 @@
 					.ajax({
 						url : '${pageContext.request.contextPath}/userController/admin/edit.do',
 						type : 'POST',
-						data : $('#admin_user_edit_form').serializeObject(),
+						data : {
+			
+	                         id : $('#id').val(),
+							username : $('#username').val(),
+							password : $('#password').val(),
+							realname : $('#realname').val(),
+							phone : $('#phone').val(),
+							email : $('#email').val(),
+							parentId : $('#parentId').val()
+						},
 						dataType : 'json',
 						success : function(data) {
 							if (data.success) {
@@ -42,6 +51,7 @@
 														phone : data.obj.phone,
 														email : data.obj.email,
 														classId : data.obj.classId,
+
 													}
 												});
 								parent.$.modalDialog.handler.dialog('close');
