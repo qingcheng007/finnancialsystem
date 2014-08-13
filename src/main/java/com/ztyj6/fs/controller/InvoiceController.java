@@ -56,7 +56,28 @@ public class InvoiceController extends BaseController {
 		}
 		return json;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/admin_audit")
+	public Json admin_audit(@RequestBody Invoice invoice, HttpSession session) {
+		Json json = new Json();
 
+		Invoice invoiceNew = new Invoice();
+		iInvoiceService.auditInvoice(invoice);
+
+		String msg = "";
+		try {
+			invoiceNew = iInvoiceService.getById(invoice.getId());
+			msg = "添加成功";
+			json.setSuccess(true);
+			json.setObj(invoiceNew);
+			json.setMsg(msg);
+		} catch (Exception e) {
+			msg = "添加失败";
+			json.setMsg(msg);
+		}
+		return json;
+	}
 	@ResponseBody
 	@RequestMapping("/audit")
 	public Json audit(@RequestBody Invoice invoice, HttpSession session) {

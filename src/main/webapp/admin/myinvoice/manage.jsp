@@ -309,8 +309,8 @@
 			parent.$
 					.modalDialog({
 						title : '发票详细信息',
-						width : 600,
-						height : 600,
+						width : 360,
+						height : 460,
 						url : '${pageContext.request.contextPath}/admin/invoice/check.jsp'
 					});
 			parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');
