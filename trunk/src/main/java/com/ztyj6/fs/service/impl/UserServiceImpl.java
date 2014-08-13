@@ -196,7 +196,7 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public void updatePasswordById(int id, String oldPassword, String newPassword) {
+	public String updatePasswordById(int id, String oldPassword, String newPassword) {
 		// TODO Auto-generated method stub
 		User user = userMapper.selectPasswordById(id);
 
@@ -212,8 +212,13 @@ public class UserServiceImpl implements IUserService {
 					newPassword, user.getUsername());
 			user.setPassword(encodedPassword);
 			userMapper.updateByPrimaryKeySelective(user);
-		} else
-			return ;
+			return "编辑成功！";
+		} 
+		else
+		{
+			return "编辑失败！";
+		}
+			
 		
 	}
 
