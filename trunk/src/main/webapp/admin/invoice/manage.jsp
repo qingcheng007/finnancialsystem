@@ -83,7 +83,7 @@
 									},
 									{
 										field : 'invoicetype',
-										title : '票据类型',
+										title : '费用类型',
 										width : 80,
 										align : 'center',
 										formatter : function(value, row, index) {
@@ -303,8 +303,8 @@
 			parent.$
 					.modalDialog({
 						title : '发票详细信息',
-						width : 600,
-						height : 600,
+						width : 360,
+						height : 460,
 						url : '${pageContext.request.contextPath}/admin/invoice/check.jsp'
 					});
 			parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');

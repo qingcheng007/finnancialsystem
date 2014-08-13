@@ -318,7 +318,7 @@
 					style="width:160px;" /></td>
 			</tr>
 			<tr>
-				<td>费用说明</td>
+				<td>票据类型</td>
 				<td><input class="easyui-validatebox" id="description"
 					name="description" type="text" placeholder="费用说明"
 					data-options="required:true" style="width:160px;" /></td>

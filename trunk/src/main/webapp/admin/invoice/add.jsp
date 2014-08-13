@@ -273,7 +273,7 @@ $(function() {
 		}
 		invoice.invoiceType = invoiceType;
 		invoice.invoiceDetails = invoiceDetails;
-		invoice.createDate = $('#createDate').val();
+		//invoice.createDate = $('#createDate').val();
 		invoice.occurDate = $('#occurDate').val();
 		invoice.content = $('#content').val();
 		invoice.money = $('#money').val();
@@ -580,14 +580,7 @@ $(function() {
 					style="width:160px;" /></td>
 			</tr>
 
-			<tr style="display:none">
-				<td>录入时间</td>
-				<td><input class="easyui-validatebox" id='createDate'
-					name='createDate' value="${csrqstart}"
-					onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" readonly="readonly"
-					placeholder="录入时间"
-					style="width:160px;" /></td>
-			</tr>
+	
 			<tr>
 				<td>票据发生日期</td>
 				<td><input class="easyui-validatebox" id='occurDate'

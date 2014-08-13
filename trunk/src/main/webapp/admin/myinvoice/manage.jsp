@@ -72,7 +72,7 @@
 									},
 									{
 										field : 'description',
-										title : '费用说明',
+										title : '票据类型',
 										width : 80,
 										align : 'center',
 										sortable : true
@@ -86,7 +86,7 @@
 									},
 									{
 										field : 'invoicetype',
-										title : '发票类型',
+										title : '费用类型',
 										width : 80,
 										align : 'center',
 										formatter : function(value, row, index) {
