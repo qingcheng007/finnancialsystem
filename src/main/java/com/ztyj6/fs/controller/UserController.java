@@ -134,8 +134,8 @@ public class UserController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/admin/editUser")
-	public Json userEdit(User user) {
+	@RequestMapping("/editUser")
+	public Json editUser(User user) {
 
 		Json j = new Json();
 		try {
@@ -150,17 +150,23 @@ public class UserController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/admin/editPassword")
-	public Json passwordEdit(@RequestParam("id") Integer id,
+	@RequestMapping("/editPassword")
+	public Json editPassword(@RequestParam("id") Integer id,
 			@RequestParam("oldPassword") String oldPassword,
 			@RequestParam("newPassword") String newPassword) {
 		Json j = new Json();
 		try {
-			String message = userService.updatePasswordById(id, oldPassword,
-					newPassword);
-			j.setSuccess(true);
-			j.setMsg(message);
+			int flag = userService.updatePasswordById(id, oldPassword,newPassword);
+			if(flag==1)
+			{
+				j.setSuccess(true);
+			j.setMsg("编辑成功");
+			}
+			else{
+				j.setMsg("旧密码不正确，请重新输入");
+			}
 		} catch (Exception e) {
+			j.setMsg("编辑失败！");
 		}
 		return j;
 	}
