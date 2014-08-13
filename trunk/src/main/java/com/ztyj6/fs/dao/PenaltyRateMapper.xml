@@ -15,6 +15,11 @@
     from PenaltyRate
     where Id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectPenalRate" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PenaltyRate
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from PenaltyRate
     where Id = #{id,jdbcType=INTEGER}
