@@ -25,8 +25,9 @@ public interface IUserService extends IBaseService<User>{
 	public Balance getBalanceById(int id);
 	public List<User> getPartion();
 	public String getRealNameById(Integer id);
-	public int updatePasswordById(int id, String oldPassword,String newPassword);
+	public void updatePasswordById(int id, String oldPassword,String newPassword);
 	public Serializable saveBalnce(Balance o);
 	public int getByMaxId();
 	public int updateBalance(Balance o);
+	public void update(String ids);
 }

@@ -19,6 +19,8 @@ public interface UserMapper {
 	
 	void delete(List ids);
 	
+	void update(List ids);
+	
 	void deleteByRoleIdNotIn(@Param("userId")Integer userId,@Param("ids")List ids);
 
 	void insert(User record);
