@@ -172,19 +172,18 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	public int saveInvoiceAllSelective(Invoice invoice) {
 		// this.saveInvoiceTypeSelective(invoice.getInvoiceType());
 		System.out.println(invoice.getInvoiceDetails());
-		if(invoice.getInvoiceDetails().getContent1()==null)
+	/*	if(invoice.getInvoiceDetails().getContent1()==null)
 		{
 			InvoiceDetails invoiceDetails=new InvoiceDetails();
 			invoiceDetails.setContent1("0");
 			invoice.setInvoiceDetails(invoiceDetails);
-		}
-		this.saveInvoiceDetailsSelective(invoice.getInvoiceDetails());
-		System.out.println("-----------------detailsID:"
-				+ invoice.getInvoiceDetails().getId());
+		}*/
+		if(invoice.getInvoiceDetails().getContent1()!=null)
+			this.saveInvoiceDetailsSelective(invoice.getInvoiceDetails());
+		//System.out.println("-----------------detailsID:"+ invoice.getInvoiceDetails().getId());
 		invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
 		this.saveAuditStateInitialise(invoice.getAuditState());
-		System.out.println("-----------------"
-				+ invoice.getAuditState().getId());
+		//System.out.println("-----------------"+ invoice.getAuditState().getId());
 		invoice.setAuditstateId(invoice.getAuditState().getId());
 		invoiceMapper.insertSelective(invoice);
 		return 0;
@@ -538,9 +537,11 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		AuditState auditState = new AuditState();
 		invoice.setAuditState(auditState);
 		invoice.setCreateDate(currentDate);
-		
+		if(invoice.getInvoiceDetails()==null)
+		{
 		InvoiceDetails invoiceDetails=new InvoiceDetails();
 		invoice.setInvoiceDetails(invoiceDetails);
+		}
 		// invoice.setDearerid(1);
 		//invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
 		invoice.setInvoiceTypeId(invoice.getInvoiceType().getId());
