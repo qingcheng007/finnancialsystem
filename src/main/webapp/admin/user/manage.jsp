@@ -187,7 +187,7 @@
 		parent.$.modalDialog({
 			title : '添加用户',
 			width : 500,
-			height : 340,
+			height : 480,
 			url : '${pageContext.request.contextPath}/admin/user/add.jsp'
 		});
 		parent.$.modalDialog.DataGrid = $('#admin_user_manage_dataGrid');
@@ -265,7 +265,7 @@ function deleteBatch() {
 			parent.$.modalDialog({
 				title : '编辑用户',
 				width : 470,
-				height : 330,
+				height : 480,
 				url : '${pageContext.request.contextPath}/admin/user/edit.jsp'
 			});
 			parent.$.modalDialog.DataGrid = $('#admin_user_manage_dataGrid');
