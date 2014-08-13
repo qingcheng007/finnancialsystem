@@ -91,11 +91,11 @@
 		AuditState.Dearer audti_state_dearer
 		FROM
 		Invoice
-		JOIN InvoiceType ON
+		LEFT JOIN InvoiceType ON
 		Invoice.InvoiceTypeId = InvoiceType.Id
-		JOIN InvoiceDetails ON
+		LEFT JOIN InvoiceDetails ON
 		Invoice.InvoiceDetailsId = InvoiceDetails.Id
-		JOIN AuditState ON
+		LEFT JOIN AuditState ON
 		Invoice.AuditStateId = AuditState.Id
 
 	</select>
@@ -138,12 +138,12 @@
 
 		FROM
 		Invoice
-		JOIN InvoiceType ON
+		LEFT JOIN InvoiceType ON
 		Invoice.InvoiceTypeId = InvoiceType.Id
-		JOIN
+		LEFT JOIN
 		InvoiceDetails ON
 		Invoice.InvoiceDetailsId = InvoiceDetails.Id
-		JOIN
+		LEFT JOIN
 		AuditState ON
 		Invoice.AuditStateId = AuditState.Id
 		<where>
@@ -226,12 +226,12 @@
 
 		FROM
 		Invoice
-		JOIN InvoiceType ON
+		LEFT JOIN InvoiceType ON
 		Invoice.InvoiceTypeId = InvoiceType.Id
-		JOIN
+		LEFT JOIN
 		InvoiceDetails ON
 		Invoice.InvoiceDetailsId = InvoiceDetails.Id
-		JOIN
+		LEFT JOIN
 		AuditState ON
 		Invoice.AuditStateId = AuditState.Id
 		<where>
@@ -315,12 +315,12 @@
 
 		FROM
 		Invoice
-		JOIN InvoiceType ON
+		LEFT JOIN InvoiceType ON
 		Invoice.InvoiceTypeId = InvoiceType.Id
-		JOIN
+		LEFT JOIN
 		InvoiceDetails ON
 		Invoice.InvoiceDetailsId = InvoiceDetails.Id
-		JOIN
+		LEFT JOIN
 		AuditState ON
 		Invoice.AuditStateId = AuditState.Id
 		<where>
@@ -416,11 +416,11 @@
 		AuditState.Dearer audti_state_dearer
 		FROM
 		Invoice
-		JOIN InvoiceType ON
+		LEFT JOIN InvoiceType ON
 		Invoice.InvoiceTypeId = InvoiceType.Id
-		JOIN InvoiceDetails ON
+		LEFT JOIN InvoiceDetails ON
 		Invoice.InvoiceDetailsId = InvoiceDetails.Id
-		JOIN AuditState ON
+		LEFT JOIN AuditState ON
 		Invoice.AuditStateId = AuditState.Id
 		<where>
 
@@ -501,11 +501,11 @@
 		AuditState.Dearer audti_state_dearer
 		FROM
 		Invoice
-		JOIN InvoiceType ON
+		LEFT JOIN InvoiceType ON
 		Invoice.InvoiceTypeId = InvoiceType.Id
-		JOIN InvoiceDetails ON
+		LEFT JOIN InvoiceDetails ON
 		Invoice.InvoiceDetailsId = InvoiceDetails.Id
-		JOIN AuditState ON
+		LEFT JOIN AuditState ON
 		Invoice.AuditStateId = AuditState.Id
 		where Invoice.Id =
 		#{id,jdbcType=INTEGER}

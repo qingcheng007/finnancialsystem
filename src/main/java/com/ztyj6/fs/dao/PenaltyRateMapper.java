@@ -10,6 +10,8 @@ public interface PenaltyRateMapper {
     int insertSelective(PenaltyRate record);
 
     PenaltyRate selectByPrimaryKey(Integer id);
+    
+    PenaltyRate selectPenalRate();
 
     int updateByPrimaryKeySelective(PenaltyRate record);
 

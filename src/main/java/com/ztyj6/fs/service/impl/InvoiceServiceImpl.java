@@ -15,6 +15,7 @@ import com.ztyj6.fs.dao.BalanceMapper;
 import com.ztyj6.fs.dao.InvoiceDetailsMapper;
 import com.ztyj6.fs.dao.InvoiceMapper;
 import com.ztyj6.fs.dao.InvoiceTypeMapper;
+import com.ztyj6.fs.dao.PenaltyRateMapper;
 import com.ztyj6.fs.dao.UserMapper;
 import com.ztyj6.fs.model.AuditState;
 import com.ztyj6.fs.model.Balance;
@@ -40,12 +41,20 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	AuditStateMapper auditStateMapper;
 
 	BalanceMapper balanceMapper;
-	
+
+	PenaltyRateMapper penaltyRateMapper;
+
 	IUserService iUserService;
+
+	@Autowired
+	public void setPenaltyRateMapper(PenaltyRateMapper penaltyRateMapper) {
+		this.penaltyRateMapper = penaltyRateMapper;
+	}
 
 	public IUserService getiUserService() {
 		return iUserService;
 	}
+
 	@Autowired
 	public void setiUserService(IUserService iUserService) {
 		this.iUserService = iUserService;
@@ -172,18 +181,19 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	public int saveInvoiceAllSelective(Invoice invoice) {
 		// this.saveInvoiceTypeSelective(invoice.getInvoiceType());
 		System.out.println(invoice.getInvoiceDetails());
-	/*	if(invoice.getInvoiceDetails().getContent1()==null)
-		{
-			InvoiceDetails invoiceDetails=new InvoiceDetails();
-			invoiceDetails.setContent1("0");
-			invoice.setInvoiceDetails(invoiceDetails);
-		}*/
-		if(invoice.getInvoiceDetails().getContent1()!=null)
+		/*
+		 * if(invoice.getInvoiceDetails().getContent1()==null) { InvoiceDetails
+		 * invoiceDetails=new InvoiceDetails(); invoiceDetails.setContent1("0");
+		 * invoice.setInvoiceDetails(invoiceDetails); }
+		 */
+		if (invoice.getInvoiceDetails().getContent1() != null)
 			this.saveInvoiceDetailsSelective(invoice.getInvoiceDetails());
-		//System.out.println("-----------------detailsID:"+ invoice.getInvoiceDetails().getId());
+		// System.out.println("-----------------detailsID:"+
+		// invoice.getInvoiceDetails().getId());
 		invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
 		this.saveAuditStateInitialise(invoice.getAuditState());
-		//System.out.println("-----------------"+ invoice.getAuditState().getId());
+		// System.out.println("-----------------"+
+		// invoice.getAuditState().getId());
 		invoice.setAuditstateId(invoice.getAuditState().getId());
 		invoiceMapper.insertSelective(invoice);
 		return 0;
@@ -263,7 +273,6 @@ public class InvoiceServiceImpl implements IInvoiceService {
 
 	}
 
-
 	@Override
 	public Invoice saveInvoiceAllContent(Invoice invoice) {
 		for (int j = 1; j <= 5; j++) {
@@ -304,34 +313,32 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		}
 		return invoice;
 	}
+
 	@Override
 	public Invoice getById(Integer id) {
 		// TODO Auto-generated method stub
 		Invoice invoice = new Invoice();
-		invoice=invoiceMapper.selectByPrimaryID(id);
-		
+		invoice = invoiceMapper.selectByPrimaryID(id);
+
 		return this.saveInvoiceAllContent(invoice);
 	}
-
-	
 
 	@Override
 	public List<Invoice> getAll() {
 		return invoiceMapper.getInvoiceAll();
 	}
-	
 
 	@Override
-	public DataGrid getByPageCurrentID(PageFilter pageFilter,int id) {
+	public DataGrid getByPageCurrentID(PageFilter pageFilter, int id) {
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();
 		PageList roles = (PageList) invoiceMapper.selectByPage(pageFilter,
-				pageBounds,id);
+				pageBounds, id);
 		for (int i = 0; i < roles.size(); i++) {
 			Invoice invoiceAddName = (Invoice) roles.get(i);
-			
+
 			roles.set(i, this.saveInvoiceAllContent(invoiceAddName));
-			////
+			// //
 		}
 		dg.setRows(roles);
 		dg.setTotal(roles.getPaginator().getTotalCount());
@@ -342,12 +349,13 @@ public class InvoiceServiceImpl implements IInvoiceService {
 	public DataGrid getPageById(PageFilter pageFilter, int id) {
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();
-		PageList roles = (PageList) invoiceMapper.selectPageById(pageFilter,pageBounds,id);
+		PageList roles = (PageList) invoiceMapper.selectPageById(pageFilter,
+				pageBounds, id);
 		for (int i = 0; i < roles.size(); i++) {
 			Invoice invoiceAddName = (Invoice) roles.get(i);
-			
+
 			roles.set(i, this.saveInvoiceAllContent(invoiceAddName));
-			////
+			// //
 		}
 		dg.setRows(roles);
 		dg.setTotal(roles.getPaginator().getTotalCount());
@@ -387,6 +395,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 
 		BigDecimal calculate = new BigDecimal(bg);
 		calculate = calculate.multiply(rate);
+		calculate = calculate.multiply(invoice.getMoney());
 		return calculate;
 	}
 
@@ -446,108 +455,139 @@ public class InvoiceServiceImpl implements IInvoiceService {
 				}
 			}
 			roles.set(i, invoiceAddName);
-			////
+			// //
 		}
 		dg.setRows(roles);
 		dg.setTotal(roles.getPaginator().getTotalCount());
 		return dg;
 	}
 
-	
 	@Override
 	public Invoice auditInvoice(Invoice invoice) {
-		
+
 		AuditState auditState = invoice.getAuditState();
-		invoice=this.getById(invoice.getId());
+		invoice = this.getById(invoice.getId());
 		System.out.println(auditState.getId());
 		invoice.setAuditState(auditState);
-		this.updateAuditStateOnly(auditState);
+
 		// 需要修改
 		// invoice.setDearerid(1);
-		
-		
-		invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
-		//invoice.setInvoiceTypeId(invoice.getInvoiceType().getId());
+		// invoice =this.getById(invoice.getId());
+		// invoice.setAuditState(auditState);
+
+		// invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
+		// invoice.setInvoiceTypeId(invoice.getInvoiceType().getId());
 
 		//
-		// BigeDecimal rate = iInvoiceService.getRate();
-		BigDecimal rate = new BigDecimal("0.1");
+		/*
+		 * BigDecimal rate = this.getRate(); if(rate.equals(0)) rate = new
+		 * BigDecimal("0.1");
+		 * 
+		 * // 计算罚款金额 BigDecimal calculatePenalty =
+		 * this.calculatePenalty(invoice,rate); // 整合到service中
+		 * 
+		 * 
+		 * // balance = role.get();
+		 * 
+		 * 
+		 * 
+		 * money = invoice.getMoney().subtract(calculatePenalty);
+		 */
 
-		// 计算罚款金额
-		BigDecimal calculatePenalty = this.calculatePenalty(invoice,rate);
-		// 整合到service中
-
-		Balance balance = new Balance();
-		// balance = role.get();
+		BigDecimal money = null;
+		money = invoice.getMoney();
 		BigDecimal frozen = null;
 		BigDecimal available = null;
-		int proverid = invoice.getProverId();
-		BigDecimal money = null;
-		money = invoice.getMoney().subtract(calculatePenalty);
 		// frozen = money;
-		
+		int proverid = invoice.getProverId();
+		Balance balance = new Balance();
 		balance = iUserService.getBalanceById(proverid);
 		available = balance.getAvailable();
 		frozen = balance.getFrozen();
 		// 审批人审核通过，冻结金额减少，
-		int control = 0;
-		if (invoice.getAuditState().getDearer() == 2
-				|| invoice.getAuditState().getDearer() == 1) {
-			if (invoice.getAuditState().getDearer() == 2) {
-				available = available.add(money);
-				// frozen = frozen.subtract(money);
-				control = 1;
-			}
-			// else {
-			// frozen = frozen.subtract(money);
-			// }
+
+		if (invoice.getAuditState().getProver() == 0
+				|| invoice.getAuditState().getProver() == 2) {
+			invoice.getAuditState().setAuditor1(0);
+			invoice.getAuditState().setAuditor2(0);
+			invoice.getAuditState().setDearer(0);
+		} else if (invoice.getAuditState().getAuditor1() == 0
+				|| invoice.getAuditState().getAuditor1() == 2) {
+			invoice.getAuditState().setAuditor2(0);
+			invoice.getAuditState().setDearer(0);
+		} else if (invoice.getAuditState().getAuditor2() == 0
+				|| invoice.getAuditState().getAuditor2() == 2) {
+			invoice.getAuditState().setDearer(0);
 		}
-		if (control == 0)
-			if (invoice.getAuditState().getAuditor2() == 1) {
 
-				frozen = frozen.subtract(money);
-				// available=available.add(money);
-			}// 如果有一个人审核失败，冻结金额减少，重新加入可用余额中
-			else {
-				if (invoice.getAuditState().getProver() == 2
-						|| invoice.getAuditState().getAuditor1() == 2
-						|| invoice.getAuditState().getAuditor2() == 2) {
+		this.updateAuditStateOnly(auditState);
+		if (invoice.getAuditState().getProver() == 1
+				&& invoice.getAuditState().getAuditor1() == 1) {
+			int control = 0;
+			if (invoice.getAuditState().getDearer() == 2
+					|| invoice.getAuditState().getDearer() == 1) {
+				control = 1;
+				if (invoice.getAuditState().getDearer() == 2) {
 					available = available.add(money);
-					frozen = frozen.subtract(money);
+					// frozen = frozen.subtract(money);
 
-				} else {
-					if (invoice.getAuditState().getProver() == 0) {
-						// available = available.subtract(money);
-						// frozen = frozen.add(money);
+				}
+				// else {
+				// frozen = frozen.subtract(money);
+				// }
+			}
+			if (control == 0)
+				if (invoice.getAuditState().getAuditor2() == 1) {
+
+					frozen = frozen.subtract(money);
+					// available=available.add(money);
+				}// 如果有一个人审核失败，冻结金额减少，重新加入可用余额中
+				else {
+					if (invoice.getAuditState().getProver() == 2
+							|| invoice.getAuditState().getAuditor1() == 2
+							|| invoice.getAuditState().getAuditor2() == 2) {
+						available = available.add(money);
+						frozen = frozen.subtract(money);
+
+					} else {
+						if (invoice.getAuditState().getProver() == 0) {
+							// available = available.subtract(money);
+							// frozen = frozen.add(money);
+						}
 					}
 				}
-			}
-
+		}
 		balance.setFrozen(frozen);
 		balance.setAvailable(available);
 
 		this.updateBalance(balance);
 		return invoice;
 	}
+
 	@Override
 	public Invoice saveInvoiceAndCalMoney(Invoice invoice) {
-		
-		java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+
+		java.sql.Date currentDate = new java.sql.Date(
+				System.currentTimeMillis());
 		System.out.println(currentDate);
 		AuditState auditState = new AuditState();
 		invoice.setAuditState(auditState);
 		invoice.setCreateDate(currentDate);
-		if(invoice.getInvoiceDetails()==null)
-		{
-		InvoiceDetails invoiceDetails=new InvoiceDetails();
-		invoice.setInvoiceDetails(invoiceDetails);
+		if (invoice.getInvoiceDetails() == null) {
+			InvoiceDetails invoiceDetails = new InvoiceDetails();
+			invoice.setInvoiceDetails(invoiceDetails);
 		}
 		// invoice.setDearerid(1);
-		//invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
+		// invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
 		invoice.setInvoiceTypeId(invoice.getInvoiceType().getId());
-		this.saveInvoiceAllSelective(invoice);
-		BigDecimal rate = new BigDecimal("0.1");
+
+		BigDecimal rate = this.getRate();
+		BigDecimal zero = new BigDecimal(0);
+		if (rate.equals(zero))
+			rate = new BigDecimal("0.1");
+
 		BigDecimal calculatePenalty = this.calculatePenalty(invoice, rate);
+		invoice.setPenalty(calculatePenalty);
 		int proverid = invoice.getProverId();
 		System.out.println("prover" + proverid);
 		Balance balance = new Balance();
@@ -564,16 +604,27 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		if (!calculatePenalty.equals(0)) {
 			money = money.subtract(calculatePenalty);
 		}
+		invoice.setMoney(money);
 		frozen = frozen.add(money.subtract(calculatePenalty));
 		available = available.subtract(money);
 		// balance.setId(proverid);
 		balance.setAvailable(available);
 		balance.setFrozen(frozen);
 		System.out.println("------------" + balance);
+
+		this.saveInvoiceAllSelective(invoice);
 		this.updateBalance(balance);
-		
+
 		return invoice;
 	}
 
+	@Override
+	public BigDecimal getRate() {
+		BigDecimal bd = new BigDecimal(0);
+		PenaltyRate pr = penaltyRateMapper.selectPenalRate();
+		if (pr != null)
+			return pr.getRate();
+		return bd;
+	}
 
 }

@@ -56,4 +56,6 @@ public interface IInvoiceService extends IBaseService<Invoice> {
 	public Invoice auditInvoice(Invoice invoice);
 	
 	public Invoice saveInvoiceAndCalMoney(Invoice invoice);
+	
+	public BigDecimal getRate();
 }
