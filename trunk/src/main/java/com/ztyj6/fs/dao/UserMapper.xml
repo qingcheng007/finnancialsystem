@@ -523,4 +523,11 @@
 			#{id}
 		</foreach>
 	</delete>
+	<delete id="update" parameterType="java.util.List">
+		UPDATE `User` SET `User`.IsEnable=0 where Id in
+		<foreach collection="list" item="id" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+	</delete>
 </mapper>

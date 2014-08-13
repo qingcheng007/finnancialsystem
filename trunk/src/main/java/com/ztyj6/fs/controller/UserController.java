@@ -109,7 +109,7 @@ public class UserController extends BaseController {
 	public Json delete(String ids) {
 		Json j = new Json();
 		try {
-			userService.delete(ids);
+			userService.update(ids);
 			j.setSuccess(true);
 			j.setMsg("删除成功！");
 		} catch (Exception e) {

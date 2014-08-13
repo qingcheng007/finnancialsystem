@@ -150,6 +150,12 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
+	public void update(String ids) {
+		List<String> arrays = Arrays.asList(ids.split(","));
+		userMapper.update(arrays);
+	}
+	
+	@Override
 	public void updateLogin(HttpServletRequest request,
 			Authentication authentication) {
 		Map<String, Object> param = new HashMap<String, Object>();
@@ -190,7 +196,7 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public int updatePasswordById(int id, String oldPassword, String newPassword) {
+	public void updatePasswordById(int id, String oldPassword, String newPassword) {
 		// TODO Auto-generated method stub
 		User user = userMapper.selectPasswordById(id);
 
@@ -207,8 +213,8 @@ public class UserServiceImpl implements IUserService {
 			user.setPassword(encodedPassword);
 			userMapper.updateByPrimaryKeySelective(user);
 		} else
-			return 0;
-		return 0;
+			return ;
+		
 	}
 
 	@Override
