@@ -65,7 +65,13 @@
 									},
 									{
 										field : 'money',
-										title : '报销金额',
+										title : '实际报销金额',
+										width : 80,
+										align : 'center',
+										sortable : true
+									},{
+										field : 'penalty',
+										title : '超期罚款金额',
 										width : 80,
 										align : 'center',
 										sortable : true
