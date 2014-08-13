@@ -213,13 +213,10 @@ public class UserServiceImpl implements IUserService {
 			user.setPassword(encodedPassword);
 			userMapper.updateByPrimaryKeySelective(user);
 			return "编辑成功！";
-		} 
-		else
-		{
+		} else {
 			return "编辑失败！";
 		}
-			
-		
+
 	}
 
 	@Override

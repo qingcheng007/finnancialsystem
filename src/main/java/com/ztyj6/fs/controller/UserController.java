@@ -151,11 +151,13 @@ public class UserController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping("/admin/passwordEdit")
-	public Json passwordEdit( @RequestParam("id") Integer id,
-			@RequestParam("oldPassword") String oldPassword,@RequestParam("newPassword") String newPassword) {
+	public Json passwordEdit(@RequestParam("id") Integer id,
+			@RequestParam("oldPassword") String oldPassword,
+			@RequestParam("newPassword") String newPassword) {
 		Json j = new Json();
 		try {
-			String message =userService.updatePasswordById(id,oldPassword,newPassword);
+			String message = userService.updatePasswordById(id, oldPassword,
+					newPassword);
 			j.setMsg(message);
 		} catch (Exception e) {
 		}
