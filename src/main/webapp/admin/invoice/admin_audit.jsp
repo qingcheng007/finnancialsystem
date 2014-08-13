@@ -27,38 +27,33 @@
 		console.info(cls.operatorId + "_" + cls.proverId + "_" + cls.auditor1Id
 				+ "_" + cls.auditor2Id + "_" + cls.dearerId);
 		var showWarn = 0;
-		if (cls.operatorId == cls.proverId) {
-
-			if (cls.auditState.prover == 0) {
+	
+			if (cls.auditState.prover == 0&&cls.auditState.prover != 2) {
 				document.getElementById('provertr').style.display = '';
 				document.getElementById('provertrState').style.display = '';
 				showWarn++;
 			}
-		}
-		if (cls.operatorId == cls.auditor1Id&&(cls.auditState.prover == 1)) {
-			console.info(2);
-			if (cls.auditState.auditor1 == 0) {
+		
+		else
+			if (cls.auditState.auditor1 == 0&&cls.auditState.auditor1 != 2) {
 				document.getElementById('audit1tr').style.display = '';
 				document.getElementById('audit1trState').style.display = '';
 				showWarn++;
 			}
-		}
-		if (cls.operatorId == cls.auditor2Id&&(cls.auditState.auditor1 == 1)) {
-
-			if (cls.auditState.auditor2 == 0) {
+	else 
+			if (cls.auditState.auditor2 == 0&&cls.auditState.auditor2 != 2) {
 				document.getElementById('audit2tr').style.display = '';
 				document.getElementById('audit2trState').style.display = '';
 				showWarn++;
 			}
-		}
-		if (cls.operatorId == cls.dearerId&&(cls.auditState.auditor2 == 1)) {
-
-			if (cls.auditState.dearer == 0) {
+	
+	else 
+			if (cls.auditState.dearer == 0&&cls.auditState.dearer != 2) {
 				document.getElementById('dearertr').style.display = '';
 				document.getElementById('dearertrState').style.display = '';
 				showWarn++;
 			}
-		}
+		
 		if(showWarn == 0)
 		{
 		
