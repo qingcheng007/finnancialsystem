@@ -17,23 +17,14 @@ import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.Json;
 import com.ztyj6.fs.model.page.PageFilter;
 import com.ztyj6.fs.service.IInvoiceService;
-import com.ztyj6.fs.service.IUserService;
+
 
 @Controller
 @RequestMapping("/invoiceController")
 public class InvoiceController extends BaseController {
 	IInvoiceService iInvoiceService;
 
-	IUserService iUserService;
 
-	public IUserService getiUserService() {
-		return iUserService;
-	}
-
-	@Autowired
-	public void setiUserService(IUserService iUserService) {
-		this.iUserService = iUserService;
-	}
 
 	public IInvoiceService getiInvoiceService() {
 		return iInvoiceService;
@@ -127,13 +118,13 @@ public class InvoiceController extends BaseController {
 		
 		
 		//Date createdate = new Date();
-		invoice = iInvoiceService.addInvoiceAndCalMoney(invoice);
+		invoice = iInvoiceService.saveInvoiceAndCalMoney(invoice);
 		
 		String msg = "";
 		try {
 			msg = "添加成功";
 			json.setSuccess(true);
-			json.setObj(iInvoiceService.addInvoiceAllContent(invoice));
+			json.setObj(iInvoiceService.saveInvoiceAllContent(invoice));
 			json.setMsg(msg);
 		} catch (Exception e) {
 			msg = "添加失败";
