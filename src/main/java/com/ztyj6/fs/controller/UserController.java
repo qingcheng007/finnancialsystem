@@ -155,11 +155,9 @@ public class UserController extends BaseController {
 			@RequestParam("oldPassword") String oldPassword,@RequestParam("newPassword") String newPassword) {
 		Json j = new Json();
 		try {
-			userService.updatePasswordById(id,oldPassword,newPassword);
-			j.setSuccess(true);
-			j.setMsg("编辑成功！");
+			String message =userService.updatePasswordById(id,oldPassword,newPassword);
+			j.setMsg(message);
 		} catch (Exception e) {
-			j.setMsg("编辑失败！");
 		}
 		return j;
 	}
