@@ -467,7 +467,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		// invoice.setDearerid(1);
 		
 		
-		//invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
+		invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
 		//invoice.setInvoiceTypeId(invoice.getInvoiceType().getId());
 
 		//
@@ -539,13 +539,14 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		invoice.setAuditState(auditState);
 		invoice.setCreateDate(currentDate);
 		
+		InvoiceDetails invoiceDetails=new InvoiceDetails();
+		invoice.setInvoiceDetails(invoiceDetails);
 		// invoice.setDearerid(1);
-		invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
+		//invoice.setInvoiceDetailsId(invoice.getInvoiceDetails().getId());
 		invoice.setInvoiceTypeId(invoice.getInvoiceType().getId());
 		this.saveInvoiceAllSelective(invoice);
 		BigDecimal rate = new BigDecimal("0.1");
-		BigDecimal calculatePenalty = this.calculatePenalty(
-				invoice, rate);
+		BigDecimal calculatePenalty = this.calculatePenalty(invoice, rate);
 		int proverid = invoice.getProverId();
 		System.out.println("prover" + proverid);
 		Balance balance = new Balance();
