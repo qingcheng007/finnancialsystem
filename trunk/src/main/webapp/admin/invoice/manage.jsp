@@ -267,7 +267,7 @@
 	}
 	function showPhoto(url) {
 		console.info(url);
-		var urltest = "http://"+"${pageContext.request.serverName}"+"/";
+		var urltest = "http://"+"${pageContext.request.serverName}"+"/undefined";
 		//String test = request.getRealPath("/");
 		
 		//${pageContext.request.serverName}
