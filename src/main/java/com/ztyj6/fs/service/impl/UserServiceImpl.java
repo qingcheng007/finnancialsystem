@@ -1,6 +1,7 @@
 package com.ztyj6.fs.service.impl;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -232,5 +233,26 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public int updateBalance(Balance o) {
 		return balanceMapper.updateByPrimaryKeySelective(o);
+	}
+
+	@Override
+	public Balance updateBalnceBefore(User user, Balance balance, String money) {
+		// TODO Auto-generated method stub
+		int userid = user.getId();
+
+		int balanceid = user.getBalanceId();
+
+		Balance blance = userMapper.selectBalanceById(userid);
+
+		Double money1 = Double.parseDouble(money);
+
+		BigDecimal money2 = BigDecimal.valueOf(money1);
+
+		BigDecimal money3 = money2.add(blance.getAvailable());
+
+		blance.setId(balanceid);
+
+		blance.setAvailable(money3);
+		return blance;
 	}
 }

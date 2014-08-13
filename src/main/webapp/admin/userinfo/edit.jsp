@@ -25,7 +25,7 @@
 			$('#submit').linkbutton('disable');
 			$
 					.ajax({
-						url : '${pageContext.request.contextPath}/userController/admin/userEdit.do',
+						url : '${pageContext.request.contextPath}/userController/admin/editUser.do',
 						type : 'POST',
 						data : {
 						    id : $('#id').val(),

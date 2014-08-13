@@ -30,4 +30,6 @@ public interface IUserService extends IBaseService<User>{
 	public int getByMaxId();
 	public int updateBalance(Balance o);
 	public void update(String ids);
+	public Balance updateBalnceBefore(User user,Balance balance,String money);
+	
 }
