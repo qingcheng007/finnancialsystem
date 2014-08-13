@@ -79,6 +79,7 @@
 		//	$(document).ready(function(){ $(":input[type='text']").attr("disabled","true");});YOUYONG
 		//$(document).ready(function(){ $('#proverauditState').attr("disabled","true");});
 		//$('#proverauditState').combobox('false');
+		//console.info(document.getElementById('provertr').style.display);
 		$('#proverauditState').combobox('select', cls.auditState.prover);
 		$('#audit1State').combobox('select', cls.auditState.auditor1);
 		$('#audit2State').combobox('select', cls.auditState.auditor2);
