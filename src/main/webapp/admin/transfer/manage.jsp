@@ -56,6 +56,7 @@
 								timeout : 2000,
 								showType : 'slide'
 							});
+						
 							$('#submit').linkbutton('enable');
 						},
 						error : function() {
