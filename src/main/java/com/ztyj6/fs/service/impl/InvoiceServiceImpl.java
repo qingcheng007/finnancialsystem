@@ -266,7 +266,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 
 
 	@Override
-	public Invoice addInvoiceAllContent(Invoice invoice) {
+	public Invoice saveInvoiceAllContent(Invoice invoice) {
 		for (int j = 1; j <= 5; j++) {
 			int idRealName = 0;
 			String realName = "";
@@ -311,7 +311,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		Invoice invoice = new Invoice();
 		invoice=invoiceMapper.selectByPrimaryID(id);
 		
-		return this.addInvoiceAllContent(invoice);
+		return this.saveInvoiceAllContent(invoice);
 	}
 
 	
@@ -331,7 +331,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		for (int i = 0; i < roles.size(); i++) {
 			Invoice invoiceAddName = (Invoice) roles.get(i);
 			
-			roles.set(i, this.addInvoiceAllContent(invoiceAddName));
+			roles.set(i, this.saveInvoiceAllContent(invoiceAddName));
 			////
 		}
 		dg.setRows(roles);
@@ -347,7 +347,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		for (int i = 0; i < roles.size(); i++) {
 			Invoice invoiceAddName = (Invoice) roles.get(i);
 			
-			roles.set(i, this.addInvoiceAllContent(invoiceAddName));
+			roles.set(i, this.saveInvoiceAllContent(invoiceAddName));
 			////
 		}
 		dg.setRows(roles);
@@ -531,7 +531,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		return invoice;
 	}
 	@Override
-	public Invoice addInvoiceAndCalMoney(Invoice invoice) {
+	public Invoice saveInvoiceAndCalMoney(Invoice invoice) {
 		
 		java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
 		System.out.println(currentDate);

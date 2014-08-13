@@ -51,9 +51,9 @@ public interface IInvoiceService extends IBaseService<Invoice> {
 	
 	int updateBalance(Balance balance);
 	
-	public Invoice addInvoiceAllContent(Invoice invoice);
+	public Invoice saveInvoiceAllContent(Invoice invoice);
 	
 	public Invoice auditInvoice(Invoice invoice);
 	
-	public Invoice addInvoiceAndCalMoney(Invoice invoice);
+	public Invoice saveInvoiceAndCalMoney(Invoice invoice);
 }
