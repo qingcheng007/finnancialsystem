@@ -46,7 +46,7 @@
 	<select id="selectAll" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from User
+		from User order by `User`.Id DESC
 	</select>
 
 	<select id="selectRealNameById" resultType="java.lang.String">

@@ -78,6 +78,23 @@
 					});
 		}
 	}
+	$(function() {
+		$('#parentId').combobox({
+		    url:'${pageContext.request.contextPath}/userController/admin/getAll.do',
+		    valueField:'id',
+		    textField:'realname',
+		    mode:'remote',
+		    method:'get', 
+		    panelHeight:'auto',
+		    editable:false,
+		    formatter: function(row){
+	            row.realname = row.id
+				+ ' '
+				+ row.realname;
+	    		return row.realname;
+			},
+		});
+			});
 	function closeDialog() {
 		parent.$.modalDialog.handler.dialog('close');
 	}
@@ -117,9 +134,10 @@
 				<td>Email</td>
 				<td><input class="easyui-validatebox" id="email" name="email" type="text" placeholder="请输入电子邮箱（选填）" data-options="validType:'email'" /></td>
 			</tr>
-				<tr>
+			<tr>
 				<td>上级ID</td>
-				<td><input class="easyui-validatebox" id="parentId" name="parentId" type="text" placeholder="请输上级ID" /></td>
+				<td><select id="parentId" name="parentId" class="easyui-combobox" data-options="required:true" style="width:160px;">
+				</select></td>
 			</tr>
 			
 				<td colspan='2' style="text-align: center;"><a id="submit" href="#" class="easyui-linkbutton" onclick="reset()">重置</a> <a href="#" class="easyui-linkbutton" onclick="submit()">保存修改</a></td>
