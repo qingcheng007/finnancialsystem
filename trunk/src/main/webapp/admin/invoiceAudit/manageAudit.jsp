@@ -281,7 +281,7 @@
 				title : '审批发票',
 				width : 380,
 				height : 380,
-				url : '${pageContext.request.contextPath}/admin/invoice/audit.jsp?id='+passid
+				url : '${pageContext.request.contextPath}/admin/invoice/admin_audit.jsp?id='+passid
 			});
 			parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');
 			parent.$.modalDialog.row = rows[0];
@@ -308,8 +308,8 @@
 		if (rows.length == 1) {
 			parent.$.modalDialog({
 				title : '发票详细信息',
-				width : 600,
-				height : 600,
+				width : 360,
+				height : 460,
 				url : '${pageContext.request.contextPath}/admin/invoice/checkAudit.jsp'
 			});
 			parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');
