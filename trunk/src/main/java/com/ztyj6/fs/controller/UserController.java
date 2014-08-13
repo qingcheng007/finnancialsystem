@@ -134,7 +134,7 @@ public class UserController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/admin/userEdit")
+	@RequestMapping("/admin/editUser")
 	public Json userEdit(User user) {
 
 		Json j = new Json();
@@ -150,7 +150,7 @@ public class UserController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/admin/passwordEdit")
+	@RequestMapping("/admin/editPassword")
 	public Json passwordEdit(@RequestParam("id") Integer id,
 			@RequestParam("oldPassword") String oldPassword,
 			@RequestParam("newPassword") String newPassword) {
@@ -158,6 +158,7 @@ public class UserController extends BaseController {
 		try {
 			String message = userService.updatePasswordById(id, oldPassword,
 					newPassword);
+			j.setSuccess(true);
 			j.setMsg(message);
 		} catch (Exception e) {
 		}
@@ -168,21 +169,8 @@ public class UserController extends BaseController {
 	@RequestMapping("/admin/transfer")
 	public Json transfer(User user, Balance balance,
 			@RequestParam("money") String money) {
-		int userid = user.getId();
 
-		int balanceid = user.getBalanceId();
-
-		Balance blance = userService.getBalanceById(userid);
-
-		Double money1 = Double.parseDouble(money);
-
-		BigDecimal money2 = BigDecimal.valueOf(money1);
-
-		BigDecimal money3 = money2.add(blance.getAvailable());
-
-		blance.setId(balanceid);
-
-		blance.setAvailable(money3);
+		Balance blance = userService.updateBalnceBefore(user, balance, money);
 
 		Json j = new Json();
 		try {

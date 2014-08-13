@@ -40,12 +40,13 @@
 																	'getRowIndex',
 																	user),
 													row : {
-														realname : data.obj.realname,
-														phone : data.obj.phone,
-														email : data.obj.email,
-														classId : data.obj.classId,
+														available: data.obj.money,
+													
+													
 													}
 												});
+												parent.$('#admin_user_addUser_form').form(
+										'reload');
 								parent.$.modalDialog.handler.dialog('close');
 								parent.$('#admin_user_addUser_form').form(
 										'clear');
