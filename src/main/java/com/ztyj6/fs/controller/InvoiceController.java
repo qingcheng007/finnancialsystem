@@ -35,89 +35,13 @@ public class InvoiceController extends BaseController {
 		this.iInvoiceService = iInvoiceService;
 	}
 
-	@ResponseBody
-	@RequestMapping("/getInvoiceAll")
-	public Json selectInvoiceAll(HttpSession session) {
-		Json json = new Json();
-		String message = "";
-		List<Invoice> invoiceList = iInvoiceService.getInvoiceAll();
-		if (invoiceList.size() != 0) {
-			json.setSuccess(true);
-			json.setObj(invoiceList);
-		} else {
-			json.setSuccess(false);
-		}
-
-		return json;
-	}
-
-	@ResponseBody
-	@RequestMapping("/getAllTest")
-	public List getAllTest(HttpSession session) {
-		List<InvoiceType> invoiceType;
-
-		try {
-			invoiceType = iInvoiceService.getInvoiceTypeAll();
-		} catch (Exception e) {
-			return null;
-		}
-		return invoiceType;
-	}
-
-/*	@ResponseBody
-	@RequestMapping("/admin/add")
-	public Json addtest(@RequestBody Invoice invoice, HttpSession session) {
-		Json j = new Json();
-		try {
-			SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
-
-			// System.out.println("--------"+((Invoice)
-			// (ctx.getAuthentication().getPrincipal())).getId());
-			// System.out.println("-------content:"+invoice.getContent());
-			System.out.println("-------content:"+ invoice.getInvoiceDetails().getId()+ invoice.getContent());
-			System.out.println("-------content:" + invoice.getDescription());
-			invoice.setId(((Invoice) (ctx.getAuthentication().getPrincipal())).getId());
-			Date createdate = new Date(0);
-
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			Date now = new Date(0);
-			String nowDate = sdf.format(now).toString();
-			createdate = (Date) sdf.parse(nowDate);
-			System.out.println(createdate);
-
-			
-			
-		//	invoice.setCreatedate(createdate);
-			// invoice.setOccurdate(occurdate);
-			invoice.setInvoiceDetailsId(((Invoice) (ctx.getAuthentication()
-					.getPrincipal())).getInvoiceTypeId());
-			iInvoiceService.save(invoice);
-			// Invoice invoiceReturn = new Invoice();
-			// invoiceReturn = iInvoiceService.getById(invoice.getId());
-			j.setSuccess(true);
-			j.setObj(invoice);
-			j.setMsg("添加成功！");
-		} catch (Exception e) {
-			j.setMsg("添加失败！");
-		}
-		return j;
-	}*/
 
 	@ResponseBody
 	@RequestMapping("/add")
 	public Json add(@RequestBody Invoice invoice, HttpSession session) throws ParseException {
 		Json json = new Json();
-		// SecurityContext ctx = (SecurityContext)
-		// session.getAttribute("SPRING_SECURITY_CONTEXT");
-		// System.out.println("------------------"+((Invoice)
-		// (ctx.getAuthentication().getPrincipal())).getId());
-		// invoice.setCreateRealname(((Invoice)
-		// (ctx.getAuthentication().getPrincipal())).getRealname());
-		// System.out.println("------"+invoice.getContent()+invoice.getInvoiceType().getId()+"--date:"+invoice.getCreatedate());
-		// System.out.println("-------content:"+invoice.getPhotourl());
-		
-		
-		//Date createdate = new Date();
+	
+	
 		invoice = iInvoiceService.saveInvoiceAndCalMoney(invoice);
 		
 		String msg = "";
@@ -138,14 +62,6 @@ public class InvoiceController extends BaseController {
 	public Json audit(@RequestBody Invoice invoice, HttpSession session) {
 		Json json = new Json();
 
-		// SecurityContext ctx = (SecurityContext)
-		// session.getAttribute("SPRING_SECURITY_CONTEXT");
-		// System.out.println("------------------"+((Invoice)
-		// (ctx.getAuthentication().getPrincipal())).getId());
-		// invoice.setCreateRealname(((Invoice)
-		// (ctx.getAuthentication().getPrincipal())).getRealname());
-		// System.out.println("------"+invoice.getContent()+invoice.getInvoiceType().getId()+"--date:"+invoice.getCreatedate());
-		// System.out.println("-------content:"+invoice.getPhotourl());
 		Invoice invoiceNew = new Invoice();
 		iInvoiceService.auditInvoice(invoice);
 
@@ -209,9 +125,7 @@ public class InvoiceController extends BaseController {
 	public DataGrid getByPageByCurrentId(PageFilter pageFilter,	HttpServletRequest request,HttpSession session) {
 		SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
 		Integer id = ((User) (ctx.getAuthentication().getPrincipal())).getId();
-		//String id = request.getParameter("id");
 		try {
-		//	return iInvoiceService.getByPageCurrentID(pageFilter, Integer.parseInt(id));
 			return iInvoiceService.getByPageCurrentID(pageFilter, id);
 		} catch (Exception e) {
 			e.printStackTrace();
