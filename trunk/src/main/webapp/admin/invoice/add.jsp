@@ -162,11 +162,17 @@ $(function() {
 		//alert('fuck');
 
 		var invoiceType = new Object();
-		var invoiceDetails = new Object();
+		
 		if ($('#invoiceTypeId').val() != null)
 			invoiceType.id = $('#invoiceTypeId').val();
 			invoiceType.name = $("#invoiceTypeId").find('option:selected').text();
+			
+			
 		var inputName = "content" + invoiceType.id;
+		
+		if($('#invoiceTypeId').val()!="6"&&$('#invoiceTypeId').val()!="12")
+		{
+		var invoiceDetails = new Object();
 		for ( var i = 1; i <= 3; i++) {
 			
 			console.info(inputName + i);
@@ -269,10 +275,10 @@ $(function() {
 			}break;
 
 			}
-			
+		}invoice.invoiceDetails = invoiceDetails;
 		}
 		invoice.invoiceType = invoiceType;
-		invoice.invoiceDetails = invoiceDetails;
+		
 		//invoice.createDate = $('#createDate').val();
 		invoice.occurDate = $('#occurDate').val();
 		invoice.content = $('#content').val();
