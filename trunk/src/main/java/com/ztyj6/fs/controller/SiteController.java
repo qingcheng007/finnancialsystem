@@ -122,7 +122,7 @@ public class SiteController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/admin/addUserSite")
+	@RequestMapping("/addUserSite")
 	public Json addUserSite(HttpServletRequest request) {
 		Json json = new Json();
 		int flag = 0;
@@ -155,7 +155,7 @@ public class SiteController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/admin/deleteUserSite")
+	@RequestMapping("/deleteUserSite")
 	public Json deleteUserSite(String ids,Site site) {
 		Json json = new Json();
 		try {
