@@ -46,7 +46,7 @@
 	
 		$(function() {
 		$('#parentId').combobox({
-		    url:'${pageContext.request.contextPath}/userController/admin/getAll.do',
+		    url:'${pageContext.request.contextPath}/userController/getAll.do',
 		    valueField:'id',
 		    textField:'realname',
 		    mode:'remote',
