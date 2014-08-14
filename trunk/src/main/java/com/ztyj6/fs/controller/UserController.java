@@ -68,7 +68,7 @@ public class UserController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/admin/userGetById")
+	@RequestMapping("/userGetById")
 	public DataGrid userGetById(PageFilter pageFilter,
 			@RequestParam("id") Integer id, HttpServletRequest request) {
 		try {
@@ -187,7 +187,7 @@ public class UserController extends BaseController {
 		return j;
 	}
 
-	@RequestMapping(value = "/admin/getAll", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	@ResponseBody
 	public List getAll() {
 		List users;
@@ -199,7 +199,7 @@ public class UserController extends BaseController {
 		return users;
 	}
 
-	@RequestMapping(value = "/admin/getAllDroplist", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAllDroplist", method = RequestMethod.GET)
 	@ResponseBody
 	public List getAllDroplist() {
 		List users;
