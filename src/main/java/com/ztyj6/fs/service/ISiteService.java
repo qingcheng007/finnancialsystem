@@ -20,5 +20,7 @@ public interface ISiteService extends IBaseService<Site> {
 	
 	int isExistUserInSite(int userId,int siteId);
 	
+	int getUserIdByUserName(String userName);
+	
 	DataGrid getSiteByUserId(PageFilter pageFilter, int userId);
 }

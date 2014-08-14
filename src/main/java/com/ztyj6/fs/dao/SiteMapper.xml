@@ -241,4 +241,8 @@
 		SiteId =#{siteId,jdbcType=INTEGER} 
 		and UserId =#{userId,jdbcType=INTEGER}
 	</select>
+	<select id="selectUserIdByUserName" resultType="int">
+	    select Id from User where User.UserName =#{userName,jdbcType=VARCHAR}
+	</select>
+	
 </mapper>

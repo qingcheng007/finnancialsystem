@@ -1,7 +1,6 @@
 package com.ztyj6.fs.service.impl;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -9,11 +8,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alibaba.fastjson.JSON;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.ztyj6.fs.dao.SiteMapper;
-import com.ztyj6.fs.model.Post;
 import com.ztyj6.fs.model.Site;
 import com.ztyj6.fs.model.page.DataGrid;
 import com.ztyj6.fs.model.page.PageFilter;
@@ -92,41 +89,44 @@ public class SiteServiceImpl implements ISiteService {
 	}
 
 	@Override
-	public DataGrid getUserByPage(PageFilter pageFilter,
-			int siteId) {
+	public DataGrid getUserByPage(PageFilter pageFilter, int siteId) {
 		// TODO Auto-generated method stub
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();
-		PageList sites = (PageList)siteMapper.selectUsersByPage(pageBounds,siteId);
+		PageList sites = (PageList) siteMapper.selectUsersByPage(pageBounds,
+				siteId);
 		dg.setRows(sites);
 		dg.setTotal(sites.getPaginator().getTotalCount());
 		return dg;
 	}
+
 	/**
-	 *  返回  >0 代表存在该条记录
-	 *  返回 =0 代表该条记录不存在 
+	 * 返回 >0 代表存在该条记录 返回 =0 代表该条记录不存在
 	 */
 	@Override
 	public int isExistSite(String siteName) {
 		return siteMapper.countBySiteName(siteName);
 	}
+
 	/**
-	 *  返回  >0 代表存在该条记录
-	 *  返回 =0 代表该条记录不存在 
+	 * 返回 >0 代表存在该条记录 返回 =0 代表该条记录不存在
 	 */
 	@Override
-	public int isExistUserInSite(int userId,int siteId) {
+	public int isExistUserInSite(int userId, int siteId) {
 		return siteMapper.countByUserIdAndSiteId(userId, siteId);
 	}
+
 	@Override
 	public DataGrid getSiteByUserId(PageFilter pageFilter, int userId) {
 		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
 		DataGrid dg = new DataGrid();
-		PageList sites = (PageList)siteMapper.selectSiteByUserId(pageBounds, userId);
+		PageList sites = (PageList) siteMapper.selectSiteByUserId(pageBounds,
+				userId);
 		dg.setRows(sites);
 		dg.setTotal(sites.getPaginator().getTotalCount());
 		return dg;
 	}
+
 	public void saveOrUpdate(Site o) throws Throwable {
 		// TODO Auto-generated method stub
 	}
@@ -145,5 +145,18 @@ public class SiteServiceImpl implements ISiteService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
+	@Override
+	public int getUserIdByUserName(String userName) {
+		// TODO Auto-generated method stub
+		int userId = 0;
+		try {
+			userId = siteMapper.selectUserIdByUserName(userName);
+		} catch (Exception e) {
+			userId = -1;
+			e.printStackTrace();
+		}
+		return userId;
+	}
+
 }
