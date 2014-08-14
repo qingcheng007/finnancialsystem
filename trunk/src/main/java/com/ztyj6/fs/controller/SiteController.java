@@ -126,25 +126,30 @@ public class SiteController extends BaseController {
 	public Json addUserSite(HttpServletRequest request) {
 		Json json = new Json();
 		int flag = 0;
-		int userId =Integer.parseInt(request.getParameter("userId"));
-		int siteId = Integer.parseInt(request.getParameter("siteId"));
-		int postId = Integer.parseInt(request.getParameter("postId"));
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("siteId", siteId);
-		map.put("userId", userId);
-		map.put("postId", postId);
-		try {
-			flag = siteService.isExistUserInSite(userId, siteId);
-			if(flag == 0){
-				siteService.saveUserSite(map);
-				json.setSuccess(true);
-				json.setMsg("添加成功");
-			}else{
-				json.setMsg("该用户已经存在于站点中");
+		String userName =request.getParameter("userName");
+		int userId = siteService.getUserIdByUserName(userName);
+		if(userId != -1){
+			int siteId = Integer.parseInt(request.getParameter("siteId"));
+			int postId = Integer.parseInt(request.getParameter("postId"));
+			Map<String, Integer> map = new HashMap<String, Integer>();
+			map.put("siteId", siteId);
+			map.put("userId", userId);
+			map.put("postId", postId);
+			try {
+				flag = siteService.isExistUserInSite(userId, siteId);
+				if(flag == 0){
+					siteService.saveUserSite(map);
+					json.setSuccess(true);
+					json.setMsg("添加成功");
+				}else{
+					json.setMsg("该用户已经存在于站点中");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				json.setMsg("添加失败");
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			json.setMsg("添加失败");
+		}else{
+			json.setMsg("该用户不存在");
 		}
 		return json;
 	}

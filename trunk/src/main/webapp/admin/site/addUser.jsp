@@ -63,8 +63,8 @@ $(function() {
 	<form id="admin_site_addUser_form">
 		<table>
 			<tr>
-				<td>用户ID</td>
-				<td><input class="easyui-validatebox" id="userId" name="userId" type="text" placeholder="输入站点名称" data-options="required:true" /></td>
+				<td>用户账号</td>
+				<td><input class="easyui-validatebox" id="userName" name="userName" type="text" placeholder="输入用户名称" data-options="required:true" /></td>
 			</tr>
 			<tr>
 				<td>职务</td>
