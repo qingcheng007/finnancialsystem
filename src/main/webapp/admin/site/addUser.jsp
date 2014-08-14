@@ -27,7 +27,7 @@ $(function() {
 		if($('#admin_site_addUser_form').form('validate')){
 			$('#submit').linkbutton('disable');
 			$.ajax({
-					url : '${pageContext.request.contextPath}/siteController/admin/addUserSite.do?postId='+postId,
+					url : '${pageContext.request.contextPath}/siteController/addUserSite.do?postId='+postId,
 					type : 'POST',
 					data : $('#admin_site_addUser_form').serializeObject(),
 					dataType : 'json',
