@@ -302,7 +302,8 @@
 		`User`
 		INNER JOIN Balance ON `User`.BalanceId =
 		Balance.Id
-		<where>
+		<where>	
+			User.IsEnable = 1	
 			<if test="pageFilter.keyword != null">
 				User.UserName like #{pageFilter.keyword,jdbcType=VARCHAR}
 				or User.RealName like #{pageFilter.keyword,jdbcType=VARCHAR}

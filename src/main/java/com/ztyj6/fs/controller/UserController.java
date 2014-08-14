@@ -82,12 +82,11 @@ public class UserController extends BaseController {
 	@RequestMapping("/admin/add")
 	public Json add(User user, Balance balance, HttpServletRequest request) {
 		userService.saveBalnce(balance);
-		int Id = userService.getByMaxId();
-		user.setBalanceId(Id);
+		user.setBalanceId(userService.getByMaxId());
 		Json j = new Json();
 		user.setCreateIp(IPUtil.getIp(request));
 		try {
-			int code = ((Integer) userService.save(user)).intValue();
+			int code = ((Integer) userService.save( user)).intValue();
 			if (code > 0) {
 				j.setSuccess(true);
 				j.setObj(user);
@@ -174,10 +173,8 @@ public class UserController extends BaseController {
 	@ResponseBody
 	@RequestMapping("/admin/transfer")
 	public Json transfer(User user, Balance balance,
-			@RequestParam("money") String money) {
-
-		Balance blance = userService.updateBalnceBefore(user, balance, money);
-
+			@RequestParam("money") String money) {	
+		Balance blance = userService.updateBalnceBefore(user, balance, money);	
 		Json j = new Json();
 		try {
 			userService.updateBalance(blance);
