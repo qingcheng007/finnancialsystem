@@ -44,10 +44,22 @@
 	</select>
 
 	<select id="selectAll" resultMap="BaseResultMap">
-		select
-		<include refid="Base_Column_List" />
-		from User 
-	 where User.IsEnable = 1 order by `User`.Id DESC LIMIT 0,19
+	SELECT
+	Role.Id,
+	Role.IsEnable,
+	Role.`Code`,
+	R_User_Role.UserId,
+	R_User_Role.Id,
+	R_User_Role.RoleId,
+	`User`.Id,
+	`User`.RealName,
+	`User`.UserName
+	FROM
+	role
+	INNER JOIN R_User_Role ON R_User_Role.RoleId = Role.Id
+	INNER JOIN `User` ON R_User_Role.UserId = `User`.Id
+	WHERE Role.`Code`='ROLE_ADMIN' or Role.`Code`='ROLE_GM' or
+	Role.`Code`='ROLE_VICE_GM' or Role.`Code`='ROLE_PM' or Role.`Code`='ROLE_SM'
 	</select>
 
 	<select id="selectRealNameById" resultType="java.lang.String">
