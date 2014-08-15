@@ -55,7 +55,7 @@
 	`User`.RealName,
 	`User`.UserName
 	FROM
-	role
+	Role
 	INNER JOIN R_User_Role ON R_User_Role.RoleId = Role.Id
 	INNER JOIN `User` ON R_User_Role.UserId = `User`.Id
 	WHERE Role.`Code`='ROLE_ADMIN' or Role.`Code`='ROLE_GM' or
