@@ -46,7 +46,8 @@
 	<select id="selectAll" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from User order by `User`.Id DESC
+		from User 
+	 where User.IsEnable = 1 order by `User`.Id DESC LIMIT 0,19
 	</select>
 
 	<select id="selectRealNameById" resultType="java.lang.String">
