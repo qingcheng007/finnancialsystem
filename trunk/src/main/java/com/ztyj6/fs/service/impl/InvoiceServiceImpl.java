@@ -389,7 +389,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		long bg;
 
 		if (from > to)
-			bg = (to - from) / (1000 * 60 * 60 * 24);
+			bg = (from - to) / (1000 * 60 * 60 * 24);
 		else
 			bg = (to - from) / (1000 * 60 * 60 * 24);
 
