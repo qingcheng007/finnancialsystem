@@ -187,8 +187,9 @@ public class UserController extends BaseController {
 		return j;
 	}
 
-	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
+	
 	@ResponseBody
+	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	public List getAll() {
 		List users;
 		try {
