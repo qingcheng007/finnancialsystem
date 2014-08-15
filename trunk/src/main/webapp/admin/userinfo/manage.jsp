@@ -49,17 +49,17 @@
 							}, {
 								field : 'username',
 								title : '账号',
-								width : 100,
+								width : 70,
 								align : 'center',
 								sortable : true
 							} ] ],
 							columns : [ [
 									{
 										field : 'id',
-										title : 'id',
-										width : 0,
+										title : '我的id',
+										width : 50,
 										align : 'center',
-										hidden : true,
+										hidden : false,
 									},
 									{
 										field : 'realname',
