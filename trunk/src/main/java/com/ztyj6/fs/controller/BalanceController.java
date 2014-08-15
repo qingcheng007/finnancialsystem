@@ -29,7 +29,7 @@ public class BalanceController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/admin/getById")
+	@RequestMapping("/getById")
 	public Balance getById(Integer id, HttpSession session) {
 		SecurityContext ctx = (SecurityContext) session
 				.getAttribute("SPRING_SECURITY_CONTEXT");
