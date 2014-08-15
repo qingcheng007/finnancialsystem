@@ -58,7 +58,7 @@ public class InvoiceController extends BaseController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/admin_audit")
+	@RequestMapping("/admin/audit")
 	public Json admin_audit(@RequestBody Invoice invoice, HttpSession session) {
 		Json json = new Json();
 
