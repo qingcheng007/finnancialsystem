@@ -4,7 +4,7 @@
 <head>
 <jsp:include page="/include/easyui.jsp"></jsp:include>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/style/css/dialog.css" type="text/css">
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8"> 
 	function submit() {
 		if($('#admin_user_add_form').form('validate')){
 			$('#submit').linkbutton('disable');

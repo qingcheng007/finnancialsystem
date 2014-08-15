@@ -26,7 +26,7 @@ import com.ztyj6.fs.utils.IPUtil;
 public class UserController extends BaseController {
 	private IUserService userService;
 
-	public IUserService getUserService() {
+	public IUserService getUserService() { 
 		return userService;
 	}
 
