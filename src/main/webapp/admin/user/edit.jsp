@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/style/css/dialog.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
 	var user = parent.$.modalDialog.row;
-	$(function() {
+	$(function() { 
 
 	    $('#id').attr('value', user.id);
 		$('#password').attr('value', user.password);
