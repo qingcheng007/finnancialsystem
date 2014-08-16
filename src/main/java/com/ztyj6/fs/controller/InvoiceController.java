@@ -37,7 +37,7 @@ public class InvoiceController extends BaseController {
 
 
 	@ResponseBody
-	@RequestMapping("/add")
+	@RequestMapping("/admin/add")
 	public Json add(@RequestBody Invoice invoice, HttpSession session) throws ParseException {
 		Json json = new Json();
 	
@@ -101,7 +101,7 @@ public class InvoiceController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/delete")
+	@RequestMapping("/admin/delete")
 	public Json delete(String ids) {
 		Json json = new Json();
 		System.out.println(ids);
@@ -120,7 +120,7 @@ public class InvoiceController extends BaseController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("invoice/getInvoiceAll")
+	@RequestMapping("/admin/getInvoiceAll")
 	public DataGrid getByPage(PageFilter pageFilter,HttpSession session) {
 	
 		try {
@@ -184,7 +184,7 @@ public class InvoiceController extends BaseController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/edit")
+	@RequestMapping("/admin/edit")
 	public Json edit(Invoice invoice) {
 		Json json = new Json();
 

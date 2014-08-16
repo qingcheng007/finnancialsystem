@@ -119,7 +119,7 @@ $(function() {
 			$('#submit').linkbutton('disable');
 			var data = toJson();
 			$.ajax({
-						url : '${pageContext.request.contextPath}/invoiceController/add.do',
+						url : '${pageContext.request.contextPath}/invoiceController/admin/add.do',
 						type : 'POST',
 						//data : $('#admin_class_add_form').serializeObject(),
 						data : data,
