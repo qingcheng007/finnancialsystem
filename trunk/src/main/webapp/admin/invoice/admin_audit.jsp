@@ -109,7 +109,7 @@
 			$('#submit').linkbutton('disable');
 			var data = toJson();
 			$.ajax({
-						url : '${pageContext.request.contextPath}/invoiceController/admin_audit.do',
+						url : '${pageContext.request.contextPath}/invoiceController/admin/audit.do',
 						type : 'POST',
 						data : data,
 						dataType : 'json',
