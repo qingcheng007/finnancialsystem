@@ -314,11 +314,11 @@
 		FROM
 		`User`
 		INNER JOIN Balance ON `User`.BalanceId =
-		Balance.Id
+		Balance.Id  
 		<where>	
-			User.IsEnable = 1	
+		   User.IsEnable = 1 
 			<if test="pageFilter.keyword != null">
-				User.UserName like #{pageFilter.keyword,jdbcType=VARCHAR}
+				and User.UserName like #{pageFilter.keyword,jdbcType=VARCHAR}
 				or User.RealName like #{pageFilter.keyword,jdbcType=VARCHAR}
 			</if>
 			<if test="pageFilter.startTime != null and pageFilter.endTime != null">
