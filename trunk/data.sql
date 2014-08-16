@@ -70,10 +70,10 @@ insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,
 insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(16, '删除角色', null, '4', '/roleController/admin/delete*.do', '2', '删除角色', '12', 1, 1);
 insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(17, '授予权限', null, '5', '/roleController/admin/grant*.do', '2', '授予角色权限', '12', 1, 1);
 insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(18, '发票管理', null, '1', '/admin/invoice/manage.jsp', '1', '管理发票', '3', 1, 1);
-insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(19, '查看发票', null, '1', '/invoiceController/get*.do', '2', '查看发票', '18', 1, 1);
-insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(20, '添加发票', null, '2', '/invoiceController/add*.do', '2', '添加发票', '18', 1, 1);
-insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(21, '编辑发票', null, '3', '/invoiceController/edit*.do', '2', '编辑发票', '18', 1, 1);
-insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(22, '删除发票', null, '4', '/invoiceController/delete*.do', '2', '删除发票', '18', 1, 1);
+insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(19, '查看发票', null, '1', '/invoiceController/admin/get*.do', '2', '查看发票', '18', 1, 1);
+insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(20, '添加发票', null, '2', '/invoiceController/admin/add*.do', '2', '添加发票', '18', 1, 1);
+insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(21, '编辑发票', null, '3', '/invoiceController/admin/edit*.do', '2', '编辑发票', '18', 1, 1);
+insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(22, '删除发票', null, '4', '/invoiceController/admin/delete*.do', '2', '删除发票', '18', 1, 1);
 insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(23, '审核发票', null, '2', '/admin/invoiceAudit/manageAudit.jsp', '1', '审核发票', '3', 1, 1);
 insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(24, '职务管理', null, '2', '/admin/post/manage.jsp', '1', '职务管理模块', '4', 1, 1);
 insert into Resource(Id,Name,Icon,Sequence,Url,Type,Description,ParentId,IsLeaf,IsEnable) values(25, '查看职务', null, '1', '/postController/admin/getByPage*.do', '2', '查看职务', '24', 1, 1);
