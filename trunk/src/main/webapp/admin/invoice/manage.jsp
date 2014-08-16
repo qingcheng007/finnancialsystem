@@ -17,7 +17,7 @@
 		$('#admin_invoice_manage_dataGrid')
 				.datagrid(
 						{
-							url : '${pageContext.request.contextPath}/invoiceController/invoice/getInvoiceAll.do',
+							url : '${pageContext.request.contextPath}/invoiceController/admin/getInvoiceAll.do',
 							//url : '${pageContext.request.contextPath}/invoiceController/getByPageByCurrentId.do?id='+passid,
 							fit : true,
 							autoRowHeight : true,
@@ -384,7 +384,7 @@
 
 									$
 											.ajax({
-												url : '${pageContext.request.contextPath}/invoiceController/delete.do',
+												url : '${pageContext.request.contextPath}/invoiceController/admin/delete.do',
 												type : 'POST',
 												data : {
 													ids : ids.join(',')

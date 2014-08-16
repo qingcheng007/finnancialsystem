@@ -343,7 +343,7 @@
 						ids.push(rows[i].id);
 						
 					$.ajax({ 
-						url: '${pageContext.request.contextPath}/invoiceController/delete.do', 
+						url: '${pageContext.request.contextPath}/invoiceController/admin/delete.do', 
 						type: 'POST',
 						data: {
 							ids: ids.join(',')
