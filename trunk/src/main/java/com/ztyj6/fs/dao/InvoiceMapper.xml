@@ -223,7 +223,8 @@
 		audti_state_auditor1,
 		AuditState.Auditor2 audti_state_auditor2,
 		AuditState.Dearer audti_state_dearer
-
+		User.Id,
+		User.UserName
 		FROM
 		Invoice
 		LEFT JOIN InvoiceType ON
@@ -234,6 +235,9 @@
 		LEFT JOIN
 		AuditState ON
 		Invoice.AuditStateId = AuditState.Id
+		JOIN User 
+		ON Invoice.OperatorId = User.Id
+		
 		<where>
 
 			Invoice.OperatorId=#{id,jdbcType=INTEGER}
@@ -261,7 +265,10 @@
 				and Invoice.OperatorId =
 				#{pageFilter.OperatorId,jdbcType=INTEGER}
 			</if>
-			
+			<if test="pageFilter.OperatorName != null">
+				and User.UserName like
+				#{pageFilter.OperatorName,jdbcType=VARCHAR}
+			</if>
 			
 <if test="pageFilter.proverState != null">
 				and AuditState.Prover =
@@ -320,6 +327,8 @@
 		audti_state_auditor1,
 		AuditState.Auditor2 audti_state_auditor2,
 		AuditState.Dearer audti_state_dearer
+		User.Id,
+		User.UserName
 
 		FROM
 		Invoice
@@ -331,6 +340,9 @@
 		LEFT JOIN
 		AuditState ON
 		Invoice.AuditStateId = AuditState.Id
+		JOIN User 
+		ON Invoice.OperatorId = User.Id
+		
 		<where>
 
 			
@@ -369,6 +381,12 @@
 				and Invoice.OperatorId =
 				#{pageFilter.OperatorId,jdbcType=INTEGER}
 			</if>
+			
+			<if test="pageFilter.OperatorName != null">
+				and User.UserName like
+				#{pageFilter.OperatorName,jdbcType=VARCHAR}
+			</if>
+			
 
 			<if test="pageFilter.DearerState != null">
 				 AuditState.Dearer =
