@@ -255,6 +255,14 @@
 				and Invoice.ProjectName like
 				#{pageFilter.projectName,jdbcType=VARCHAR}
 			</if>
+			
+			
+			<if test="pageFilter.OperatorId != null">
+				and Invoice.OperatorId =
+				#{pageFilter.OperatorId,jdbcType=INTEGER}
+			</if>
+			
+			
 <if test="pageFilter.proverState != null">
 				and AuditState.Prover =
 				#{pageFilter.proverState,jdbcType=INTEGER} 
@@ -355,6 +363,11 @@
 			<if test="pageFilter.auditor2State != null">
 				 AuditState.Auditor2 =
 				#{pageFilter.auditor2State,jdbcType=INTEGER} and
+			</if>
+			
+			<if test="pageFilter.OperatorId != null">
+				and Invoice.OperatorId =
+				#{pageFilter.OperatorId,jdbcType=INTEGER}
 			</if>
 
 			<if test="pageFilter.DearerState != null">

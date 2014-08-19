@@ -19,7 +19,16 @@ public class PageFilter {
 	private int invoiceType;
 	private Date startTime;
 	private Date endTime;
+	private int OperatorId;
 	
+	public int getOperatorId() {
+		return OperatorId;
+	}
+
+	public void setOperatorId(int operatorId) {
+		OperatorId = operatorId;
+	}
+
 	public String getProverState() {
 		return proverState;
 	}
