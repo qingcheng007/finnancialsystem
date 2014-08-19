@@ -20,7 +20,17 @@ public class PageFilter {
 	private Date startTime;
 	private Date endTime;
 	private int OperatorId;
+	private String OperatorName;
 	
+	
+	public String getOperatorName() {
+		return OperatorName;
+	}
+
+	public void setOperatorName(String operatorName) {
+		OperatorName = operatorName;
+	}
+
 	public int getOperatorId() {
 		return OperatorId;
 	}
