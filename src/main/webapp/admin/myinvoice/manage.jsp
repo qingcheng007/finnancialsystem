@@ -529,7 +529,7 @@
 					<td>
 						<table>
 							<tr>
-								<sec:authorize url="/invoiceController/add.do">
+								<sec:authorize url="/invoiceController/admin/add.do">
 									<td><a href="javascript:void(0);"
 										class="easyui-linkbutton"
 										data-options="iconCls:'icon-add',plain:true" onclick="add();">添加</a></td>
