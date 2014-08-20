@@ -45,21 +45,24 @@
 
 	<select id="selectAll" resultMap="BaseResultMap">
 	SELECT
-	Role.Id,
-	Role.IsEnable,
-	Role.`Code`,
-	R_User_Role.UserId,
-	R_User_Role.Id,
-	R_User_Role.RoleId,
 	`User`.Id,
 	`User`.RealName,
-	`User`.UserName
+	`User`.UserName,
+	`User`.IsEnable,
+	R_User_Role.Id,
+	R_User_Role.UserId,
+	R_User_Role.RoleId,
+	Role.`Name`,
+	Role.Id,
+	Role.`Code`
 	FROM
-	Role
-	INNER JOIN R_User_Role ON R_User_Role.RoleId = Role.Id
-	INNER JOIN `User` ON R_User_Role.UserId = `User`.Id
-	WHERE Role.`Code`='ROLE_ADMIN' or Role.`Code`='ROLE_GM' or
-	Role.`Code`='ROLE_VICE_GM' or Role.`Code`='ROLE_PM' or Role.`Code`='ROLE_SM'
+	`User`
+	INNER JOIN R_User_Role ON R_User_Role.UserId = `User`.Id
+	INNER JOIN Role ON R_User_Role.RoleId = Role.Id
+	WHERE
+	Role.`Code`='ROLE_ADMIN' or Role.`Code`='ROLE_GM' or
+	Role.`Code`='ROLE_VICE_GM' or Role.`Code`='ROLE_PM' or
+	Role.`Code`='ROLE_SM' or  `User`.IsEnable=1
 	</select>
 
 	<select id="selectRealNameById" resultType="java.lang.String">
