@@ -131,6 +131,20 @@ public class InvoiceController extends BaseController {
 		}
 	}
 	@ResponseBody
+	@RequestMapping("/admin/getUserAll")
+	public DataGrid getUserAll(PageFilter pageFilter,HttpSession session) {
+	
+		SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
+		Integer id = ((User) (ctx.getAuthentication().getPrincipal())).getId();
+		System.out.println(id);
+		try {
+			return iInvoiceService.getUserAll(pageFilter, id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	@ResponseBody
 	@RequestMapping("/audit/getAuditAll")
 	public DataGrid getAuditAll(PageFilter pageFilter,HttpSession session) {
 	
@@ -182,6 +196,7 @@ public class InvoiceController extends BaseController {
 			return null;
 		}
 	}
+	
 
 	@ResponseBody
 	@RequestMapping("/admin/edit")

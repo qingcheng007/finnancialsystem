@@ -99,6 +99,113 @@
 		Invoice.AuditStateId = AuditState.Id
 
 	</select>
+	<select id="selectUserAll" parameterType="java.lang.Integer" resultMap="invoiceResultMap">
+		SELECT
+		Invoice.Id,
+		Invoice.CreateDate,
+		Invoice.OccurDate,
+		Invoice.Content,
+		Invoice.Money,
+		Invoice.Penalty,
+		Invoice.Description,
+		Invoice.InvoiceDetailsId,
+		Invoice.InvoiceTypeId,
+		Invoice.ProjectName,
+		Invoice.OperatorId,
+		Invoice.ProverId,
+		Invoice.Auditor1Id,
+		Invoice.Auditor2Id,
+		Invoice.AuditStateId,
+		Invoice.PhotoUrl,
+		Invoice.Remark,
+		Invoice.DearerId,
+		InvoiceType.Id invoice_type_id,
+		InvoiceType.`Name` invoice_type_name,
+		InvoiceDetails.Id
+		invoice_details_id,
+		InvoiceDetails.Content1 invoice_details_content1,
+		InvoiceDetails.Content2 invoice_details_content2,
+		InvoiceDetails.Content3 invoice_details_content3,
+		InvoiceDetails.Content4 invoice_details_content4,
+		AuditState.Id
+		audit_state_id,
+		AuditState.Operator audti_state_operator,
+		AuditState.Prover audti_state_prover,
+		AuditState.Auditor1
+		audti_state_auditor1,
+		AuditState.Auditor2 audti_state_auditor2,
+		AuditState.Dearer audti_state_dearer
+		User.Id,
+		User.UserName
+		FROM
+		Invoice
+		LEFT JOIN InvoiceType ON
+		Invoice.InvoiceTypeId = InvoiceType.Id
+		LEFT JOIN
+		InvoiceDetails ON
+		Invoice.InvoiceDetailsId = InvoiceDetails.Id
+		LEFT JOIN
+		AuditState ON
+		Invoice.AuditStateId = AuditState.Id
+		JOIN User 
+		ON Invoice.OperatorId = User.Id
+		
+		<where>
+
+			(Invoice.OperatorId=#{id}
+			OR Invoice.ProverId=#{id}
+			OR Invoice.Auditor1Id=#{id}
+			OR Invoice.Auditor2Id=#{id}
+			OR Invoice.DearerId=#{id})
+
+			<if test="pageFilter.invoiceType != 0">
+				and Invoice.InvoiceTypeId =
+				#{pageFilter.invoiceType,jdbcType=INTEGER}
+			</if>
+			<if test="pageFilter.startTime != null and pageFilter.endTime != null">
+				and Invoice.CreateDate between
+				#{pageFilter.startTime,jdbcType=TIMESTAMP} and
+				#{pageFilter.endTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="pageFilter.content != null">
+				and Invoice.Content like
+				#{pageFilter.content,jdbcType=VARCHAR}
+			</if>
+			<if test="pageFilter.projectName != null">
+				and Invoice.ProjectName like
+				#{pageFilter.projectName,jdbcType=VARCHAR}
+			</if>
+			
+			
+			<if test="pageFilter.OperatorId != null">
+				and Invoice.OperatorId =
+				#{pageFilter.OperatorId,jdbcType=INTEGER}
+			</if>
+			<if test="pageFilter.OperatorName != null">
+				and User.UserName like
+				#{pageFilter.OperatorName,jdbcType=VARCHAR}
+			</if>
+			
+			<if test="pageFilter.proverState != null">
+				and AuditState.Prover =
+				#{pageFilter.proverState,jdbcType=INTEGER} 
+			</if>
+			<if test="pageFilter.auditor1State != null">
+				and AuditState.Auditor1 =
+				#{pageFilter.auditor1State,jdbcType=INTEGER} 
+			</if>
+			<if test="pageFilter.auditor2State != null">
+				and AuditState.Auditor2 =
+				#{pageFilter.auditor2State,jdbcType=INTEGER}
+			</if>
+
+			<if test="pageFilter.DearerState != null">
+				and AuditState.Dearer =
+				#{pageFilter.dearerState,jdbcType=INTEGER}
+			</if>
+		</where>
+
+	</select>
 	<select id="selectAllInvoice" resultMap="invoiceResultMap">
 		SELECT
 		Invoice.Id,

@@ -41,6 +41,8 @@ public interface InvoiceMapper {
     
     List selectAllInvoice(@Param("pageFilter")PageFilter pageFilter,PageBounds pageBounds);
     
+    List selectUserAll(@Param("pageFilter")PageFilter pageFilter,PageBounds pageBounds,@Param("id")int Id);
+    
 	void deleteBatch(List<String> ids);
 	
     

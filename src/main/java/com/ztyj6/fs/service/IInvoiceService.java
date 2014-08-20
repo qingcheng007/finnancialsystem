@@ -58,4 +58,8 @@ public interface IInvoiceService extends IBaseService<Invoice> {
 	public Invoice saveInvoiceAndCalMoney(Invoice invoice);
 	
 	public BigDecimal getRate();
+	
+	public DataGrid getUserAll(PageFilter pageFilter,int id);
+	
+	
 }
