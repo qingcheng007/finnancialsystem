@@ -329,7 +329,7 @@
 		AuditState.Auditor1
 		audti_state_auditor1,
 		AuditState.Auditor2 audti_state_auditor2,
-		AuditState.Dearer audti_state_dearer
+		AuditState.Dearer audti_state_dearer,
 		User.Id,
 		User.UserName
 		FROM
@@ -433,7 +433,7 @@
 		AuditState.Auditor1
 		audti_state_auditor1,
 		AuditState.Auditor2 audti_state_auditor2,
-		AuditState.Dearer audti_state_dearer
+		AuditState.Dearer audti_state_dearer,
 		User.Id,
 		User.UserName
 
