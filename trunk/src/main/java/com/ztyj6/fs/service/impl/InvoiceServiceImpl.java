@@ -627,4 +627,20 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		return bd;
 	}
 
+	@Override
+	public DataGrid getUserAll(PageFilter pageFilter, int id) {
+		PageBounds pageBounds = PageFilterUtil.createPageBounds(pageFilter);
+		DataGrid dg = new DataGrid();
+		PageList roles = (PageList) invoiceMapper.selectUserAll(pageFilter,
+				pageBounds, id);
+		for (int i = 0; i < roles.size(); i++) {
+			Invoice invoiceAddName = (Invoice) roles.get(i);
+
+			roles.set(i, this.saveInvoiceAllContent(invoiceAddName));
+			// //
+		}
+		dg.setRows(roles);
+		dg.setTotal(roles.getPaginator().getTotalCount());
+		return dg;
+		}
 }
