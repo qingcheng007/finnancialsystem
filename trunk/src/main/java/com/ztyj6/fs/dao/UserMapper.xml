@@ -62,7 +62,7 @@
 	WHERE
 	Role.`Code`='ROLE_ADMIN' or Role.`Code`='ROLE_GM' or
 	Role.`Code`='ROLE_VICE_GM' or Role.`Code`='ROLE_PM' or
-	Role.`Code`='ROLE_SM' or  `User`.IsEnable=1
+	Role.`Code`='ROLE_SM' and  `User`.IsEnable=1
 	</select>
 
 	<select id="selectRealNameById" resultType="java.lang.String">
