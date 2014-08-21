@@ -474,8 +474,8 @@
 		
 			
 			<if test="pageFilter.OperatorName != null">
-				and User.UserName like
-				#{pageFilter.OperatorName,jdbcType=VARCHAR}
+				 User.UserName like
+				#{pageFilter.OperatorName,jdbcType=VARCHAR} and
 			</if>
 			
 
