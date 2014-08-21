@@ -263,7 +263,7 @@
 		parent.$.modalDialog({
 			title : '添加报帐目发票信息',
 			width : 430,
-			height : 460,
+			height : 560,
 			url : '${pageContext.request.contextPath}/admin/invoice/add.jsp'
 		});
 		parent.$.modalDialog.DataGrid = $('#admin_invoice_manage_dataGrid');
