@@ -19,25 +19,19 @@ public class PageFilter {
 	private int invoiceType;
 	private Date startTime;
 	private Date endTime;
-	private int OperatorId;
-	private String OperatorName;
+	
+	private String operatorName;
 	
 	
 	public String getOperatorName() {
-		return OperatorName;
+		return operatorName;
 	}
 
 	public void setOperatorName(String operatorName) {
-		OperatorName = operatorName;
+		this.operatorName = operatorName;
 	}
 
-	public int getOperatorId() {
-		return OperatorId;
-	}
 
-	public void setOperatorId(int operatorId) {
-		OperatorId = operatorId;
-	}
 
 	public String getProverState() {
 		return proverState;

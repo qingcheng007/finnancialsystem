@@ -131,7 +131,7 @@ public class InvoiceController extends BaseController {
 		}
 	}
 	@ResponseBody
-	@RequestMapping("/admin/getUserAll")
+	@RequestMapping("/getUserAll")
 	public DataGrid getUserAll(PageFilter pageFilter,HttpSession session) {
 	
 		SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
