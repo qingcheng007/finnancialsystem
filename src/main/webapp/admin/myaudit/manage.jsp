@@ -342,7 +342,7 @@
 						ids.push(rows[i].id);
 						
 					$.ajax({ 
-						url: '${pageContext.request.contextPath}/invoiceController/delete.do', 
+						url: '${pageContext.request.contextPath}/invoiceController/admin/delete.do', 
 						type: 'POST',
 						data: {
 							ids: ids.join(',')
@@ -495,11 +495,10 @@
 					<td><div class="datagrid-btn-separator"></div></td>
 					</sec:authorize>
 					
-					<sec:authorize url="/invoiceController/add.do">
+				
 					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="invoiceCheck();">查看发票详情</a></td>
 					<td><div class="datagrid-btn-separator"></div></td>
-					</sec:authorize>
-			
+					
 					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true" onclick="refresh();">刷新</a></td>
 				</tr>
 				</table>
