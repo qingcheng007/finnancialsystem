@@ -176,9 +176,9 @@
 			
 			
 		
-			<if test="pageFilter.OperatorName != null">
+			<if test="pageFilter.operatorName != null">
 				and User.UserName like
-				#{pageFilter.OperatorName,jdbcType=VARCHAR}
+				#{pageFilter.operatorName,jdbcType=VARCHAR}
 			</if>
 			
 			<if test="pageFilter.proverState != null">
@@ -362,9 +362,9 @@
 			
 			
 		
-			<if test="pageFilter.OperatorName != null">
+			<if test="pageFilter.operatorName != null">
 				and User.UserName like
-				#{pageFilter.OperatorName,jdbcType=VARCHAR}
+				#{pageFilter.operatorName,jdbcType=VARCHAR}
 			</if>
 			
 <if test="pageFilter.proverState != null">
@@ -473,9 +473,9 @@
 			
 		
 			
-			<if test="pageFilter.OperatorName != null">
+			<if test="pageFilter.operatorName != null">
 				 User.UserName like
-				#{pageFilter.OperatorName,jdbcType=VARCHAR} and
+				#{pageFilter.operatorName,jdbcType=VARCHAR} and
 			</if>
 			
 
