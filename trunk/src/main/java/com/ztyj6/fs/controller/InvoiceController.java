@@ -157,7 +157,7 @@ public class InvoiceController extends BaseController {
 	}
 	@ResponseBody
 	@RequestMapping("/myInvoice/getMyInvoice")
-	public DataGrid getByPageByCurrentId(PageFilter pageFilter,	HttpServletRequest request,HttpSession session) {
+	public DataGrid getMyInvoice(PageFilter pageFilter,	HttpServletRequest request,HttpSession session) {
 		SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
 		Integer id = ((User) (ctx.getAuthentication().getPrincipal())).getId();
 		try {
@@ -170,7 +170,7 @@ public class InvoiceController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping("/myAudit/getMyAudit")
-	public DataGrid geTByPageByid(PageFilter pageFilter,HttpServletRequest request,HttpSession session) {
+	public DataGrid getMyAudit(PageFilter pageFilter,HttpServletRequest request,HttpSession session) {
 		SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
 		Integer id = ((User) (ctx.getAuthentication().getPrincipal())).getId();
 		System.out.println(id);
