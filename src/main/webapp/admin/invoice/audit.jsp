@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
 <html>
 <head>
 <title>发票信息修改</title>
@@ -9,14 +10,18 @@
 	src="../../jslib/kindeditor-4.1.10/kindeditor.js"></script>
 <script type="text/javascript"
 	src="../../jslib/My97DatePicker4.8b3/My97DatePicker/WdatePicker.js"></script>
-<link rel="stylesheet" href="../../style/css/dialog.css" type="text/css">
+
 <script type="text/javascript"
 	src="../../jslib/uploadify/jquery.uploadify.min.js"></script>
+	<sec:authentication property="principal" var="authentication" />
 <link rel="stylesheet" href="../../jslib/uploadify/uploadify.css"
 	type="text/css">
 <link rel="stylesheet" href="../../style/css/dialog.css" type="text/css">
+<link rel="stylesheet" href="../../style/css/dialog.css" type="text/css">
+
 <script type="text/javascript" charset="utf-8">
 	var cls = parent.$.modalDialog.row;
+	var currentId=${authentication.id};
 	$(function() {
 		console.info(cls);
 		$('#id').attr('value', cls.id);
@@ -25,9 +30,9 @@
 		$('#audit2Name').attr('value', cls.auditor2Name);
 		$('#dearerName').attr('value', cls.dearerName);
 		console.info(cls.operatorId + "_" + cls.proverId + "_" + cls.auditor1Id
-				+ "_" + cls.auditor2Id + "_" + cls.dearerId);
+				+ "_" + cls.auditor2Id + "_" + cls.dearerId+"_"+currentId);
 		var showWarn = 0;
-		if (cls.operatorId == cls.proverId) {
+		if (currentId == cls.proverId) {
 
 			if (cls.auditState.prover == 0) {
 				document.getElementById('provertr').style.display = '';
@@ -35,7 +40,7 @@
 				showWarn++;
 			}
 		}
-		if (cls.operatorId == cls.auditor1Id&&(cls.auditState.prover == 1)) {
+		if (currentId == cls.auditor1Id&&(cls.auditState.prover == 1)) {
 			console.info(2);
 			if (cls.auditState.auditor1 == 0) {
 				document.getElementById('audit1tr').style.display = '';
@@ -43,7 +48,7 @@
 				showWarn++;
 			}
 		}
-		if (cls.operatorId == cls.auditor2Id&&(cls.auditState.auditor1 == 1)) {
+		if (currentId == cls.auditor2Id&&(cls.auditState.auditor1 == 1)) {
 
 			if (cls.auditState.auditor2 == 0) {
 				document.getElementById('audit2tr').style.display = '';
@@ -51,7 +56,7 @@
 				showWarn++;
 			}
 		}
-		if (cls.operatorId == cls.dearerId&&(cls.auditState.auditor2 == 1)) {
+		if (currentId == cls.dearerId&&(cls.auditState.auditor2 == 1)) {
 
 			if (cls.auditState.dearer == 0) {
 				document.getElementById('dearertr').style.display = '';
