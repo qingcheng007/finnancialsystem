@@ -6,6 +6,7 @@
 <jsp:include page="/include/easyui.jsp"></jsp:include>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/style/css/dialog.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/style/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/style/css/styleC.css" type="text/css">
 <script type="text/javascript" charset="utf-8">
 	function submit() {
 
@@ -56,6 +57,22 @@
 			</form>
 			<div style="clear:both;"></div>
 		</div>
+        <div class="footer"> 
+         <ul>
+        <li><center><span style="line-height:1.5; color:#ccc;">手机报账系统 Copyright © 2014 陈宝光 版权所有</span></center></li>
+        <li><center><span style="line-height:1.5; color:#ccc;">Power by <a href="www.cmsee.com" target="_blank">内蒙古大学系统开发团队</a></span></center></li>
+        <li><center><a href="http://www.miibeian.gov.cn" target="_blank" >冀ICP备14015528号</a></center></li>
+        </ul>   
+        </div>
+        <div style="clear:both;"></div>
 	</div>
 </body>
 </html>
+<script language="JavaScript" type="text/javascript">
+ 　document.onkeydown = function(evt){
+   　 var evt = window.event?window.event:evt;
+    　if (evt.keyCode==13) {
+           submit();
+    　}
+   }
+</script>

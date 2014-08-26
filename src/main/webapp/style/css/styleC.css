@@ -14,8 +14,8 @@ body {color:#535353;font-size:12px;font-family:"微软雅黑";}
 			                        border-radius: 3px 3px 3px 3px;}
 .content_top ul li.topR a:hover{ text-decoration:none; color: #fff; background:#66CC99;}
 
-.footer{ width:100%; height:100px; background:#f0f1f1; padding-top:20px;}
+.footer{ width:100%; padding-top:20px; position:absolute; bottom:0;}
 .footer ul{ width:100%; margin:0; padding:0;}
 .footer ul li{ width:100%; font-family:微软雅黑; font-size:12px; margin-bottom:3px;}
-.footer ul li a{ font-family:微软雅黑; font-size:12px; color:#666; text-decoration: none;}
-.footer ul li a:hover{ color:#0085c3;}
+.footer ul li a{ font-family:微软雅黑; font-size:12px; color: #CCC; text-decoration: none;}
+.footer ul li a:hover{ color: #3F9;}
