@@ -11,17 +11,14 @@
 	src="../../jslib/My97DatePicker4.8b3/My97DatePicker/WdatePicker.js"
 	charset="utf-8"></script>
 <sec:authentication property="principal" var="authentication" />
-
 <script type="text/javascript" charset="utf-8">
 	$(function() {
-		var passid = ${authentication.id};
+		//var passid=${authentication.id};
 		$('#admin_invoice_manage_dataGrid')
 				.datagrid(
 						{
-							//url : '${pageContext.request.contextPath}/invoiceController/getByPage.do',
-							//url : '${pageContext.request.contextPath}/invoiceController/getByPageByCurrentId.do?id='+ passid,
-							
-							url : '${pageContext.request.contextPath}/invoiceController/myInvoice/getMyInvoice.do',
+							url : '${pageContext.request.contextPath}/invoiceController/admin/getInvoiceAll.do',
+							//url : '${pageContext.request.contextPath}/invoiceController/getByPageByCurrentId.do?id='+passid,
 							fit : true,
 							autoRowHeight : true,
 							striped : true,
@@ -270,7 +267,10 @@
 	}
 	function showPhoto(url) {
 		console.info(url);
-		var urltest = "http://"+"${pageContext.request.serverName}"+"/";
+		var urltest = "http://"+"${pageContext.request.serverName}"+"/undefined";
+		//String test = request.getRealPath("/");
+		
+		//${pageContext.request.serverName}
 		if (urltest == url) {
 			$.messager.show({
 				title : '提示',
@@ -384,7 +384,7 @@
 
 									$
 											.ajax({
-												url : '${pageContext.request.contextPath}/invoiceController/delete.do',
+												url : '${pageContext.request.contextPath}/invoiceController/admin/delete.do',
 												type : 'POST',
 												data : {
 													ids : ids.join(',')
@@ -425,11 +425,7 @@
 	function refresh() {
 		$('#admin_invoice_manage_dataGrid').datagrid('reload');
 	}
-	function searchFun() {
-		$('#admin_invoice_manage_dataGrid').datagrid('load',
-				$('#admin_invoice_manage_searchForm').serializeObject());
-	}
-function exportExcell() {
+	function exportExcell() {
 	     //获取Datagride的列
              //获取Datagride的列
             var rows = $('#admin_invoice_manage_dataGrid').datagrid('getRows');
@@ -452,6 +448,11 @@ function exportExcell() {
             }              
             oXL.Visible = true; //设置excel可见属性
 	}
+	function searchFun() {
+		$('#admin_invoice_manage_dataGrid').datagrid('load',
+				$('#admin_invoice_manage_searchForm').serializeObject());
+	}
+
 	function resetSearch() {
 		$(':input', '#admin_invoice_manage_searchForm').val('');
 		$('#admin_invoice_manage_dataGrid').datagrid('load', {});
@@ -558,18 +559,26 @@ function exportExcell() {
 									<td><div class="datagrid-btn-separator"></div></td>
 								</sec:authorize>
 
+							
 									<td><a href="javascript:void(0);"
 										class="easyui-linkbutton"
 										data-options="iconCls:'icon-edit',plain:true"
 										onclick="invoiceCheck();">查看发票详情</a></td>
 									<td><div class="datagrid-btn-separator"></div></td>
 							
+								<sec:authorize url="/invoiceController/admin/delete.do">
+									<td><a href="javascript:void(0);"
+										class="easyui-linkbutton"
+										data-options="iconCls:'icon-remove',plain:true"
+										onclick="deleteBatch();">批量删除</a></td>
+									<td><div class="datagrid-btn-separator"></div></td>
+								</sec:authorize>
 								<td><a href="javascript:void(0);" class="easyui-linkbutton"
 									data-options="iconCls:'icon-reload',plain:true"
 									onclick="refresh();">刷新</a></td>
-														 <td><a href="javascript:void(0);" class="easyui-linkbutton"
+								 <td><a href="javascript:void(0);" class="easyui-linkbutton"
 									data-options="iconCls:'icon-reload',plain:true"
-									onclick="exportExcell();">导出excell</a></td>  
+									onclick="exportExcell();">导出excell</a></td>                  
 							</tr>
 
 						</table>
