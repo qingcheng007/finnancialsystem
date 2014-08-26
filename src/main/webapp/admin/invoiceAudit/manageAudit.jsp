@@ -386,7 +386,29 @@
 		$('#admin_invoice_manage_dataGrid').datagrid('load',
 				$('#admin_invoice_manage_searchForm').serializeObject());
 	}
-
+ function exportExcell() {
+	     //获取Datagride的列
+             //获取Datagride的列
+            var rows = $('#admin_invoice_manage_dataGrid').datagrid('getRows');
+            var columns = $("#admin_invoice_manage_dataGrid").datagrid("options").columns[0];
+            var oXL = new ActiveXObject("Excel.Application"); //创建AX对象excel 
+            var oWB = oXL.Workbooks.Add(); //获取workbook对象 
+            var oSheet = oWB.ActiveSheet; //激活当前sheet
+            //设置工作薄名称
+            oSheet.name = "导出Excel报表";
+            //设置表头
+            for (var i = 0; i < columns.length; i++) {
+                oSheet.Cells(1, i+1).value = columns[i].title;
+            }
+            //设置内容部分
+            for (var i = 0; i < rows.length; i++) {
+                //动态获取每一行每一列的数据值
+                for (var j = 0; j < columns.length; j++) {               
+                    oSheet.Cells(i + 2, j+1).value = rows[i][columns[j].field];
+                }   
+            }              
+            oXL.Visible = true; //设置excel可见属性
+	}
 	function resetSearch() {
 		$(':input', '#admin_invoice_manage_searchForm').val('');
 		$('#admin_invoice_manage_dataGrid').datagrid('load', {});
@@ -508,6 +530,9 @@
 									<td><div class="datagrid-btn-separator"></div></td>
 					</sec:authorize>
 					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true" onclick="refresh();">刷新</a></td>
+					 <td><a href="javascript:void(0);" class="easyui-linkbutton"
+									data-options="iconCls:'icon-reload',plain:true"
+									onclick="exportExcell();">导出excell</a></td>   
 				</tr>
 				</table>
 				</td>
