@@ -11,7 +11,7 @@
 </head>
 <body class="easyui-layout">
 	<div data-options="region:'north',collapsible:false,href:'layout/north.jsp'" style="height:33px;"> </div>
-	<div data-options="region:'south',collapsible:false,href:'../common/bottom.jsp'" style="height:40px;"></div>
+	<div data-options="region:'south',collapsible:false,href:'../common/bottom.jsp'" style="height:65px;"></div>
 	<div data-options="region:'west',title:'系统菜单',collapsible:false,href:'layout/west.jsp'" style="width:180px;"></div>
 	<div data-options="region:'center',collapsible:false" style="border:0px;">
 		<div id="admin_index_center_tabs" class="easyui-tabs" data-options="fit:true">
