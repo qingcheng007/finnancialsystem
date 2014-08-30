@@ -88,7 +88,7 @@
 			</tr>
 			<tr>
 				<td>上级ID</td>
-				<td><select id="parentId" name="parentId" class="easyui-combobox" data-options="required:true" style="width:160px;">
+				<td><select id="parentId" name="parentId" class="easyui-combobox"  style="width:160px;" size="5">
 				</select></td>
 			</tr>
 			<tr>
