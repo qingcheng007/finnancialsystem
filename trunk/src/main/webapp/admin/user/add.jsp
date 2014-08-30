@@ -51,7 +51,7 @@
 		    textField:'realname',
 		    mode:'remote',
 		    method:'get', 
-		    panelHeight:'auto',
+		    panelHeight: 200,
 		    editable:false,
 		    autoScroll:true,
 		    formatter: function(row){
@@ -88,17 +88,17 @@
 				<td><input class="easyui-validatebox" id="realname" name="realname" type="text" placeholder="请输入真实姓名" data-options="required:true" /></td>
 			</tr>
 			<tr>
-				<td>上级ID</td>
-				<td><select id="parentId" name="parentId"  class="easyui-combobox"  style="width:160px;" data-options="required:true" >
-				</select></td>
-			</tr>
-			<tr>
 				<td>电话</td>
 				<td><input class="easyui-validatebox" id="phone" name="phone" type="text" placeholder="请输入手机号码（选填）" /></td>
 			</tr>
 			<tr>
 				<td>Email</td>
 				<td><input class="easyui-validatebox" id="email" name="email" type="text" placeholder="请输入电子邮箱（选填）" data-options="validType:'email'" /></td>
+			</tr>
+			<tr>
+				<td>上级ID</td>
+				<td><select id="parentId" name="parentId"  class="easyui-combobox"  style="width:160px;" data-options="required:true" >
+				</select></td>
 			</tr>
 			<tr>
 				<td>可用余额</td>
