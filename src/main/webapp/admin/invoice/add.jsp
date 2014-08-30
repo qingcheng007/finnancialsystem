@@ -30,8 +30,9 @@ $(function() {
 				textField : 'realname',
 				mode : 'remote',
 				method : 'get',
-				panelHeight : 'auto',
-				editable : false,
+			 panelHeight: 200,
+		     editable:false,
+		     autoScroll:true,
 				formatter: function(row){
 			            row.realname = row.username
 						+ ' '
@@ -47,8 +48,9 @@ $(function() {
 				textField : 'realname',
 				mode : 'remote',
 				method : 'get',
-				panelHeight : 'auto',
-				editable : false,
+			 panelHeight: 200,
+		     editable:false,
+		     autoScroll:true,
 				formatter: function(row){
 			            row.realname = row.username
 						+ ' '
@@ -63,8 +65,9 @@ $(function() {
 				textField : 'realname',
 				mode : 'remote',
 				method : 'get',
-				panelHeight : 'auto',
-				editable : false,
+			 panelHeight: 200,
+		     editable:false,
+		     autoScroll:true,
 				formatter: function(row){
 			            row.realname = row.username
 						+ ' '
@@ -79,8 +82,9 @@ $(function() {
 				textField : 'realname',
 				mode : 'remote',
 				method : 'get',
-				panelHeight : 'auto',
-				editable : false,
+			 panelHeight: 200,
+		     editable:false,
+		     autoScroll:true,
 				formatter: function(row){
 			            row.realname = row.username
 						+ ' '
