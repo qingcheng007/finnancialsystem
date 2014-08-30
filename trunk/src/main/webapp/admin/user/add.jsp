@@ -53,6 +53,7 @@
 		    method:'get', 
 		    panelHeight:'auto',
 		    editable:false,
+		    autoScroll:true,
 		    formatter: function(row){
 	            row.realname = row.id
 				+ ' '
@@ -88,7 +89,7 @@
 			</tr>
 			<tr>
 				<td>上级ID</td>
-				<td><select id="parentId" name="parentId" class="easyui-combobox"  style="width:160px;" size="5">
+				<td><select id="parentId" name="parentId"  class="easyui-combobox"  style="width:160px;" data-options="required:true" >
 				</select></td>
 			</tr>
 			<tr>
