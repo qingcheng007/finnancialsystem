@@ -1,20 +1,14 @@
-<html>
-　<head>
-　　<meta http-equiv="Content-Type" content="text/html; charset=GB2312" />
-　　<title>回车提交表单</title>
-　</head>
-　<body>
-　　<form action="http://www.sosuo8.com" method="post" name="myForm">
-　　　<input type="text" />
-　　　<input type="submit" value="提交" name="tijiao"><font color="#999999">按回车提交表单</font>
-　　</form>
-　</body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>鐧诲綍</title>
+</head>
+
+<body>
+<script language="JavaScript"> 
+self.location='login.jsp'; 
+</script> 
+
+</body>
 </html>
-<script language="JavaScript" type="text/javascript">
- 　document.onkeydown = function(evt){
-   　 var evt = window.event?window.event:evt;
-    　if (evt.keyCode==13) {
-           document.forms["myForm"].submit();
-    　}
-   }
-</script>

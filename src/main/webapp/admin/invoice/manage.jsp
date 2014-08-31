@@ -25,7 +25,7 @@
 							border : false,
 							pagination : true,
 							pageSize : 10,
-							pageList : [ 10, 20, 30, 40, 50 ],
+							pageList : [ 10, 20, 30, 40, 50, 500, 1000, 3000 ],
 							sortName : 'id',
 							sortOrder : 'asc',
 							singleSelect : false,
@@ -428,6 +428,7 @@
 	function exportExcell() {
 	     //获取Datagride的列
              //获取Datagride的列
+		    alert("导出报表需要花费时间，请耐心等待");
             var rows = $('#admin_invoice_manage_dataGrid').datagrid('getRows');
             var columns = $("#admin_invoice_manage_dataGrid").datagrid("options").columns[0];
             var oXL = new ActiveXObject("Excel.Application"); //创建AX对象excel 
