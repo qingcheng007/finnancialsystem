@@ -524,7 +524,7 @@ function exportExcell() {
 					<td><a href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true" onclick="refresh();">刷新</a></td>
 					 <td><a href="javascript:void(0);" class="easyui-linkbutton"
 									data-options="iconCls:'icon-reload',plain:true"
-									onclick="exportExcell();">导出excell</a></td>   
+									onclick="exportExcell();">导出Excel</a></td>   
 				</tr>
 				</table>
 				</td>

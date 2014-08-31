@@ -63,9 +63,10 @@
 	Role.`Code`='ROLE_ADMIN' or Role.`Code`='ROLE_GM' or
 	Role.`Code`='ROLE_VICE_GM' or Role.`Code`='ROLE_PM' or
 	Role.`Code`='ROLE_SM' and  `User`.IsEnable=1
-	GROUP BY `User`.Id
+	
+	  GROUP BY `User`.Id
 	</select>
-
+	 
 	<select id="selectRealNameById" resultType="java.lang.String">
 		SELECT RealName FROM User WHERE Id = #{id,jdbcType=INTEGER}
 	</select>
