@@ -500,8 +500,9 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		BigDecimal available = null;
 		// frozen = money;
 		int proverid = invoice.getProverId();
+		int operatorId = invoice.getOperatorId();//添加
 		Balance balance = new Balance();
-		balance = iUserService.getBalanceById(proverid);
+		balance = iUserService.getBalanceById(operatorId);
 		available = balance.getAvailable();
 		frozen = balance.getFrozen();
 		// 审批人审核通过，冻结金额减少，
@@ -589,6 +590,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		BigDecimal calculatePenalty = this.calculatePenalty(invoice, rate);
 		invoice.setPenalty(calculatePenalty);
 		int proverid = invoice.getProverId();
+		int operaterId = invoice.getOperatorId();
 		System.out.println("prover" + proverid);
 		Balance balance = new Balance();
 		BigDecimal available = null;
@@ -596,7 +598,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		BigDecimal money = null;
 		money = invoice.getMoney();
 		System.out.println(money);
-		balance = iUserService.getBalanceById(proverid);
+		balance = iUserService.getBalanceById(operaterId);
 		System.out.println(balance.getId() + "--" + balance.getAvailable());
 		available = balance.getAvailable();
 		frozen = balance.getFrozen();
