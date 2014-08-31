@@ -522,7 +522,20 @@ public class InvoiceServiceImpl implements IInvoiceService {
 		}
 
 		this.updateAuditStateOnly(auditState);
-		if (invoice.getAuditState().getProver() == 1
+		
+		if(invoice.getAuditState().getProver() == 1 && invoice.getAuditState().getAuditor1() == 1 && invoice.getAuditState().getAuditor2() == 1 && invoice.getAuditState().getDearer( )== 0 )
+		{
+			frozen = frozen.subtract(money);
+		}else if(invoice.getAuditState().getProver() == 2 || invoice.getAuditState().getAuditor1() == 2 || invoice.getAuditState().getAuditor2() == 2)
+		{
+			available = available.add(money);
+			frozen = frozen.subtract(money);
+		}
+		if(invoice.getAuditState().getDearer() == 2)
+		{
+			available = available.add(money);			
+		}
+		/*if (invoice.getAuditState().getProver() == 1
 				&& invoice.getAuditState().getAuditor1() == 1) {
 			int control = 0;
 			if (invoice.getAuditState().getDearer() == 2
@@ -557,7 +570,7 @@ public class InvoiceServiceImpl implements IInvoiceService {
 						}
 					}
 				}
-		}
+		}*/
 		balance.setFrozen(frozen);
 		balance.setAvailable(available);
 
