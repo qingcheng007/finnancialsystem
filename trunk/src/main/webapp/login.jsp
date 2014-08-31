@@ -60,7 +60,7 @@
         <div class="footer"> 
          <ul>
         <li><center><span style="line-height:1.5; color:#ccc;">手机报账系统 Copyright © 2014 陈宝光 版权所有</span></center></li>
-        <li><center><span style="line-height:1.5; color:#ccc;">Power by <a href="www.cmsee.com" target="_blank">内蒙古大学系统开发团队</a></span></center></li>
+        <li><center><span style="line-height:1.5; color:#ccc;">Power by <a href="http://www.cmsee.com" target="_blank">内蒙古大学系统开发团队</a></span></center></li>
         <li><center><a href="http://www.miibeian.gov.cn" target="_blank" >冀ICP备14015528号</a></center></li>
         </ul>   
         </div>
